@@ -14,10 +14,7 @@
    \   \ .'  |   :/\  \ ;  :    ;|   :    :||   :    |        :   : :-'  |   :    |;  :   .'   \|   |/      ;  :    ;|   ;/           
     `---`    `---'  `--`|  ,   /  \   \  /   \   \  /         |   |.'     \   \  / |  ,     .-./'---'       |  ,   / '---'            
                          ---`-'    `----'     `----'          `---'        `----'   `--`---'                 ---`-'                   
-                                                                                                                                                                                                                                                                 
-Oxide Reanimation is exactly as the name implies, it is a highly versatile and well built reanimation script
-It uses an rcd workaround so it will still work after May 1st
-Reanim Char is Set to game.Players.LocalPlayer.Character
-It currently isnt public as it is being worked on but will be released soon
 
-# Possibly Discontinued
+Its a reanim, what do you expect
+Hats required: 13421786478, 13405334748, 13406366139, 13406316903, 13406356980
+You need R15!
