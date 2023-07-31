@@ -149,6 +149,9 @@ local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
 end)
+pcall(function()
+c.SHADES.Handle.AccessoryWeld.C1 = CFrame.new(0, 0.0250000004, -0.600000024, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/TypicalsConvertingLibrary/main/renameallhatclones"))()
 if _G.EnableNetLib == true then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/random-stuff/main/4eyesnetlib.lua"))()
