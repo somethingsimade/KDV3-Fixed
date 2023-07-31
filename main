@@ -1,26 +1,76 @@
+--[[ THIS WAS MADE BY NITROWO (tixbot)
+
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⢀⢀⡰⠊⠀⠁⠊⠢⠱⡪⡎⣮⢾⡜⡔⡱⡘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡫⡀⠱⡑⢕⢑⠍⡍⡍⡒⣒⠎⢎⡾⣝⣗⢷⢱⡸⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠠⡣⡳⠀⢂⠈⡘⢘⢘⢆⠈⠌⠐⡠⠏⠄⠡⠁⣿⠱⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢨⡃⠄⠁⠄⠂⠐⡀⠄⠪⡔⠈⡀⠣⢕⠌⢀⠑⢙⢸⢘⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢲⠁⠅⠈⠄⠁⡂⠄⢂⡐⣈⠠⠐⠠⡃⢂⠐⡨⠂⠊⡖⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠮⠰⣈⠄⡁⠂⠄⠔⠁⠀⠄⡈⢢⠁⡀⠒⡑⠄⣈⠜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠑⣀⢬⠤⢌⡢⢕⠱⠱⡕⣖⡂⠄⠁⠬⡑⢍⢱⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⡄
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣔⠒⢁⠇⡂⠐⠤⡈⡄⠔⠠⠀⡂⡡⠨⡨⢂⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠢⠃⢣⠢
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢎⢊⠈⠑⠁⠀⠀⡄⡀⡢⢡⣮⡶⣿⢿⢰⡁⣠⣠⡠⠀⠀⠀⠀⠀⠀⠀⠀⡠⠃⡁⠐⡈⢀⠑
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⠱⡀⠣⢃⠍⠠⢘⢼⡯⣷⣻⣻⣿⢷⣟⣯⣟⣷⠀⠀⠀⠀⠀⠀⠀⠈⠒⢄⠂⠁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠈⢀⢩⣾⡛⠹⡀⠡⠐⢝⣯⢷⣯⡿⣯⢿⡽⣞⣗⣟⣿⣴⡀⠀⠀⠀⠀⠀⡨⠂⠀⠀⠀⠀⢐
+⠀⠀⠀⠀⠀⠀⠠⠈⠀⠀⠁⣰⣿⣻⡿⣞⠎⡂⠃⢕⣙⣽⣾⣻⡽⡯⣯⢷⣻⣺⣳⡟⠁⠀⠀⠀⠀⢀⠇⠀⠀⠀⠀⠀⢌
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣐⣿⢾⠿⠝⡐⠁⠄⠁⠄⠐⢵⣿⣳⣻⡽⡯⣯⢷⣻⢾⡇⠀⠀⠀⠀⠀⡸⠀⠀⠀⠀⠀⠠⠈
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⢽⡯⢀⠐⡀⠌⢀⠡⠈⠄⢵⣿⣞⣗⣯⢿⢽⡽⣞⣯⡿⠀⠀⠀⠀⠀⡪⠀⠄⠄⠂⡁⠌⠠
+⠀⠀⠀⠀⠀⠀⠀⠀⣄⣶⣫⣟⣽⡀⠄⠄⠂⠄⠂⠄⣑⣽⢿⣞⣗⣯⢿⢽⣫⣟⣿⠄⠀⠀⠀⠀⠀⢕⠁⡐⢀⠆⠎⠊⠩
+⠀⠀⠀⠀⠀⠀⠀⢸⣟⣾⣻⡲⣿⣲⢨⣳⣧⣦⣵⢼⢞⢕⢯⣿⢾⡽⡽⡯⡷⣯⠇⠀⠀⠀⠀⠀⠀⢱⠀⢂⠎⠈⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢺⣳⣗⣯⣷⣼⣟⣾⡻⡞⡾⣪⢳⣹⣺⡽⡫⣫⣿⢿⣽⣯⡿⡆⠀⠀⡄⠀⠀⠀⠈⢎⠊⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢼⣗⡯⡾⣷⣝⢞⣳⡫⣟⢾⢽⢝⢗⢇⣗⣯⣟⣾⣻⣷⣟⣿⡗⢀⢕⢘⢆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣼⢯⡯⣿⡽⣿⢽⣺⢽⣞⣞⣞⡾⡽⣯⢷⣳⣗⣷⣳⣻⢾⣿⣧⢊⠢⠡⢲⢠⢠⢀⢀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢀⣾⢽⢯⣟⣷⣻⣟⣯⢯⣗⡽⡾⣾⣯⢿⢽⡽⣞⣗⣷⣻⣺⢯⣿⣻⣷⡕⠅⢕⠡⡊⢜⠨⡒⢄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢽⡯⣟⣾⢾⣳⡿⣽⣗⡷⣽⡺⣻⣾⣿⡽⣽⣳⣻⣺⢾⣝⣯⣿⣽⡾⣿⢿⣟⣷⡗⠔⠁⠄⠐⠈⠂⠤⠠
+⠀⠀⠀⠀⠀⢀⡾⣯⢿⣞⣿⣳⣟⣿⣺⡽⣞⣽⣺⢼⢷⡿⣿⣺⣳⢯⣟⣞⣷⢿⣾⡻⠟⠛⢉⠁⠣⡑⢈⢀⠁⡁⢁⠐⠈
+⠀⠀⠀⠀⠀⡼⣯⢿⣽⢷⣟⣾⣽⣺⣗⣿⡽⣾⣺⢯⣯⡿⣯⣿⢾⣻⣾⣻⡽⠛⢁⢐⣨⣰⣴⢾⣞⣟⡗⡂⠐⡀⠂⡈⠐
+
+]]
+_G.R6Mode = true
+
 local Hat = {
-Rename = function(HatID, NAME)
+Rename = function(HatID, NAME, oname)
+if oname == nil then oname = "Hat" end
 for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
     if v:IsA("Accessory") then
         if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-            if v.Handle:FindFirstChildWhichIsA("SpecialMesh").MeshId == HatID then
-                v.Name = NAME
+            if v.Handle:FindFirstChildWhichIsA("SpecialMesh").TextureId == HatID then
+          	  if oname == "Hat" then
+              v.Name = NAME
+              elseif oname == "LARM" then
+              v.Name = "fooblet"
+              elseif oname == "RARM" then
+              v.Name = "gooblet"
+              else
+              v.Name = NAME
             end
-        elseif game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 and v.Handle.MeshId == HatID then
-                v.Name = NAME
+            end
+        elseif game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 and v.Handle.TextureId == HatID  then
+                 if oname == "Hat" then
+              v.Name = NAME
+              elseif oname == "LARM" then
+              v.Name = "fooblet"
+              elseif oname == "RARM" then
+              v.Name = "gooblet"
+              else
+              v.Name = NAME
+            end
             elseif game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
-            if v.Handle.MeshId == HatID then
-                v.Name = NAME
+            if v.Handle.TextureID == HatID then
+                if oname == "Hat" then
+              v.Name = NAME
+              elseif oname == "LARM" then
+              v.Name = "fooblet"
+              elseif oname == "RARM" then
+              v.Name = "gooblet"
+              else
+              v.Name = NAME
+             end
                 end
             end
         end
     end
 end}
-Hat.Rename("rbxassetid://11263221350", "Rleg")
-Hat.Rename("rbxassetid://13421705040", "Larm")
-Hat.Rename("rbxassetid://11159370334", "Rarm")
-Hat.Rename("rbxassetid://13421798868", "Lleg")
-Hat.Rename("rbxassetid://13421774668", "Tor")
+
 
 local gay = false
 workspace.FallenPartsDestroyHeight = 0/0
@@ -91,18 +141,15 @@ v.Parent.Name = "funnihead"
 end
 end
 end
---[[for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-if v:IsA("Accessory") then
-v.Parent = nil
-wait(0.1)
-v.Parent = workspace
-wait(0.1)
-v.Parent = game.Players.LocalPlayer.Character
 
-end
-end]]
+Hat.Rename("rbxassetid://14255543546","","LARM")
+Hat.Rename("rbxassetid://14255543546","","RARM")
+Hat.Rename("rbxassetid://13415110780", "Tor")
+local c = game:GetService("Players").LocalPlayer.Character
+pcall(function()
+c.gooblet.Name = "fooblet"
+end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/TypicalsConvertingLibrary/main/renameallhatclones"))()
-
 if _G.EnableNetLib == true then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/random-stuff/main/4eyesnetlib.lua"))()
 
@@ -201,7 +248,7 @@ while true do
     if child.Name==childName then return child end
 end
 end
-local c = game:GetService("Players").LocalPlayer.Character
+
 local char =  game:GetObjects("rbxassetid://5195737219")[1]
 char.Name = c.Name.." (Dummy)"
 zz = Instance.new("Highlight",char)
@@ -210,10 +257,14 @@ char:SetPrimaryPartCFrame(CFrame.new(c.Head.CFrame.X + 5, c.Head.CFrame.Y,c.Head
 c["Body Colors"]:Clone().Parent = char
 game.Players.LocalPlayer.Character.PrimaryPart = c.Head
 char.HumanoidRootPart.Anchored = false
-if c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-game.Players:Chat("-gh 13406366139,13405334748,13406316903,13406356980")
+if not c:FindFirstChild("Tor") then
+c["ExtraNoobTorso"].Name = "Tor"
 end
-
+for i,v in pairs(c:GetChildren()) do
+if v:IsA("Accessory") and v.Name == "Pants" then
+v:Destroy()
+end
+end
 char.Parent = workspace
 c.Parent = char
 	_G.FlingPos = char.HumanoidRootPart.CFrame
@@ -226,7 +277,7 @@ local swordbigvel = false
 velocity = game:GetService("RunService").Heartbeat:Connect(function(set)
 for i,v in pairs(c:GetChildren()) do
 	if v:IsA("Accessory")  then
-		v.Handle.AssemblyLinearVelocity = Vector3.new(char.Torso.AssemblyLinearVelocity.X*25, 26.65*-1, char.Torso.AssemblyLinearVelocity*25)
+		v.Handle.AssemblyLinearVelocity = Vector3.new(char.Torso.AssemblyLinearVelocity.X*25, -26.65, char.Torso.AssemblyLinearVelocity*25)
 	end
 end
 end)
@@ -255,7 +306,7 @@ end
 
 
 speaker = game.Players.LocalPlayer
-wait(.25)
+wait(.15)
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
 					child.Anchored = true
@@ -264,12 +315,17 @@ for _, child in pairs(c:GetChildren()) do
 				end
 			end
 
-		
+	for _, v in pairs(char:GetChildren()) do
+				if v:IsA("Part") then
+				v.CollisionGroup = c.Head.CollisionGroup
+				end
+			end	
 
 
 	
 
 
+if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
 	local players = game:GetService("Players")
 local player = players.LocalPlayer
 for _, assetInfo : AssetInfo in pairs(game.Players:GetCharacterAppearanceInfoAsync(player.UserId).assets) do
@@ -340,11 +396,11 @@ z.Handle.Anchored = false
 
 
    for _,v in pairs(char:GetChildren()) do
-       if v:IsA("Accessory") and v.AccessoryType ~= Enum.AccessoryType.Pants  and v.AccessoryType ~= Enum.AccessoryType.Shirt   then
+       if v:IsA("Accessory") and v.AccessoryType ~= Enum.AccessoryType.Pants and v.AccessoryType ~= Enum.AccessoryType.Jacket  and v.AccessoryType ~= Enum.AccessoryType.Shirt   then
 msh = v.Handle:FindFirstChildOfClass("SpecialMesh").MeshId
 txt = v.Handle:FindFirstChildOfClass("SpecialMesh").TextureId
    for _,q in pairs(c:GetChildren()) do
-       if q:IsA("Accessory")  and q.AccessoryType ~= Enum.AccessoryType.Pants  and q.AccessoryType ~= Enum.AccessoryType.Shirt   then
+       if q:IsA("Accessory")  and q.AccessoryType ~= Enum.AccessoryType.Pants  and q.AccessoryType ~= Enum.AccessoryType.Shirt  and v.AccessoryType ~= Enum.AccessoryType.Jacket   then
        if q.Handle:IsA("MeshPart") then
        if q.Handle.MeshId == msh and q.Handle.TextureID == txt then
        v.Name = q.Name
@@ -360,15 +416,48 @@ end
 end
 char.Humanoid:AddAccessory(z)
 if z.Handle:FindFirstChildOfClass("SpecialMesh") then
-if z.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == "rbxassetid://13421774668" then
+if z.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == "rbxassetid://13421774668"  then
 z:Destroy() 
 end
 end
-if z.AccessoryType == Enum.AccessoryType.Pants or z.AccessoryType == Enum.AccessoryType.Shirt then
+ if z.Name == "LARM" or  z.Name == "RARM" then
+ z:Destroy() 
+ end
+if z.AccessoryType == Enum.AccessoryType.Pants or z.AccessoryType == Enum.AccessoryType.Shirt  or z.AccessoryType == Enum.AccessoryType.Jacket then
 z:Destroy() 
 end
 
 	end
+		else
+	
+ for _,v in pairs(c:GetChildren()) do
+       if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  then
+      local a = v:Clone()
+      a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
+Accessory = v
+      Handle = Accessory.Handle
+      pcall(function() Handle:FindFirstChildOfClass("Weld"):Destroy() end)
+    	local NewWeld = Instance.new("Weld")
+    	NewWeld.Name = "AccessoryWeld"
+    	NewWeld.Part0 = Handle
+    	local Attachment = Handle:FindFirstChildOfClass("Attachment")
+    	if Attachment then
+    		NewWeld.C0 = Attachment.CFrame
+    		NewWeld.C1 = char:FindFirstChild(tostring(Attachment), true).CFrame
+    		NewWeld.Part1 = char:FindFirstChild(tostring(Attachment), true).Parent
+    	else
+    		NewWeld.Part1 = FakeCharacter:FindFirstChild("Head")
+    		NewWeld.C1 = CFrame.new(0,char:FindFirstChild("Head").Size.Y / 2,0) * Accessory.AttachmentPoint:Inverse()
+    	end
+    	Handle.CFrame = NewWeld.Part1.CFrame * NewWeld.C1 * NewWeld.C0:Inverse()
+    	NewWeld.Parent = Accessory.Handle 
+a.Parent = char
+a.Handle.Anchored = false
+a.Handle.Transparency = 1
+           end
+       end
+	end
+
 force(char.HumanoidRootPart,Vector3.new(80,80,80))
 
    for _,v in pairs(c:GetChildren()) do
@@ -545,7 +634,7 @@ end
 
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
-					child.Anchored = false
+					child.Anchored = true
 				elseif child:IsA("Accessory") then
 				    child.Handle.Anchored = false
 				end
@@ -648,9 +737,10 @@ if _G.EnableNetLib == true then
 	end
 
 
-
-	
- local connect = game:GetService("RunService").Heartbeat:Connect(function(set)
+local connect
+	char.Animate.Disabled = false
+	if c.Humanoid.RigType == Enum.HumanoidRigType.R15 and _G.R6Mode == false then
+  connect = game:GetService("RunService").Heartbeat:Connect(function(set)
 
  pcall(function()
  c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
@@ -676,7 +766,6 @@ else
 msh = v.Handle:FindFirstChildOfClass("SpecialMesh").MeshId
 txt = v.Handle:FindFirstChildOfClass("SpecialMesh").TextureId
 end
-
    for _,x in pairs(char:GetChildren()) do
        if x:IsA("Accessory") and x.AccessoryType ~= Enum.AccessoryType.Pants  and x.AccessoryType ~= Enum.AccessoryType.Shirt   then
    for _,q in pairs(c:GetChildren()) do
@@ -692,13 +781,92 @@ v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin
        end
        end
        end
+	   end
+ 	   end
+ 	   end
+ 	   end
+ 	    for _,v in pairs(c:GetChildren()) do
+       if v:IsA("Accessory")   then
+v.Handle.CanCollide = false
+           end
+ end
+   for _,v in pairs(c:GetChildren()) do
+       if v:IsA("Part") and v.Name ~= "Part" and v.Name ~= "RectangleHead-1"  and v.Name ~= "RectangleFace-1" and v.Name ~= "Horns of the Forsaken" and v.Name ~= "RectangleFace" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2" then
+v.Color = char[v.Name].Color
+           end
+   end
+for i,v in pairs(c:GetDescendants()) do
+if v:isA("Part") then
+sethiddenproperty(v,"NetworkIsSleeping", false)
+end
+end
+for i,v in pairs(c:GetDescendants()) do
+if v:isA("MeshPart") then
+sethiddenproperty(v,"NetworkIsSleeping", false)
+end
+end
+	settings().Physics.AllowSleep = false
+ 	   end)
+ 	 elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+ 	   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
+ 	    pcall(function()
+ c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
+end)
+ 	  pcall(function()
+c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90)) * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
+ end)
+  	  pcall(function()
+ c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
+   end)
+   	  pcall(function()
+  c["RARM"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
+ end)
+ 	  pcall(function()
+c["LARM"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
+ end)
+ pcall(function()
+ if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+ c["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame = char["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame*  CFrame.Angles(0,0,-.0005*math.sin(100*tick())) 
+end
+end)
+pcall(function()
+          for _,v in pairs(c:GetChildren()) do
+       if v:IsA("Accessory") and v.Name ~= "fooblet" and v.Name ~= "gooblet"  and v.Name ~= "RARM"  and v.Name ~= "LARM"and v.Name ~= "Tor"  and v.Name ~= "Tor" and v.Name ~= "Lleg" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2"  then
+if c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
+else
+    for _,v in pairs(c:GetChildren()) do
+       if v:IsA("Accessory") and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "RARM"  and v.Name ~= "LARM" and v.Name ~= "Rleg"  and v.Name ~= "Tor" and v.Name ~= "Lleg" and v.Name ~= "SkeletonLeftLeg" and v.Name ~= "RectangleHead-2"  then
+ if v.Handle:IsA("MeshPart") then
+msh = v.Handle.MeshId
+txt = v.Handle.TextureID
+else
+msh = v.Handle:FindFirstChildOfClass("SpecialMesh").MeshId
+txt = v.Handle:FindFirstChildOfClass("SpecialMesh").TextureId
+end
+   for _,x in pairs(char:GetChildren()) do
+       if x:IsA("Accessory") and x.AccessoryType ~= Enum.AccessoryType.Pants  and x.AccessoryType ~= Enum.AccessoryType.Shirt   then
+   for _,q in pairs(c:GetChildren()) do
+       if q:IsA("Accessory")  and q.AccessoryType ~= Enum.AccessoryType.Pants  and q.AccessoryType ~= Enum.AccessoryType.Shirt   then
+        if q.Handle:IsA("MeshPart") then
+     if q.Handle.MeshId == msh and q.Handle.TextureID == txt then
+v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
+       end
+       else
+              if q.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == msh and q.Handle:FindFirstChildOfClass("SpecialMesh").TextureId == txt then
+    v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
+       end
+       end
+       end
+       end
+	   end
+ 	   end
+ 	   end
+ 	   end
 end
 end
 end
-end
-
-
-       
+   end)       
   for _,v in pairs(c:GetChildren()) do
        if v:IsA("Accessory")   then
 v.Handle.CanCollide = false
@@ -721,7 +889,7 @@ end
 end
 	settings().Physics.AllowSleep = false
 end)
-
+end
 
 
 char:FindFirstChildOfClass("Humanoid").Died:Connect(function()
@@ -757,12 +925,16 @@ velocity:Disconnect()
 end)
 
 
-		workspace.FallenPartsDestroyHeight = -500
+		workspace.FallenPartsDestroyHeight = -1000
 		settings().Physics.AllowSleep = false
 
 
+wait()
+for _, child in pairs(c:GetChildren()) do
+				if child:IsA("Part") then
+					child.Anchored = false
+				elseif child:IsA("Accessory") then
+				    child.Handle.Anchored = false
+				end
+			end
 
-
-
- wait(7.5)
- workspace.FallenPartsDestroyHeight = -1000
