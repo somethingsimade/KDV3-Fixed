@@ -150,7 +150,7 @@ pcall(function()
 c.gooblet.Name = "fooblet"
 end)
 pcall(function()
-c.SHADES.Handle.AccessoryWeld.C1 = CFrame.new(0, 0.0250000004, -0.600000024, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+c.SHADES.Handle.AccessoryWeld.C1 = CFrame.new(0, 0.025, -0.6, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/TypicalsConvertingLibrary/main/renameallhatclones"))()
 if _G.EnableNetLib == true then
@@ -162,70 +162,6 @@ coroutine.resume(Network["PartOwnership"]["Enable"])
 end
 
     
-local function Align(Part1, Part0, Position, Angle)
-   Part1.CanCollide = false
-   
-      local AlignPos2 = Instance.new("AlignPosition")
-   AlignPos2.ApplyAtCenterOfMass = true
-   AlignPos2.MaxForce = 100000
-   AlignPos2.MaxVelocity = math.huge
-   AlignPos2.ReactionForceEnabled = false
-   AlignPos2.Responsiveness = 200
-   AlignPos2.RigidityEnabled = false
-   AlignPos2.Parent = Part1
-
-
-   local AlignPos = Instance.new("AlignPosition")
-   AlignPos.ApplyAtCenterOfMass = true
-   AlignPos.MaxForce = 100000
-   AlignPos.MaxVelocity = math.huge
-   AlignPos.ReactionForceEnabled = false
-   AlignPos.Responsiveness = 200
-   AlignPos.RigidityEnabled = true
-   AlignPos.Parent = Part1
-
-   local AlignOri = Instance.new("AlignOrientation")
-   AlignOri.MaxAngularVelocity = math.huge
-   AlignOri.MaxTorque = 100000
-   AlignOri.PrimaryAxisOnly = false
-   AlignOri.ReactionTorqueEnabled = false
-   AlignOri.Responsiveness = 200
-   AlignOri.RigidityEnabled = false
-   AlignOri.Parent = Part1
-
-   local at1 = Instance.new("Attachment")
-   at1.Parent = Part1
-   local at2 = Instance.new("Attachment")
-   at2.Parent = Part0
-   at2.Orientation = Angle
-   at2.Position = Position
-   
-   AlignPos.Attachment0 = at1
-   AlignPos.Attachment1 = at2
-   AlignOri.Attachment0 = at1
-   AlignOri.Attachment1 = at2
-end
-    
-    local function unalign(Part)
-          for i, v in pairs(Part:GetChildren()) do
-       if v:IsA("AlignPosition") or v:IsA("AlignOrientation") then
-v.Enabled = false
-
-      end
-       end
-    end
-    
-        local function realign(Part)
-          for i, v in pairs(Part:GetChildren()) do
-       if v:IsA("AlignPosition") or v:IsA("AlignOrientation") then
-v.Enabled = true
-
-      end
-       end
-        end
-    
-
-
 workspace.FallenPartsDestroyHeight = 0/0
 
 Connection = game.Workspace.DescendantAdded:Connect(function(c)
@@ -932,6 +868,10 @@ end)
 		settings().Physics.AllowSleep = false
 
 
+local a=Instance.new("Animation")
+a.AnimationId="rbxassetid://"..tostring(math.random(1,10^9)).. "\n Oxide Reanimation Loaded - Made by Nitrowo"
+game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(a):Play(0.1,0.1,0.1)
+
 wait()
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
@@ -941,3 +881,36 @@ for _, child in pairs(c:GetChildren()) do
 				end
 			end
 
+print([[
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⢄⠖⠁⠁⠊⠂⠱⠨⡢⡣⣣⢣⢳⣱⣵⢱⡑⡌⢆⢕⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡓⠉⢮⢢⢕⢓⢓⢒⢒⡒⡢⠤⠤⢄⡠⣓⢕⣕⣯⢷⣝⣇⢧⢊⡲⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢮⡂⠅⠠⠑⢆⢕⢅⢕⢅⠎⠬⠪⣊⠎⡁⢅⡷⢃⢯⡗⠷⣽⢸⡰⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⢞⠕⡅⠄⢁⠐⡀⠌⡈⠌⢊⢇⠠⠁⠄⠂⣰⢙⠌⠠⢀⠐⢨⢾⠡⣃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢂⢂⠐⢈⠠⠐⠀⠄⠄⠂⡈⢪⡂⢐⠀⠅⠮⠔⢔⠈⡀⠌⠊⢹⠡⡣⢓⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡪⡚⡀⠂⠄⠐⡀⠡⠐⢀⠁⠄⠂⡉⠄⢐⠀⡂⡜⡂⠂⠄⠂⢡⠂⢼⢨⡲⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡝⡀⢐⠈⡀⠡⠀⡂⠨⠀⡢⠑⠁⡂⠪⢠⠐⢀⠡⠀⢅⢆⠡⢁⠐⡀⡇⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠃⠩⡡⡰⠠⢅⠐⠀⡂⠎⠀⢀⢀⢂⠐⡀⢱⠀⠄⢁⠂⢸⡐⡠⣢⢪⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⢑⠡⡀⡤⣢⢡⢔⡁⢧⡑⢔⢕⢝⢮⢳⢑⠈⠠⠀⠵⢌⠪⡂⢕⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⡄
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣕⡐⠕⠙⡨⡠⠂⡘⢄⠐⡀⠄⠂⡡⠃⡁⠄⠡⢈⠠⠢⡑⢌⠎⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢰⠘⢜⢢⠨
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡂⡧⣁⠢⠣⠦⠅⠀⠀⠁⠁⠊⢁⠐⠠⡐⢄⣵⣴⣥⡑⡬⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠇⢃⠐⢀⠂⠑⢕
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⢆⡑⣀⠀⢁⣀⢀⠠⡰⠉⢆⢠⢊⣷⢾⣟⡿⣞⣯⣧⢱⣁⣦⣮⣾⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢃⠡⠐⢀⠐⡀⠂⡁⠐
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢵⠘⢌⠀⠢⠅⡓⢀⠂⠌⣳⢿⢽⢯⡾⣽⣟⣯⣿⡿⣯⡷⣟⡾⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⡢⡈⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⢈⠀⠈⡡⣣⣿⠗⠟⡅⠄⠂⡐⢸⢯⢿⡽⡽⣷⣿⣟⣯⣟⣷⣻⡽⣽⣻⡿⣦⡂⠀⠀⠀⠀⠀⠀⠀⠀⢌⠎⠀⠀⠀⠀⠀⠀⢐
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠂⠀⢀⠂⡀⡐⣾⣟⣯⣷⣠⡱⡄⡅⡄⢕⠹⢯⢯⣿⣻⡾⡯⣗⣟⣾⣺⢽⣳⣻⣞⣟⣿⠈⠀⠀⠀⠀⠀⠀⢨⠊⠀⠀⠀⠀⠀⠀⠀⡪
+⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠄⠁⠀⠀⢀⣾⢿⣽⣿⢽⡹⣊⠂⡂⠌⢈⠊⡬⢟⣾⣯⢿⢽⣻⣞⣾⣺⢯⣟⣾⣺⢿⠁⠀⠀⠀⠀⠀⠀⠐⡸⠀⠀⠀⠀⠀⠀⠀⢀⠣
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣸⣟⣯⡿⠺⠕⡈⠄⠂⠄⠂⡐⠀⠌⡪⣿⡾⡯⡿⣵⣗⡷⡯⣟⣾⣺⢾⣿⠡⠀⠀⠀⠀⠀⠀⠨⡂⠀⠀⠀⠀⠀⢀⠐⠀⠂
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢢⣿⢽⣗⠅⠐⡀⠂⠄⠡⢀⠁⠄⠨⠐⢬⢿⣯⢿⢽⣳⣗⡿⡽⣯⢾⣺⣻⣾⡇⠀⠀⠀⠀⠀⠀⢱⠅⢁⠐⠀⠂⡁⠄⠂⢁⠁
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⣽⣗⣿⡫⡆⠁⠄⠂⡁⢐⠠⠐⢈⢀⠪⣸⣿⣿⢽⢯⣗⣷⣻⡽⣽⣻⣽⣾⡇⠂⠀⠀⠀⠀⠀⠀⡸⡈⠠⢀⠁⡁⢄⢔⠜⠆⠧
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⡶⣟⣿⣞⢇⣿⢧⠈⡨⣄⡂⠠⠐⢀⠂⣄⡵⣟⢗⡿⣿⢽⢾⣺⣳⢯⣷⣻⣺⢷⢋⠀⠀⠀⠀⠀⠀⠀⡘⡆⠐⡀⢂⢆⠃⠁⠀⠀⠈
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣹⡯⣟⣾⢷⡝⢿⣻⣕⢰⣵⡿⣟⡷⣷⣻⢞⡝⣎⢗⣿⣻⢿⣯⢷⢯⣟⣾⣺⣽⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠄⢄⠇⠂⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⢯⣟⣾⣻⣷⡵⣿⡽⣾⣻⡻⢯⢯⣣⡣⣳⣱⣳⢯⡗⡯⣳⢿⣟⣿⣺⣞⣷⣟⡇⡀⠀⠀⢄⠀⠀⠀⠀⠀⠪⠲⠡⠂⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⣻⣞⢮⣟⣷⢽⢗⡿⡽⡾⣺⡵⣗⣗⣯⢷⡻⡺⣕⢝⡾⣽⢽⡽⣿⣽⣻⣾⣻⣷⠀⠠⡸⢘⢆⠄⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣳⡽⣳⢿⣽⣿⣺⢮⣻⢮⣳⢝⢼⡸⣜⢮⢮⣗⣷⣻⡽⣽⢽⣽⣳⣟⣯⣿⣯⣟⠠⡑⢅⢑⠌⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠠⣵⣟⣗⡿⣽⣟⣾⣻⣞⣟⢾⣝⡯⣯⣟⢾⢽⢯⣟⣾⣺⢾⢽⡽⣽⣞⣾⣺⡽⣾⣿⣿⣎⢊⠢⡑⠌⡎⡔⡔⡔⡄⡄⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢐⣽⣻⣺⣳⣟⣷⣻⣞⣯⣿⣺⣽⣺⡺⣝⣟⣿⣟⣿⣺⣞⡾⡯⣯⣟⣗⣷⣳⣗⡿⣽⡿⣾⣻⣿⠰⡨⢊⠔⡡⢊⠔⡡⡑⡱⠡⢂⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣻⣞⣷⣳⢷⣻⡾⣽⢾⣯⣷⣳⣳⣻⡺⣪⢿⣽⣾⣳⣗⡿⣽⣳⣗⣟⣞⣾⣺⣽⣻⡿⣯⡿⣾⡿⣾⡾⣾⡶⣧⢊⠔⠐⡀⠅⠠⠑⠠⣀⡀⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⢼⣟⣾⣺⢿⡽⣯⢿⡽⣾⣻⣞⣗⡷⣝⢷⢝⣝⣯⣿⢾⣯⣷⣳⣗⣟⡾⣵⢷⣳⣷⡿⣯⡿⣷⢿⣻⡽⠯⠟⢟⡐⡈⠄⡀⠂⡁⠈⠄⠠⠀⠅
+⠀⠀⠀⠀⠀⠀⠀⢌⣿⣳⣻⢾⣻⡽⣯⡯⣟⣷⢷⣻⢾⢽⡽⡽⡯⣞⣮⣟⣯⣿⢾⣾⣺⣳⣻⡽⣽⣟⣷⢿⣻⠟⠋⠍⠂⠄⠡⠐⡀⣣⣠⡐⢀⠂⠠⠁⡈⠄⢁⠐
+⠀⠀⠀⠀⠀⠀⠠⣻⣳⢯⣟⣿⣽⣟⣷⣿⣽⣽⣫⣟⣯⢿⡽⣯⢿⡽⣞⣾⣽⣾⢿⡷⣿⣞⣷⢿⣻⣽⠟⠩⠀⢂⣁⣢⣵⢾⢾⣻⢟⡯⣟⡟⠡⠀⠅⠂⡀⢂⠐⠠
+
+]])
