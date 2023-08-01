@@ -1,3 +1,5 @@
+_G.R6Mode = true
+_G.MiztCompat = true
 --[[ THIS WAS MADE BY NITROWO (tixbot)
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⢀⢀⡰⠊⠀⠁⠊⠢⠱⡪⡎⣮⢾⡜⡔⡱⡘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -25,8 +27,6 @@
 ⠀⠀⠀⠀⠀⡼⣯⢿⣽⢷⣟⣾⣽⣺⣗⣿⡽⣾⣺⢯⣯⡿⣯⣿⢾⣻⣾⣻⡽⠛⢁⢐⣨⣰⣴⢾⣞⣟⡗⡂⠐⡀⠂⡈⠐
 
 ]]
-_G.R6Mode = true
-
 local Hat = {
 Rename = function(HatID, NAME, oname)
 if oname == nil then oname = "Hat" end
@@ -189,10 +189,14 @@ end
 end
 
 local char =  game:GetObjects("rbxassetid://5195737219")[1]
+if _G.MiztCompat == false then
 char.Name = c.Name.." (Dummy)"
+else
+char.Name = "non"
+end
 zz = Instance.new("Highlight",char)
 zz.FillTransparency = 1
-char:SetPrimaryPartCFrame(CFrame.new(c.Head.CFrame.X + 5, c.Head.CFrame.Y,c.Head.CFrame.Z))
+char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame *CFrame.new(0,0,2))
 c["Body Colors"]:Clone().Parent = char
 game.Players.LocalPlayer.Character.PrimaryPart = c.Head
 char.HumanoidRootPart.Anchored = false
@@ -226,11 +230,6 @@ local function force(part,force)
 	bodyforce.Force = force
 end
 
-for i,v in pairs(c:GetChildren()) do
-	if v:IsA("Accessory") then
-		force(v.Handle,Vector3.new(80,80,80))
-	end
-end
 
 
 for i,v in pairs(c:GetChildren()) do
@@ -403,7 +402,12 @@ a.Handle.Transparency = 1
        end
 	end
 
-force(char.HumanoidRootPart,Vector3.new(80,80,80))
+
+for i,v in pairs(c:GetChildren()) do
+	if v:IsA("Accessory") then
+		force(v.Handle,Vector3.new(80,80,80))
+	end
+end
 
    for _,v in pairs(c:GetChildren()) do
        if v:IsA("Accessory") and v.Name ~= "RectangleHead" and v.Name ~= "RectangleHead-1"  and v.Name ~= "RectangleHead-3"  and v.Name ~= "funnihead" and v.Name ~= "RectangleFace-1" and v.Name ~= "RectangleFace" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2"     then
@@ -472,12 +476,14 @@ rootPart.CFrame = CFrame.new(rootPart.CFrame.X,-300,rootPart.CFrame.Z) + Vector3
 
 
 if _G.ReanimatedAnimations == true then
-char.Animate:Destroy()
+pcall(function()
 c.Animate.Disabled = true
 c.Animate.Disabled = false
+char.Animate:Destroy()
 c.Animate.Parent = char
 char.Animate.Disabled = true
 char.Animate.Disabled = false
+end)
 c.Humanoid.Animator.Parent = char.Humanoid
 workspace.Camera.CameraSubject = char.Humanoid
 else 
@@ -683,7 +689,9 @@ if _G.EnableNetLib == true then
 
 
 local connect
+pcall(function()
 	char.Animate.Disabled = false
+	end)
 	if c.Humanoid.RigType == Enum.HumanoidRigType.R15 and _G.R6Mode == false then
   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
 
@@ -844,7 +852,7 @@ end)
 
 
 local a=Instance.new("Animation")
-a.AnimationId="rbxassetid://"..tostring(math.random(1,10^9)).. "\n Oxide Reanimation Loaded - Made by Nitrowo"
+a.AnimationId="rbxassetid://"..tostring(math.random(1,10^9)).. ": Oxide Reanimation Loaded - Made by Nitrowo"
 game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(a):Play(0.1,0.1,0.1)
 
 wait()
@@ -856,8 +864,7 @@ for _, child in pairs(c:GetChildren()) do
 				end
 			end
 
---[[
-Rawr X3 *nuzzles* How are you? *pounces on you* you're so warm o3o *notices you have a bulge* someone's happy! *nuzzles your necky wecky* ~murr~ hehe ;) *rubbies your bulgy wolgy* you're so big! *rubbies more on your bulgy wolgy* it doesn't stop growing .///. *kisses you and licks your neck* daddy likes ;) *nuzzle wuzzle* I hope daddy likes *wiggles butt and squirms* I wanna see your big daddy meat! *wiggles butt* I have a little itch o3o *wags tails* can you please get my itch? *put paws on your chest* nyea~ it's a seven inch itch *rubs your chest* can you pwease? *squirms* pwetty pwease? :( I need to be punished *runs paws down your chest and bites lip* like, I need to be punished really good *paws on your bulge as I lick my lips* I'm getting thirsty. I could go for some milk *unbuttons your pants as my eyes glow* you smell so musky ;) *licks shaft* mmmmmmmmmmmmmmmmmmm so musky ;) *drools all over your cawk* your daddy meat. I like. Mister fuzzy balls. *puts snout on balls and inhales deeply* oh my gawd. I'm so hard *rubbies your bulgy wolgy* *licks balls* punish me daddy nyea~ *squirms more and wiggles butt* I9/11 lovewas an yourinside muskyjob goodness *bites lip* please punish me *licks lips* nyea~ *suckles on your tip* so good *licks pre off your cock* salty goodness~ *eyes roll back and goes balls deep*
+--[[Rawr X3 *nuzzles* How are you? *pounces on you* you're so warm o3o *notices you have a bulge* someone's happy! *nuzzles your necky wecky* ~murr~ hehe ;) *rubbies your bulgy wolgy* you're so big! *rubbies more on your bulgy wolgy* it doesn't stop growing .///. *kisses you and licks your neck* daddy likes ;) *nuzzle wuzzle* I hope daddy likes *wiggles butt and squirms* I wanna see your big daddy meat! *wiggles butt* I have a little itch o3o *wags tails* can you please get my itch? *put paws on your chest* nyea~ it's a seven inch itch *rubs your chest* can you pwease? *squirms* pwetty pwease? :( I need to be punished *runs paws down your chest and bites lip* like, I need to be punished really good *paws on your bulge as I lick my lips* I'm getting thirsty. I could go for some milk *unbuttons your pants as my eyes glow* you smell so musky ;) *licks shaft* mmmmmmmmmmmmmmmmmmm so musky ;) *drools all over your cawk* your daddy meat. I like. Mister fuzzy balls. *puts snout on balls and inhales deeply* oh my gawd. I'm so hard *rubbies your bulgy wolgy* *licks balls* punish me daddy nyea~ *squirms more and wiggles butt* I9/11 lovewas an yourinside muskyjob goodness *bites lip* please punish me *licks lips* nyea~ *suckles on your tip* so good *licks pre off your cock* salty goodness~ *eyes roll back and goes balls deep*
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⢄⠖⠁⠁⠊⠂⠱⠨⡢⡣⣣⢣⢳⣱⣵⢱⡑⡌⢆⢕⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡓⠉⢮⢢⢕⢓⢓⢒⢒⡒⡢⠤⠤⢄⡠⣓⢕⣕⣯⢷⣝⣇⢧⢊⡲⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢮⡂⠅⠠⠑⢆⢕⢅⢕⢅⠎⠬⠪⣊⠎⡁⢅⡷⢃⢯⡗⠷⣽⢸⡰⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
