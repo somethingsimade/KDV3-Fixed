@@ -272,7 +272,6 @@ for _, child in pairs(c:GetChildren()) do
 
 	
 
-
 if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
 	local players = game:GetService("Players")
 local player = players.LocalPlayer
@@ -386,7 +385,7 @@ end
 	
  for _,v in pairs(c:GetChildren()) do
        if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  then
-      if not char:FindFirstChild("SHADES") then
+      if not char:FindFirstChild(v.Name) then
       local a = v:Clone()
       a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
 Accessory = v
@@ -1091,6 +1090,7 @@ char.HumanoidRootPart.Anchored = false
 if not c:FindFirstChild("Tor") then
 repeat wait(.005) until c:FindFirstChild("Tor")
 end
+
 for i,v in pairs(c:GetChildren()) do
 if v:IsA("Accessory") and v.Name == "Pants" then
 v:Destroy()
@@ -1367,10 +1367,10 @@ if _G.ReanimatedAnimations == true then
 pcall(function()
 --char.Animate.Disabled = false
 end)
-workspace.Camera.CameraSubject = char.Humanoid
+workspace.Camera.CameraSubject = char:FindFirstChildOfClass("Humanoid")
 else 
 --char.Animate:Destroy()
-workspace.Camera.CameraSubject = char.Humanoid
+workspace.Camera.CameraSubject = char:FindFirstChildOfClass("Humanoid")
 end
 if c:FindFirstChild("Torso") then
 c.Torso["Right Hip"]:Destroy()
@@ -1737,7 +1737,7 @@ end)
 
 
 wait()
-rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y-25,char.HumanoidRootPart.CFrame.Z ) + Vector3.new(0, hipHeight or 4, 0)
+rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y-45,char.HumanoidRootPart.CFrame.Z ) + Vector3.new(0, hipHeight or 4, 0)
 
 
 for _, child in pairs(c:GetChildren()) do
@@ -1761,7 +1761,7 @@ redo()
 plr.CharacterAdded:Connect(function(re)
 repeat wait() until plr.Character:FindFirstChild("Animate")
 if re.Name ~= "non" then
-workspace.Camera.CameraSubject = workspace.non.Humanoid
+workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
 wait(.05)
 redo2()
 end
