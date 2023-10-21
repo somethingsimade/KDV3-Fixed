@@ -1,0 +1,270 @@
+local lp = game:FindFirstChildOfClass("Players").LocalPlayer
+local chr = lp.Character
+local torso = chr.Torso
+local head = chr.Head
+local larm = chr["Left Arm"]
+local rarm = chr["Right Arm"]
+local lleg = chr["Left Leg"]
+local rleg = chr["Right Leg"]
+function randomstring()
+	local length = math.random(10, 20)
+	local array = {}
+	for i = 1, length do
+		array[i] = string.char(math.random(32, 126))
+	end
+	return table.concat(array)
+end
+-- setup
+local function inv(p)
+local args = {
+[1] = "SyncMaterial",
+[2] = {
+ 	[1]={
+ 		 ["Part"] = p,
+ 		 ["Transparency"] = 1
+		}
+	}
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args))
+end
+inv(rleg)
+inv(rarm)
+inv(lleg)
+inv(larm)
+inv(torso)
+inv(head)
+
+
+local function addPart(name, size,col,m,t,s)
+if col == nil then col = Color3.fromRGB(163, 162, 165) end
+local args = {
+	[1] = "CreatePart",
+	[2] = "Normal",
+	[3] = CFrame.new(game.Players.LocalPlayer.Character.Torso.CFrame.Position*Vector3.new(0,10,0)),
+	[4] = workspace
+}
+
+local aa = game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args))
+if m ~= nil then
+if s == nil then s = Vector3.new(1,1,1) end
+local args6 = {
+	[1] = "CreateMeshes",
+	[2] = {
+		[1] = {
+			["Part"] = aa,
+		}
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args6))
+local args7 = {
+	[1] = "SyncMesh",
+	[2] = {
+		[1] = {
+			["MeshType"] = 5,
+			["Part"] = aa
+		}
+	}
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args7))
+local args1 = {
+	[1] = "SyncMesh",
+	[2] = {
+		[1] = {
+			["Part"] = aa,
+			["MeshId"] = "rbxassetid://"..m
+			
+		}
+	}
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args1))
+if t ~= nil then
+local ar1 = {
+	[1] = "SyncMesh",
+	[2] = {
+		[1] = {
+			["TextureId"] = "rbxassetid://"..t,
+			["Part"] = aa
+		}
+	}
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(ar1))
+end
+local ar = {
+	[1] = "SyncMesh",
+	[2] = {
+		[1] = {
+			["Scale"] = s,
+			["Part"] = aa,
+		}
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(ar))
+end
+
+
+local args2 = {
+	[1] = "SetName",
+	[2] = {
+		[1] = aa
+	},
+	[3] = randomstring()
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args2))
+local args3 = {
+	[1] = "SyncResize",
+	[2] = {
+		[1] = {
+			["Part"] = aa,
+			["CFrame"] = CFrame.new(game.Players.LocalPlayer.Character.Torso.CFrame.Position*Vector3.new(0,10,0)),
+			["Size"] = size
+		}
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args3))
+local args4 = {
+	[1] = "SyncColor",
+	[2] = {
+		[1] = {
+			["Color"] = col,
+			["UnionColoring"] = true,
+			["Part"] = aa,
+		}
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args4))
+local args5 = {
+	[1] = "SyncCollision",
+	[2] = {
+		[1] = {
+			["Part"] = aa,
+			["CanCollide"] = false
+		}
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args5))
+aa.CanTouch = false
+aa.CanQuery = false
+aa.Name = name
+end 
+math.randomseed(tick()/16.5)
+task.wait()
+local realn = math.random(1,2)
+math.randomseed(tick()/realn)
+task.wait()
+local n = math.random(1,2)
+addPart("leftArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+addPart("rightArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+addPart("leftLegg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+addPart("rightLegg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+if n == 1 then
+addPart("torsog", Vector3.new(2,2,1), Color3.fromRGB(196, 40, 28),2027989253)
+addPart("headg", Vector3.new(1,1,1), Color3.fromRGB(163, 162, 165), 21057410, 31100020 ,Vector3.new(1.05,1.05,1.05))
+else
+addPart("torsog", Vector3.new(2,2,1), Color3.fromRGB(110, 153, 202),2027989253)
+addPart("headg", Vector3.new(1,1,1), Color3.fromRGB(163, 162, 165), 21057410, 48544900 ,Vector3.new(1.05,1.05,1.05))
+end
+local function stop()
+local args5 = {
+	[1] = "Remove",
+	[2] = {
+			["Part"] = workspace.leftArmg,
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args5))
+local args4 = {
+	[1] = "Remove",
+	[2] = {
+			["Part"] = workspace.headg,
+		
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args4))
+local args3 = {
+	[1] = "Remove",
+	[2] = {
+	
+			["Part"] = workspace.leftLegg,
+		
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args3))
+local args2 = {
+	[1] = "Remove",
+	[2] = {
+	
+			["Part"] = workspace.torsog,
+		
+	}
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args2))
+local args1 = {
+	[1] = "Remove",
+	[2] = {
+		
+			["Part"] = workspace.rightArmg,
+		
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args1))
+
+local args = {
+	[1] = "Remove",
+	[2] = {
+		
+			["Part"] = workspace.rightLegg,
+		
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args))
+end
+
+ local connect = game:GetService("RunService").Heartbeat:Connect(function(set)
+ pcall(function()
+local args = {
+	[1] = "SyncRotate",
+	[2] = {
+		[1] = {
+			["Part"] = workspace:WaitForChild("leftArmg"),
+			["CFrame"] = CFrame.new(larm.CFrame.Position) * CFrame.Angles(math.rad(larm.Rotation.X), math.rad(larm.Rotation.Y), math.rad(larm.Rotation.Z) )
+		},
+		[2] = {
+			["Part"] = workspace:WaitForChild("rightArmg"),
+			["CFrame"] = CFrame.new(rarm.CFrame.Position) * CFrame.Angles(math.rad(rarm.Rotation.X), math.rad(rarm.Rotation.Y), math.rad(rarm.Rotation.Z) )
+		},
+		[3] = {
+			["Part"] = workspace:WaitForChild("leftLegg"),
+			["CFrame"] = CFrame.new(lleg.CFrame.Position) * CFrame.Angles(math.rad(lleg.Rotation.X), math.rad(lleg.Rotation.Y), math.rad(lleg.Rotation.Z) )
+		},
+		[4] = {
+			["Part"] = workspace:WaitForChild("rightLegg"),
+			["CFrame"] = CFrame.new(rleg.CFrame.Position) * CFrame.Angles(math.rad(rleg.Rotation.X), math.rad(rleg.Rotation.Y), math.rad(rleg.Rotation.Z) )
+		},
+		[5] = {
+			["Part"] = workspace:WaitForChild("torsog"),
+			["CFrame"] = CFrame.new(torso.CFrame.Position) * CFrame.Angles(math.rad(torso.Rotation.X), math.rad(torso.Rotation.Y), math.rad(torso.Rotation.Z) )
+		},
+		[6] = {
+			["Part"] = workspace:WaitForChild("headg"),
+			["CFrame"] = CFrame.new(head.CFrame.Position) * CFrame.Angles(math.rad(head.Rotation.X), math.rad(head.Rotation.Y), math.rad(head.Rotation.Z) )
+		}
+	}
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args))
+end)
+end)
+
+
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+connect:Disconnect()
+stop()
+end)
