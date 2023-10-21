@@ -1,3 +1,13 @@
+-- full modded
+
+local lp = game:FindFirstChildOfClass("Players").LocalPlayer
+local chr = lp.Character
+local torso = chr.Torso
+local head = chr.Head
+local larm = chr["Left Arm"]
+local rarm = chr["Right Arm"]
+local lleg = chr["Left Leg"]
+local rleg = chr["Right Leg"]
 function randomstring()
 	local length = math.random(10, 20)
 	local array = {}
@@ -6,8 +16,42 @@ function randomstring()
 	end
 	return table.concat(array)
 end
+-- setup
+local woo = {
+	[1] = "SyncMaterial",
+	[2] = {
+		[1] = {
+			["Part"] = head,
+			["Transparency"] = 1
+		},
+		[2] = {
+			["Part"] = larm,
+			["Transparency"] = 1
+		},
+		[3] = {
+			["Part"] = rarm,
+			["Transparency"] = 1
+		},
+		[4] = {
+			["Part"] = lleg,
+			["Transparency"] = 1
+		},
+		[5] = {
+			["Part"] = rleg,
+			["Transparency"] = 1
+		},
+		[6] = {
+			["Part"] = torso,
+			["Transparency"] = 1
+		}
+	}
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(woo))
+
+
+
 local function addPart(name, size,col,m,t,s)
-if col == nil then col = workspace.torsog.Color end
+if col == nil then col = Color3.fromRGB(163, 162, 165) end
 local args = {
 	[1] = "CreatePart",
 	[2] = "Normal",
@@ -122,86 +166,225 @@ aa.CanTouch = false
 aa.CanQuery = false
 aa.Name = name
 end 
+math.randomseed(tick()/16.5)
+task.wait()
+local realn = math.random(1,2)
+math.randomseed(tick()/realn)
+task.wait()
+local n = math.random(1,2)
+addPart("leftArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+addPart("rightArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+if n == 1 then
+addPart("leftLegg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+addPart("rightLegg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+addPart("torsog", Vector3.new(2,2,1), Color3.fromRGB(196, 40, 28),2027989253)
+addPart("headg", Vector3.new(1,1,1), Color3.fromRGB(163, 162, 165), 21057410, 31100020 ,Vector3.new(1.05,1.05,1.05))
+else
+addPart("leftLegg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
+addPart("rightLegg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
+addPart("torsog", Vector3.new(2,2,1), Color3.fromRGB(0,0,0),2027989253)
+addPart("headg", Vector3.new(1,1,1), Color3.fromRGB(163, 162, 165), 162384581, 3108763286 ,Vector3.new(1.05,1.05,1.05))
+end
+
 addPart("Wing1", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing2", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing3", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing4", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing5", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing6", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
-local connect = game:GetService("RunService").Heartbeat:Connect(function(set)
-local args3 = {
-	[1] = "SyncResize",
+
+
+local function stop()
+local args5 = {
+	[1] = "Remove",
 	[2] = {
-		[1] = {
-			["Part"] = workspace:WaitForChild("Wing1"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing1.Primary.CFrame,
-			["Size"] = game.Players.LocalPlayer.Character.Wing1.Primary.Size
-		}
+			["Part"] = workspace.leftArmg,
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args5))
+local args4 = {
+	[1] = "Remove",
+	[2] = {
+			["Part"] = workspace.headg,
+		
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args4))
+local args3 = {
+	[1] = "Remove",
+	[2] = {
+	
+			["Part"] = workspace.leftLegg,
+		
 	}
 }
 
 game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args3))
-local args33 = {
-	[1] = "SyncResize",
+local args2 = {
+	[1] = "Remove",
 	[2] = {
-		[1] = {
-			["Part"] = workspace:WaitForChild("Wing2"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing2.Primary.CFrame,
-			["Size"] = game.Players.LocalPlayer.Character.Wing2.Primary.Size
-		}
+	
+			["Part"] = workspace.torsog,
+		
 	}
 }
-
-game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args33))
-
-local args333 = {
-	[1] = "SyncResize",
-	[2] = {
-		[1] = {
-			["Part"] = workspace:WaitForChild("Wing3"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing3.Primary.CFrame,
-			["Size"] = game.Players.LocalPlayer.Character.Wing3.Primary.Size
-		}
-	}
-}
-
-game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args333))
-local args12 = {
-	[1] = "SyncResize",
-	[2] = {
-		[1] = {
-			["Part"] = workspace:WaitForChild("Wing4"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing4.Primary.CFrame,
-			["Size"] = game.Players.LocalPlayer.Character.Wing4.Primary.Size
-		}
-	}
-}
-
-game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args12))
-local args23 = {
-	[1] = "SyncResize",
-	[2] = {
-		[1] = {
-			["Part"] = workspace:WaitForChild("Wing5"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing5.Primary.CFrame,
-			["Size"] = game.Players.LocalPlayer.Character.Wing5.Primary.Size
-		}
-	}
-}
-
-game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args23))
-
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args2))
 local args1 = {
-	[1] = "SyncResize",
+	[1] = "Remove",
 	[2] = {
-		[1] = {
-			["Part"] = workspace:WaitForChild("Wing6"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing6.Primary.CFrame,
-			["Size"] = game.Players.LocalPlayer.Character.Wing6.Primary.Size
-		}
+		
+			["Part"] = workspace.rightArmg,
+		
 	}
 }
 
 game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args1))
 
+local args = {
+	[1] = "Remove",
+	[2] = {
+		
+			["Part"] = workspace.rightLegg,
+		
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args))
+end
+
+ local connect = game:GetService("RunService").Heartbeat:Connect(function(set)
+ pcall(function()
+local args = {
+	[1] = "SyncRotate",
+	[2] = {
+		[1] = {
+			["Part"] = workspace:WaitForChild("leftArmg"),
+			["CFrame"] = CFrame.new(larm.CFrame.Position) * CFrame.Angles(math.rad(larm.Rotation.X), math.rad(larm.Rotation.Y), math.rad(larm.Rotation.Z) )
+		},
+		[2] = {
+			["Part"] = workspace:WaitForChild("rightArmg"),
+			["CFrame"] = CFrame.new(rarm.CFrame.Position) * CFrame.Angles(math.rad(rarm.Rotation.X), math.rad(rarm.Rotation.Y), math.rad(rarm.Rotation.Z) )
+		},
+		[3] = {
+			["Part"] = workspace:WaitForChild("leftLegg"),
+			["CFrame"] = CFrame.new(lleg.CFrame.Position) * CFrame.Angles(math.rad(lleg.Rotation.X), math.rad(lleg.Rotation.Y), math.rad(lleg.Rotation.Z) )
+		},
+		[4] = {
+			["Part"] = workspace:WaitForChild("rightLegg"),
+			["CFrame"] = CFrame.new(rleg.CFrame.Position) * CFrame.Angles(math.rad(rleg.Rotation.X), math.rad(rleg.Rotation.Y), math.rad(rleg.Rotation.Z) )
+		},
+		[5] = {
+			["Part"] = workspace:WaitForChild("torsog"),
+			["CFrame"] = CFrame.new(torso.CFrame.Position) * CFrame.Angles(math.rad(torso.Rotation.X), math.rad(torso.Rotation.Y), math.rad(torso.Rotation.Z) )
+		},
+		[6] = {
+			["Part"] = workspace:WaitForChild("headg"),
+			["CFrame"] = CFrame.new(head.CFrame.Position) * CFrame.Angles(math.rad(head.Rotation.X), math.rad(head.Rotation.Y), math.rad(head.Rotation.Z) )
+		},
+		[7] = {
+			["Part"] = workspace:WaitForChild("Wing1"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing1.Primary.CFrame
+		},
+		[8] = {
+			["Part"] = workspace:WaitForChild("Wing2"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing2.Primary.CFrame
+		},
+		[9] = {
+			["Part"] = workspace:WaitForChild("Wing3"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing3.Primary.CFrame
+		},
+		[10] = {
+			["Part"] = workspace:WaitForChild("Wing4"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing4.Primary.CFrame
+		},
+		[11] = {
+			["Part"] = workspace:WaitForChild("Wing5"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing5.Primary.CFrame
+		},
+		[12] = {
+			["Part"] = workspace:WaitForChild("Wing6"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing6.Primary.CFrame
+		}
+	}
+	
+}
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args))
+local args4 = {
+	[1] = "SyncColor",
+	[2] = {
+		[1] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing1.Primary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing1"),
+			  },
+		[2] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing2.Primary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing2"),
+			  },
+		[3] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing3.Primary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing3"),
+			  },
+		[4] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing4.Primary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing4"),
+			  },
+		[5] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing5.Primary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing5"),
+			  },
+		[6] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing6.Primary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing6"),
+			  },
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args4))
+local args5 = {
+	[1] = "SyncMaterial",
+	[2] = {
+		[1] = {
+			["Material"] = game.Players.LocalPlayer.Character.Wing1.Primary.Material,
+			["Part"] = workspace:WaitForChild("Wing1"),
+			  },
+		[2] = {
+			["Material"] = game.Players.LocalPlayer.Character.Wing2.Primary.Material,
+			["Part"] = workspace:WaitForChild("Wing2"),
+			  },
+		[3] = {
+			["Material"] = game.Players.LocalPlayer.Character.Wing3.Primary.Material,
+			["Part"] = workspace:WaitForChild("Wing3"),
+			  },
+		[4] = {
+			["Material"] = game.Players.LocalPlayer.Character.Wing4.Primary.Material,
+			["Part"] = workspace:WaitForChild("Wing4"),
+			  },
+		[5] = {
+			["Material"] = game.Players.LocalPlayer.Character.Wing5.Primary.Material,
+			["Part"] = workspace:WaitForChild("Wing5"),
+			  },
+		[6] = {
+			["Material"] = game.Players.LocalPlayer.Character.Wing6.Primary.Material,
+			["Part"] = workspace:WaitForChild("Wing6"),
+			  },
+	}
+}
+
+game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args5))
+
+end)
+end)
+
+
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+connect:Disconnect()
+stop()
 end)
