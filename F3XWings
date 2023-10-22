@@ -168,22 +168,31 @@ aa.Name = name
 end 
 math.randomseed(tick()/16.5)
 task.wait()
-local realn = math.random(1,2)
+local realn = math.random(1,3)
 math.randomseed(tick()/realn)
 task.wait()
-local n = math.random(1,2)
+local n =math.random(1,3)
+if n == 1 then
 addPart("leftArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
 addPart("rightArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
-if n == 1 then
 addPart("leftLegg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
 addPart("rightLegg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
 addPart("torsog", Vector3.new(2,2,1), Color3.fromRGB(196, 40, 28),2027989253)
 addPart("headg", Vector3.new(1,1,1), Color3.fromRGB(163, 162, 165), 21057410, 31100020 ,Vector3.new(1.05,1.05,1.05))
-else
+elseif n == 2 then
+addPart("leftArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
+addPart("rightArmg", Vector3.new(1,2,1),Color3.fromRGB(255, 255, 255),1553264838)
 addPart("leftLegg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
 addPart("rightLegg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
 addPart("torsog", Vector3.new(2,2,1), Color3.fromRGB(0,0,0),2027989253)
 addPart("headg", Vector3.new(1,1,1), Color3.fromRGB(163, 162, 165), 162384581, 3108763286 ,Vector3.new(1.05,1.05,1.05))
+elseif n == 3 then
+addPart("leftArmg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
+addPart("rightArmg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
+addPart("leftLegg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
+addPart("rightLegg", Vector3.new(1,2,1),Color3.fromRGB(0,0,0),1553264838)
+addPart("torsog", Vector3.new(2,2,1), Color3.fromRGB(32,41,73),2027989253)
+addPart("headg", Vector3.new(1,1,1), Color3.fromRGB(163, 162, 165), 162384581, 162384608 ,Vector3.new(1.05,1.05,1.05))
 end
 
 addPart("Wing1", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
@@ -192,6 +201,12 @@ addPart("Wing3", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vect
 addPart("Wing4", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing5", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing6", Vector3.new(1,2,1),workspace.torsog.Color,"6368254154",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Wing7", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Wing8", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Wing9", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Wing10", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Wing11", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Wing12", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
 
 
 local function stop()
@@ -306,6 +321,30 @@ local args = {
 		[12] = {
 			["Part"] = workspace:WaitForChild("Wing6"),
 			["CFrame"] = game.Players.LocalPlayer.Character.Wing6.Primary.CFrame
+		},
+		[13] = {
+			["Part"] = workspace:WaitForChild("Wing7"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing1.Secondary.CFrame
+		},
+		[14] = {
+			["Part"] = workspace:WaitForChild("Wing8"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing2.Secondary.CFrame
+		},
+		[15] = {
+			["Part"] = workspace:WaitForChild("Wing9"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing3.Secondary.CFrame
+		},
+		[16] = {
+			["Part"] = workspace:WaitForChild("Wing10"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing4.Secondary.CFrame
+		},
+		[17] = {
+			["Part"] = workspace:WaitForChild("Wing11"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing5.Secondary.CFrame
+		},
+		[18] = {
+			["Part"] = workspace:WaitForChild("Wing12"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing6.Secondary.CFrame
 		}
 	}
 	
@@ -344,41 +383,40 @@ local args4 = {
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing6"),
 			  },
+		[7] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing1.Secondary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing7"),
+			  },
+		[8] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing2.Secondary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing8"),
+			  },
+		[9] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing3.Secondary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing9"),
+			  },
+		[10] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing4.Secondary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing10"),
+			  },
+		[11] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing5.Secondary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing11"),
+			  },
+		[12] = {
+			["Color"] = game.Players.LocalPlayer.Character.Wing6.Secondary.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Wing12"),
+			  },
 	}
 }
 
 game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args4))
-local args5 = {
-	[1] = "SyncMaterial",
-	[2] = {
-		[1] = {
-			["Material"] = game.Players.LocalPlayer.Character.Wing1.Primary.Material,
-			["Part"] = workspace:WaitForChild("Wing1"),
-			  },
-		[2] = {
-			["Material"] = game.Players.LocalPlayer.Character.Wing2.Primary.Material,
-			["Part"] = workspace:WaitForChild("Wing2"),
-			  },
-		[3] = {
-			["Material"] = game.Players.LocalPlayer.Character.Wing3.Primary.Material,
-			["Part"] = workspace:WaitForChild("Wing3"),
-			  },
-		[4] = {
-			["Material"] = game.Players.LocalPlayer.Character.Wing4.Primary.Material,
-			["Part"] = workspace:WaitForChild("Wing4"),
-			  },
-		[5] = {
-			["Material"] = game.Players.LocalPlayer.Character.Wing5.Primary.Material,
-			["Part"] = workspace:WaitForChild("Wing5"),
-			  },
-		[6] = {
-			["Material"] = game.Players.LocalPlayer.Character.Wing6.Primary.Material,
-			["Part"] = workspace:WaitForChild("Wing6"),
-			  },
-	}
-}
-
-game.Players.LocalPlayer.Backpack["Building Tools"].SyncAPI.ServerEndpoint:InvokeServer(unpack(args5))
 
 end)
 end)
