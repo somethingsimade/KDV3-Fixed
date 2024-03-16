@@ -8,7 +8,9 @@ local c = game:GetService("Players").LocalPlayer.Character
 local char =  game:GetObjects("rbxassetid://5195737219")[1]
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame)
 c.HumanoidRootPart.Anchored = false
+pcall(function()
 c["Body Colors"]:Clone().Parent = char
+end)
 char.HumanoidRootPart.Anchored = false
 char.Parent = workspace
 c.Parent = char
