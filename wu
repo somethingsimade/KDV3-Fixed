@@ -1,0 +1,2004 @@
+
+if syn and getsynasset then
+	getgenv().getcustomasset=getsynasset
+end
+local ss 
+local ss 
+if not game.Players.LocalPlayer:FindFirstChild("col") then
+ss = Instance.new("Sound",game.Players.LocalPlayer)
+ss.SoundId = getcustomasset("k/col.mp3")
+ss.Name = "col"
+else
+ss = game.Players.LocalPlayer.col
+end
+
+if not game.Players.LocalPlayer:FindFirstChild("mtrench") then
+sss = Instance.new("Sound",game.Players.LocalPlayer)
+sss.SoundId = getcustomasset("k/mtrench.mp3")
+sss.Name = "mtrench"
+else
+sss = game.Players.LocalPlayer.mtrench
+end
+local gs = getcustomasset
+local s = nil
+local function gca(id,name)
+if name == nil then name = tostring(id) end
+if not game.Players.LocalPlayer:FindFirstChild(name) then
+s = Instance.new("Sound",game.Players.LocalPlayer)
+s.SoundId = gs(id)
+s.Name = name
+else
+s = game.Players.LocalPlayer:FindFirstChild(name)
+end
+return s.SoundId 
+end
+
+
+
+local gay = false -- dont edit >:(
+hmode = nil
+if gay == true then
+hmode = "norm" 
+else
+hmode = "alsoo3" -- hate this guy
+end
+
+
+Library = loadstring(readfile("lib.txt"))()
+
+local HatMode=hmode
+
+if HatMode=="alsoo3" then
+
+local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
+HATDUPES[1].Name = "DemonGodSword"
+HATDUPES[2].Name = "RainbowGodSword"
+HATDUPES[3].Name = "ToxicLordSword"
+HATDUPES[4].Name = "DemonLordSword"
+if Library.FindHat("ShadowBladeMasterAccessory") then
+Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
+end
+	
+if Library.FindHat("BladeMasterAccessory") then
+Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
+
+end
+else
+print("richhhh")
+end
+
+-- PUT YOUR REANIM HERE !
+ 
+wait(1)
+
+
+ Library = loadstring(readfile("lib.txt"))()
+
+local HatMode=hmode
+
+if HatMode=="alsoo3" then
+
+local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
+HATDUPES[1].Name = "DemonGodSword"
+HATDUPES[2].Name = "RainbowGodSword"
+HATDUPES[3].Name = "ToxicLordSword"
+HATDUPES[4].Name = "DemonLordSword"
+if Library.FindHat("ShadowBladeMasterAccessory") then
+Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
+end
+	
+if Library.FindHat("BladeMasterAccessory") then
+Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
+
+end
+else
+print("richhhh")
+end
+-- http://www.roblox.com/asset/?id=6970996018
+
+--HATDUPES[5].Name = "DemonGodSword"
+--HATDUPES[6].Name = "AuroraSword"
+Player = game.Players.LocalPlayer
+Mouse = Player:GetMouse()
+Char = workspace.Camera.CameraSubject.Parent
+Hum = Char.Humanoid
+Torso = Char.Torso
+Root = Char.HumanoidRootPart
+attack = false
+
+-- // joints | taken from nebula because im too lazy to make my own \\--
+NewInstance = function(instance,parent,properties)
+	local inst = Instance.new(instance)
+	inst.Parent = parent
+	if(properties)then
+		for i,v in next, properties do
+			pcall(function() inst[i] = v end)
+		end
+	end
+	return inst;
+end
+
+function newMotor(P0,P1,C0,C1)
+	return NewInstance('Motor',P0,{Part0=P0,Part1=P1,C0=C0,C1=C1})
+end
+
+function newWeld(P0,P1,C0,C1)
+	return NewInstance('Weld',P0,{Part0=P0,Part1=P1,C0=C0,C1=C1})
+end
+
+function raycast(StartPos, EndPos, Distance, Ignore)
+	local DIRECTION = CFrame.new(StartPos, EndPos).lookVector
+	return Raycast(StartPos, DIRECTION, Distance, Ignore)
+end
+
+local welds = {newMotor(Torso,Char.Head,CFrame.new(0,1.5,0),CFrame.new()),newMotor(Root,Torso,CFrame.new(),CFrame.new()),newMotor(Torso,Char["Right Leg"],CFrame.new(.5,-1,0),CFrame.new(0,1,0)),newMotor(Torso,Char["Right Arm"],CFrame.new(1.5,.5,0),CFrame.new(0,.5,0)),newMotor(Torso,Char["Left Leg"],CFrame.new(-.5,-1,0),CFrame.new(0,1,0)),newMotor(Torso,Char["Left Arm"],CFrame.new(-1.5,.5,0),CFrame.new(0,.5,0))}
+local WeldDefaults = {}
+for i = 1,#welds do
+	local v=welds[i]
+	WeldDefaults[i]=v.C0
+end
+
+local head,torso,rightleg,rightarm,leftleg,leftarm=unpack(welds)
+local neckc0,torsoc0,rightlegc0,rightarmc0,leftlegc0,leftarmc0 = unpack(WeldDefaults)
+
+ArtificialHB = Instance.new("BindableEvent", script)
+ArtificialHB.Name = "ArtificialHB"
+
+script:WaitForChild("ArtificialHB")
+
+frame = 1/60
+tf = 0
+allowframeloss = false
+tossremainder = false
+lastframe = tick()
+script.ArtificialHB:Fire()
+
+game:GetService("RunService").Heartbeat:connect(function(s, p)
+	tf = tf + s
+	if tf >= frame then
+		if allowframeloss then
+			script.ArtificialHB:Fire()
+			lastframe = tick()
+		else
+			for i = 1, math.floor(tf / frame) do
+				script.ArtificialHB:Fire()
+			end
+		lastframe = tick()
+		end
+		if tossremainder then
+			tf = 0
+		else
+			tf = tf - frame * math.floor(tf / frame)
+		end
+	end
+end)
+
+function swait(NUMBER)
+	if NUMBER == 0 or NUMBER == nil then
+		ArtificialHB.Event:wait()
+	else
+		for i = 1, NUMBER do
+			ArtificialHB.Event:wait()
+		end
+	end
+end
+
+--// Variables \\--
+
+local mode = 1
+local rd = math.rad
+local cf = {a=CFrame.Angles,n=CFrame.new}
+local sin = math.sin
+local cos = math.cos
+sine = 0
+change = 0.5
+movement = 11
+ws=20
+AnimState = "Idle"
+attackcombo = 0 -- for diff scripts
+local Animator = Char.Humanoid:FindFirstChild("Animator")
+local Animate = Char.Animate
+
+--// Custom Items \\--
+
+local NAME="Efficient"
+local thingie = "quite efficient ma'am."
+local MAINCOLOR = Color3.fromRGB(33, 100, 49)
+
+-- NAMETAG
+
+local BillboardGui = Instance.new("BillboardGui")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local eFrame = Instance.new("Frame")
+
+BillboardGui.Parent = Char.Head
+BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+BillboardGui.Active = true
+BillboardGui.AlwaysOnTop = true
+BillboardGui.LightInfluence = 1.000
+BillboardGui.Size = UDim2.new(0, 300, 0, 100)
+BillboardGui.StudsOffset = Vector3.new(0, 4, 0)
+BillboardGui.MaxDistance=80
+
+TextLabel.Parent = BillboardGui
+TextLabel.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Position = UDim2.new(0.5, 0, 0.800000012, 0)
+TextLabel.Size = UDim2.new(1, 0, 0, 50)
+TextLabel.Font = Enum.Font.Gotham
+TextLabel.Text = NAME
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextStrokeColor3 = MAINCOLOR
+TextLabel.TextStrokeTransparency = 0.000
+TextLabel.TextWrapped = true
+
+TextLabel_2.Parent = BillboardGui
+TextLabel_2.AnchorPoint = Vector2.new(0.5, 0.5)
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0.5, 0, 0.300000012, 0)
+TextLabel_2.Size = UDim2.new(0, 200, 0, 25)
+TextLabel_2.Font = Enum.Font.Gotham
+TextLabel_2.Text = thingie
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextStrokeColor3 = MAINCOLOR
+TextLabel_2.TextStrokeTransparency = 0.000
+TextLabel_2.TextWrapped = true
+
+eFrame.Parent = BillboardGui
+eFrame.BackgroundColor3 = Color3.fromRGB(85, 0, 127)
+eFrame.BackgroundTransparency = 0
+eFrame.BorderColor3 = MAINCOLOR
+eFrame.Position = UDim2.new(0, 0, 0.5, 0)
+eFrame.Size = UDim2.new(0, 300, 0, 0)
+
+--[[
+
+Frame.BorderColor3 = MAINCOLOR
+TextLabel.TextStrokeColor3 = MAINCOLOR
+TextLabel_2.TextStrokeColor3 = MAINCOLOR
+
+]]
+
+-- end
+
+local song=Instance.new("Sound",Char)
+song.Volume=5
+song.Looped=true
+song.SoundId=getcustomasset("k/"..NAME..".mp3")
+song:Play()
+
+reanim=Char
+
+local walk = true
+
+local FeminineOffense={}
+
+Mouse.KeyDown:Connect(function(key)
+FeminineOffense[key]=true
+end)
+
+Mouse.KeyUp:Connect(function(key)
+FeminineOffense[key]=false
+end)
+
+local GLITCHER="username"
+if GLITCHER=="username" then
+	mode = 1
+	NAME="Efficient"
+	thingie = "quite efficient ma'am."
+	MAINCOLOR = Color3.fromRGB(33, 100, 49)
+	song.SoundId=getcustomasset("k/"..NAME..".mp3")
+elseif GLITCHER=="awoken" then
+	mode=20 -- if you dont know now you know.
+	NAME="Forgiveness"
+	thingie = "It's all good."
+	MAINCOLOR = Color3.fromRGB(89, 142, 255)
+	song.SoundId=getcustomasset("k/"..NAME..".mp3")
+end
+
+function PixelBlock(bonuspeed,FastSpeed,type,pos,x1,y1,z1,value,color,outerpos,heart,invert)
+if not getfenv().run then return end
+local type = type
+local rng = Instance.new("Part", Char)
+        rng.Anchored = true
+        rng.Color = color
+        rng.CanCollide = false
+        rng.FormFactor = 3
+        rng.Name = "Ring"
+        rng.Material = "Neon"
+        rng.Size = Vector3.new(1, 1, 1)
+        rng.Transparency = 0
+        rng.TopSurface = 0
+        rng.BottomSurface = 0
+        rng.CFrame = pos
+rng.CFrame = rng.CFrame + rng.CFrame.lookVector*outerpos
+        local rngm = Instance.new("SpecialMesh", rng)
+        rngm.MeshType = "Brick"
+
+rngm.Scale = Vector3.new(x1,y1,z1)
+
+local scaler2 = 1
+local speeder = FastSpeed/10
+if type == "Add" then
+scaler2 = 1*value
+elseif type == "Divide" then
+scaler2 = 1/value
+end
+coroutine.resume(coroutine.create(function()
+for i = 0,10/bonuspeed,0.1 do
+swait()
+
+if type == "Add" then
+scaler2 = scaler2 - 0.01*value/bonuspeed
+elseif type == "Divide" then
+scaler2 = scaler2 - 0.01/value*bonuspeed
+end
+
+
+speeder = speeder - 0.01*FastSpeed*bonuspeed/10
+if(invert)then rng.CFrame = rng.CFrame - rng.CFrame.lookVector*speeder*bonuspeed else rng.CFrame = rng.CFrame + rng.CFrame.lookVector*speeder*bonuspeed end
+--rng.Transparency = rng.Transparency + 0.01*bonuspeed
+rngm.Scale = rngm.Scale - Vector3.new(scaler2*bonuspeed, scaler2*bonuspeed, scaler2*bonuspeed)
+end
+rng:Destroy()
+end))
+end
+function bigblock(bonuspeed,FastSpeed,type,pos,x1,y1,z1,value,color,outerpos,heart,invert)
+if not getfenv().run then return end
+local type = type
+local rng = Instance.new("Part", Char)
+        rng.Anchored = true
+        rng.Color = color
+        rng.CanCollide = false
+        rng.FormFactor = 3
+        rng.Name = "Ring"
+        rng.Material = "Neon"
+        rng.Size = Vector3.new(1, 1, 1)
+        rng.Transparency = 0.5
+        rng.TopSurface = 0
+        rng.BottomSurface = 0
+        rng.CFrame = pos
+rng.CFrame = rng.CFrame-- + rng.CFrame.lookVector*outerpos
+        local rngm = Instance.new("SpecialMesh", rng)
+        rngm.MeshType = "Sphere"
+
+rngm.Scale = Vector3.new(x1,y1,z1)
+
+local scaler2 = 1
+local speeder = FastSpeed/10
+if type == "Add" then
+scaler2 = 1*value
+elseif type == "Divide" then
+scaler2 = 1/value
+end
+coroutine.resume(coroutine.create(function()
+for i = 0,10/bonuspeed,0.1 do
+swait()
+
+if type == "Add" then
+scaler2 = scaler2 - 0.01*value/bonuspeed
+elseif type == "Divide" then
+scaler2 = scaler2 - 0.01/value*bonuspeed
+end
+
+
+speeder = speeder - 0.01*FastSpeed*bonuspeed/10
+--if(invert)then rng.CFrame = rng.CFrame - rng.CFrame.lookVector*speeder*bonuspeed else rng.CFrame = rng.CFrame + rng.CFrame.lookVector*speeder*bonuspeed end
+rng.Transparency = rng.Transparency + 0.01*bonuspeed
+rngm.Scale = rngm.Scale + Vector3.new(scaler2*bonuspeed, scaler2*bonuspeed, scaler2*bonuspeed)
+end
+rng:Destroy()
+end))
+end
+
+function sfx(id,volume)
+	local sound=Instance.new("Sound",Char)
+	sound.PlayOnRemove=true
+	sound.Volume=volume
+	sound.SoundId="rbxassetid://"..id
+	--sound.PlaybackSpeed=pitch
+	sound:Remove()
+end
+
+function AddMode(Keybind,Name,Number,Walk,tab,FUNNNYYY,color,g)
+	Mouse.KeyDown:connect(function(e)
+	if e~=Keybind or Number==mode or g~=GLITCHER then return end
+	for i = 0,2,0.05 do
+		swait()
+		song.PlaybackSpeed=1-i/4
+		SWITCHINGANIM=true
+		funanim="switching"
+		ws=0
+	end
+	SWITCHINGANIM=false
+	mode=Number
+	walk=Walk
+	thingie=FUNNNYYY or thingie
+	MAINCOLOR=color or Color3.fromRGB(0,0,0)
+	NAME=Name
+	song.PlaybackSpeed=1
+	song.SoundId=gca("k/"..Name..".mp3",Number)
+	for i = 0, 65 do
+	PixelBlock(1,math.random(1,20),"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),2,2,2,0.04,MAINCOLOR,0)
+	end
+	for i = 0, 1 do
+	bigblock(1,math.random(11,42),"Add",Torso.CFrame,12,12,12,0.04,MAINCOLOR,0)
+	end
+	sfx(847061203,5)
+	sfx(239000203,1.5)
+	sfx(579687077,1.5)
+	for i = 0,2,0.05 do
+		swait()
+		SWITCHINGANIM=true
+		funanim="done"
+		ws=0
+	end
+	if walk==true then
+		change=tab[1]
+		movement=tab[2]
+		ws=tab[3]
+	else
+		ws=tab[1]
+	end
+
+	pcall(function()
+	reanim['ToxicLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	end)
+	pcall(function()
+	reanim['RainbowGodSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	end)
+	reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	reanim['AuroraSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+	reanim['DemonGodSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+	reanim['VoidLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+	SWITCHINGANIM=false
+		wait(.1)
+
+	end)
+end
+
+function AddSpecialMode(mainnum,Name,Number,Walk,tab,FUNNNYYY,color,g)
+	Mouse.KeyDown:connect(function(e)
+	if e~="m" or mainnum~=mode or g~=GLITCHER then return end
+
+	mode=Number
+	thingie=FUNNNYYY or thingie
+	walk=Walk
+	NAME=Name
+	MAINCOLOR=color or MAINCOLOR
+	if Number == "corrupted." then
+		song.SoundId=ss.SoundId
+		elseif Number == "corrupt." then
+		song.SoundId=sss.SoundId
+		else
+	song.SoundId=gca("k/"..Name..".mp3",Number)
+	end
+	sfx(847061203,5)
+	if walk==true then
+		change=tab[1]
+		movement=tab[2]
+		ws=tab[3]
+	else
+		ws=tab[1]
+	end
+	for i = 0, 49 do
+	PixelBlock(1,math.random(1,20),"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),2,2,2,0.04,MAINCOLOR,0)
+	end
+	pcall(function()
+	reanim['ToxicLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	end)
+	pcall(function()
+	reanim['RainbowGodSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	end)
+	reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	reanim['AuroraSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+	reanim['DemonGodSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+	reanim['VoidLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+	wait(.1)
+
+	end)
+end
+
+function CHECKHELL(Name)
+	if FeminineOffense["="] and FeminineOffense["-"] then
+		if mode=="FLAMING SOUL" or GLITCHER~="username" then return end
+		mode="FLAMING SOUL"
+		walk=false
+		ws=400
+		NAME=Name
+		thingie="PREPARE FOR YOUR DEMISE..."
+		MAINCOLOR=Color3.fromRGB(255,0,0)
+	pcall(function()
+	reanim['ToxicLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	end)
+	pcall(function()
+	reanim['RainbowGodSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+	end)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"] 
+		reanim['AuroraSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+		reanim['DemonGodSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+		reanim['VoidLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
+		song.SoundId=gca("k/"..Name..".mp3",Name)
+			sfx(847061203,5)
+	sfx(239000203,1.5)
+	sfx(579687077,1.5)
+				for i = 0, 49 do
+	PixelBlock(1,math.random(1,20),"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),2,2,2,0.04,MAINCOLOR,0)
+	end
+	for i = 0, 1 do
+	bigblock(1,math.random(11,42),"Add",Torso.CFrame,34,34,34,0.04,MAINCOLOR,0)
+	end
+	end
+end
+
+Mouse.KeyDown:Connect(function(k)
+	if k=="z" then
+		if GLITCHER=="username" then
+			GLITCHER="awoken"
+		elseif GLITCHER=="awoken" then
+			GLITCHER="username"
+		end
+	end
+end)
+
+SWITCHINGANIM=false
+funanim="switching"
+
+rgb=Color3.fromRGB
+
+-- USERNAME SECTION
+AddMode("q","Efficient",1,true,{.5,9,20},"quite efficient ma'am",MAINCOLOR,"username")
+AddMode("e","Futuristic",2,false,{40},"REACH BEYOND THE STARS!",Color3.fromRGB(51,20,135),"username")
+AddMode("r","Indirect",3,true,{.8,18,65},"Who do you think you're messing with.",Color3.fromRGB(117,4,5),"username")
+AddMode("t","Murder",5,false,{9},"Its over.",Color3.fromRGB(46,0,0),"username")
+AddMode("y","Visualiser",7,true,{1.3,22,100},"Music is the only cure.",Color3.fromRGB(11,84,186),"username")
+AddMode("0","Lost",8,false,{12},"where am i.",Color3.fromRGB(0,0,0),"username")
+AddMode("]","Hardbass","inf",false,{45},"LETS GO.",Color3.fromRGB(0,0,0),"username")
+AddMode(".","Candy",11,true,{.5,9,20},"So sweet!",Color3.fromRGB(255,233,0),"username")
+AddMode(",","Friend","alsoo3",true,{.5,9,20},"yay! best friend!!!",Color3.fromRGB(125,0,255),"username")
+AddMode("[","akai professional mpk mini",13,false,{35},"totem of undying idle :fire:",Color3.fromRGB(90,90,0),"username")
+AddSpecialMode(13,"COMRADE",15,false,{100},"GLORIOUS!",Color3.fromRGB(255,255,50),"username")
+AddSpecialMode(8,"Solitude","nil",true,{.5,9,20},"hell is coming. just wait.",Color3.fromRGB(0,60,0),"username")
+AddSpecialMode(7,"Player 1",10,false,{34},"just relax man, ur alone",Color3.fromRGB(0,60,0),"username")
+AddSpecialMode(2,"r e l a x a t i o n",14,false,{25},Player.DisplayName..". Please wake up from your dream. We miss you.",Color3.fromRGB(0,60,0),"username")
+AddSpecialMode("nil","UNFORGETTABLE","corrupt.",false,{10},"YOU'VE JUST RELEASED HELL APON ALL PEOPLE. ITS OVER.",Color3.fromRGB(50,50,50),"username")
+AddSpecialMode("corrupt.","ﾚﾑ乙ﾑ尺u丂","corrupted.",false,{8},"THROWN AWAY",Color3.fromRGB(0,0,0),"username")
+AddSpecialMode("FLAMING SOUL","Super Saiyan",9,true,{1.1,20,80},"God-Like creation.",Color3.fromRGB(46,0,0),"username")
+AddSpecialMode(1,"Vintage",4,true,{.5,9,20},"Oldies but goodies.",Color3.fromRGB(156,156,156),"username")
+AddSpecialMode(5,"Brutalistic",6,true,{1.1,20,80},"BACK THE HELL UP. YOU'RE DONE.",Color3.fromRGB(0,60,0),"username")
+AddSpecialMode(14,"Moonlight",18,true,{.35,6,12},"no more.",Color3.fromRGB(32,23,23),"username")
+AddSpecialMode(11,"Darkside","what",true,{1.1,20,80},"WELCOME TO THE UNDERGROUND",Color3.fromRGB(10,10,10),"username")
+AddSpecialMode("what","Chav","chav",false,{25},"oi mate, gey us that elf bar",Color3.fromRGB(math.random(0,255),math.random(0,255),math.random(0,255)),"username")
+
+-- AWOKEN
+AddMode("q","Forgiveness",20,true,{.5,9,20},"It's all good.",Color3.fromRGB(89, 142, 255),"awoken")
+AddMode("e","Time",21,true,{.5,9,20},"Watch it all unfold.",Color3.fromRGB(0,50,50),"awoken")
+AddMode("r","Vestra",22,false,{45},"i exist, that's amazing.",Color3.fromRGB(0,50,255),"awoken")
+AddMode("t","Ravenger","claws",true,{1.1,20,80},"Is this what you truly want?",Char.Torso.BrickColor.Color,"awoken")
+AddMode("5","Locked",24,true,{1.1,20,80},"What now?",Color3.fromRGB(25,50,25),"awoken")
+AddSpecialMode(20,"Suicidal",25,false,{12},"ready to end it all.",Color3.fromRGB(56, 59, 66),"awoken")
+
+--[[
+
+Making custom items (like hats!)
+this is an example of making it work
+
+local swordhandle = Instance.new("Part", Char)
+local swordhanweld = newMotor(Char["Right Arm"], swordhandle, cf.n(0,0,0), cf.a(0,0,0))
+local swordc0 = cf.n(0,0,0)*cf.a(0,0,0) -- default pos of the sword
+
+this is 100% optional but i prefer adding in the mesh so i can work without the actual hat
+
+game:GetObjects("rbxassetid://HATID").Handle:FindFirstChildOfClass("SpecialMesh"):Clone().Parent = swordhandle
+
+now in the animations add in
+
+swordhanweld.C0 = swordhanweld.C0:lerp(swordc0, Alpha)
+
+this sets it to the default pos
+
+]]--
+
+--// Attacks \\--
+
+-- 2.8 seconds = HIT IT
+
+AttackTemplate = function()
+	attack = true
+	for i=0,10 do
+		swait()
+		local Alpha = .1
+		welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+	end
+	attack = false
+end
+
+
+
+IT = Instance.new
+CF = CFrame.new
+VT = Vector3.new
+RAD = math.rad
+C3 = Color3.new
+UD2 = UDim2.new
+BRICKC = BrickColor.new
+ANGLES = CFrame.Angles
+EULER = CFrame.fromEulerAnglesXYZ
+COS = math.cos
+ACOS = math.acos
+SIN = math.sin
+ASIN = math.asin
+ABS = math.abs
+MRANDOM = math.random
+FLOOR = math.floor
+local regular=CF(0,0,0)*ANGLES(RAD(-0),RAD(-0),RAD(-45))
+
+if HatMode=="alsoo3" then
+	regular=CF(0,0,0)*ANGLES(RAD(-0),RAD(-0),RAD(-45))
+else
+	regular=CF(0,0,0)*ANGLES(RAD(-50),RAD(-90),RAD(-0))
+end
+
+-- UI
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local name = Instance.new("TextLabel")
+local time = Instance.new("TextLabel")
+local Frame_2 = Instance.new("Frame")
+local timeLine = Instance.new("Frame")
+local timeLineBUTTON = Instance.new("TextButton")
+local vis = Instance.new("Frame")
+local _1 = Instance.new("Frame")
+local _2 = Instance.new("Frame")
+local _3 = Instance.new("Frame")
+local _4 = Instance.new("Frame")
+local _5 = Instance.new("Frame")
+local _6 = Instance.new("Frame")
+local _7 = Instance.new("Frame")
+local uhsuhs = Instance.new("TextLabel")
+local sushi = Instance.new("TextLabel")
+
+uhsuhs.Name = "uhsuhs"
+uhsuhs.Parent = ScreenGui
+uhsuhs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+uhsuhs.BackgroundTransparency = 1.000
+uhsuhs.Position = UDim2.new(0.00905796699, 0, 0.940520406, 0)
+uhsuhs.Size = UDim2.new(0.0969202891, 0, 0.0334572494, 0)
+uhsuhs.Font = Enum.Font.FredokaOne
+uhsuhs.Text = "USERNAME"
+uhsuhs.TextColor3 = Color3.fromRGB(255, 255, 255)
+uhsuhs.TextScaled = true
+uhsuhs.TextSize = 14.000
+uhsuhs.TextWrapped = true
+
+sushi.Name = "sushi"
+sushi.Parent = ScreenGui
+sushi.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+sushi.BackgroundTransparency = 1.000
+sushi.Position = UDim2.new(0.00905796792, 0, 0.908921838, 0)
+sushi.Size = UDim2.new(0.0969202891, 0, 0.0185873602, 0)
+sushi.Font = Enum.Font.FredokaOne
+sushi.Text = "SECTION:"
+sushi.TextColor3 = Color3.fromRGB(255, 255, 255)
+sushi.TextScaled = true
+sushi.TextSize = 14.000
+sushi.TextWrapped = true
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+--[[
+(song.TimeLength-offset)*(Frame_2.AbsolutePosition.X-Mouse.Hit.p.X)*-1/Frame_2.AbsoluteSize.X
+]]
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.BackgroundTransparency = 0.500
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 5
+Frame.Position = UDim2.new(0.750868082, 0, 0.736059487, 0)
+Frame.Size = UDim2.new(0.238715276, 0, 0.245353162, 0)
+
+name.Name = "name"
+name.Parent = Frame
+name.AnchorPoint = Vector2.new(0.5, 0.5)
+name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+name.BackgroundTransparency = 1.000
+name.Position = UDim2.new(0.181818187, 0, 0.891246676, 0)
+name.Size = UDim2.new(0.276363641, 0, 0.111111112, 0)
+name.Font = Enum.Font.FredokaOne
+name.Text = "EFFICIENT"
+name.TextColor3 = Color3.fromRGB(255, 255, 255)
+name.TextScaled = true
+name.TextSize = 14.000
+name.TextWrapped = true
+
+time.Name = "time"
+time.Parent = Frame
+time.AnchorPoint = Vector2.new(0.5, 0.5)
+time.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+time.BackgroundTransparency = 1.000
+time.Position = UDim2.new(0.785454273, 0, 0.891246676, 0)
+time.Size = UDim2.new(0.338181823, 0, 0.111111112, 0)
+time.Font = Enum.Font.FredokaOne
+time.Text = "0:00/0:00"
+time.TextColor3 = Color3.fromRGB(255, 255, 255)
+time.TextScaled = true
+time.TextSize = 14.000
+time.TextWrapped = true
+
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Frame_2.BackgroundTransparency = 0.500
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(0.043636363, 0, 0.691919208, 0)
+Frame_2.Size = UDim2.new(0.909090936, 0, 0.111111112, 0)
+
+timeLine.Name = "timeLine"
+timeLine.Parent = Frame_2
+timeLine.BackgroundColor3 = Color3.fromRGB(85, 255, 255)
+timeLine.BackgroundTransparency = 0.750
+timeLine.BorderSizePixel = 0
+timeLine.Size = UDim2.new(song.TimePosition/(song.TimeLength-1),0,1,0)
+
+timeLineBUTTON.Name = "timeLineBUTTON"
+timeLineBUTTON.Parent = Frame_2
+timeLineBUTTON.BackgroundTransparency = 1
+timeLineBUTTON.Size = UDim2.new(1, 0, 1, 0)
+timeLineBUTTON.Text=""
+timeLineBUTTON.MouseButton1Down:connect(function()
+	song.TimePosition=(song.TimeLength-1)*(Frame_2.AbsolutePosition.X-Mouse.X)*-1/Frame_2.AbsoluteSize.X
+end)
+
+
+
+--[[
+
+]]
+
+vis.Name = "vis"
+vis.Parent = Frame
+vis.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+vis.BorderColor3 = Color3.fromRGB(20, 20, 20)
+vis.BorderSizePixel = 0
+vis.Position = UDim2.new(0.043636363, 0, 0.636363626, 0)
+vis.Size = UDim2.new(0.909090936, 0, 0.0075757578, 0)
+
+_1.Name = "1"
+_1.Parent = vis
+_1.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_1.BackgroundTransparency = 0.500
+_1.BorderSizePixel = 0
+_1.Position = UDim2.new(0.0120000001, 0, -0, 0)
+_1.Size = UDim2.new(0.140000001, 0, 0, 0)
+
+_2.Name = "2"
+_2.Parent = vis
+_2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_2.BackgroundTransparency = 0.500
+_2.BorderSizePixel = 0
+_2.Position = UDim2.new(0.151999995, 0, -0, 0)
+_2.Size = UDim2.new(0.140000001, 0, 0, 0)
+
+_3.Name = "3"
+_3.Parent = vis
+_3.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_3.BackgroundTransparency = 0.500
+_3.BorderSizePixel = 0
+_3.Position = UDim2.new(0.291999996, 0, -0, 0)
+_3.Size = UDim2.new(0.140000001, 0, 0, 0)
+
+_4.Name = "4"
+_4.Parent = vis
+_4.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_4.BackgroundTransparency = 0.500
+_4.BorderSizePixel = 0
+_4.Position = UDim2.new(0.431999981, 0, -0, 0)
+_4.Size = UDim2.new(0.140000001, 0, 0, 0)
+
+_5.Name = "5"
+_5.Parent = vis
+_5.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_5.BackgroundTransparency = 0.500
+_5.BorderSizePixel = 0
+_5.Position = UDim2.new(0.572000027, 0, -0, 0)
+_5.Size = UDim2.new(0.140000001, 0, 0, 0)
+
+_6.Name = "6"
+_6.Parent = vis
+_6.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_6.BackgroundTransparency = 0.500
+_6.BorderSizePixel = 0
+_6.Position = UDim2.new(0.712000012, 0, -0, 0)
+_6.Size = UDim2.new(0.140000001, 0, 0, 0)
+
+_7.Name = "7"
+_7.Parent = vis
+_7.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+_7.BackgroundTransparency = 0.500
+_7.BorderSizePixel = 0
+_7.Position = UDim2.new(0.851999998, 0, -0, 0)
+_7.Size = UDim2.new(0.140000001, 0, 0, 0)
+
+--[[
+gui.Music.Bar.Size = UDim2.new(theme.TimePosition/(theme.TimeLength-offset),0,1,0)
+gui.Music.CurrentTime.Text = transform(theme.TimePosition)
+gui.Music.Length.Text = transform(theme.TimeLength-offset)
+
+]]
+function transform(seconds)
+seconds = math.floor(seconds+.5)
+local minutes,extra = 0,""
+
+if seconds >= 60 then
+repeat
+if seconds >= 60 then
+seconds = seconds - 60
+minutes = minutes + 1
+end
+until seconds < 60
+end
+if seconds < 10 then
+extra = "0"
+end
+return(minutes..":"..extra..seconds)
+end
+
+local PositionOffset = Vector3.new(0, -.25, .6)
+local RotationOffset = Vector3.new(0, 0, 0)
+RotationOffset = CFrame.Angles(
+math.rad(RotationOffset.X),
+math.rad(RotationOffset.Y),
+math.rad(RotationOffset.Z)
+)
+
+local CFrameOffset = CFrame.new(PositionOffset)*RotationOffset
+spawn(function()
+	while true do swait()
+		if not SWITCHINGANIM then
+		if mode=="corrupt." then
+
+			if math.random(1,58) == 1 then
+			song.PlaybackSpeed = -0.03+math.random(4505,5765)/5906
+			wait(1)
+			end
+		elseif mode=="corrupted." then
+			if math.random(1,24) == 1 then
+			song.PlaybackSpeed = -0.03+math.random(4404,5765)/5906
+			wait(1)
+			end
+		else
+	
+			song.PlaybackSpeed=1
+		end
+		end
+	end
+end)
+local height=0
+Animator.Parent = nil
+Animate.Disabled = true
+woow = function()
+	spawn(function()
+	attack = true
+	ws=0
+	repeat  
+	swait()
+
+	local Alpha=.1
+				welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(-10*sin(sine/23)),rd(-20),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.14*cos(sine/19),0)*cf.a(rd(4*sin(sine/19)),rd(20),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,-0.4+.2*cos(sine/19),-0.3)*cf.a(rd(130+8*sin(sine/19)),rd(20),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0+.2*cos(sine/19),0)*cf.a(rd(0),rd(30),rd(-8-8*sin(sine/21))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,-0.14*cos(sine/19),-0.1)*cf.a(rd(-4*sin(sine/19)),rd(-3),rd(4)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,-0.14*cos(sine/19),-0.1)*cf.a(rd(-4*sin(sine/19)),rd(4),rd(-4)),Alpha)
+
+			until song.TimePosition>=2.1
+
+
+
+	for i=0,.7,.1 do
+		swait()
+		local Alpha = .3
+		welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-0,0.8,-0.8)*cf.a(rd(120),rd(0),rd(20)),Alpha)
+		
+		welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(40),rd(0)),Alpha)
+		
+		welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(-10),rd(0)),Alpha)
+		
+		welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(10),rd(0)),Alpha)
+	end
+	for i = 0, 65 do
+	PixelBlock(1,math.random(1,20),"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),2,2,2,0.04,MAINCOLOR,0)
+	end
+	for i=0,1,.1 do
+		swait()
+		local Alpha = .2
+		welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-0,0.0,-.3)*cf.a(rd(10),rd(0),rd(20)),Alpha)
+		
+		welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+		welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(-10),rd(0)),Alpha)
+		
+		welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(10),rd(0)),Alpha)
+	end
+	attack = false
+	ws=20
+
+end)
+
+end
+if GLITCHER=="username" then
+woow()
+end
+
+-- start animating
+while true do
+	swait()
+	if not workspace:FindFirstChild(Char.Name) then print("GOD DAMN.") break end
+	sine = sine + 1
+	Animator.Parent = nil
+	Animate.Disabled = true
+	CHECKHELL("FLAMES")
+	uhsuhs.Text = string.upper(GLITCHER)
+	uhsuhs.Rotation=5*sin(sine/43) 
+	sushi.Rotation=-5*sin(sine/43) 
+	if mode == 6 then
+		MAINCOLOR=BrickColor.Random().Color
+	elseif mode == 9 then
+		MAINCOLOR=Color3.fromRGB(0,0,155+100*math.sin(sine/24))
+	elseif mode == "inf" then
+		MAINCOLOR=Color3.fromRGB(155+100*math.sin(sine/45),155-100*math.sin(sine/45),0)
+	elseif mode=="nil" then
+		ran=math.random(0,80)
+		MAINCOLOR=Color3.fromRGB(ran,ran,ran)
+	elseif mode==14 then
+		MAINCOLOR=Color3.fromRGB(0,0,song.PlaybackLoudness)
+	elseif mode=="corrupt." then
+		MAINCOLOR=Color3.fromRGB(10*sin(sine/65),10*sin(sine/65),10*sin(sine/65))
+	elseif mode=="corrupted." then
+		MAINCOLOR=Color3.fromRGB(song.PlaybackLoudness,song.PlaybackLoudness,song.PlaybackLoudness)
+	end
+	reanim.Highlight.OutlineColor = MAINCOLOR
+	eFrame.BorderColor3 = MAINCOLOR
+	TextLabel.TextStrokeColor3 = MAINCOLOR
+	TextLabel_2.TextStrokeColor3 = MAINCOLOR
+	
+	TextLabel.Text=NAME
+	TextLabel_2.Text=thingie
+	-- UI SETUP
+	if transform(song.TimeLength-1) ~= "0:0-1" then
+	timeLine.Size = UDim2.new(song.TimePosition/(song.TimeLength-1),0,1,0)
+	
+	time.Text=transform(song.TimePosition).."/"..transform(song.TimeLength-1)
+	end
+	timeLine.BackgroundColor3=MAINCOLOR
+	name.Text=string.upper(NAME)
+	name.Rotation=5*sin(sine/43)
+	time.Rotation=-5*sin(sine/43)
+	Frame.Rotation=2.5*sin(sine/43) 
+	
+	for i,v in pairs({_1,_2,_3,_4,_5,_6,_7}) do
+		v.BackgroundTransparency=.6
+
+		v.BackgroundColor3=MAINCOLOR
+		v.Size = UDim2.new(0.140000001, 0, 0, -song.PlaybackLoudness/math.random(6,9))
+
+	end
+	if mode==25 then
+		--welds[3].Part0=Char.HumanoidRootPart
+		--welds[5].Part0=Char.HumanoidRootPart
+	else
+		welds[3].Part0=Char.Torso
+		welds[5].Part0=Char.Torso
+	end
+	-- END OF UI SETUP
+	for i,v in next, Hum:GetPlayingAnimationTracks() do
+	    v:Stop()
+	end
+	local hitfloor,posfloor = workspace:FindPartOnRayWithIgnoreList(Ray.new(Root.CFrame.p,((CFrame.new(Root.Position,Root.Position - Vector3.new(0,1,0))).lookVector).unit * (4)), {Effects, Char})
+	local Walking = (math.abs(Root.Velocity.x) > 1 or math.abs(Root.Velocity.z) > 1)
+	AnimState = (Hum.PlatformStand and 'Paralyzed' or Hum.Sit and 'Sit' or not hitfloor and Root.Velocity.y < -1 and "Fall" or not hitfloor and Root.Velocity.y > 1 and "Jump" or hitfloor and Walking and "Walk" or hitfloor and "Idle")
+	Hum.WalkSpeed = ws
+	Hum.JumpPower=58
+	local root = Char.HumanoidRootPart
+	local torso=Char.Torso
+	
+	hum=Hum
+	rleg=Char["Right Leg"]
+	lleg=Char["Left Leg"]
+	if -root.Velocity.Y / 1.5 > -5 and -root.Velocity.Y / 1.5 < 150 then
+		velocityYFall = root.Velocity.Y / 1.5
+	elseif -root.Velocity.Y / 1.5 < -5 then
+		velocityYFall = 5
+	elseif -root.Velocity.Y / 1.5 > 150 then
+		velocityYFall = -150
+	end
+	if -root.Velocity.Y / 180 > 0 and -root.Velocity.Y / 180 < 1.2 then
+		velocityYFall2 = root.Velocity.Y / 180
+	elseif -root.Velocity.Y / 180 < 0 then
+		velocityYFall2 = 0
+	elseif -root.Velocity.Y / 180 > 1.2 then
+		velocityYFall2 = -1.2
+	end
+	if -root.Velocity.Y / 1.5 > -5 and -root.Velocity.Y / 1.5 < 50 then
+		velocityYFall3 = root.Velocity.Y / 1.5
+	elseif -root.Velocity.Y / 1.5 < -5 then
+		velocityYFall3 = 5
+	elseif -root.Velocity.Y / 1.5 > 50 then
+		velocityYFall3 = -50
+	end
+	if -root.Velocity.Y / 1.5 > -50 and -root.Velocity.Y / 1.5 < 20 then
+		velocityYFall4 = root.Velocity.Y / 1.5
+	elseif -5 > -root.Velocity.Y / 180 then
+		velocityYFall4 = 5
+	elseif -root.Velocity.Y / 180 > 50 then
+		velocityYFall4 = -50
+	end
+	if root.RotVelocity.Y / 6 < 1 and root.RotVelocity.Y / 6 > -1 then
+		neckrotY = root.RotVelocity.Y / 6
+	elseif root.RotVelocity.Y / 6 < -1 then
+		neckrotY = -1
+	elseif root.RotVelocity.Y / 6 > 1 then
+		neckrotY = 1
+	end
+	if root.RotVelocity.Y / 8 < 0.6 and root.RotVelocity.Y / 8 > -0.6 then
+		neckrotY2 = root.RotVelocity.Y / 8
+	elseif root.RotVelocity.Y / 8 < -0.6 then
+		neckrotY2 = -0.6
+	elseif root.RotVelocity.Y / 8 > 0.6 then
+		neckrotY2 = 0.6
+	end
+	if root.RotVelocity.Y / 6 < 0.2 and root.RotVelocity.Y / 6 > -0.2 then
+		torsorotY = root.RotVelocity.Y / 6
+	elseif root.RotVelocity.Y / 6 < -0.2 then
+		torsorotY = -0.2
+	elseif root.RotVelocity.Y / 6 > 0.2 then
+		torsorotY = 0.2
+	end
+	if root.RotVelocity.Y / 8 < 0.2 and root.RotVelocity.Y / 8 > -0.2 then
+		torsorotY2 = root.RotVelocity.Y / 8
+	elseif root.RotVelocity.Y / 8 < -0.2 then
+		torsorotY2 = -0.2
+	elseif root.RotVelocity.Y / 8 > 0.2 then
+		torsorotY2 = 0.2
+	end
+	torsoY = -(torso.Velocity * Vector3.new(1, 0, 1)).magnitude / 20
+	torsoY2 = -(torso.Velocity * Vector3.new(1, 0, 1)).magnitude / 36
+	local rlegray = Ray.new(rleg.Position + Vector3.new(0, 0.5, 0), Vector3.new(0, -1.75, 0))
+	local rlegpart, rlegendPoint = workspace:FindPartOnRay(rlegray, char)
+	local llegray = Ray.new(lleg.Position + Vector3.new(0, 0.5, 0), Vector3.new(0, -1.75, 0))
+	local llegpart, llegendPoint = workspace:FindPartOnRay(llegray, char)
+	local rightvector = (root.Velocity * root.CFrame.rightVector).X + (root.Velocity * root.CFrame.rightVector).Z
+	local lookvector = (root.Velocity * root.CFrame.lookVector).X + (root.Velocity * root.CFrame.lookVector).Z
+	if lookvector > hum.WalkSpeed then
+		lookvector = hum.WalkSpeed
+	end
+	if lookvector < -hum.WalkSpeed then
+		lookvector = -hum.WalkSpeed
+	end
+	if rightvector > hum.WalkSpeed then
+		rightvector = hum.WalkSpeed
+	end
+	if rightvector < -hum.WalkSpeed then
+		rightvector = -hum.WalkSpeed
+	end
+	local lookvel = lookvector / hum.WalkSpeed
+	local rightvel = rightvector / hum.WalkSpeed
+	
+	if mode==1 then
+		reanim['VoidLordSword'].Handle:FindFirstChildOfClass("Weld").C1 = CF(0,5+2*cos(sine/23),2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6*math.sin(sine/65),6*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+145*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6*math.sin(sine/65),6*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+145*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6*math.sin(sine/65),6*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+145*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6*math.sin(sine/65),6*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+145*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6*math.sin(sine/65),6*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+145*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6*math.sin(sine/65),6*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+145*math.rad(sine/.7))),1)
+	elseif mode==2 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+0*math.sin(sine/65),7+1*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/37)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+10*math.sin(sine/37))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-3+0*math.sin(sine/65),7+1*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/37)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+10*math.sin(sine/37))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6+0*math.sin(sine/65),7+1*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/37)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+10*math.sin(sine/37))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+0*math.sin(sine/65),7+1*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/37)),RAD(-0+0*math.rad(sine/0.7)),RAD(90-10*math.sin(sine/37))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(3+0*math.sin(sine/65),7+1*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/37)),RAD(-0+0*math.rad(sine/0.7)),RAD(90-10*math.sin(sine/37))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(6+0*math.sin(sine/65),7+1*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/37)),RAD(-0+0*math.rad(sine/0.7)),RAD(90-10*math.sin(sine/37))),1)
+	elseif mode==3 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,4+2.5*cos(sine/20),2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+80*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+80*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+80*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+80*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+80*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+80*math.rad(sine/.7))),1)
+		
+	elseif mode==4 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+20*math.sin(sine/23))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(2-0*math.sin(sine/65),-7-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(75-30*math.sin(sine/23))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-12-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+100*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90-20*math.sin(sine/23))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-2-0*math.sin(sine/65),-7-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-75+30*math.sin(sine/23))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),-0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+100*math.rad(sine/.7))),1)
+	elseif mode==5 then
+		reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["Right Arm"]
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = ANGLES(rd(-45),rd(0),rd(0))
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-.75-0*math.sin(sine/65),3.5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+320*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+320*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+320*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+320*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+320*math.rad(sine/.7))),1)
+	elseif mode == 6 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,2+.5*cos(sine/24),2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),-2+0*math.cos(sine/13))*ANGLES(RAD(0-0*math.sin(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+230*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-30*math.sin(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+0*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+30*math.sin(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(-135+0*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-30*math.sin(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-30*math.sin(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+0*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+30*math.sin(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(135+0*math.rad(sine/.7))),1)
+	elseif mode == "nil" or mode == 17 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,1.5-.1*sin(sine/35),2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-4-.15*math.sin(sine/35/2),-0-0*math.sin(sine/35),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0+15*math.cos(sine/35/2)),RAD(-0+5*math.sin(sine/35))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-8-.15*math.sin(sine/35/2),-0-0*math.sin(sine/35),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+20*math.cos(sine/35/2)),RAD(-0+10*math.sin(sine/35))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-12-.15*math.sin(sine/35/2),-0-0*math.sin(sine/35),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0+25*math.cos(sine/35/2)),RAD(-0+15*math.sin(sine/35))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(4+.15*math.sin(sine/35/2),-0-0*math.sin(sine/35),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0-15*math.cos(sine/35/2)),RAD(-0-5*math.sin(sine/35))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(8+.15*math.sin(sine/35/2),-0-0*math.sin(sine/35),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0-20*math.cos(sine/35/2)),RAD(-0-10*math.sin(sine/35))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(12+.15*math.sin(sine/35/2),-0-0*math.sin(sine/35),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0-25*math.cos(sine/35/2)),RAD(-0-15*math.sin(sine/35))),1)
+	elseif mode == 7 then
+		-- (change * 20)
+		--[[if AnimState=="Idle" then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,-3-0.1*cos(sine/19),0)*ANGLES(rd(90),rd(0),rd(30*math.rad(sine/.7)))
+		else
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,-3-0.1*cos(sine/19),0)*ANGLES(rd(90+(change * 20)),rd(0),rd(30*math.rad(sine/.7)))
+		
+		end]]
+		reanim['VoidLordSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['DemonGodSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['AuroraSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,-3,0)*ANGLES(rd(90),rd(0),rd(30*math.rad(sine/.7)))
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5+(song.PlaybackLoudness/100),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5+(song.PlaybackLoudness/100),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+0*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5+(song.PlaybackLoudness/100),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+0*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5+(song.PlaybackLoudness/100),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+0*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5+(song.PlaybackLoudness/100),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+0*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5+(song.PlaybackLoudness/100),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+0*math.rad(sine/.7))),1)
+	elseif mode=="FLAMING SOUL" then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+5*math.sin(sine/65),-15*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+330*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+5*math.sin(sine/65),-15*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+330*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+5*math.sin(sine/65),-15*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+330*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+5*math.sin(sine/65),-15*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+330*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+5*math.sin(sine/65),-15*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+330*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0+5*math.sin(sine/65),-15*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+330*math.rad(sine/.7))),1)
+	elseif mode == 8 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-20*math.cos(sine/19/2)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+30*math.sin(sine/19))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-30*math.cos(sine/19/2)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+30*math.sin(sine/19))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-35*math.cos(sine/19/2)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+30*math.sin(sine/19))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-20*math.cos(sine/19/2)),RAD(-0+0*math.rad(sine/0.7)),RAD(90-30*math.sin(sine/19))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-30*math.cos(sine/19/2)),RAD(-0+0*math.rad(sine/0.7)),RAD(90-30*math.sin(sine/19))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0-35*math.cos(sine/19/2)),RAD(-0+0*math.rad(sine/0.7)),RAD(90-30*math.sin(sine/19))),1)
+	elseif mode == 9 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,2,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-2-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+25*math.sin(sine/47))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-30+10*math.sin(sine/47))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(1-0*math.sin(sine/65),-4-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+15*math.sin(sine/47))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(2-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90-25*math.sin(sine/47))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(30-10*math.sin(sine/47))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-1-0*math.sin(sine/65),-4-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(60-15*math.sin(sine/47))),1)
+
+	elseif mode=="inf" then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+230*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+230*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+230*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(180+230*math.rad(sine/.7))),1)
+		
+		
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = CF(0,0,0)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(1.15-0*math.sin(sine/65),1.8-0*math.sin(sine/65),1.25+0*math.cos(sine/13))*ANGLES(RAD(90+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+0*math.rad(sine/.7))),1)
+		
+		
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,0)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),3+0.24*math.cos(sine/23))*ANGLES(RAD(90+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+	
+	elseif mode == "TEST" then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.Part1=Char["Right Arm"]
+		reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["Right Arm"]
+		reanim['DemonGodSword'].Handle.AccessoryWeld.Part1=Char["Right Arm"]
+		
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,-5,-0)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),2-0*math.sin(sine/65),-3+0*math.cos(sine/13))*ANGLES(RAD(45+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),2-0*math.sin(sine/65),3+0*math.cos(sine/13))*ANGLES(RAD(-45+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		
+		
+		reanim['AuroraSword'].Handle.AccessoryWeld.Part1=Char["Left Arm"]
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.Part1=Char["Left Arm"]
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.Part1=Char["Left Arm"]
+		
+		
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = CF(0,-5,-0)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-2-0*math.sin(sine/65),-3+0*math.cos(sine/13))*ANGLES(RAD(45+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(180+0*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(240+0*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),2-0*math.sin(sine/65),3+0*math.cos(sine/13))*ANGLES(RAD(-45+0*math.cos(sine/13)),RAD(-90+0*math.rad(sine/0.7)),RAD(300+0*math.rad(sine/.7))),1)
+	elseif mode==10 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,4)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(-10+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(0+250*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(-10+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(120+250*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(-10+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(240+250*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(-10+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0-250*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(-10+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120-250*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),10-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(-10+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240-250*math.rad(sine/.7))),1)
+	
+	elseif mode==11 or mode =="what" or mode == "chav" then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(15*sin(sine/23),5-5*cos(sine/23),2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),3-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(0-130*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(0-0*math.sin(sine/65),3-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(120-130*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(0-0*math.sin(sine/65),3-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(240-130*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = CF(-15*sin(sine/23),5+5*cos(sine/23),2)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(0-0*math.sin(sine/65),3-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+130*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),3-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+130*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),3-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+130*math.rad(sine/.7))),1)
+	elseif mode=="alsoo3" then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,5,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-2.5-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+20*math.sin(sine/27))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-5-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+40*math.sin(sine/27))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-7.5-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+60*math.sin(sine/27))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(2.5-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0-20*math.sin(sine/27))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(5-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0-40*math.sin(sine/27))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(7.5-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0-60*math.sin(sine/27))),1)
+	
+	elseif mode==13 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)*ANGLES(0,rd(-160*rd(sine/1)),0)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/1)),RAD(-0+50*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+50*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+50*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+50*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+50*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),15-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+50*math.rad(sine/.7))),1)
+	elseif mode==14 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,1.5)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-20*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+250*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-20*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+250*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-20*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+250*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-20*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+250*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-20*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+250*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-20*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+250*math.rad(sine/.7))),1)
+	elseif mode==15 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+3600*math.sin(sine/300))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+3600*math.sin(sine/300))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+3600*math.sin(sine/300))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+3600*math.sin(sine/300))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+3600*math.sin(sine/300))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),8-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+3600*math.sin(sine/300))),1)
+	elseif mode=="corrupted." then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,5,0)*ANGLES(RAD(90),0,0)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-0+30*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-60+30*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-120+30*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-180+30*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-240+30*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-300+30*math.rad(sine/.7))),1)
+elseif mode=="corrupt." then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,5,0)*ANGLES(RAD(90),0,0)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-0+30*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-60+30*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-120+30*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-180+30*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-240+30*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-30*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(30+30*math.cos(sine/65)),RAD(-0+0*math.sin(sine/27)),RAD(-300+30*math.rad(sine/.7))),1)
+	elseif mode==18 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-20-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+10*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-20-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+10*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-20-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+10*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-20-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+10*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-20-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+10*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-20-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+10*math.rad(sine/.7))),1)
+	-- Next Chapter
+	elseif mode==20 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,2,4)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),7-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+20*math.cos(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+120*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),7-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+20*math.cos(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(72+120*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),7-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+20*math.cos(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(144+120*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),7-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+20*math.cos(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(216+120*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),7-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+20*math.cos(sine/24)),RAD(-0+0*math.rad(sine/0.7)),RAD(288+120*math.rad(sine/.7))),1)
+		
+		reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["Right Arm"]
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = ANGLES(rd(-0),rd(0),rd(0))
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(.85-0*math.sin(sine/65),3.5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(-90+0*math.cos(sine/13)),RAD(0+0*math.rad(sine/0.7)),RAD(-90)),1)
+	elseif mode==21 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(6*sin(sine/35/2),5-18*cos(sine/35/2),3)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-7*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+30*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-7*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+30*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-7*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+30*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-7*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+30*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-7*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+30*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-7*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+30*math.rad(sine/.7))),1)
+	elseif mode==22 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,-5,3)*ANGLES(rd(90+(-30+5*sin(sine/25))),rd(0),rd(0))
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+230*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+230*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+230*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(180+230*math.rad(sine/.7))),1)
+		
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(180+230*math.rad(sine/.7))),1)
+				
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = CF(0,-1.15,.5)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-90+(-30+5*sin(sine/25))),RAD(-90+0*math.rad(sine/.7))),1)
+	elseif mode=="claws" then
+		--[[reanim['VoidLordSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['DemonLordSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['DemonGodSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['AuroraSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.Part1=Char["HumanoidRootPart"]
+		]]
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(-5+.5*cos(sine/86),0-.2*sin(sine/86),2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),5-0*math.sin(sine/65),6+0*math.cos(sine/13))*ANGLES(RAD(-90+10*math.cos(sine/45)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(1-0*math.sin(sine/65),4-0*math.sin(sine/65),5+0*math.cos(sine/13))*ANGLES(RAD(-90+10*math.cos(sine/44)),RAD(-0+0*math.rad(sine/0.7)),RAD(-30+0*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),-3+0*math.cos(sine/13))*ANGLES(RAD(-90-10*math.cos(sine/45)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+0*math.rad(sine/.7))),1)
+		
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = CF(5-.2*cos(sine/86),.5*sin(sine/86),2)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(1-0*math.sin(sine/65),5-0*math.sin(sine/65),6+0*math.cos(sine/13))*ANGLES(RAD(-90+10*math.cos(sine/45)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),4-0*math.sin(sine/65),5+0*math.cos(sine/13))*ANGLES(RAD(-90+10*math.cos(sine/44)),RAD(-0+0*math.rad(sine/0.7)),RAD(30+0*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),3+0*math.cos(sine/13))*ANGLES(RAD(-90+10*math.cos(sine/45)),RAD(-0+0*math.rad(sine/0.7)),RAD(90+0*math.rad(sine/.7))),1)
+	elseif mode==24 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+10*math.sin(sine/23)),RAD(-0+10*math.cos(sine/23)),RAD(-45+0*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+10*math.sin(sine/23)),RAD(-0+10*math.cos(sine/23)),RAD(-90+0*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+10*math.sin(sine/23)),RAD(-0+10*math.cos(sine/23)),RAD(-135+0*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = CF(0,-0,2)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+10*math.sin(sine/23)),RAD(-0-10*math.cos(sine/23)),RAD(45+0*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+10*math.sin(sine/23)),RAD(-0-10*math.cos(sine/23)),RAD(90+0*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['AuroraSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),6-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+10*math.sin(sine/23)),RAD(-0-10*math.cos(sine/23)),RAD(135+0*math.rad(sine/.7))),1)
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																
+	elseif mode==25 then
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-3-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+2*math.cos(sine/36))*ANGLES(RAD(-0+0*math.cos(sine/36)),RAD(-0-30*math.cos(sine/36)),RAD(0+0*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-6-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+3*math.cos(sine/36))*ANGLES(RAD(-0+0*math.cos(sine/36)),RAD(-0-30*math.cos(sine/36)),RAD(0+0*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(3-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+2*math.cos(sine/36))*ANGLES(RAD(-0+0*math.cos(sine/36)),RAD(-0+30*math.cos(sine/36)),RAD(0+0*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(6-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+3*math.cos(sine/36))*ANGLES(RAD(-0+0*math.cos(sine/36)),RAD(-0+30*math.cos(sine/36)),RAD(0+0*math.rad(sine/.7))),1)
+		
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = CF(0,0,0)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-1.6*math.sin(sine/65),0.3+0*math.cos(sine/13))*ANGLES(RAD(-90+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-99+0*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,0)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-1.6*math.sin(sine/65),0.3+0*math.cos(sine/13))*ANGLES(RAD(90+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-90+0*math.rad(sine/.7))),1)
+	else
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C1 = CF(0,0,2)
+		reanim['VoidLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-0+0*math.rad(sine/.7))),1)
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-60+0*math.rad(sine/.7))),1)
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['DemonGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-120+0*math.rad(sine/.7))),1)
+		reanim['AuroraSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['AuroraSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-180+0*math.rad(sine/.7))),1)
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['RainbowGodSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-240+0*math.rad(sine/.7))),1)
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C1 = reanim['VoidLordSword'].Handle.AccessoryWeld.C1
+		reanim['ToxicLordSword'].Handle.AccessoryWeld.C0 = reanim['VoidLordSword'].Handle.AccessoryWeld.C0:Lerp(regular*CF(-0-0*math.sin(sine/65),-0-0*math.sin(sine/65),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(-0+0*math.rad(sine/0.7)),RAD(-300+0*math.rad(sine/.7))),1)
+																																																																																																				
+	end
+	
+	if mode==2 then
+		height=5+2*cos(sine/37)
+	elseif mode==5 then
+		height=3+.7*sin(sine/45)
+		
+	elseif mode=="FLAMING SOUL" then
+				height=13+5*sin(sine/45)
+	elseif mode==8 then
+		height=3+2*cos(sine/19/2)
+	elseif mode=="inf" then
+		height=5+1.4*cos(sine/23)
+	elseif mode==10 then
+		height=8+1.7*cos(sine/34)
+	
+	elseif mode==13 then
+		height=10+5*cos(sine/35)
+	elseif mode==14 then
+		height=4+.8*sin(sine/65)
+		
+	elseif mode==15 then
+		height=8+4*cos(sine/45)
+	elseif mode=="corrupt." then
+		height=1+.3*cos(sine/20)
+elseif mode=="corrupted." then
+		height=2+.3*cos(sine/10)
+	elseif mode==22 then
+		height=5+.8*cos(sine/25)
+	elseif mode==25 then
+		height=3+.8*cos(sine/34)
+	elseif mode==10 then
+		height=8+1.7*cos(sine/34)
+	end
+	
+	if (AnimState == "Idle") then
+		local Alpha = .1
+		welds[1].C1=welds[1].C1:lerp(cf.n(),.1)
+
+		if attack==false then
+			if SWITCHINGANIM==false then
+			if mode==1 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(-10*sin(sine/23)),rd(-20),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.14*cos(sine/19),0)*cf.a(rd(4*sin(sine/19)),rd(20),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,-0.4+.2*cos(sine/19),-0.3)*cf.a(rd(130+8*sin(sine/19)),rd(20),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0+.2*cos(sine/19),0)*cf.a(rd(0),rd(30),rd(-8-8*sin(sine/21))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,-0.14*cos(sine/19),-0.1)*cf.a(rd(-4*sin(sine/19)),rd(-3),rd(4)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,-0.14*cos(sine/19),-0.1)*cf.a(rd(-4*sin(sine/19)),rd(4),rd(-4)),Alpha)
+			elseif mode==2 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(30),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,5+2*cos(sine/37),-2*cos(sine/37))*cf.a(rd(7*sin(sine/18)),rd(-30),rd(-17-3*sin(sine/36))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,-.5+.3*cos(sine/37),0)*cf.a(rd(108+10*sin(sine/37)),rd(0),rd(30)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,-0.3+.3*cos(sine/37),0)*cf.a(rd(123+10*sin(sine/37)),rd(0),rd(-60)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0.4+.1*cos(sine/35),-0.6)*cf.a(rd(-30),rd(-30),rd(10-3*sin(sine/23))),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.3+.2*cos(sine/37),-0.3)*cf.a(rd(0),rd(30),rd(-20+7*sin(sine/23))),Alpha)
+			elseif mode==3 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1*cos(sine/19),0)*cf.a(rd(4+4*sin(sine/19)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-.8,0,-1)*cf.a(rd(-30),rd(10),rd(-90)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(.8,0,-1)*cf.a(rd(30),rd(10),rd(90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-0.1*cos(sine/19),-0.13)*cf.a(rd(-13-4*sin(sine/19)),rd(-10),rd(4)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-0.1*cos(sine/19),-0.17)*cf.a(rd(-4-4*sin(sine/19)),rd(10),rd(-3)),Alpha)
+			elseif mode==4 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.3*cos(sine/23),0)*cf.a(rd(10*sin(sine/23)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-.6,-0.2,.6)*cf.a(rd(20),rd(10),rd(-40)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0.25,0,-0.4)*cf.a(rd(175+5*sin(sine/21)),rd(-30),rd(10)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-0.3*cos(sine/23),-0.2)*cf.a(rd(-10*sin(sine/23)),rd(-10),rd(4)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-0.3*cos(sine/23),-0.25)*cf.a(rd(-10*sin(sine/23)),rd(10),rd(-3)),Alpha)
+			elseif mode==5 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(-.7*cos(sine/45),3+.7*sin(sine/45),0)*cf.a(rd(-34-7*sin(sine/35)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(34+5*sin(sine/23)),rd(0),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(34+30*cos(sine/.5)),rd(30*cos(sine/.5)),rd(30*cos(sine/.5))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,.4,-0.2)*cf.a(rd(30+7*sin(sine/35)),rd(-10),rd(2)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.2,-0.4)*cf.a(rd(24+7*sin(sine/35)),rd(10),rd(-2)),Alpha)
+			elseif mode==6 then		
+				height=0	
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.3)*cf.a(rd(-20-15*cos(sine/.2)),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.5*cos(sine/24),0)*cf.a(rd(20*sin(sine/24)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-0.7,0,-0.8)*cf.a(rd(190-25*cos(sine/.2)),rd(30),rd(-20)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0.9,0,-0.8)*cf.a(rd(190-25*cos(sine/.2)),rd(-30),rd(20)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,-0.5*cos(sine/24),-0.1)*cf.a(rd(-20*sin(sine/24)),rd(-30),rd(10)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,-0.5*cos(sine/24),-0.2)*cf.a(rd(-20*sin(sine/24)),rd(30),rd(-10)),Alpha)
+			elseif mode==7 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0-5*sin(sine/19)),rd(30),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1*cos(sine/19),0)*cf.a(rd(0),rd(-30),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0+.1*cos(sine/20),0)*cf.a(rd(90+(song.PlaybackLoudness/10)),rd(0),rd(30)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0.2*cos(sine/19),0)*cf.a(rd(0),rd(0),rd(-5+5*sin(sine/19))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,-0.1*cos(sine/19)+.25-.5*cos(sine/12),-0.6)*cf.a(rd(-0*cos(sine/12)),rd(-20),rd(4)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,-0.1*cos(sine/19),-0.1)*cf.a(rd(0),rd(20),rd(-4)),Alpha)
+			elseif mode=="FLAMING SOUL" then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.5)*cf.a(rd(-40),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,13+5*sin(sine/45),0)*cf.a(rd(40),rd(30+8*sin(sine/34)),rd(30)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,-0.4,0)*cf.a(rd(80+4*sin(sine/23)),rd(0),rd(30)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(30+30*sin(sine/34)),rd(00),rd(-90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0.4,-0.6)*cf.a(rd(-40+13*sin(sine/23)),rd(-30),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(-50-20*sin(sine/25)),rd(30),rd(0)),Alpha)
+			elseif mode==8 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,3+2*cos(sine/19/2),0+1*sin(sine/19/2))*cf.a(rd(-23+5*sin(sine/19)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(23),rd(-30*sin(sine/22/2)),rd(-10*sin(sine/22))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(23),rd(30*sin(sine/22/2)),rd(10*sin(sine/22))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,-0.2)*cf.a(rd(23-5*sin(sine/19)),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,-0.2)*cf.a(rd(23-5*sin(sine/19)),rd(0),rd(0)),Alpha)
+			elseif mode==9 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-30),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1*cos(sine/24),0)*cf.a(rd(8+3*sin(sine/25)),rd(30),rd(3*sin(sine/25/2))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,-0.4+.2*cos(sine/24),0)*cf.a(rd(120+10*sin(sine/26)),rd(40),rd(40)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,-0.4+.2*cos(sine/24),0)*cf.a(rd(120+10*sin(sine/26)),rd(-40),rd(-40)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-0.1*cos(sine/24),-0.3)*cf.a(rd(-10-3*sin(sine/25)),rd(-20),rd(7-3*sin(sine/25/2))),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-0.1*cos(sine/24),-0.4)*cf.a(rd(-9-3*sin(sine/25)),rd(20),rd(-11-3*sin(sine/25/2))),Alpha)
+			elseif mode=="inf" then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-20),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(4*cos(sine/23/2),5+1.4*cos(sine/23),0)*cf.a(rd(7*sin(sine/23)),rd(20),rd(23*sin(sine/23/2))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,-0.6+.2*cos(sine/23),-0.7)*cf.a(rd(40+7*sin(sine/23)),rd(30+3*sin(sine/23)),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(1.8,-0.7+.2*cos(sine/23),-1.2)*cf.a(rd(45+7*sin(sine/23)),rd(0),rd(40)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-.24*cos(sine/23),-0.4)*cf.a(rd(-23-7*sin(sine/23)),rd(-10),rd(13+3*sin(sine/32))),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-.24*cos(sine/23),-0.6)*cf.a(rd(-8-7*sin(sine/23)),rd(10),rd(-4)),Alpha)
+			elseif mode == "nil" then
+				height=0
+welds[3].C0=welds[3].C0:lerp(cf.n(0.5,-1 - 0.1 * math.cos(sine / 32),0)*cf.a(math.rad(0),math.rad(90),math.rad(0))*cf.a(math.rad(-10 - 2.5 * math.cos(sine / 32)),math.rad(-20),math.rad(0)),.1)
+welds[5].C0=welds[5].C0:lerp(cf.n(-0.5,-1 - 0.1 * math.cos(sine / 32),0)*cf.a(math.rad(0),math.rad(-90),math.rad(0))*cf.a(math.rad(0),math.rad(0),math.rad(-10 + 2.5 * math.cos(sine / 32))),.1)
+welds[2].C0=welds[2].C0:lerp(torsoc0*cf.n(0,0+ 0.1 * math.cos(sine / 32),0 )*cf.a(math.rad(-10 - 2 * math.cos(sine / 32)),math.rad(20),math.rad(0)),.1)
+welds[1].C0=welds[1].C0:lerp(neckc0*cf.n(-0.05,0,-0.15)*cf.a(math.rad(-25 - 2.5 * math.cos(sine / 32)),math.rad(20 - 15 * math.cos(sine / 0.25)),math.rad(0 - 5 * math.cos(sine / 0.465))),.1)
+welds[4].C0=welds[4].C0:lerp(cf.n(1.5,0.5,0)*cf.a(math.rad(10),math.rad(-20),math.rad(30 + 2.5 * math.cos(sine / 25))),.1)
+welds[6].C0=welds[6].C0:lerp(cf.n(-1.5,0.5,0)*cf.a(math.rad(160),math.rad(0),math.rad(25)),.1)				
+			elseif mode==10 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-30-5*sin(sine/34/2)),rd(0-5*sin(sine/34))),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0-.7*cos(sine/37/2),8+1.7*cos(sine/34),0)*cf.a(rd(-190-10*sin(sine/34)),rd(180),rd(30+7*sin(sine/37/2))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(160+23*sin(sine/37)),rd(-23*sin(sine/37)),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(160+23*sin(sine/37)),rd(23*sin(sine/37)),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(-70+8*sin(sine/34)),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(-70+5*sin(sine/34)),rd(0),rd(0)),Alpha)
+			elseif mode==11 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-30),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.17*cos(sine/23),0)*cf.a(rd(3*sin(sine/23)),rd(30),rd(6*sin(sine/23/2))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-0.8,0+.2*cos(sine/23),-0.7)*cf.a(rd(0),rd(0),rd(-40+3*sin(sine/23))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0.9,0+.2*cos(sine/23),-0.6)*cf.a(rd(0),rd(0),rd(40-3*sin(sine/23))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-0.17*cos(sine/23),-0.3)*cf.a(rd(0-3*sin(sine/23)),rd(-10),rd(5-6*sin(sine/23/2))),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-0.17*cos(sine/23),-0.2)*cf.a(rd(0-3*sin(sine/23)),rd(10),rd(-6-6*sin(sine/23/2))),Alpha)
+		
+			elseif mode=="alsoo3" then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(5*sin(sine/12)),rd(-20),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,-0+.3*cos(sine/12),0)*cf.a(rd(2),rd(20),rd(10*sin(sine/12/2))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0.3*cos(sine/12),-0.7)*cf.a(rd(120+8*sin(sine/12)),rd(0),rd(20*sin(sine/12/2))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0.3*cos(sine/12),-0.7)*cf.a(rd(120-8*sin(sine/12)),rd(0),rd(20*sin(sine/12/2))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-.3*cos(sine/12),-0.3)*cf.a(rd(-2),rd(-10),rd(5-10*sin(sine/12/2))),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-.3*cos(sine/12),-0.3)*cf.a(rd(-2),rd(10),rd(-5-10*sin(sine/12/2))),Alpha)
+			elseif mode==13 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,10+5*cos(sine/35),0)*cf.a(rd(0),rd(160*rd(sine/1)),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(90)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(-90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			elseif mode==14 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,4+.8*sin(sine/65),0)*cf.a(rd(80+18*sin(sine/65)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0+(song.PlaybackLoudness/2)),rd(0),rd(30)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(-60*sin(sine/65)),rd(30),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0.3,-0.4)*cf.a(rd(-10+13*sin(sine/65*2)),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.6,-0.6)*cf.a(rd(-20+8*sin(sine/65*2)),rd(0),rd(0)),Alpha)
+			elseif mode==15 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,8+4*cos(sine/45),0)*cf.a(rd(0),rd(0),rd(20+5*sin(sine/45))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-0.9,0,-1)*cf.a(rd(-30),rd(10),rd(-90)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0.9,0,-1)*cf.a(rd(30),rd(10),rd(90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0.8,-0.8)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.5,-0.5)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		
+	elseif mode=="corrupt." then
+	
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(-30),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,1+.3*cos(sine/20),0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)),rd(0),rd(-0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)),rd(0),rd(0)),Alpha)
+			welds[3].C0 = welds[3].C0:Lerp(rightlegc0*CF(-0, 0.6, -0.7) * ANGLES(RAD(-17 + 9.4 * COS(sine / 26)), RAD(80), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(0)), .1)
+			welds[5].C0 = welds[5].C0:Lerp(leftlegc0*CF(-0.75, 0,-.5) * ANGLES(RAD(0), RAD(22 + 10.8 * COS(sine / 32)), RAD(80)), .1)
+			if math.random(1,36) == 1 then
+				welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+				welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)+math.random(-136,136)),rd(math.random(-136,136)),rd(-math.random(-136,136))),.5)
+				welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)+math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+			end	
+	elseif mode=="corrupted." then		
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(-30),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,4+.6*cos(sine/20),0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)),rd(0),rd(-0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)),rd(0),rd(0)),Alpha)
+			welds[3].C0 = welds[3].C0:Lerp(rightlegc0*CF(-0, 0.6, -0.7) * ANGLES(RAD(-17 + 9.4 * COS(sine / 26)), RAD(80), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(0)), .1)
+			welds[5].C0 = welds[5].C0:Lerp(leftlegc0*CF(-0.75, 0,-.5) * ANGLES(RAD(0), RAD(22 + 10.8 * COS(sine / 32)), RAD(80)), .1)
+			if math.random(1,12) == 1 then
+				welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+				welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)+math.random(-136,136)),rd(math.random(-136,136)),rd(-math.random(-136,136))),.5)
+				welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)+math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+			end			
+			elseif mode==18 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(math.random(-50,50)),rd(math.random(-50,50)),rd(math.random(-50,50))),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,-0.1*cos(sine/35),0)*cf.a(rd(-30-10*sin(sine/35)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(30+10*sin(sine/35)),rd(0),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0.5,0,-0.4)*cf.a(rd(30+10*sin(sine/35)+120),rd(0),rd(30)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0+0.1*cos(sine/35),0)*cf.a(rd(30+10*sin(sine/35)),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0+0.1*cos(sine/35),0)*cf.a(rd(30+10*sin(sine/35)),rd(0),rd(0)),Alpha)
+			elseif mode==20 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-30),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.12*cos(sine/23),0)*cf.a(rd(3-3*sin(sine/23)),rd(-0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0.3*cos(sine/23),0)*cf.a(rd(0),rd(-30),rd(20+9*sin(sine/23))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0.8,-0.2+.1*cos(sine/23),-0.8)*cf.a(rd(0),rd(0),rd(90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-.12*cos(sine/23),-0.2)*cf.a(rd(0+3*sin(sine/23)),rd(-4),rd(3)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-.12*cos(sine/23),-0.2)*cf.a(rd(0+3*sin(sine/23)),rd(4),rd(-3)),Alpha)
+			elseif mode==21 then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-20),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.2*cos(sine/23),0)*cf.a(rd(5*sin(sine/23)),rd(20-6*sin(sine/23/2)),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0+.12*sin(sine/23/2),0-.2*cos(sine/23))*cf.a(rd(8*sin(sine/23)),rd(0),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0+.12*sin(sine/23/2),0-.2*cos(sine/23))*cf.a(rd(8*sin(sine/23)),rd(0),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-.2*cos(sine/23),-0.3)*cf.a(rd(-10-5*sin(sine/23)),rd(0-6*sin(sine/23/2)),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-.2*cos(sine/23),-0.3)*cf.a(rd(5-5*sin(sine/23)),rd(0-6*sin(sine/23/2)),rd(0)),Alpha)
+			elseif mode==22 then
+				
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.2)*cf.a(rd(-10+10*sin(sine/24)),rd(20),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,5+.8*cos(sine/25),0)*cf.a(rd(30-5*sin(sine/25)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-0.0,-0.2,-.0)*cf.a(rd(-10-3*sin(sine/25)),rd(-20),rd(20)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(.0,-0.3,-0.0)*cf.a(rd(-20-4*sin(sine/25)),rd(20),rd(-20)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(.85,-0.27,-0.7)*cf.a(rd(-20-1*sin(sine/25)),rd(-10),rd(-95)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.3,-.5)*cf.a(rd(-5-13*sin(sine/27)),rd(10),rd(-5)),Alpha)
+			elseif mode=="what"  then
+
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-30),rd(0)),Alpha)
+            welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,5+.8*cos(sine/23),0)*cf.a(rd(3*sin(sine/23)),rd(30),rd(6*sin(sine/23/2))),Alpha)
+            welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0+.1*cos(sine/20),0)*cf.a(rd(90+(song.PlaybackLoudness/10)),rd(0),rd(30)),Alpha)
+            welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0.2*cos(sine/19),0)*cf.a(rd(0),rd(0),rd(-5+5*sin(sine/19))),Alpha)
+welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(.85,-0.27,-0.7)*cf.a(rd(-20-1*sin(sine/25)),rd(-10),rd(-95)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.3,-.5)*cf.a(rd(-5-13*sin(sine/27)),rd(10),rd(-5)),Alpha)
+					if math.random(1,26) == 1 then
+				welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+				--welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)+math.random(-136,136)),rd(math.random(-136,136)),rd(-math.random(-136,136))),.5)
+				welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)+math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+			end	
+						elseif mode=="chav"  then
+
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-30),rd(0)),Alpha)
+            welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,5+.8*cos(sine/23),0)*cf.a(rd(3*sin(sine/23)),rd(30),rd(6*sin(sine/23/2))),Alpha)
+            welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0+.1*cos(sine/20),0)*cf.a(rd(90+(song.PlaybackLoudness/10)),rd(0),rd(30)),Alpha)
+            welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0.2*cos(sine/19),0)*cf.a(rd(0),rd(0),rd(-5+5*sin(sine/19))),Alpha)
+welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(.85,-0.27,-0.7)*cf.a(rd(-20-1*sin(sine/25)),rd(-10),rd(-95)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.3,-.5)*cf.a(rd(-5-13*sin(sine/27)),rd(10),rd(-5)),Alpha)
+			elseif mode=="claws" then
+				height=0
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(10),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.13*cos(sine/19),0)*cf.a(rd(-16+3*sin(sine/19)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(20),rd(20-5*sin(sine/23))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(-20),rd(-20+5*sin(sine/23))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-0.13*cos(sine/19),-0.5)*cf.a(rd(3-3*sin(sine/19)),rd(-10),rd(5)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-0.13*cos(sine/19),-0.2)*cf.a(rd(16-3*sin(sine/19)),rd(10),rd(-5)),Alpha)
+			elseif mode==24	then
+				height=0
+			if math.random(1,100)==1 then
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n((song.PlaybackLoudness/30),math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)),-math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)))*cf.a(rd(0),rd(0),rd(10+5*sin(sine/22))),.3)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(-(song.PlaybackLoudness/30),-math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)),math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)))*cf.a(rd(0),rd(0),rd(-10-5*sin(sine/22))),.3)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n((song.PlaybackLoudness/30),(0-0.13*cos(sine/22))+math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)),-0.3-math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)))*cf.a(rd(10-2*sin(sine/22)),rd(0),rd(40)),.3)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(-(song.PlaybackLoudness/30),(0-0.13*cos(sine/22))-math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)),-0.12+math.random(-(song.PlaybackLoudness/30),(song.PlaybackLoudness/30)))*cf.a(rd(-16-2*sin(sine/22)),rd(0),rd(-40)),.3)
+				
+			end
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.13*cos(sine/22),0)*cf.a(rd(-10+2*sin(sine/22)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(10+5*sin(sine/22))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(-10-5*sin(sine/22))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-0.13*cos(sine/22),-0.3)*cf.a(rd(10-2*sin(sine/22)),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-0.13*cos(sine/22),-0.12)*cf.a(rd(-16-2*sin(sine/22)),rd(0),rd(0)),Alpha)
+			elseif mode==25 then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,3+.8*cos(sine/34),0)*cf.a(rd(80+12*sin(sine/34)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(-89+38*sin(sine/34/2)),rd(-20),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(-76+35*sin(sine/34/2)),rd(20),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(-56*sin(sine/34/2)),rd(-10),rd(10)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(-30*sin(sine/34/2)),rd(10),rd(-10)),Alpha)
+			
+			--- LOST MODES.	
+			elseif mode==16 then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1*cos(sine/25),0)*cf.a(rd(0),rd(0),rd(2.5*sin(sine/25))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-0,-0.5+.2*cos(sine/25),0)*cf.a(rd(100+8*sin(sine/25)),rd(-20),rd(-0*sin(sine/25))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(20),rd(10)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-0.1*cos(sine/25),-0.2)*cf.a(rd(0),rd(-4),rd(3-2.5*sin(sine/25))),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-0.1*cos(sine/25),-0.2)*cf.a(rd(0),rd(4),rd(-3-2.5*sin(sine/25))),Alpha)
+			elseif mode == "TEST" then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-2)*cf.a(rd(90),rd(0),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			end
+		else
+			if funanim=="switching" then
+				Alpha=.2
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,height,0)*cf.a(rd(-35-5*sin(sine/.31)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(-1,-0.16,-0.8)*cf.a(rd(170-5*sin(sine/.4)),rd(30),rd(-5)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(1,-0.16,-0.8)*cf.a(rd(170-5*sin(sine/.4)),rd(-30),rd(5)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,-0.45)*cf.a(rd((-30+35)+5*sin(sine/.31)),rd(-10),rd(3)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,-0.3)*cf.a(rd((35)+5*sin(sine/.31)),rd(10),rd(-3)),Alpha)
+			elseif funanim=="done" then
+			Alpha=.1
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,height,0)*cf.a(rd(20),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(90)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(-90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,-0.3)*cf.a(rd(-20),rd(0),rd(10)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,-0.3)*cf.a(rd(-20),rd(0),rd(-10)),Alpha)
+				
+			end
+		end
+		end
+		--[[
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		]]--
+	end
+	if (AnimState == "Walk") then
+		local Alpha = .1
+		wsVal = 4
+		-- Sakura Blade Walk
+
+		if attack==false then
+			if walk and mode~="alsoo3" and mode~=20 then
+			welds[2].C0 = welds[2].C0:lerp(CFrame.new(0, -0.05 + change / 2 * math.cos(sine / 2), 0) * CFrame.Angles(math.rad(-(change * 20) - movement / 20 * math.cos(sine / 2)) * lookvel, torsorotY2 + math.rad(0 - 4 * math.sin(sine / 4)), math.rad(-(change * 20) - movement / 20 * math.cos(sine / 2)) * rightvel + torsorotY2 + math.rad(0 - 1 * math.cos(sine / 4))), 0.1)		
+			welds[1].C0 = welds[1].C0:lerp(CFrame.new(0, 1.5, -0.1 - 0.1 * lookvel) * CFrame.Angles(0, torsorotY, math.rad(0) + torsorotY), 0.4)
+			welds[1].C1 = welds[1].C1:lerp(CFrame.Angles((change / 10 * math.cos(sine / 2) + 0.1) * lookvel ^ 2, -(change / 10) * math.cos(sine / 4) - torsorotY / 5, change / 5 * math.cos(sine / 4)), 0.1)
+			
+			welds[4].C0 = welds[4].C0:lerp(CFrame.new(1.5, 0.5 + 0.12 * lookvel ^ 2 - movement / 40 * math.cos(sine / 4) / 3, movement / 150 + movement / 40 * math.cos(sine / 4)) * CFrame.Angles((math.rad(-5 - movement * 2 * math.cos(sine / 4)) + -(movement / 10) * math.sin(sine / 4)) * lookvel, math.rad(0 - movement * 2 * math.cos(sine / 4)), -math.rad(movement * 1 * 0.2 - movement * 1 * math.cos(sine / 2) * lookvel) + math.rad(-5 * rightvel)), 0.2)
+			welds[6].C0 = welds[6].C0:lerp(CFrame.new(-1.5, 0.5 + 0.12 * lookvel ^ 2 + movement / 40 * math.cos(sine / 4) / 3, movement / 150 - movement / 40 * math.cos(sine / 4)) * CFrame.Angles((math.rad(-5 + movement * 2 * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * lookvel, math.rad(0 - movement * 2 * math.cos(sine / 4)), -math.rad(-(movement * 1) * 0.2 + movement * 1 * math.cos(sine / 2) * lookvel) + math.rad(-5 * rightvel)), 0.2)
+			welds[5].C0 = welds[5].C0:lerp(CFrame.new(-0.5, -0.85 - movement / 15 * math.cos(sine / 4) / 2, (-0.1 + movement / 15 * math.cos(sine / 4)) * (0.5 + 0.5 * lookvel)) * CFrame.Angles((math.rad(-10 * lookvel + change * 5 - movement * math.cos(sine / 4)) + -(movement / 10) * math.sin(sine / 4)) * lookvel, math.rad(0 + movement * 2 * math.cos(sine / 4)), (math.rad(change * 5 - movement * math.cos(sine / 4)) + -(movement / 10) * math.sin(sine / 4)) * (rightvector / (hum.WalkSpeed * 2))), 0.2)
+			welds[3].C0 = welds[3].C0:lerp(CFrame.new(0.5, -0.85 + movement / 15 * math.cos(sine / 4) / 2, (-0.1 - movement / 15 * math.cos(sine / 4)) * (0.5 + 0.5 * lookvel)) * CFrame.Angles((math.rad(-10 * lookvel + change * 5 + movement * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * lookvel, math.rad(0 + movement * 2 * math.cos(sine / 4)), (math.rad(change * 5 + movement * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * (rightvector / (hum.WalkSpeed * 2))), 0.2)
+			elseif walk==true and mode=="alsoo3" then
+			welds[2].C0 = welds[2].C0:lerp(CFrame.new(0, -0.05 + change / 2 * math.cos(sine / 2), 0) * CFrame.Angles(math.rad(-(change * 20) - movement / 20 * math.cos(sine / 2)) * lookvel, torsorotY2 + math.rad(0 - 4 * math.sin(sine / 4)), math.rad(-(change * 20) - movement / 20 * math.cos(sine / 2)) * rightvel + torsorotY2 + math.rad(0 - 1 * math.cos(sine / 4))), 0.1)		
+			welds[1].C0 = welds[1].C0:lerp(CFrame.new(0, 1.5, -0.1 - 0.1 * lookvel) * CFrame.Angles(0, torsorotY, math.rad(0) + torsorotY), 0.4)
+			welds[1].C1 = welds[1].C1:lerp(CFrame.Angles((change / 10 * math.cos(sine / 2) + 0.1) * lookvel ^ 2, -(change / 10) * math.cos(sine / 4) - torsorotY / 5, change / 5 * math.cos(sine / 4)), 0.1)
+			
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0.3*cos(sine/4),-0.7)*cf.a(rd(120+8*sin(sine/4)),rd(0),rd(20*sin(sine/4/2))),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0.3*cos(sine/4),-0.7)*cf.a(rd(120-8*sin(sine/4)),rd(0),rd(20*sin(sine/4/2))),Alpha)
+			welds[5].C0 = welds[5].C0:lerp(CFrame.new(-0.5, -0.85 - movement / 15 * math.cos(sine / 4) / 2, (-0.1 + movement / 15 * math.cos(sine / 4)) * (0.5 + 0.5 * lookvel)) * CFrame.Angles((math.rad(-10 * lookvel + change * 5 - movement * math.cos(sine / 4)) + -(movement / 10) * math.sin(sine / 4)) * lookvel, math.rad(0 + movement * 2 * math.cos(sine / 4)), (math.rad(change * 5 - movement * math.cos(sine / 4)) + -(movement / 10) * math.sin(sine / 4)) * (rightvector / (hum.WalkSpeed * 2))), 0.2)
+			welds[3].C0 = welds[3].C0:lerp(CFrame.new(0.5, -0.85 + movement / 15 * math.cos(sine / 4) / 2, (-0.1 - movement / 15 * math.cos(sine / 4)) * (0.5 + 0.5 * lookvel)) * CFrame.Angles((math.rad(-10 * lookvel + change * 5 + movement * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * lookvel, math.rad(0 + movement * 2 * math.cos(sine / 4)), (math.rad(change * 5 + movement * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * (rightvector / (hum.WalkSpeed * 2))), 0.2)
+			elseif walk==true and mode==20 then
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0.13*cos(sine/8),0)*cf.a(rd(0),rd(-30),rd(20+3*sin(sine/4))),Alpha)
+			
+			welds[2].C0 = welds[2].C0:lerp(CFrame.new(0, -0.05 + change / 2 * math.cos(sine / 2), 0) * CFrame.Angles(math.rad(-(change * 20) - movement / 20 * math.cos(sine / 2)) * lookvel, torsorotY2 + math.rad(0 - 4 * math.sin(sine / 4)), math.rad(-(change * 20) - movement / 20 * math.cos(sine / 2)) * rightvel + torsorotY2 + math.rad(0 - 1 * math.cos(sine / 4))), 0.1)		
+			welds[1].C0 = welds[1].C0:lerp(CFrame.new(0, 1.5, -0.1 - 0.1 * lookvel) * CFrame.Angles(0, torsorotY, math.rad(0) + torsorotY), 0.4)
+			welds[1].C1 = welds[1].C1:lerp(CFrame.Angles((change / 10 * math.cos(sine / 2) + 0.1) * lookvel ^ 2, -(change / 10) * math.cos(sine / 4) - torsorotY / 5, change / 5 * math.cos(sine / 4)), 0.1)
+			
+			welds[6].C0 = welds[6].C0:lerp(CFrame.new(-1.5, 0.5 + 0.12 * lookvel ^ 2 + movement / 40 * math.cos(sine / 4) / 3, movement / 150 - movement / 40 * math.cos(sine / 4)) * CFrame.Angles((math.rad(-5 + movement * 2 * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * lookvel, math.rad(0 - movement * 2 * math.cos(sine / 4)), -math.rad(-(movement * 1) * 0.2 + movement * 1 * math.cos(sine / 2) * lookvel) + math.rad(-5 * rightvel)), 0.2)
+			welds[5].C0 = welds[5].C0:lerp(CFrame.new(-0.5, -0.85 - movement / 15 * math.cos(sine / 4) / 2, (-0.1 + movement / 15 * math.cos(sine / 4)) * (0.5 + 0.5 * lookvel)) * CFrame.Angles((math.rad(-10 * lookvel + change * 5 - movement * math.cos(sine / 4)) + -(movement / 10) * math.sin(sine / 4)) * lookvel, math.rad(0 + movement * 2 * math.cos(sine / 4)), (math.rad(change * 5 - movement * math.cos(sine / 4)) + -(movement / 10) * math.sin(sine / 4)) * (rightvector / (hum.WalkSpeed * 2))), 0.2)
+			welds[3].C0 = welds[3].C0:lerp(CFrame.new(0.5, -0.85 + movement / 15 * math.cos(sine / 4) / 2, (-0.1 - movement / 15 * math.cos(sine / 4)) * (0.5 + 0.5 * lookvel)) * CFrame.Angles((math.rad(-10 * lookvel + change * 5 + movement * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * lookvel, math.rad(0 + movement * 2 * math.cos(sine / 4)), (math.rad(change * 5 + movement * math.cos(sine / 4)) + movement / 10 * math.sin(sine / 4)) * (rightvector / (hum.WalkSpeed * 2))), 0.2)
+			
+			elseif walk==false and mode~=25 and mode~="corrupt." and mode~="corrupted." and mode~=5 and mode~="inf" and mode~=13 then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(50*lookvel),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,height+2*cos(sine/37),0)*cf.a(rd(-60+12*sin(sine/37))*lookvel,rd(-10) * rightvel,rd(-20)* rightvel),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(-30),rd(0),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(-20),rd(0),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0.5,-0.5)*cf.a(rd(-20),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,1.3,-1)*cf.a(rd(-10),rd(0),rd(0)),Alpha)
+			elseif walk==false and mode==5 then			
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(-.7*cos(sine/45),3+.7*sin(sine/45),0)*cf.a(rd(-55-7*sin(sine/35)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(34+5*sin(sine/23)),rd(0),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(34+30*cos(sine/.5)),rd(30*cos(sine/.5)),rd(30*cos(sine/.5))),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,.4,-0.2)*cf.a(rd(30+7*sin(sine/35)),rd(-10),rd(2)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.2,-0.4)*cf.a(rd(24+7*sin(sine/35)),rd(10),rd(-2)),Alpha)
+			elseif walk==false and mode=="inf" then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(-70),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(4*cos(sine/23/2),5+1.4*cos(sine/23),0)*cf.a(rd(-20+7*sin(sine/23)),rd(90),rd(23*sin(sine/23/2))),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,-0.6+.2*cos(sine/23),-0.7)*cf.a(rd(40+7*sin(sine/23)),rd(30+3*sin(sine/23)),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0.8,-0.1+.2*cos(sine/23),-0.8)*cf.a(rd(93+8*sin(sine/23)),rd(20),rd(90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0-.24*cos(sine/23),-0.4)*cf.a(rd(-23-7*sin(sine/23)),rd(-10),rd(13+3*sin(sine/32))),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0-.24*cos(sine/23),-0.6)*cf.a(rd(-8-7*sin(sine/23)),rd(10),rd(-4)),Alpha)
+			elseif walk==false and mode==13 then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,10+5*cos(sine/35),0)*cf.a(rd(0),rd(160*rd(sine/1)),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(90)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(-90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			elseif walk==false and mode=="corrupt." then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(-30),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,1+.3*cos(sine/20),0)*cf.a(rd(-5),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)),rd(0),rd(-0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)),rd(0),rd(0)),Alpha)
+			welds[3].C0 = welds[3].C0:Lerp(rightlegc0*CF(-0, 0.6, -0.7) * ANGLES(RAD(-17 + 9.4 * COS(sine / 26)), RAD(80), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(0)), .1)
+			welds[5].C0 = welds[5].C0:Lerp(leftlegc0*CF(-0.75, 0,-.5) * ANGLES(RAD(0), RAD(22 + 10.8 * COS(sine / 32)), RAD(80)), .1)
+			if math.random(1,42) == 1 then
+				welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+				welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)+math.random(-136,136)),rd(math.random(-136,136)),rd(-math.random(-136,136))),.5)
+				welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)+math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+			end		
+     elseif walk==false and mode=="corrupted." then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(-30),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,4+.6*cos(sine/20),0)*cf.a(rd(-5),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)),rd(0),rd(-0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)),rd(0),rd(0)),Alpha)
+			welds[3].C0 = welds[3].C0:Lerp(rightlegc0*CF(-0, 0.6, -0.7) * ANGLES(RAD(-17 + 9.4 * COS(sine / 26)), RAD(80), RAD(0)) * ANGLES(RAD(0), RAD(0), RAD(0)), .1)
+			welds[5].C0 = welds[5].C0:Lerp(leftlegc0*CF(-0.75, 0,-.5) * ANGLES(RAD(0), RAD(22 + 10.8 * COS(sine / 32)), RAD(80)), .1)
+			if math.random(1,14) == 1 then
+				welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,-0.35)*cf.a(rd(math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+				welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/26)+math.random(-136,136)),rd(math.random(-136,136)),rd(-math.random(-136,136))),.5)
+				welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,-0)*cf.a(rd(20*sin(sine/25)+math.random(-136,136)),rd(math.random(-136,136)),rd(math.random(-136,136))),.5)
+			end	
+			elseif walk==false and mode==25 then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,3+.8*cos(sine/34),0)*cf.a(rd(70+12*sin(sine/34)),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(-89+38*sin(sine/34/2)),rd(-20),rd(0)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(-76+35*sin(sine/34/2)),rd(20),rd(0)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0,0)*cf.a(rd(-56*sin(sine/34/2)),rd(-10),rd(10)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(-30*sin(sine/34/2)),rd(10),rd(-10)),Alpha)
+			
+			end
+		end
+	end
+	if(AnimState=="Jump") then
+		local Alpha=.2
+		welds[1].C1=welds[1].C1:lerp(cf.n(),.1)
+		if attack==false then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1,0)*cf.a(rd(30),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(90)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(-90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0.5,-0.5)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+		end
+	end
+	if(AnimState=="Fall") then
+		local Alpha=.2
+		welds[1].C1=welds[1].C1:lerp(cf.n(),.1)
+		if attack==false then
+			welds[1].C0=welds[1].C0:Lerp(neckc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[2].C0=welds[2].C0:Lerp(torsoc0*cf.n(0,0.1,0)*cf.a(rd(-20),rd(0),rd(0)),Alpha)
+			welds[4].C0=welds[4].C0:Lerp(rightarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(90)),Alpha)
+			welds[6].C0=welds[6].C0:Lerp(leftarmc0*cf.n(0,0,0)*cf.a(rd(0),rd(0),rd(-90)),Alpha)
+			welds[3].C0=welds[3].C0:Lerp(rightlegc0*cf.n(0,0.5,-0.5)*cf.a(rd(0),rd(0),rd(0)),Alpha)
+			welds[5].C0=welds[5].C0:Lerp(leftlegc0*cf.n(0,0.2,-0.2)*cf.a(rd(-10),rd(0),rd(0)),Alpha)
+		end
+	end
+end
