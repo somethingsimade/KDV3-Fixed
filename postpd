@@ -6,7 +6,7 @@ _G.Netless = true
 _G.EnableNetLib = true
 local c = game:GetService("Players").LocalPlayer.Character
 c.Archivable = true
-local char =  c:Clone()
+local char =  workspace.Player1
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame)
 c.HumanoidRootPart.Anchored = false
 char.HumanoidRootPart.Anchored = false
