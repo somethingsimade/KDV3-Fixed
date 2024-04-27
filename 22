@@ -1662,7 +1662,7 @@ end
 end)
 pcall(function()
           for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory") and v.Name ~= "fooblet" and v.Name ~= "gooblet"  and v.Name ~= "RARM"  and v.Name ~= "LARM"and v.Name ~= "Tor"  and v.Name ~= "Tor" and v.Name ~= "Lleg" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2"  then
+       if v:IsA("Accessory")      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then  then
 v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
 end
 end
