@@ -1030,6 +1030,8 @@ end
 Hat.Rename("rbxassetid://14255543546","","LARM")
 Hat.Rename("rbxassetid://14255543546","","RARM")
 Hat.Rename("rbxassetid://13415110780", "Tor")
+Hat.Rename("rbxassetid://11263219250","LARM")
+Hat.Rename("rbxassetid://11159370334","RARM")
 local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
