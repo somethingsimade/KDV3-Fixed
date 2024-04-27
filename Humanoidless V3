@@ -1,3 +1,4 @@
+
 -- HOLY SHIT NEW OXIDE!!! WTF
 -- Old humanoidless from august 2022, it works in non rcd games
 _G.Animations = false
@@ -5,10 +6,12 @@ _G.CameraTesting = false
 _G.Netless = true
 _G.EnableNetLib = true
 local c = game:GetService("Players").LocalPlayer.Character
-c.Archivable = true
-local char =  c:Clone()
+local char =  game:GetObjects("rbxassetid://5195737219")[1]
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame)
 c.HumanoidRootPart.Anchored = false
+pcall(function()
+c["Body Colors"]:Clone().Parent = char
+end)
 char.HumanoidRootPart.Anchored = false
 char.Parent = workspace
 c.Parent = char
@@ -36,6 +39,17 @@ speaker = game.Players.LocalPlayer
 
 
 char.Animate.Disabled = true
+ for _,v in pairs(c:GetChildren()) do
+       if v:IsA("Accessory")  and v.Name ~= "Pal Hair" and v.Name ~= "SeeMonkey" and v.Name ~= "Pink Hair" and v.Name ~= "LavanderHair" and v.Name ~= "Kate Hair"   then
+      local a = v:Clone()
+      a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
+a.Parent = char
+a.Handle.Anchored = false
+a.Handle.Transparency = 1
+v.Handle:BreakJoints()
+           end
+       end
+Instance.new("Animator", char.Humanoid)
 workspace.Camera.CameraSubject = char.Humanoid
    c:BreakJoints()
 c.Humanoid:Destroy()
