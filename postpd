@@ -1032,7 +1032,7 @@ Hat.Rename("rbxassetid://13415110780", "Tor")
 
 local c = game:GetService("Players").LocalPlayer.Character
 c["Unloaded head"].Name = "LARM"
-c["MeshPartAccessory"].Name = "RARM]
+c["MeshPartAccessory"].Name = "RARM
 pcall(function()
 c.gooblet.Name = "fooblet"
 end)
