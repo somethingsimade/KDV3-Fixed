@@ -1,3 +1,4 @@
+
 --[[ THIS WAS MADE BY NITROWO (tixbot)
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⢀⢀⡰⠊⠀⠁⠊⠢⠱⡪⡎⣮⢾⡜⡔⡱⡘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -131,7 +132,7 @@ _G.R15toR6 = false -- no settings work
 local char = game.Players.LocalPlayer.Character
 for i,v in pairs(char:GetDescendants()) do
 if v:IsA("SpecialMesh") then
-if v.MeshId == "rbxassetid://11263221350"  then
+if v.MeshId == "rbxassetid://13003592387"  then
 v.Parent.Parent.Name = "funnihead"
 end
 end
@@ -140,7 +141,7 @@ end
 local char = game.Players.LocalPlayer.Character
 for i,v in pairs(char:GetDescendants()) do
 if v:IsA("MeshPart") then
-if v.MeshId == "rbxassetid://11263221350"  then
+if v.MeshId == "rbxassetid://13003592387"  then
 v.Parent.Name = "funnihead"
 end
 end
@@ -149,7 +150,6 @@ end
 Hat.Rename("rbxassetid://14255543546","","LARM")
 Hat.Rename("rbxassetid://14255543546","","RARM")
 Hat.Rename("rbxassetid://13415110780", "Tor")
-
 local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
@@ -385,7 +385,7 @@ end
 		else
 	
  for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
+     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
       local a = v:Clone()
       a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
@@ -1029,7 +1029,6 @@ end
 Hat.Rename("rbxassetid://14255543546","","LARM")
 Hat.Rename("rbxassetid://14255543546","","RARM")
 Hat.Rename("rbxassetid://13415110780", "Tor")
-
 local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
@@ -1264,7 +1263,7 @@ end
 		else
 	
  for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  then
+         if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
       local a = v:Clone()
       a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
