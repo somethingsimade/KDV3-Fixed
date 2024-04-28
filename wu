@@ -63,6 +63,7 @@ if Library.FindHat("BladeMasterAccessory") then
 Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
 
 end
+print("i like kids")
 else
 print("richhhh")
 end
