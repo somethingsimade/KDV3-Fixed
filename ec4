@@ -93,7 +93,6 @@ end
 
 
 if not isfile("song69.ogg") then
-notify("Downloading assets..")
 writefile('200ping.mp3', game:HttpGet('http://syntax.rocks/audio/lc/200ping.mp3'))
 writefile('action.mp3', game:HttpGet('http://syntax.rocks/audio/lc/action.mp3'))
 writefile('allgirls.mp3', game:HttpGet('http://syntax.rocks/audio/lc/allgirls.mp3'))
@@ -105,7 +104,7 @@ writefile('solidlc.mp3', game:HttpGet('http://syntax.rocks/audio/lc/solidlc.mp3'
 writefile('song69.ogg', game:HttpGet('http://syntax.rocks/audio/lc/song69.ogg'))
 writefile('undone.mp3', game:HttpGet('http://syntax.rocks/audio/lc/undone.mp3'))
 writefile('sadface.png', game:HttpGet('http://syntax.rocks/audio/lc/sadface.png'))
-notify("Assets downloaded!")
+
 end
 --------
 local stopeverything = false
