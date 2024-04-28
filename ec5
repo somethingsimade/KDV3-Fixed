@@ -23,7 +23,7 @@ end
 
 if _G.msgbox == true then
 if messagebox then
-messagebox("Exlyeri Cannon V4 Loaded, Click ok to run (made by alsoo3#8722)", "Exlyeri Cannon V4 ",0)
+messagebox("Exlyeri Cannon V4 Loaded, Click ok to run", "Exlyeri Cannon V4 ",0)
 end
 end
 loadstring([[
