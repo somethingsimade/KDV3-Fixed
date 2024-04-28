@@ -1790,7 +1790,7 @@ end)
 
 
 
-rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z ) + Vector3.new(0, hipHeight or 4, 0)
+        rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X +10 ,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z + 10) + Vector3.new(0, hipHeight or 4, 0)
 
 
 for _, child in pairs(c:GetChildren()) do
