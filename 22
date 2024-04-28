@@ -1,4 +1,5 @@
 
+
 --[[ THIS WAS MADE BY NITROWO (tixbot)
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⢀⢀⡰⠊⠀⠁⠊⠢⠱⡪⡎⣮⢾⡜⡔⡱⡘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -76,7 +77,38 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
     end
 end}
 
+local gay = false -- dont edit >:(
+hmode = nil
+if gay == true then
+hmode = "norm" 
+else
+hmode = "alsoo3" -- hate this guy
+end
 
+
+Library = loadstring(readfile("lib.txt"))()
+
+local HatMode=hmode
+
+if HatMode=="alsoo3" then
+
+local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
+HATDUPES[1].Name = "DemonGodSword"
+HATDUPES[2].Name = "RainbowGodSword"
+HATDUPES[3].Name = "ToxicLordSword"
+HATDUPES[4].Name = "DemonLordSword"
+if Library.FindHat("ShadowBladeMasterAccessory") then
+Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
+end
+	
+if Library.FindHat("BladeMasterAccessory") then
+Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
+
+end
+print("i like kids")
+else
+print("richhhh")
+end
 local gay = false
 workspace.FallenPartsDestroyHeight = 0/0
 
@@ -954,7 +986,38 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
         end
     end
 end}
+local gay = false -- dont edit >:(
+hmode = nil
+if gay == true then
+hmode = "norm" 
+else
+hmode = "alsoo3" -- hate this guy
+end
 
+
+Library = loadstring(readfile("lib.txt"))()
+
+local HatMode=hmode
+
+if HatMode=="alsoo3" then
+
+local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
+HATDUPES[1].Name = "DemonGodSword"
+HATDUPES[2].Name = "RainbowGodSword"
+HATDUPES[3].Name = "ToxicLordSword"
+HATDUPES[4].Name = "DemonLordSword"
+if Library.FindHat("ShadowBladeMasterAccessory") then
+Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
+end
+	
+if Library.FindHat("BladeMasterAccessory") then
+Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
+
+end
+print("i like kids")
+else
+print("richhhh")
+end
 
 local gay = false
 workspace.FallenPartsDestroyHeight = 0/0
@@ -1662,7 +1725,7 @@ end
 end)
 pcall(function()
           for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory")      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then  then
+       if v:IsA("Accessory") and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then  
 v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
 end
 end
