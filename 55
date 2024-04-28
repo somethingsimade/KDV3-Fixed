@@ -27,7 +27,7 @@
 ⠀⠀⠀⠀⠀⡼⣯⢿⣽⢷⣟⣾⣽⣺⣗⣿⡽⣾⣺⢯⣯⡿⣯⣿⢾⣻⣾⣻⡽⠛⢁⢐⣨⣰⣴⢾⣞⣟⡗⡂⠐⡀⠂⡈⠐
 
 ]]
-_G.R6Mode = false
+_G.R6Mode = true
 _G.MiztCompat = true
  local plr =game.Players.LocalPlayer
 local oldcf
