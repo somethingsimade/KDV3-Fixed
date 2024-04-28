@@ -111,27 +111,7 @@ end
 workspace.FallenPartsDestroyHeight = 0/0
 
 --game:GetService("Workspace")["Error_30363"].EyesOfTheEverWorld.Name = "Puffer Vest"
-if gay == true then
-     game.Players:Chat("-gh 5316479641,5268602207,5316549755,5316539421,5268555719,5268720002,5268710380")
-     
-     wait(1)
-      
-     spawn(function()
-if game.Players.LocalPlayer.Character.CorruptLordSword then
-    if  game.Players.LocalPlayer.Character:FindFirstChild("ToxicLordSword") then
-    game.Players.LocalPlayer.Character.ToxicLordSword.Name =  "greensword"
-        game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-    else
-   
-    game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-end
-end
-end)
-end
+
 _G.HeadMovement = false -- respawns your character and you will also have no animations unless you run a script
 _G.HeadMovementv4 = false -- v2 was this but shit (semi-bot)
 _G.HeadMovementv3 = true -- just aligns hats (iron bulb head)
@@ -1020,27 +1000,7 @@ end
 workspace.FallenPartsDestroyHeight = 0/0
 
 --game:GetService("Workspace")["Error_30363"].EyesOfTheEverWorld.Name = "Puffer Vest"
-if gay == true then
-     game.Players:Chat("-gh 5316479641,5268602207,5316549755,5316539421,5268555719,5268720002,5268710380")
-     
-     wait(1)
-      
-     spawn(function()
-if game.Players.LocalPlayer.Character.CorruptLordSword then
-    if  game.Players.LocalPlayer.Character:FindFirstChild("ToxicLordSword") then
-    game.Players.LocalPlayer.Character.ToxicLordSword.Name =  "greensword"
-        game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-    else
-   
-    game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-end
-end
-end)
-end
+
 _G.HeadMovement = false -- respawns your character and you will also have no animations unless you run a script
 _G.HeadMovementv4 = false -- v2 was this but shit (semi-bot)
 _G.HeadMovementv3 = true -- just aligns hats (iron bulb head)
