@@ -1425,7 +1425,7 @@ if _G.wackyhead == true then
 
 
   --wait(game.Players.RespawnTime + 0.25)  
-rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y +1,char.HumanoidRootPart.CFrame.Z + 10) + Vector3.new(0, hipHeight or 4, 0)
+rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z + 10) 
 
 
 if _G.ReanimatedAnimations == true then
@@ -1794,7 +1794,7 @@ end)
 
 
 wait()
-rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y-45,char.HumanoidRootPart.CFrame.Z ) + Vector3.new(0, hipHeight or 4, 0)
+rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y+6,char.HumanoidRootPart.CFrame.Z ) 
 
 
 for _, child in pairs(c:GetChildren()) do
