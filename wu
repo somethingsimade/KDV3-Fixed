@@ -6,7 +6,7 @@ local ss
 local ss 
 if not game.Players.LocalPlayer:FindFirstChild("col") then
 ss = Instance.new("Sound",game.Players.LocalPlayer)
-ss.SoundId = getcustomasset("k/col.mp3")
+ss.SoundId = getcustomasset("col.mp3")
 ss.Name = "col"
 else
 ss = game.Players.LocalPlayer.col
