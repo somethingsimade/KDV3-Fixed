@@ -529,7 +529,6 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Typic
 
 speaker = game.Players.LocalPlayer
 	Clip = false
-	wait(0.1)
 
 	local function NoclipLoop()
 			for _, child in pairs(c:GetChildren()) do
@@ -1347,7 +1346,8 @@ end
 		local hipHeight = humanoid and humanoid.HipHeight > 0 and (humanoid.HipHeight + 1)
 		local rootPart = getRoot(character)
 		local rootPartPosition = rootPart.Position
-	
+        c.Humanoid:TakeDamage(c.Humanoid.MaxHealth*9e9)
+        c:BreakJoints()	
 	
  game.Players.LocalPlayer.Character=prt
  game.Players.LocalPlayer.Character=char
@@ -1374,8 +1374,7 @@ else
 workspace.Camera.CameraSubject = char:FindFirstChildOfClass("Humanoid")
 end
 
-c.Humanoid:TakeDamage(c.Humanoid.MaxHealth*9e9)
-c:BreakJoints()
+
 if c:FindFirstChild("Torso") then
 --c.Torso.Neck:Destroy()
 else
@@ -1395,7 +1394,6 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Typic
 
 speaker = game.Players.LocalPlayer
 	Clip = false
-	wait(0.1)
 
 	local function NoclipLoop()
 			for _, child in pairs(c:GetChildren()) do
@@ -1752,7 +1750,6 @@ redo()
 		Text = "Your character will respawn every "..game.Players.RespawnTime.." seconds."
 	})
 plr.CharacterAdded:Connect(function(re)
-repeat wait() until plr.Character:FindFirstChild("Animate")
 repeat wait() until plr.Character:FindFirstChild("Head")
 repeat wait() until plr.Character:FindFirstChildOfClass("Accessory")
 
