@@ -76,38 +76,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
     end
 end}
 
-local gay = false -- dont edit >:(
-hmode = nil
-if gay == true then
-hmode = "norm" 
-else
-hmode = "alsoo3" -- hate this guy
-end
 
-
-Library = loadstring(readfile("lib.txt"))()
-
-local HatMode=hmode
-
-if HatMode=="alsoo3" then
-
-local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
-HATDUPES[1].Name = "DemonGodSword"
-HATDUPES[2].Name = "RainbowGodSword"
-HATDUPES[3].Name = "ToxicLordSword"
-HATDUPES[4].Name = "DemonLordSword"
-if Library.FindHat("ShadowBladeMasterAccessory") then
-Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
-end
-	
-if Library.FindHat("BladeMasterAccessory") then
-Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
-
-end
-print("i like kids")
-else
-print("richhhh")
-end
 local gay = false
 workspace.FallenPartsDestroyHeight = 0/0
 
@@ -985,38 +954,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
         end
     end
 end}
-local gay = false -- dont edit >:(
-hmode = nil
-if gay == true then
-hmode = "norm" 
-else
-hmode = "alsoo3" -- hate this guy
-end
 
-
-Library = loadstring(readfile("lib.txt"))()
-
-local HatMode=hmode
-
-if HatMode=="alsoo3" then
-
-local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
-HATDUPES[1].Name = "DemonGodSword"
-HATDUPES[2].Name = "RainbowGodSword"
-HATDUPES[3].Name = "ToxicLordSword"
-HATDUPES[4].Name = "DemonLordSword"
-if Library.FindHat("ShadowBladeMasterAccessory") then
-Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
-end
-	
-if Library.FindHat("BladeMasterAccessory") then
-Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
-
-end
-print("i like kids")
-else
-print("richhhh")
-end
 
 local gay = false
 workspace.FallenPartsDestroyHeight = 0/0
@@ -1423,7 +1361,7 @@ if _G.wackyhead == true then
 
 
   --wait(game.Players.RespawnTime + 0.25)  
-rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y - 10,char.HumanoidRootPart.CFrame.Z + 10) + Vector3.new(0, hipHeight or 4, 0)
+  rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z + 10) + Vector3.new(0, hipHeight or 4, 0)
 
 
 if _G.ReanimatedAnimations == true then
