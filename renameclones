@@ -1,0 +1,34 @@
+local NameClones = {} -- table for all hat name clones
+
+for instance,variable in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    if variable:IsA("Accessory")  then
+    if variable:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" then
+    if variable:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").TextureId ~= "rbxassetid://4794299274" then
+        if NameClones[variable.Name] then
+            if NameClones[variable.Name] == "NotClonedYet" then
+                NameClones[variable.Name] = {}
+            end
+            table.insert(NameClones[variable.Name], variable)
+        else
+            NameClones[variable.Name] = "NotClonedYet"
+        end
+else
+variable.Name = "STUPID GOLDEN SWORD"
+end
+end
+    end
+end
+
+for i,v in pairs(NameClones) do
+    if type(v) == "table" then
+        local funnynumber69uwu = 1
+        for uwu,ys in pairs(v) do
+            ys.Name = ys.Name.."-"..funnynumber69uwu
+            funnynumber69uwu = funnynumber69uwu + 1
+        end
+    end
+end
+
+NameClones = "hi"
+
+-- based off mizt's but i rewrote it
