@@ -5576,6 +5576,7 @@ task.spawn(function()
 		wait(.1)
 
 		local gui = script.Parent:WaitForChild("PlayerGui")
+		gui.ResetOnSpawn = false
 
 		gui:WaitForChild("HelpMenu")
 		gui.HelpButton.MouseButton1Click:Connect(function()
