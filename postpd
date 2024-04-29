@@ -1662,29 +1662,29 @@ end
  	 elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
  	   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
  	    pcall(function()
- c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+ c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
 end)
  	  pcall(function()
-c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90)) * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90)) * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
   	  pcall(function()
- c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+ c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
    end)
    	  pcall(function()
-  c["MeshPartAccessory"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+  c["MeshPartAccessory"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
  	  pcall(function()
-c["Unloaded head"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+c["Unloaded head"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
  pcall(function()
  if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
- c["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame = char["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame*  CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+ c["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame = char["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame*  CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
 end
 end)
 pcall(function()
           for _,v in pairs(c:GetChildren()) do
        if v:IsA("Accessory") and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then  
-v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
 end
 end
    end)       
@@ -3477,29 +3477,29 @@ end
  	 elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
  	   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
  	    pcall(function()
- c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+ c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
 end)
  	  pcall(function()
-c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90)) * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90)) * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
   	  pcall(function()
- c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+ c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
    end)
    	  pcall(function()
-  c["MeshPartAccessory"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+  c["MeshPartAccessory"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
  	  pcall(function()
-c["Unloaded head"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+c["Unloaded head"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
  pcall(function()
  if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
- c["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame = char["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame*  CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+ c["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame = char["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame*  CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
 end
 end)
 pcall(function()
           for _,v in pairs(c:GetChildren()) do
        if v:IsA("Accessory") and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then  
-v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.005*math.sin(100*tick()),-.005*math.sin(100*tick()),-.005*math.sin(100*tick()))
+v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
 end
 end
    end)       
@@ -3596,7 +3596,7 @@ redo2()
 end
 end)
 
---[[Rawr X3 *nuzzles* How are you? *pounces on you* you're so warm o3o *notices you have a bulge* someone's happy! *nuzzles your necky wecky* ~murr~ hehe ;) *rubbies your bulgy wolgy* you're so big! *rubbies more on your bulgy wolgy* it doesn't stop growing .///. *kisses you and licks your neck* daddy likes ;) *nuzzle wuzzle* I hope daddy likes *wiggles butt and squirms* I wanna see your big daddy meat! *wiggles butt* I have a little itch o3o *wags tails* can you please get my itch? *put paws on your chest* nyea~ it's a seven inch itch *rubs your chest* can you pwease? *squirms* pwetty pwease? :( I need to be punished *runs paws down your chest and bites lip* like, I need to be punished really good *paws on your bulge as I lick my lips* I'm getting thirsty. I could go for some milk *unbuttons your pants as my eyes glow* you smell so musky ;) *licks shaft* mmmmmmmmmmmmmmmmmmm so musky ;) *drools all over your cawk* your daddy meat. I like. Mister fuzzy balls. *puts snout on balls and inhales deeply* oh my gawd. I'm so hard *rubbies your bulgy wolgy* *licks balls* punish me daddy nyea~ *squirms more and wiggles butt* I9/11 lovewas an yourinside muskyjob goodness *bites lip* please punish me *licks lips* nyea~ *suckles on your tip* so good *licks pre off your cock* salty goodness~ *eyes roll back and goes balls deep*
+print([[Rawr X3 *nuzzles* How are you? *pounces on you* you're so warm o3o *notices you have a bulge* someone's happy! *nuzzles your necky wecky* ~murr~ hehe ;) *rubbies your bulgy wolgy* you're so big! *rubbies more on your bulgy wolgy* it doesn't stop growing .///. *kisses you and licks your neck* daddy likes ;) *nuzzle wuzzle* I hope daddy likes *wiggles butt and squirms* I wanna see your big daddy meat! *wiggles butt* I have a little itch o3o *wags tails* can you please get my itch? *put paws on your chest* nyea~ it's a seven inch itch *rubs your chest* can you pwease? *squirms* pwetty pwease? :( I need to be punished *runs paws down your chest and bites lip* like, I need to be punished really good *paws on your bulge as I lick my lips* I'm getting thirsty. I could go for some milk *unbuttons your pants as my eyes glow* you smell so musky ;) *licks shaft* mmmmmmmmmmmmmmmmmmm so musky ;) *drools all over your cawk* your daddy meat. I like. Mister fuzzy balls. *puts snout on balls and inhales deeply* oh my gawd. I'm so hard *rubbies your bulgy wolgy* *licks balls* punish me daddy nyea~ *squirms more and wiggles butt* I9/11 lovewas an yourinside muskyjob goodness *bites lip* please punish me *licks lips* nyea~ *suckles on your tip* so good *licks pre off your cock* salty goodness~ *eyes roll back and goes balls deep*
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⢄⠖⠁⠁⠊⠂⠱⠨⡢⡣⣣⢣⢳⣱⣵⢱⡑⡌⢆⢕⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡓⠉⢮⢢⢕⢓⢓⢒⢒⡒⡢⠤⠤⢄⡠⣓⢕⣕⣯⢷⣝⣇⢧⢊⡲⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢮⡂⠅⠠⠑⢆⢕⢅⢕⢅⠎⠬⠪⣊⠎⡁⢅⡷⢃⢯⡗⠷⣽⢸⡰⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -3628,4 +3628,4 @@ end)
 ⠀⠀⠀⠀⠀⠀⠀⢌⣿⣳⣻⢾⣻⡽⣯⡯⣟⣷⢷⣻⢾⢽⡽⡽⡯⣞⣮⣟⣯⣿⢾⣾⣺⣳⣻⡽⣽⣟⣷⢿⣻⠟⠋⠍⠂⠄⠡⠐⡀⣣⣠⡐⢀⠂⠠⠁⡈⠄⢁⠐
 ⠀⠀⠀⠀⠀⠀⠠⣻⣳⢯⣟⣿⣽⣟⣷⣿⣽⣽⣫⣟⣯⢿⡽⣯⢿⡽⣞⣾⣽⣾⢿⡷⣿⣞⣷⢿⣻⣽⠟⠩⠀⢂⣁⣢⣵⢾⢾⣻⢟⡯⣟⡟⠡⠀⠅⠂⡀⢂⠐⠠
 
-]]--
+]])
