@@ -3,6 +3,7 @@ local NameClones = {} -- table for all hat name clones
 for instance,variable in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
     if variable:IsA("Accessory")  then
     if variable:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" then
+    if variable:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").TextureId ~= "rbxassetid://4794299274" then
         if NameClones[variable.Name] then
             if NameClones[variable.Name] == "NotClonedYet" then
                 NameClones[variable.Name] = {}
@@ -11,6 +12,9 @@ for instance,variable in pairs(game.Players.LocalPlayer.Character:GetChildren())
         else
             NameClones[variable.Name] = "NotClonedYet"
         end
+else
+variable.Name = "STUPID GOLDEN SWORD"
+end
 end
     end
 end
