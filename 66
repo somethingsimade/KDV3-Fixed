@@ -77,31 +77,41 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 end}
 
 
-local gay = false
+local gay = true -- dont edit >:(
+hmode = nil
+if gay == true then
+hmode = "norm" 
+else
+hmode = "alsoo3" -- hate this guy
+end
+
+
+Library = loadstring(readfile("lib.txt"))()
+
+local HatMode=hmode
+
+if HatMode=="alsoo3" then
+
+local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
+HATDUPES[1].Name = "DemonGodSword"
+HATDUPES[2].Name = "RainbowGodSword"
+HATDUPES[3].Name = "ToxicLordSword"
+HATDUPES[4].Name = "DemonLordSword"
+if Library.FindHat("ShadowBladeMasterAccessory") then
+Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
+end
+	
+if Library.FindHat("BladeMasterAccessory") then
+Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
+
+end
+else
+print("richhhh")
+end
 workspace.FallenPartsDestroyHeight = 0/0
 
 --game:GetService("Workspace")["Error_30363"].EyesOfTheEverWorld.Name = "Puffer Vest"
-if gay == true then
-     game.Players:Chat("-gh 5316479641,5268602207,5316549755,5316539421,5268555719,5268720002,5268710380")
-     
-     wait(1)
-      
-     spawn(function()
-if game.Players.LocalPlayer.Character.CorruptLordSword then
-    if  game.Players.LocalPlayer.Character:FindFirstChild("ToxicLordSword") then
-    game.Players.LocalPlayer.Character.ToxicLordSword.Name =  "greensword"
-        game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-    else
-   
-    game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-end
-end
-end)
-end
+
 _G.HeadMovement = false -- respawns your character and you will also have no animations unless you run a script
 _G.HeadMovementv4 = false -- v2 was this but shit (semi-bot)
 _G.HeadMovementv3 = true -- just aligns hats (iron bulb head)
@@ -157,7 +167,7 @@ end)
 pcall(function()
 c.SHADES.Handle.AccessoryWeld.C1 = CFrame.new(0, 0.025, -0.6, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/TypicalsConvertingLibrary/main/renameallhatclones"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/renameclones2"))()
 if _G.EnableNetLib == true then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/random-stuff/main/4eyesnetlib.lua"))()
 
@@ -385,7 +395,7 @@ end
 		else
 	
  for _,v in pairs(c:GetChildren()) do
-     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
+     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
       local a = v:Clone()
       a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
@@ -955,31 +965,42 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 end}
 
 
-local gay = false
+local gay = true -- dont edit >:(
+hmode = nil
+if gay == true then
+hmode = "norm" 
+else
+hmode = "alsoo3" -- hate this guy
+end
+
+
+Library = loadstring(readfile("lib.txt"))()
+
+local HatMode=hmode
+
+if HatMode=="alsoo3" then
+
+local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
+HATDUPES[1].Name = "DemonGodSword"
+HATDUPES[2].Name = "RainbowGodSword"
+HATDUPES[3].Name = "ToxicLordSword"
+HATDUPES[4].Name = "DemonLordSword"
+if Library.FindHat("ShadowBladeMasterAccessory") then
+Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
+end
+	
+if Library.FindHat("BladeMasterAccessory") then
+Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
+
+end
+else
+print("richhhh")
+end
+
 workspace.FallenPartsDestroyHeight = 0/0
 
 --game:GetService("Workspace")["Error_30363"].EyesOfTheEverWorld.Name = "Puffer Vest"
-if gay == true then
-     game.Players:Chat("-gh 5316479641,5268602207,5316549755,5316539421,5268555719,5268720002,5268710380")
-     
-     wait(1)
-      
-     spawn(function()
-if game.Players.LocalPlayer.Character.CorruptLordSword then
-    if  game.Players.LocalPlayer.Character:FindFirstChild("ToxicLordSword") then
-    game.Players.LocalPlayer.Character.ToxicLordSword.Name =  "greensword"
-        game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-    else
-   
-    game.Players.LocalPlayer.Character.RainbowGodSword.Name = "nils"
-game.Players.LocalPlayer.Character.CorruptLordSword.Name = "RainbowGodSword"
-game.Players.LocalPlayer.Character.nils.Name = "ToxicLordSword"
-end
-end
-end)
-end
+
 _G.HeadMovement = false -- respawns your character and you will also have no animations unless you run a script
 _G.HeadMovementv4 = false -- v2 was this but shit (semi-bot)
 _G.HeadMovementv3 = true -- just aligns hats (iron bulb head)
@@ -1035,7 +1056,7 @@ end)
 pcall(function()
 c.SHADES.Handle.AccessoryWeld.C1 = CFrame.new(0, 0.025, -0.6, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/TypicalsConvertingLibrary/main/renameallhatclones"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/renameclones2"))()
 if _G.EnableNetLib == true then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/random-stuff/main/4eyesnetlib.lua"))()
 
@@ -1116,7 +1137,7 @@ end
 		local hipHeight = humanoid and humanoid.HipHeight > 0 and (humanoid.HipHeight + 1)
 		local rootPart = getRoot(character)
 		local rootPartPosition = rootPart.Position
-        rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X +10 ,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z + 10) + Vector3.new(0, hipHeight or 4, 0)
+        rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X +5 ,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z + 5) + Vector3.new(0, hipHeight or 4, 0)
 
 
 velocity = game:GetService("RunService").Heartbeat:Connect(function(set)
@@ -1276,7 +1297,7 @@ end
 		else
 	
  for _,v in pairs(c:GetChildren()) do
-         if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
+         if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350"   and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
       local a = v:Clone()
       a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
@@ -1729,7 +1750,7 @@ end)
 
 
 
-rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z ) + Vector3.new(0, hipHeight or 4, 0)
+        rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X +5 ,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z + 5) + Vector3.new(0, hipHeight or 4, 0)
 
 
 for _, child in pairs(c:GetChildren()) do
