@@ -1370,7 +1370,7 @@ velocity:Disconnect()
 
 
 end
-redo2()
+redo()
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Respawn Time";
 		Text = "Your character will respawn every "..game.Players.RespawnTime.." seconds."
@@ -1388,7 +1388,7 @@ if re.Name ~= "non" then
         Text = "raa"
     })
 workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
-redo()
+redo2()
 end
 end)
 
