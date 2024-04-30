@@ -5,6 +5,15 @@ local is = game:GetService("InsertService")
 local t = is:LoadLocalAsset(id)
 return t
 end
+getgenv().getcustomasset = function(id)
+local s
+if not game.Players.LocalPlayer:FindFirstChild(tostring(id)) then
+s = Instance.new("Sound",game.Players.LocalPlayer)
+s.Name = tostring(id)
+s.SoundId ="rbxasset://sounds/workspace/"..id
+end
+return s.SoundId
+end
 --[[ THIS WAS MADE BY NITROWO (tixbot)
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⢀⢀⡰⠊⠀⠁⠊⠢⠱⡪⡎⣮⢾⡜⡔⡱⡘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
