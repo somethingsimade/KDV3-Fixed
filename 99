@@ -1482,7 +1482,7 @@ if re.Name ~= "non" then
         Text = "raa"
     })
 workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
-redo2()
+redo()
 end
 end)
 
