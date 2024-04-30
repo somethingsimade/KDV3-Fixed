@@ -1364,7 +1364,6 @@ if _G.EnableNetLib == true then
             end)
           elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
             connect = game:GetService("RunService").Heartbeat:Connect(function(set)
-            connect = game:GetService("RunService").Heartbeat:Connect(function(set)
             pcall(function()
     c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
     end)
