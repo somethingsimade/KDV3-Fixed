@@ -873,7 +873,7 @@ if not workspace:FindFirstChild("non") then
  char =  game:GetObjects("rbxassetid://5195737219")[1]
 else
  char = workspace.non
-ends
+end
 if not workspace:FindFirstChild("non") then
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame *CFrame.new(0,0,2))
 else
