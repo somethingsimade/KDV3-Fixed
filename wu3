@@ -1,7 +1,5 @@
 
-if syn and getsynasset then
-	getgenv().getcustomasset=getsynasset
-end
+
 local ss 
 local ss 
 if not game.Players.LocalPlayer:FindFirstChild("col") then
