@@ -172,7 +172,7 @@ end
 end
 local char
 if not workspace:FindFirstChild("non") then
- char =  game:GetObjects("rbxassetid://5195737219")[1]
+ char =  getobjects("rbxassetid://5195737219")
 else
  char = workspace.non
 end
@@ -678,16 +678,7 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("Part") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("MeshPart") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
+
 	settings().Physics.AllowSleep = false
 	oldcf = workspace.Camera.CFrame
 end)
@@ -918,7 +909,7 @@ end
 end
 local char
 if not workspace:FindFirstChild("non") then
- char =  game:GetObjects("rbxassetid://5195737219")[1]
+ char =  getobjects("rbxassetid://5195737219")
 else
  char = workspace.non
 end
@@ -1361,15 +1352,7 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("Part") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("MeshPart") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
+
 end
 	settings().Physics.AllowSleep = false
  	   end)
