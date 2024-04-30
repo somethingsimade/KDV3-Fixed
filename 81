@@ -1295,67 +1295,6 @@ local connect
 pcall(function()
 	--char.Animate.Disabled = false
 	end)
-	if c.Humanoid.RigType == Enum.HumanoidRigType.R15 and _G.R6Mode == false then
-  connect = game:GetService("RunService").Heartbeat:Connect(function(set)
-
- pcall(function()
- c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-end)
-pcall(function()
-c["GreyRobotArm"].Handle.CFrame = char["Left Arm"].CFrame  * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
- end)
- pcall(function()
- c["BlueRobotArm"].Handle.CFrame = char["Right Arm"].CFrame* CFrame.Angles(math.rad(0),math.rad(180),math.rad(0))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-    end)
-    pcall(function()
-   c["RobotArmTest"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(180),math.rad(0))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
-end)
-  pcall(function()
-c["PurpleRobotArm"].Handle.CFrame = char["Left Leg"].CFrame* CFrame.Angles(math.rad(0),math.rad(0),math.rad(0))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
-end)
-          for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory") and v.Name ~= "PurpleRobotArm" and v.Name ~= "BlueRobotArm"  and v.Name ~= "GreyRobotArm"  and v.Name ~= "RobotArmTest" and v.Name ~= "Rleg"  and v.Name ~= "Tor" and v.Name ~= "Lleg" and v.Name ~= "SkeletonLeftLeg" and v.Name ~= "RectangleHead-2"  then
- if v.Handle:IsA("MeshPart") then
-msh = v.Handle.MeshId
-txt = v.Handle.TextureID
-else
-msh = v.Handle:FindFirstChildOfClass("SpecialMesh").MeshId
-txt = v.Handle:FindFirstChildOfClass("SpecialMesh").TextureId
-end
-   for _,x in pairs(char:GetChildren()) do
-       if x:IsA("Accessory") and x.AccessoryType ~= Enum.AccessoryType.Pants  and x.AccessoryType ~= Enum.AccessoryType.Shirt   then
-   for _,q in pairs(c:GetChildren()) do
-       if q:IsA("Accessory")  and q.AccessoryType ~= Enum.AccessoryType.Pants  and q.AccessoryType ~= Enum.AccessoryType.Shirt   then
-        if q.Handle:IsA("MeshPart") then
-     if q.Handle.MeshId == msh and q.Handle.TextureID == txt then
-v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-       end
-       else
-              if q.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == msh and q.Handle:FindFirstChildOfClass("SpecialMesh").TextureId == txt then
-    v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-       end
-       end
-       end
-       end
-	   end
- 	   end
- 	   end
- 	   end
- 	    for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory")   then
-v.Handle.CanCollide = false
-           end
- end
-   for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Part") and v.Name ~= "Part" and v.Name ~= "RectangleHead-1"  and v.Name ~= "RectangleFace-1" and v.Name ~= "Horns of the Forsaken" and v.Name ~= "RectangleFace" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2" then
-v.Color = char[v.Name].Color
-           end
-   end
-
-end
-	settings().Physics.AllowSleep = false
- 	   end)
- 	 elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
  	   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
  	    pcall(function()
  c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
@@ -1394,20 +1333,11 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("Part") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("MeshPart") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
 
+   pcall(function()
 	settings().Physics.AllowSleep = false
+   end)
 end)
-end
 
 
 char:FindFirstChildOfClass("Humanoid").Died:Connect(function()
