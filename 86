@@ -1,10 +1,3 @@
-local Source = game:HttpGet("https://raw.githubusercontent.com/KadeTheExploiter/IncognitoScripts/main/ScriptSupport.lua")
-loadstring(Source)()
-getgenv().getobjects = function(id)
-local is = game:GetService("InsertService")
-local t = is:LoadLocalAsset(id)
-return t
-end
 
 --[[ THIS WAS MADE BY NITROWO (tixbot)
 
@@ -210,7 +203,7 @@ end
 end
 local char
 if not workspace:FindFirstChild("non") then
- char =  getobjects("rbxassetid://5195737219")
+ char =  game:GetObjects("rbxassetid://5195737219")[1]
 else
  char = workspace.non
 end
@@ -290,10 +283,9 @@ for _, child in pairs(c:GetChildren()) do
 
 	
 
-
-
+	
  for _,v in pairs(c:GetChildren()) do
-         if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350"   and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
+     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
       local a = v:Clone()
       a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
@@ -320,6 +312,7 @@ a.Handle.Transparency = 1
 end
            end
        end
+
 
 for i,v in pairs(c:GetChildren()) do
 	if v:IsA("Accessory") then
@@ -1081,10 +1074,116 @@ for _, child in pairs(c:GetChildren()) do
 	
 
 
+if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+	local players = game:GetService("Players")
+local player = players.LocalPlayer
+for _, assetInfo : AssetInfo in pairs(game.Players:GetCharacterAppearanceInfoAsync(player.UserId).assets) do
+	if assetInfo.assetType.name ~= "Hat" and not string.find(assetInfo.assetType.name, "Accessory") then continue end
+local assetType = assetInfo.assetType.name
+local id = assetInfo.id
+local new
+if string.find(assetType,"Accessory") then
+new = string.gsub(assetType,"Accessory","")
+assetType = new
+end
+z = game:GetService("InsertService"):LoadLocalAsset("rbxassetid://"..id)
+z.Handle.CanCollide = false
+z.Handle.CFrame = CFrame.new(0,0,0)
+z.AccessoryType = Enum.AccessoryType[assetType]
+w = Instance.new("Weld",z.Handle)
+w.C0 = w.Parent:FindFirstChildOfClass("Attachment").CFrame
+w.Name = "AccessoryWeld"
+w.Part0 = z.Handle
+a  = w.Parent:FindFirstChildOfClass("Attachment")
+ if string.find(a.Name,"Left") then
+  if string.find(a.Name,"Shoulder") then
+w.Part1 = char["Left Arm"]
+w.C1 =  char["Left Arm"].LeftShoulderAttachment.CFrame
+end
+ elseif string.find(a.Name,"Right") then
+  if string.find(a.Name,"Shoulder") then
+  w.Part1 = char["Right Arm"]
+  w.C1 =  char["Right Arm"].RightShoulderAttachment.CFrame
+end
+ elseif string.find(a.Name,"Left") then
+  if string.find(a.Name,"Foot") then
+  w.Part1 = char["Left Leg"]
+  w.C1 =  char["Left Leg"].LeftFootAttachment.CFrame
+end
+ elseif string.find(a.Name,"Right") then
+  if string.find(a.Name,"Foot") then
+  w.Part1 = char["Right Leg"]
+  w.C1 =  char["Right Leg"].RightFootAttachment.CFrame
+end
+ elseif string.find(a.Name,"Waist") then
+  if string.find(a.Name,"Back") then
+     w.Part1 = char["Torso"]
+       w.C1 =  char["Torso"].WaistBackAttachment.CFrame
+       end    
+        elseif string.find(a.Name,"Body") then
+  if string.find(a.Name,"Back") then
+     w.Part1 = char["Torso"]
+       w.C1 =  char["Torso"].BodyBackAttachment.CFrame
+       elseif  string.find(a.Name,"Front") then
+          w.Part1 = char["Torso"]
+       w.C1 =  char["Torso"].BodyFrontAttachment.CFrame
+       end    
+            elseif string.find(a.Name,"Hat") then
+                w.Part1 = char["Head"]
+       w.C1 =  char["Head"].HatAttachment.CFrame 
+                elseif string.find(a.Name,"FaceFront") then
+                       w.Part1 = char["Head"]
+       w.C1 =  char["Head"].FaceFrontAttachment.CFrame 
+                       elseif string.find(a.Name,"FaceCenter") then
+                       w.Part1 = char["Head"]
+       w.C1 =  char["Head"].FaceCenterAttachment.CFrame 
+                                  elseif string.find(a.Name,"Neck") then
+                       w.Part1 = char["Torso"]
+       w.C1 =  char["Torso"].NeckAttachment.CFrame 
+                           elseif string.find(a.Name,"Hair") then
+                       w.Part1 = char["Head"]
+       w.C1 =  char["Head"].HairAttachment.CFrame 
 end
 
 
+z.Handle.Transparency = 1
+z.Handle.Anchored = false
 
+
+   for _,v in pairs(char:GetChildren()) do
+       if v:IsA("Accessory") and v.AccessoryType ~= Enum.AccessoryType.Pants and v.AccessoryType ~= Enum.AccessoryType.Jacket  and v.AccessoryType ~= Enum.AccessoryType.Shirt   then
+msh = v.Handle:FindFirstChildOfClass("SpecialMesh").MeshId
+txt = v.Handle:FindFirstChildOfClass("SpecialMesh").TextureId
+   for _,q in pairs(c:GetChildren()) do
+       if q:IsA("Accessory")  and q.AccessoryType ~= Enum.AccessoryType.Pants  and q.AccessoryType ~= Enum.AccessoryType.Shirt  and v.AccessoryType ~= Enum.AccessoryType.Jacket   then
+       if q.Handle:IsA("MeshPart") then
+       if q.Handle.MeshId == msh and q.Handle.TextureID == txt then
+       v.Name = q.Name
+       end
+       else
+        if q.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == msh and q.Handle:FindFirstChildOfClass("SpecialMesh").TextureId == txt then
+       v.Name = q.Name
+       end
+       end
+       end
+       end
+end
+end
+char.Humanoid:AddAccessory(z)
+if z.Handle:FindFirstChildOfClass("SpecialMesh") then
+if z.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == "rbxassetid://13421774668"  then
+z:Destroy() 
+end
+end
+ if z.Name == "LARM" or  z.Name == "RARM" then
+ z:Destroy() 
+ end
+if z.AccessoryType == Enum.AccessoryType.Pants or z.AccessoryType == Enum.AccessoryType.Shirt  or z.AccessoryType == Enum.AccessoryType.Jacket then
+z:Destroy() 
+end
+
+	end
+		else
 	
  for _,v in pairs(c:GetChildren()) do
          if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350"   and v.Name ~="Unloaded head" and v.Name ~= "MeshPartAccessory" then
@@ -1114,6 +1213,7 @@ a.Handle.Transparency = 1
 end
            end
        end
+	end
 
 
 for i,v in pairs(c:GetChildren()) do
@@ -1887,146 +1987,35 @@ for _, child in pairs(c:GetChildren()) do
 
 	
 
-if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
-	local players = game:GetService("Players")
-local player = players.LocalPlayer
-for _, assetInfo : AssetInfo in pairs(game.Players:GetCharacterAppearanceInfoAsync(player.UserId).assets) do
-	if assetInfo.assetType.name ~= "Hat" and not string.find(assetInfo.assetType.name, "Accessory") then continue end
-local assetType = assetInfo.assetType.name
-local id = assetInfo.id
-local new
-if string.find(assetType,"Accessory") then
-new = string.gsub(assetType,"Accessory","")
-assetType = new
-end
-z = game:GetService("InsertService"):LoadLocalAsset("rbxassetid://"..id)
-z.Handle.CanCollide = false
-z.Handle.CFrame = CFrame.new(0,0,0)
-z.AccessoryType = Enum.AccessoryType[assetType]
-w = Instance.new("Weld",z.Handle)
-w.C0 = w.Parent:FindFirstChildOfClass("Attachment").CFrame
-w.Name = "AccessoryWeld"
-w.Part0 = z.Handle
-a  = w.Parent:FindFirstChildOfClass("Attachment")
- if string.find(a.Name,"Left") then
-  if string.find(a.Name,"Shoulder") then
-w.Part1 = char["Left Arm"]
-w.C1 =  char["Left Arm"].LeftShoulderAttachment.CFrame
-end
- elseif string.find(a.Name,"Right") then
-  if string.find(a.Name,"Shoulder") then
-  w.Part1 = char["Right Arm"]
-  w.C1 =  char["Right Arm"].RightShoulderAttachment.CFrame
-end
- elseif string.find(a.Name,"Left") then
-  if string.find(a.Name,"Foot") then
-  w.Part1 = char["Left Leg"]
-  w.C1 =  char["Left Leg"].LeftFootAttachment.CFrame
-end
- elseif string.find(a.Name,"Right") then
-  if string.find(a.Name,"Foot") then
-  w.Part1 = char["Right Leg"]
-  w.C1 =  char["Right Leg"].RightFootAttachment.CFrame
-end
- elseif string.find(a.Name,"Waist") then
-  if string.find(a.Name,"Back") then
-     w.Part1 = char["Torso"]
-       w.C1 =  char["Torso"].WaistBackAttachment.CFrame
-       end    
-        elseif string.find(a.Name,"Body") then
-  if string.find(a.Name,"Back") then
-     w.Part1 = char["Torso"]
-       w.C1 =  char["Torso"].BodyBackAttachment.CFrame
-       elseif  string.find(a.Name,"Front") then
-          w.Part1 = char["Torso"]
-       w.C1 =  char["Torso"].BodyFrontAttachment.CFrame
-       end    
-            elseif string.find(a.Name,"Hat") then
-                w.Part1 = char["Head"]
-       w.C1 =  char["Head"].HatAttachment.CFrame 
-                elseif string.find(a.Name,"FaceFront") then
-                       w.Part1 = char["Head"]
-       w.C1 =  char["Head"].FaceFrontAttachment.CFrame 
-                       elseif string.find(a.Name,"FaceCenter") then
-                       w.Part1 = char["Head"]
-       w.C1 =  char["Head"].FaceCenterAttachment.CFrame 
-                                  elseif string.find(a.Name,"Neck") then
-                       w.Part1 = char["Torso"]
-       w.C1 =  char["Torso"].NeckAttachment.CFrame 
-                           elseif string.find(a.Name,"Hair") then
-                       w.Part1 = char["Head"]
-       w.C1 =  char["Head"].HairAttachment.CFrame 
-end
-
-
-z.Handle.Transparency = 1
-z.Handle.Anchored = false
-
-
-   for _,v in pairs(char:GetChildren()) do
-       if v:IsA("Accessory") and v.AccessoryType ~= Enum.AccessoryType.Pants and v.AccessoryType ~= Enum.AccessoryType.Jacket  and v.AccessoryType ~= Enum.AccessoryType.Shirt   then
-msh = v.Handle:FindFirstChildOfClass("SpecialMesh").MeshId
-txt = v.Handle:FindFirstChildOfClass("SpecialMesh").TextureId
-   for _,q in pairs(c:GetChildren()) do
-       if q:IsA("Accessory")  and q.AccessoryType ~= Enum.AccessoryType.Pants  and q.AccessoryType ~= Enum.AccessoryType.Shirt  and v.AccessoryType ~= Enum.AccessoryType.Jacket   then
-       if q.Handle:IsA("MeshPart") then
-       if q.Handle.MeshId == msh and q.Handle.TextureID == txt then
-       v.Name = q.Name
-       end
-       else
-              if q.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == msh and q.Handle:FindFirstChildOfClass("SpecialMesh").TextureId == txt then
-       v.Name = q.Name
-       end
-       end
-       end
-       end
-end
-end
-char.Humanoid:AddAccessory(z)
-if z.Handle:FindFirstChildOfClass("SpecialMesh") then
-if z.Handle:FindFirstChildOfClass("SpecialMesh").MeshId == "rbxassetid://13421774668"  then
-z:Destroy() 
-end
-end
- if z.Name == "LARM" or  z.Name == "RARM" then
- z:Destroy() 
- end
-if z.AccessoryType == Enum.AccessoryType.Pants or z.AccessoryType == Enum.AccessoryType.Shirt  or z.AccessoryType == Enum.AccessoryType.Jacket then
-z:Destroy() 
-end
-
-	end
-		else
-	
  for _,v in pairs(c:GetChildren()) do
-     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
-      if not char:FindFirstChild(v.Name) then
-      local a = v:Clone()
-      a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
+    if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
+     if not char:FindFirstChild(v.Name) then
+     local a = v:Clone()
+     a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
 Accessory = v
-      Handle = Accessory.Handle
-      pcall(function() Handle:FindFirstChildOfClass("Weld"):Destroy() end)
-    	local NewWeld = Instance.new("Weld")
-    	NewWeld.Name = "AccessoryWeld"
-    	NewWeld.Part0 = Handle
-    	local Attachment = Handle:FindFirstChildOfClass("Attachment")
-    	if Attachment then
-    		NewWeld.C0 = Attachment.CFrame
-    		NewWeld.C1 = char:FindFirstChild(tostring(Attachment), true).CFrame
-    		NewWeld.Part1 = char:FindFirstChild(tostring(Attachment), true).Parent
-    	else
-    		NewWeld.Part1 = FakeCharacter:FindFirstChild("Head")
-    		NewWeld.C1 = CFrame.new(0,char:FindFirstChild("Head").Size.Y / 2,0) * Accessory.AttachmentPoint:Inverse()
-    	end
-    	Handle.CFrame = NewWeld.Part1.CFrame * NewWeld.C1 * NewWeld.C0:Inverse()
-    	NewWeld.Parent = Accessory.Handle 
+     Handle = Accessory.Handle
+     pcall(function() Handle:FindFirstChildOfClass("Weld"):Destroy() end)
+       local NewWeld = Instance.new("Weld")
+       NewWeld.Name = "AccessoryWeld"
+       NewWeld.Part0 = Handle
+       local Attachment = Handle:FindFirstChildOfClass("Attachment")
+       if Attachment then
+           NewWeld.C0 = Attachment.CFrame
+           NewWeld.C1 = char:FindFirstChild(tostring(Attachment), true).CFrame
+           NewWeld.Part1 = char:FindFirstChild(tostring(Attachment), true).Parent
+       else
+           NewWeld.Part1 = FakeCharacter:FindFirstChild("Head")
+           NewWeld.C1 = CFrame.new(0,char:FindFirstChild("Head").Size.Y / 2,0) * Accessory.AttachmentPoint:Inverse()
+       end
+       Handle.CFrame = NewWeld.Part1.CFrame * NewWeld.C1 * NewWeld.C0:Inverse()
+       NewWeld.Parent = Accessory.Handle 
 a.Parent = char
 a.Handle.Anchored = false
 a.Handle.Transparency = 1
 end
-           end
-       end
-	end
+          end
+      end
+
 
 
 for i,v in pairs(c:GetChildren()) do
