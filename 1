@@ -1132,18 +1132,6 @@ speaker = game.Players.LocalPlayer
 					child.CanCollide = false
 				end
 			end
-if c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-for i,v in pairs(char:GetChildren()) do		
-		if v:IsA("Accessory") then
-			if not v then return end
-			if not v.Handle:FindFirstChildOfClass("SpecialMesh") then
-				Library.RemoveMesh(c:FindFirstChild(v.Name):FindFirstChild("Handle"))
-			end
-		end
-	end
-end
-
-		end
         Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
 
 	
@@ -1155,40 +1143,6 @@ local Char = game.Players.LocalPlayer.Character
     for i,v in next, Hum:GetPlayingAnimationTracks() do
         v:Stop()
     end
-if _G.Fling == true then
-local Held = false
-
-local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-
-Mouse.Button1Down:Connect(function()
-    Held = true
-end)
-
-Mouse.Button1Up:Connect(function()
-    Held = false
-end)
-c.HumanoidRootPart.Transparency = 0.7
-local BodyVelocity = Instance.new("BodyVelocity", c.HumanoidRootPart)
-BodyVelocity.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
-BodyVelocity.Velocity = Vector3.new(0, 0, 0)
-flinger = Instance.new("BodyAngularVelocity",c.HumanoidRootPart)
-flinger.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
-flinger.P = 1000000000000000000000000000
-flinger.AngularVelocity = Vector3.new(5000000000000000000,5000000000000000000,5000000000000000000)
-spawn(function()
-    while task.wait() do
-        pcall(function()
-            if Held == true then
-                   _G.Flinging = true
-               c.HumanoidRootPart.CFrame = Mouse.Hit
-            else
-                   _G.Flinging = false
-                c.HumanoidRootPart.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-10,0)
-            end
-        end)
-    end
-end)
-end
 
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
@@ -1205,53 +1159,7 @@ local removinghealth = false
        
        end
    
-       local anything = c:FindFirstChildOfClass("BodyColors")
-if _G.HatCollide == true then
-if c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
-    local torso = c.Torso
-    local root = c.HumanoidRootPart
-torso:Destroy()
- root:Destroy()
-    if shp then
-        for i,v in pairs(c:GetChildren()) do
-            if v:IsA("Accessory") then
-                shp(v, "BackendAccoutrementState", 0)
-            end 
-        end
-    end
-    anything:Destroy()
-else
-    local torso = c.UpperTorso
-local torso2 = c.LowerTorso
-    local root = c.HumanoidRootPart
-torso:Destroy()
-torso2:Destroy()
- root:Destroy()
-    if shp then
-        for i,v in pairs(c:GetChildren()) do
-            if v:IsA("Accessory") then
-                shp(v, "BackendAccoutrementState", 0)
-            end 
-        end
-    end
-    anything:Destroy()
-end
-    end
- if _G.wackyhead == true and _G.HatBody == true then
-     c.Head:Destroy()
-     c.PrimaryPart = c["Right Arm"]
-     
- end
-  if _G.wackyhead == true and _G.BlockArm == true then
-     c.Head:Destroy()
-     c.PrimaryPart = c["Right Arm"]
- end
- local canactuallydo
- if _G.FasterLoad == true then
-  canactuallydo = false
- else
-       canactuallydo = true
- end
+   
 for k,v in pairs(c:GetChildren()) do
     if v:IsA("Accessory") then
    --     v.Handle:FindFirstChild("Attachment"):Destroy() -- destroying basic welds
@@ -1294,9 +1202,6 @@ if _G.EnableNetLib == true then
 
 
     local connect
-    pcall(function()
-        --char.Animate.Disabled = false
-        end)
         if c.Humanoid.RigType == Enum.HumanoidRigType.R15 and _G.R6Mode == false then
       connect = game:GetService("RunService").Heartbeat:Connect(function(set)
     
@@ -1458,13 +1363,13 @@ for _, child in pairs(c:GetChildren()) do
 				    child.Handle.Anchored = false
 				end
 			end
-wait(game.Players.RespawnTime + 0.5)
+wait(game.Players.RespawnTime + 0.1)
 connect:Disconnect()
 velocity:Disconnect()
 
 
 end
-redo()
+redo2()
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Respawn Time";
 		Text = "Your character will respawn every "..game.Players.RespawnTime.." seconds."
