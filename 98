@@ -182,15 +182,16 @@ if not workspace:FindFirstChild("non") then
 else
  char = workspace.non
 end
+pcall(function()
 if _G.MiztCompat == false then
 char.Name = c.Name.." (Dummy)"
 else
 char.Name = "non"
 end
-if not char.Highlight then
+end)
+
 zz = Instance.new("Highlight",char)
 zz.FillTransparency = 1
-end
 if not workspace:FindFirstChild("non") then
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame *CFrame.new(0,0,2))
 else
