@@ -1,10 +1,4 @@
-local Source = game:HttpGet("https://raw.githubusercontent.com/KadeTheExploiter/IncognitoScripts/main/ScriptSupport.lua")
-loadstring(Source)()
-getgenv().getobjects = function(id)
-local is = game:GetService("InsertService")
-local t = is:LoadLocalAsset(id)
-return t
-end
+
 --[[ THIS WAS MADE BY NITROWO (tixbot)
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⢀⢀⢀⡰⠊⠀⠁⠊⠢⠱⡪⡎⣮⢾⡜⡔⡱⡘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -83,37 +77,6 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 end}
 
 
-local gay = true -- dont edit >:(
-hmode = nil
-if gay == true then
-hmode = "norm" 
-else
-hmode = "alsoo3" -- hate this guy
-end
-
-
-Library = loadstring(readfile("lib.txt"))()
-
-local HatMode=hmode
-
-if HatMode=="alsoo3" then
-
-local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
-HATDUPES[1].Name = "DemonGodSword"
-HATDUPES[2].Name = "RainbowGodSword"
-HATDUPES[3].Name = "ToxicLordSword"
-HATDUPES[4].Name = "DemonLordSword"
-if Library.FindHat("ShadowBladeMasterAccessory") then
-Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
-end
-	
-if Library.FindHat("BladeMasterAccessory") then
-Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
-
-end
-else
-print("richhhh")
-end
 workspace.FallenPartsDestroyHeight = 0/0
 
 --game:GetService("Workspace")["Error_30363"].EyesOfTheEverWorld.Name = "Puffer Vest"
@@ -209,7 +172,7 @@ end
 end
 local char
 if not workspace:FindFirstChild("non") then
- char = getobjects("rbxassetid://5195737219")
+ char =  game:GetObjects("rbxassetid://5195737219")[1]
 else
  char = workspace.non
 end
@@ -860,38 +823,6 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 end}
 
 
-local gay = true -- dont edit >:(
-hmode = nil
-if gay == true then
-hmode = "norm" 
-else
-hmode = "alsoo3" -- hate this guy
-end
-
-
-Library = loadstring(readfile("lib.txt"))()
-
-local HatMode=hmode
-
-if HatMode=="alsoo3" then
-
-local HATDUPES = Library.MakeTableOfHats("Mesh",{Mesh_Id=4315410540})
-HATDUPES[1].Name = "DemonGodSword"
-HATDUPES[2].Name = "RainbowGodSword"
-HATDUPES[3].Name = "ToxicLordSword"
-HATDUPES[4].Name = "DemonLordSword"
-if Library.FindHat("ShadowBladeMasterAccessory") then
-Library.FindHat("ShadowBladeMasterAccessory").Name="VoidLordSword"
-end
-	
-if Library.FindHat("BladeMasterAccessory") then
-Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
-
-end
-else
-print("richhhh")
-end
-
 workspace.FallenPartsDestroyHeight = 0/0
 
 --game:GetService("Workspace")["Error_30363"].EyesOfTheEverWorld.Name = "Puffer Vest"
@@ -987,7 +918,7 @@ end
 end
 local char
 if not workspace:FindFirstChild("non") then
- char =  getobjects("rbxassetid://5195737219")
+ char =  game:GetObjects("rbxassetid://5195737219")[1]
 else
  char = workspace.non
 end
