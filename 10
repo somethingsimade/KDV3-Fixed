@@ -1132,6 +1132,7 @@ speaker = game.Players.LocalPlayer
 					child.CanCollide = false
 				end
 			end
+        end
         Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
 
 	
