@@ -1391,16 +1391,18 @@ velocity:Disconnect()
 
 
 end
-redo2()
+redo()
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Respawn Time";
 		Text = "Your character will respawn every "..game.Players.RespawnTime.." seconds."
 	})
 plr.CharacterAdded:Connect(function(re)
-    connect:Disconnect()
 repeat wait() until plr.Character:FindFirstChild("Head")
 repeat wait() until plr.Character:FindFirstChildOfClass("Accessory")
-
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Respawn Time";
+    Text = "ra"
+})
 if re.Name ~= "non" then
 workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
 redo2()
