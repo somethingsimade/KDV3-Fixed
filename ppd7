@@ -833,9 +833,7 @@ local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
 end)
-pcall(function()
-c.SHADES.Handle.AccessoryWeld.C1 = CFrame.new(0, 0.025, -0.6, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-end)
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/renameclones"))()
 if _G.EnableNetLib == true then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/random-stuff/main/4eyesnetlib.lua"))()
@@ -875,12 +873,7 @@ if not workspace:FindFirstChild("non") then
  char =  game:GetObjects("rbxassetid://5195737219")[1]
 else
  char = workspace.non
-end
-if _G.MiztCompat == false then
-char.Name = c.Name.." (Dummy)"
-else
-char.Name = "non"
-end
+ends
 if not workspace:FindFirstChild("non") then
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame *CFrame.new(0,0,2))
 else
