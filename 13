@@ -661,15 +661,6 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("Part") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("MeshPart") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
 end
 	settings().Physics.AllowSleep = false
  	   end)
@@ -712,15 +703,6 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("Part") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("MeshPart") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
 end
 	settings().Physics.AllowSleep = false
 	oldcf = workspace.Camera.CFrame
@@ -1431,15 +1413,6 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("Part") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("MeshPart") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
 end
 	settings().Physics.AllowSleep = false
  	   end)
@@ -1482,16 +1455,6 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("Part") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
-for i,v in pairs(c:GetDescendants()) do
-if v:isA("MeshPart") then
-sethiddenproperty(v,"NetworkIsSleeping", false)
-end
-end
 	oldcf = workspace.Camera.CFrame
 	settings().Physics.AllowSleep = false
 end)
