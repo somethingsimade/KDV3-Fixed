@@ -674,47 +674,6 @@ end
 	settings().Physics.AllowSleep = false
  	   end)
  	 elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
- 	   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
- 	    pcall(function()
- c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-end)
- 	  pcall(function()
-c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90)) * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
- end)
-  	  pcall(function()
- c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-   end)
-   	  pcall(function()
-  c["RARM"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
- end)
- 	  pcall(function()
-c["LARM"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
- end)
- pcall(function()
- if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
- c["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame = char["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame*  CFrame.Angles(0,0,-.0005*math.sin(100*tick())) 
-end
-end)
-pcall(function()
-          for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory") and v.Name ~= "fooblet" and v.Name ~= "gooblet"  and v.Name ~= "RARM"  and v.Name ~= "LARM"and v.Name ~= "Tor"  and v.Name ~= "Tor" and v.Name ~= "Lleg" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2"  then
-v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-end
-end
-   end)       
-  for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory")   then
-v.Handle.CanCollide = false
-           end
- end
-   for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Part") and v.Name ~= "Part" and v.Name ~= "RectangleHead-1"  and v.Name ~= "RectangleFace-1" and v.Name ~= "Horns of the Forsaken" and v.Name ~= "RectangleFace" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2" then
-v.Color = char[v.Name].Color
-           end
-   end
-	settings().Physics.AllowSleep = false
-	oldcf = workspace.Camera.CFrame
-end)
 end
 
 
@@ -1396,6 +1355,7 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
+
 	oldcf = workspace.Camera.CFrame
 	settings().Physics.AllowSleep = false
 end)
