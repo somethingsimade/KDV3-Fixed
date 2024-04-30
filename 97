@@ -187,8 +187,10 @@ char.Name = c.Name.." (Dummy)"
 else
 char.Name = "non"
 end
+if not char.Highlight then
 zz = Instance.new("Highlight",char)
 zz.FillTransparency = 1
+end
 if not workspace:FindFirstChild("non") then
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame *CFrame.new(0,0,2))
 else
@@ -1474,6 +1476,10 @@ game.StarterGui:SetCore("SendNotification", {
     Text = "ra"
 })
 if re.Name ~= "non" then
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Respawn Time";
+        Text = "raa"
+    })
 workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
 redo2()
 end
