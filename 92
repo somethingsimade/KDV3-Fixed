@@ -1398,7 +1398,7 @@ velocity:Disconnect()
 
 
 end
-redo()
+redo2()
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Respawn Time";
 		Text = "Your character will respawn every "..game.Players.RespawnTime.." seconds."
