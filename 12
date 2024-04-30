@@ -661,7 +661,6 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-end
 	settings().Physics.AllowSleep = false
  	   end)
  	 elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
@@ -703,7 +702,6 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
-end
 	settings().Physics.AllowSleep = false
 	oldcf = workspace.Camera.CFrame
 end)
