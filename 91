@@ -1404,6 +1404,7 @@ redo()
 		Text = "Your character will respawn every "..game.Players.RespawnTime.." seconds."
 	})
 plr.CharacterAdded:Connect(function(re)
+    connect:Disconnect()
 repeat wait() until plr.Character:FindFirstChild("Head")
 repeat wait() until plr.Character:FindFirstChildOfClass("Accessory")
 
