@@ -837,46 +837,16 @@ end)
 end
 
 
-char:FindFirstChildOfClass("Humanoid").Died:Connect(function()
-ws= workspace
-
-lp = game.Players.LocalPlayer
-
-local function respawnrequest()
-    local cameraCframe = ws.CurrentCamera.CFrame
-    local c = lp.Character
-    lp.Character = nil
-    lp.Character = c
-    ws.CurrentCamera:GetPropertyChangedSignal("CFrame"):Wait()
-    ws.CurrentCamera.CFrame = cameraCframe
-end
-
-
-Noclipping:Disconnect()
-local spamRequests = true
-spawn(function()
-    while wait(0.1) and spamRequests do
-        respawnrequest()
-    end
-end)
-wait(0.5)
-
-
-spamRequests = false
-wait(game.Players.RespawnTime)
-connect:Disconnect()
-char:Destroy()
-velocity:Disconnect()
-end)
-
 
 		workspace.FallenPartsDestroyHeight = -1000
 		settings().Physics.AllowSleep = false
 
 
 wait()
+pcall(function()
 rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,-300,char.HumanoidRootPart.CFrame.Z) + Vector3.new(0, hipHeight or 4, 0)
-
+end)
+pcall(function()
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
 					child.Anchored = false
@@ -884,40 +854,8 @@ for _, child in pairs(c:GetChildren()) do
 				    child.Handle.Anchored = false
 				end
 			end
+        end)
 
---[[Rawr X3 *nuzzles* How are you? *pounces on you* you're so warm o3o *notices you have a bulge* someone's happy! *nuzzles your necky wecky* ~murr~ hehe ;) *rubbies your bulgy wolgy* you're so big! *rubbies more on your bulgy wolgy* it doesn't stop growing .///. *kisses you and licks your neck* daddy likes ;) *nuzzle wuzzle* I hope daddy likes *wiggles butt and squirms* I wanna see your big daddy meat! *wiggles butt* I have a little itch o3o *wags tails* can you please get my itch? *put paws on your chest* nyea~ it's a seven inch itch *rubs your chest* can you pwease? *squirms* pwetty pwease? :( I need to be punished *runs paws down your chest and bites lip* like, I need to be punished really good *paws on your bulge as I lick my lips* I'm getting thirsty. I could go for some milk *unbuttons your pants as my eyes glow* you smell so musky ;) *licks shaft* mmmmmmmmmmmmmmmmmmm so musky ;) *drools all over your cawk* your daddy meat. I like. Mister fuzzy balls. *puts snout on balls and inhales deeply* oh my gawd. I'm so hard *rubbies your bulgy wolgy* *licks balls* punish me daddy nyea~ *squirms more and wiggles butt* I9/11 lovewas an yourinside muskyjob goodness *bites lip* please punish me *licks lips* nyea~ *suckles on your tip* so good *licks pre off your cock* salty goodness~ *eyes roll back and goes balls deep*
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⢄⠖⠁⠁⠊⠂⠱⠨⡢⡣⣣⢣⢳⣱⣵⢱⡑⡌⢆⢕⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡓⠉⢮⢢⢕⢓⢓⢒⢒⡒⡢⠤⠤⢄⡠⣓⢕⣕⣯⢷⣝⣇⢧⢊⡲⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢮⡂⠅⠠⠑⢆⢕⢅⢕⢅⠎⠬⠪⣊⠎⡁⢅⡷⢃⢯⡗⠷⣽⢸⡰⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⢞⠕⡅⠄⢁⠐⡀⠌⡈⠌⢊⢇⠠⠁⠄⠂⣰⢙⠌⠠⢀⠐⢨⢾⠡⣃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢂⢂⠐⢈⠠⠐⠀⠄⠄⠂⡈⢪⡂⢐⠀⠅⠮⠔⢔⠈⡀⠌⠊⢹⠡⡣⢓⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡪⡚⡀⠂⠄⠐⡀⠡⠐⢀⠁⠄⠂⡉⠄⢐⠀⡂⡜⡂⠂⠄⠂⢡⠂⢼⢨⡲⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡝⡀⢐⠈⡀⠡⠀⡂⠨⠀⡢⠑⠁⡂⠪⢠⠐⢀⠡⠀⢅⢆⠡⢁⠐⡀⡇⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠃⠩⡡⡰⠠⢅⠐⠀⡂⠎⠀⢀⢀⢂⠐⡀⢱⠀⠄⢁⠂⢸⡐⡠⣢⢪⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⢑⠡⡀⡤⣢⢡⢔⡁⢧⡑⢔⢕⢝⢮⢳⢑⠈⠠⠀⠵⢌⠪⡂⢕⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⡄
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣕⡐⠕⠙⡨⡠⠂⡘⢄⠐⡀⠄⠂⡡⠃⡁⠄⠡⢈⠠⠢⡑⢌⠎⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢰⠘⢜⢢⠨
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡂⡧⣁⠢⠣⠦⠅⠀⠀⠁⠁⠊⢁⠐⠠⡐⢄⣵⣴⣥⡑⡬⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠇⢃⠐⢀⠂⠑⢕
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⢆⡑⣀⠀⢁⣀⢀⠠⡰⠉⢆⢠⢊⣷⢾⣟⡿⣞⣯⣧⢱⣁⣦⣮⣾⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢃⠡⠐⢀⠐⡀⠂⡁⠐
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢵⠘⢌⠀⠢⠅⡓⢀⠂⠌⣳⢿⢽⢯⡾⣽⣟⣯⣿⡿⣯⡷⣟⡾⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⡢⡈⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⢈⠀⠈⡡⣣⣿⠗⠟⡅⠄⠂⡐⢸⢯⢿⡽⡽⣷⣿⣟⣯⣟⣷⣻⡽⣽⣻⡿⣦⡂⠀⠀⠀⠀⠀⠀⠀⠀⢌⠎⠀⠀⠀⠀⠀⠀⢐
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠂⠀⢀⠂⡀⡐⣾⣟⣯⣷⣠⡱⡄⡅⡄⢕⠹⢯⢯⣿⣻⡾⡯⣗⣟⣾⣺⢽⣳⣻⣞⣟⣿⠈⠀⠀⠀⠀⠀⠀⢨⠊⠀⠀⠀⠀⠀⠀⠀⡪
-⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠄⠁⠀⠀⢀⣾⢿⣽⣿⢽⡹⣊⠂⡂⠌⢈⠊⡬⢟⣾⣯⢿⢽⣻⣞⣾⣺⢯⣟⣾⣺⢿⠁⠀⠀⠀⠀⠀⠀⠐⡸⠀⠀⠀⠀⠀⠀⠀⢀⠣
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣸⣟⣯⡿⠺⠕⡈⠄⠂⠄⠂⡐⠀⠌⡪⣿⡾⡯⡿⣵⣗⡷⡯⣟⣾⣺⢾⣿⠡⠀⠀⠀⠀⠀⠀⠨⡂⠀⠀⠀⠀⠀⢀⠐⠀⠂
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢢⣿⢽⣗⠅⠐⡀⠂⠄⠡⢀⠁⠄⠨⠐⢬⢿⣯⢿⢽⣳⣗⡿⡽⣯⢾⣺⣻⣾⡇⠀⠀⠀⠀⠀⠀⢱⠅⢁⠐⠀⠂⡁⠄⠂⢁⠁
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⣽⣗⣿⡫⡆⠁⠄⠂⡁⢐⠠⠐⢈⢀⠪⣸⣿⣿⢽⢯⣗⣷⣻⡽⣽⣻⣽⣾⡇⠂⠀⠀⠀⠀⠀⠀⡸⡈⠠⢀⠁⡁⢄⢔⠜⠆⠧
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⡶⣟⣿⣞⢇⣿⢧⠈⡨⣄⡂⠠⠐⢀⠂⣄⡵⣟⢗⡿⣿⢽⢾⣺⣳⢯⣷⣻⣺⢷⢋⠀⠀⠀⠀⠀⠀⠀⡘⡆⠐⡀⢂⢆⠃⠁⠀⠀⠈
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣹⡯⣟⣾⢷⡝⢿⣻⣕⢰⣵⡿⣟⡷⣷⣻⢞⡝⣎⢗⣿⣻⢿⣯⢷⢯⣟⣾⣺⣽⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠄⢄⠇⠂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⢯⣟⣾⣻⣷⡵⣿⡽⣾⣻⡻⢯⢯⣣⡣⣳⣱⣳⢯⡗⡯⣳⢿⣟⣿⣺⣞⣷⣟⡇⡀⠀⠀⢄⠀⠀⠀⠀⠀⠪⠲⠡⠂⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⣻⣞⢮⣟⣷⢽⢗⡿⡽⡾⣺⡵⣗⣗⣯⢷⡻⡺⣕⢝⡾⣽⢽⡽⣿⣽⣻⣾⣻⣷⠀⠠⡸⢘⢆⠄⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣳⡽⣳⢿⣽⣿⣺⢮⣻⢮⣳⢝⢼⡸⣜⢮⢮⣗⣷⣻⡽⣽⢽⣽⣳⣟⣯⣿⣯⣟⠠⡑⢅⢑⠌⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠠⣵⣟⣗⡿⣽⣟⣾⣻⣞⣟⢾⣝⡯⣯⣟⢾⢽⢯⣟⣾⣺⢾⢽⡽⣽⣞⣾⣺⡽⣾⣿⣿⣎⢊⠢⡑⠌⡎⡔⡔⡔⡄⡄⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢐⣽⣻⣺⣳⣟⣷⣻⣞⣯⣿⣺⣽⣺⡺⣝⣟⣿⣟⣿⣺⣞⡾⡯⣯⣟⣗⣷⣳⣗⡿⣽⡿⣾⣻⣿⠰⡨⢊⠔⡡⢊⠔⡡⡑⡱⠡⢂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣻⣞⣷⣳⢷⣻⡾⣽⢾⣯⣷⣳⣳⣻⡺⣪⢿⣽⣾⣳⣗⡿⣽⣳⣗⣟⣞⣾⣺⣽⣻⡿⣯⡿⣾⡿⣾⡾⣾⡶⣧⢊⠔⠐⡀⠅⠠⠑⠠⣀⡀⡀
-⠀⠀⠀⠀⠀⠀⠀⠀⢼⣟⣾⣺⢿⡽⣯⢿⡽⣾⣻⣞⣗⡷⣝⢷⢝⣝⣯⣿⢾⣯⣷⣳⣗⣟⡾⣵⢷⣳⣷⡿⣯⡿⣷⢿⣻⡽⠯⠟⢟⡐⡈⠄⡀⠂⡁⠈⠄⠠⠀⠅
-⠀⠀⠀⠀⠀⠀⠀⢌⣿⣳⣻⢾⣻⡽⣯⡯⣟⣷⢷⣻⢾⢽⡽⡽⡯⣞⣮⣟⣯⣿⢾⣾⣺⣳⣻⡽⣽⣟⣷⢿⣻⠟⠋⠍⠂⠄⠡⠐⡀⣣⣠⡐⢀⠂⠠⠁⡈⠄⢁⠐
-⠀⠀⠀⠀⠀⠀⠠⣻⣳⢯⣟⣿⣽⣟⣷⣿⣽⣽⣫⣟⣯⢿⡽⣯⢿⡽⣞⣾⣽⣾⢿⡷⣿⣞⣷⢿⣻⣽⠟⠩⠀⢂⣁⣢⣵⢾⢾⣻⢟⡯⣟⡟⠡⠀⠅⠂⡀⢂⠐⠠
-
-]]--
 end
 local function redo2()
 wait(.01)
