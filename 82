@@ -680,7 +680,6 @@ v.Color = char[v.Name].Color
    end
 
 	settings().Physics.AllowSleep = false
-	oldcf = workspace.Camera.CFrame
 end)
 end
 
@@ -1405,7 +1404,7 @@ if v:isA("MeshPart") then
 sethiddenproperty(v,"NetworkIsSleeping", false)
 end
 end
-	oldcf = workspace.Camera.CFrame
+
 	settings().Physics.AllowSleep = false
 end)
 end
