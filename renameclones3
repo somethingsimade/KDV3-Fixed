@@ -18,11 +18,10 @@ variable.Name = "STUPID GOLDEN SWORD"
 end
 end
 end
-    end
 else
     if variable:IsA("Accessory")  then
     if variable:WaitForChild("Handle").MeshId ~= "rbxassetid://11263221350" then
-    if variable:WaitForChild("Handle").TextureId ~= "rbxassetid://4794299274" then
+    if variable:WaitForChild("Handle").TextureID ~= "rbxassetid://4794299274" then
         if NameClones[variable.Name] then
             if NameClones[variable.Name] == "NotClonedYet" then
                 NameClones[variable.Name] = {}
