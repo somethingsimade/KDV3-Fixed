@@ -285,7 +285,7 @@ for _, child in pairs(c:GetChildren()) do
 	
 
 
-	
+	if c.Humanoid.RigType = Enum.HumanoidRigType.R6 then
  for _,v in pairs(c:GetChildren()) do
      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
@@ -314,6 +314,39 @@ a.Handle.Transparency = 1
 end
            end
        end
+else
+
+ for _,v in pairs(c:GetChildren()) do
+     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
+      if not char:FindFirstChild(v.Name) then
+      local a = v:Clone()
+      a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
+Accessory = v
+      Handle = Accessory.Handle
+      pcall(function() Handle:FindFirstChildOfClass("Weld"):Destroy() end)
+    	local NewWeld = Instance.new("Weld")
+    	NewWeld.Name = "AccessoryWeld"
+    	NewWeld.Part0 = Handle
+    	local Attachment = Handle:FindFirstChildOfClass("Attachment")
+    	if Attachment then
+    		NewWeld.C0 = Attachment.CFrame
+    		NewWeld.C1 = char:FindFirstChild(tostring(Attachment), true).CFrame
+    		NewWeld.Part1 = char:FindFirstChild(tostring(Attachment), true).Parent
+    	else
+    		NewWeld.Part1 = FakeCharacter:FindFirstChild("Head")
+    		NewWeld.C1 = CFrame.new(0,char:FindFirstChild("Head").Size.Y / 2,0) * Accessory.AttachmentPoint:Inverse()
+    	end
+    	Handle.CFrame = NewWeld.Part1.CFrame * NewWeld.C1 * NewWeld.C0:Inverse()
+    	NewWeld.Parent = Accessory.Handle 
+a.Parent = char
+a.Handle.Anchored = false
+a.Handle.Transparency = 1
+end
+           end
+       end
+
+end
+
 
 
 
@@ -956,7 +989,7 @@ for _, child in pairs(c:GetChildren()) do
 
 
 	
-
+if c.Humanoid.RigType = Enum.HumanoidRigType.R6 then
  for _,v in pairs(c:GetChildren()) do
      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
@@ -985,7 +1018,38 @@ a.Handle.Transparency = 1
 end
            end
        end
+else
 
+ for _,v in pairs(c:GetChildren()) do
+     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
+      if not char:FindFirstChild(v.Name) then
+      local a = v:Clone()
+      a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
+Accessory = v
+      Handle = Accessory.Handle
+      pcall(function() Handle:FindFirstChildOfClass("Weld"):Destroy() end)
+    	local NewWeld = Instance.new("Weld")
+    	NewWeld.Name = "AccessoryWeld"
+    	NewWeld.Part0 = Handle
+    	local Attachment = Handle:FindFirstChildOfClass("Attachment")
+    	if Attachment then
+    		NewWeld.C0 = Attachment.CFrame
+    		NewWeld.C1 = char:FindFirstChild(tostring(Attachment), true).CFrame
+    		NewWeld.Part1 = char:FindFirstChild(tostring(Attachment), true).Parent
+    	else
+    		NewWeld.Part1 = FakeCharacter:FindFirstChild("Head")
+    		NewWeld.C1 = CFrame.new(0,char:FindFirstChild("Head").Size.Y / 2,0) * Accessory.AttachmentPoint:Inverse()
+    	end
+    	Handle.CFrame = NewWeld.Part1.CFrame * NewWeld.C1 * NewWeld.C0:Inverse()
+    	NewWeld.Parent = Accessory.Handle 
+a.Parent = char
+a.Handle.Anchored = false
+a.Handle.Transparency = 1
+end
+           end
+       end
+
+end
 
 for i,v in pairs(c:GetChildren()) do
 	if v:IsA("Accessory") then
