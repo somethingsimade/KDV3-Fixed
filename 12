@@ -285,7 +285,7 @@ for _, child in pairs(c:GetChildren()) do
 	
 
 
-	if c.Humanoid.RigType = Enum.HumanoidRigType.R6 then
+	if c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
  for _,v in pairs(c:GetChildren()) do
      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
@@ -989,7 +989,7 @@ for _, child in pairs(c:GetChildren()) do
 
 
 	
-if c.Humanoid.RigType = Enum.HumanoidRigType.R6 then
+if c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
  for _,v in pairs(c:GetChildren()) do
      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
