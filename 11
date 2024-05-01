@@ -86,6 +86,7 @@ hmode = "alsoo3" -- hate this guy
 end
 
 
+
 Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/library"))()
 
 local HatMode=hmode
@@ -283,10 +284,8 @@ for _, child in pairs(c:GetChildren()) do
 
 	
 
-if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
-	
-	end
-	
+
+	if c.Humanoid.RigType = Enum.HumanoidRigType.R6 then
  for _,v in pairs(c:GetChildren()) do
      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
@@ -315,6 +314,40 @@ a.Handle.Transparency = 1
 end
            end
        end
+else
+
+ for _,v in pairs(c:GetChildren()) do
+     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
+      if not char:FindFirstChild(v.Name) then
+      local a = v:Clone()
+      a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
+Accessory = v
+      Handle = Accessory.Handle
+      pcall(function() Handle:FindFirstChildOfClass("Weld"):Destroy() end)
+    	local NewWeld = Instance.new("Weld")
+    	NewWeld.Name = "AccessoryWeld"
+    	NewWeld.Part0 = Handle
+    	local Attachment = Handle:FindFirstChildOfClass("Attachment")
+    	if Attachment then
+    		NewWeld.C0 = Attachment.CFrame
+    		NewWeld.C1 = char:FindFirstChild(tostring(Attachment), true).CFrame
+    		NewWeld.Part1 = char:FindFirstChild(tostring(Attachment), true).Parent
+    	else
+    		NewWeld.Part1 = FakeCharacter:FindFirstChild("Head")
+    		NewWeld.C1 = CFrame.new(0,char:FindFirstChild("Head").Size.Y / 2,0) * Accessory.AttachmentPoint:Inverse()
+    	end
+    	Handle.CFrame = NewWeld.Part1.CFrame * NewWeld.C1 * NewWeld.C0:Inverse()
+    	NewWeld.Parent = Accessory.Handle 
+a.Parent = char
+a.Handle.Anchored = false
+a.Handle.Transparency = 1
+end
+           end
+       end
+
+end
+
+
 
 
 for i,v in pairs(c:GetChildren()) do
@@ -661,84 +694,21 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
+for i,v in pairs(c:GetDescendants()) do
+if v:isA("Part") then
+sethiddenproperty(v,"NetworkIsSleeping", false)
+end
+end
+for i,v in pairs(c:GetDescendants()) do
+if v:isA("MeshPart") then
+sethiddenproperty(v,"NetworkIsSleeping", false)
+end
+end
 	settings().Physics.AllowSleep = false
  	   end)
  	 elseif _G.R6Mode == true or  c.Humanoid.RigType == Enum.HumanoidRigType.R6 then
- 	   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
- 	    pcall(function()
- c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-end)
- 	  pcall(function()
-c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90)) * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
- end)
-  	  pcall(function()
- c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-   end)
-   	  pcall(function()
-  c["RARM"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
- end)
- 	  pcall(function()
-c["LARM"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))
- end)
- pcall(function()
- if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
- c["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame = char["Meshes/funnyface_1 (1) (1)Accessory"].Handle.CFrame*  CFrame.Angles(0,0,-.0005*math.sin(100*tick())) 
-end
-end)
-pcall(function()
-          for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory") and v.Name ~= "fooblet" and v.Name ~= "gooblet"  and v.Name ~= "RARM"  and v.Name ~= "LARM"and v.Name ~= "Tor"  and v.Name ~= "Tor" and v.Name ~= "Lleg" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2"  then
-v.Handle.CFrame = char[v.Name].Handle.CFrame * CFrame.Angles(0,0,-.0005*math.sin(100*tick()))
-end
-end
-   end)       
-  for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Accessory")   then
-v.Handle.CanCollide = false
-           end
- end
-   for _,v in pairs(c:GetChildren()) do
-       if v:IsA("Part") and v.Name ~= "Part" and v.Name ~= "RectangleHead-1"  and v.Name ~= "RectangleFace-1" and v.Name ~= "Horns of the Forsaken" and v.Name ~= "RectangleFace" and v.Name ~= "RectangleFace-2" and v.Name ~= "RectangleHead-2" then
-v.Color = char[v.Name].Color
-           end
-   end
-	settings().Physics.AllowSleep = false
-	oldcf = workspace.Camera.CFrame
-end)
 end
 
-
-char:FindFirstChildOfClass("Humanoid").Died:Connect(function()
-ws= workspace
-
-lp = game.Players.LocalPlayer
-
-local function respawnrequest()
-    local cameraCframe = ws.CurrentCamera.CFrame
-    local c = lp.Character
-    lp.Character = nil
-    lp.Character = c
-    ws.CurrentCamera:GetPropertyChangedSignal("CFrame"):Wait()
-    ws.CurrentCamera.CFrame = cameraCframe
-end
-
-
-Noclipping:Disconnect()
-local spamRequests = true
-spawn(function()
-    while wait(0.1) and spamRequests do
-        respawnrequest()
-    end
-end)
-wait(0.5)
-
-
-spamRequests = false
-wait(game.Players.RespawnTime)
-connect:Disconnect()
-char:Destroy()
-velocity:Disconnect()
-end)
 
 
 		workspace.FallenPartsDestroyHeight = -1000
@@ -746,8 +716,10 @@ end)
 
 
 wait()
+pcall(function()
 rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,-300,char.HumanoidRootPart.CFrame.Z) + Vector3.new(0, hipHeight or 4, 0)
-
+end)
+pcall(function()
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
 					child.Anchored = false
@@ -755,40 +727,8 @@ for _, child in pairs(c:GetChildren()) do
 				    child.Handle.Anchored = false
 				end
 			end
+        end)
 
---[[Rawr X3 *nuzzles* How are you? *pounces on you* you're so warm o3o *notices you have a bulge* someone's happy! *nuzzles your necky wecky* ~murr~ hehe ;) *rubbies your bulgy wolgy* you're so big! *rubbies more on your bulgy wolgy* it doesn't stop growing .///. *kisses you and licks your neck* daddy likes ;) *nuzzle wuzzle* I hope daddy likes *wiggles butt and squirms* I wanna see your big daddy meat! *wiggles butt* I have a little itch o3o *wags tails* can you please get my itch? *put paws on your chest* nyea~ it's a seven inch itch *rubs your chest* can you pwease? *squirms* pwetty pwease? :( I need to be punished *runs paws down your chest and bites lip* like, I need to be punished really good *paws on your bulge as I lick my lips* I'm getting thirsty. I could go for some milk *unbuttons your pants as my eyes glow* you smell so musky ;) *licks shaft* mmmmmmmmmmmmmmmmmmm so musky ;) *drools all over your cawk* your daddy meat. I like. Mister fuzzy balls. *puts snout on balls and inhales deeply* oh my gawd. I'm so hard *rubbies your bulgy wolgy* *licks balls* punish me daddy nyea~ *squirms more and wiggles butt* I9/11 lovewas an yourinside muskyjob goodness *bites lip* please punish me *licks lips* nyea~ *suckles on your tip* so good *licks pre off your cock* salty goodness~ *eyes roll back and goes balls deep*
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⢄⠖⠁⠁⠊⠂⠱⠨⡢⡣⣣⢣⢳⣱⣵⢱⡑⡌⢆⢕⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡓⠉⢮⢢⢕⢓⢓⢒⢒⡒⡢⠤⠤⢄⡠⣓⢕⣕⣯⢷⣝⣇⢧⢊⡲⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢮⡂⠅⠠⠑⢆⢕⢅⢕⢅⠎⠬⠪⣊⠎⡁⢅⡷⢃⢯⡗⠷⣽⢸⡰⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⢞⠕⡅⠄⢁⠐⡀⠌⡈⠌⢊⢇⠠⠁⠄⠂⣰⢙⠌⠠⢀⠐⢨⢾⠡⣃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢂⢂⠐⢈⠠⠐⠀⠄⠄⠂⡈⢪⡂⢐⠀⠅⠮⠔⢔⠈⡀⠌⠊⢹⠡⡣⢓⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡪⡚⡀⠂⠄⠐⡀⠡⠐⢀⠁⠄⠂⡉⠄⢐⠀⡂⡜⡂⠂⠄⠂⢡⠂⢼⢨⡲⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡝⡀⢐⠈⡀⠡⠀⡂⠨⠀⡢⠑⠁⡂⠪⢠⠐⢀⠡⠀⢅⢆⠡⢁⠐⡀⡇⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠃⠩⡡⡰⠠⢅⠐⠀⡂⠎⠀⢀⢀⢂⠐⡀⢱⠀⠄⢁⠂⢸⡐⡠⣢⢪⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⢑⠡⡀⡤⣢⢡⢔⡁⢧⡑⢔⢕⢝⢮⢳⢑⠈⠠⠀⠵⢌⠪⡂⢕⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⡄
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣕⡐⠕⠙⡨⡠⠂⡘⢄⠐⡀⠄⠂⡡⠃⡁⠄⠡⢈⠠⠢⡑⢌⠎⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢰⠘⢜⢢⠨
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡂⡧⣁⠢⠣⠦⠅⠀⠀⠁⠁⠊⢁⠐⠠⡐⢄⣵⣴⣥⡑⡬⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠇⢃⠐⢀⠂⠑⢕
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⢆⡑⣀⠀⢁⣀⢀⠠⡰⠉⢆⢠⢊⣷⢾⣟⡿⣞⣯⣧⢱⣁⣦⣮⣾⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢃⠡⠐⢀⠐⡀⠂⡁⠐
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢵⠘⢌⠀⠢⠅⡓⢀⠂⠌⣳⢿⢽⢯⡾⣽⣟⣯⣿⡿⣯⡷⣟⡾⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⡢⡈⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⢈⠀⠈⡡⣣⣿⠗⠟⡅⠄⠂⡐⢸⢯⢿⡽⡽⣷⣿⣟⣯⣟⣷⣻⡽⣽⣻⡿⣦⡂⠀⠀⠀⠀⠀⠀⠀⠀⢌⠎⠀⠀⠀⠀⠀⠀⢐
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠂⠀⢀⠂⡀⡐⣾⣟⣯⣷⣠⡱⡄⡅⡄⢕⠹⢯⢯⣿⣻⡾⡯⣗⣟⣾⣺⢽⣳⣻⣞⣟⣿⠈⠀⠀⠀⠀⠀⠀⢨⠊⠀⠀⠀⠀⠀⠀⠀⡪
-⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠄⠁⠀⠀⢀⣾⢿⣽⣿⢽⡹⣊⠂⡂⠌⢈⠊⡬⢟⣾⣯⢿⢽⣻⣞⣾⣺⢯⣟⣾⣺⢿⠁⠀⠀⠀⠀⠀⠀⠐⡸⠀⠀⠀⠀⠀⠀⠀⢀⠣
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣸⣟⣯⡿⠺⠕⡈⠄⠂⠄⠂⡐⠀⠌⡪⣿⡾⡯⡿⣵⣗⡷⡯⣟⣾⣺⢾⣿⠡⠀⠀⠀⠀⠀⠀⠨⡂⠀⠀⠀⠀⠀⢀⠐⠀⠂
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢢⣿⢽⣗⠅⠐⡀⠂⠄⠡⢀⠁⠄⠨⠐⢬⢿⣯⢿⢽⣳⣗⡿⡽⣯⢾⣺⣻⣾⡇⠀⠀⠀⠀⠀⠀⢱⠅⢁⠐⠀⠂⡁⠄⠂⢁⠁
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⣽⣗⣿⡫⡆⠁⠄⠂⡁⢐⠠⠐⢈⢀⠪⣸⣿⣿⢽⢯⣗⣷⣻⡽⣽⣻⣽⣾⡇⠂⠀⠀⠀⠀⠀⠀⡸⡈⠠⢀⠁⡁⢄⢔⠜⠆⠧
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⡶⣟⣿⣞⢇⣿⢧⠈⡨⣄⡂⠠⠐⢀⠂⣄⡵⣟⢗⡿⣿⢽⢾⣺⣳⢯⣷⣻⣺⢷⢋⠀⠀⠀⠀⠀⠀⠀⡘⡆⠐⡀⢂⢆⠃⠁⠀⠀⠈
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣹⡯⣟⣾⢷⡝⢿⣻⣕⢰⣵⡿⣟⡷⣷⣻⢞⡝⣎⢗⣿⣻⢿⣯⢷⢯⣟⣾⣺⣽⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠄⢄⠇⠂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⢯⣟⣾⣻⣷⡵⣿⡽⣾⣻⡻⢯⢯⣣⡣⣳⣱⣳⢯⡗⡯⣳⢿⣟⣿⣺⣞⣷⣟⡇⡀⠀⠀⢄⠀⠀⠀⠀⠀⠪⠲⠡⠂⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⣻⣞⢮⣟⣷⢽⢗⡿⡽⡾⣺⡵⣗⣗⣯⢷⡻⡺⣕⢝⡾⣽⢽⡽⣿⣽⣻⣾⣻⣷⠀⠠⡸⢘⢆⠄⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣳⡽⣳⢿⣽⣿⣺⢮⣻⢮⣳⢝⢼⡸⣜⢮⢮⣗⣷⣻⡽⣽⢽⣽⣳⣟⣯⣿⣯⣟⠠⡑⢅⢑⠌⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠠⣵⣟⣗⡿⣽⣟⣾⣻⣞⣟⢾⣝⡯⣯⣟⢾⢽⢯⣟⣾⣺⢾⢽⡽⣽⣞⣾⣺⡽⣾⣿⣿⣎⢊⠢⡑⠌⡎⡔⡔⡔⡄⡄⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢐⣽⣻⣺⣳⣟⣷⣻⣞⣯⣿⣺⣽⣺⡺⣝⣟⣿⣟⣿⣺⣞⡾⡯⣯⣟⣗⣷⣳⣗⡿⣽⡿⣾⣻⣿⠰⡨⢊⠔⡡⢊⠔⡡⡑⡱⠡⢂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣻⣞⣷⣳⢷⣻⡾⣽⢾⣯⣷⣳⣳⣻⡺⣪⢿⣽⣾⣳⣗⡿⣽⣳⣗⣟⣞⣾⣺⣽⣻⡿⣯⡿⣾⡿⣾⡾⣾⡶⣧⢊⠔⠐⡀⠅⠠⠑⠠⣀⡀⡀
-⠀⠀⠀⠀⠀⠀⠀⠀⢼⣟⣾⣺⢿⡽⣯⢿⡽⣾⣻⣞⣗⡷⣝⢷⢝⣝⣯⣿⢾⣯⣷⣳⣗⣟⡾⣵⢷⣳⣷⡿⣯⡿⣷⢿⣻⡽⠯⠟⢟⡐⡈⠄⡀⠂⡁⠈⠄⠠⠀⠅
-⠀⠀⠀⠀⠀⠀⠀⢌⣿⣳⣻⢾⣻⡽⣯⡯⣟⣷⢷⣻⢾⢽⡽⡽⡯⣞⣮⣟⣯⣿⢾⣾⣺⣳⣻⡽⣽⣟⣷⢿⣻⠟⠋⠍⠂⠄⠡⠐⡀⣣⣠⡐⢀⠂⠠⠁⡈⠄⢁⠐
-⠀⠀⠀⠀⠀⠀⠠⣻⣳⢯⣟⣿⣽⣟⣷⣿⣽⣽⣫⣟⣯⢿⡽⣯⢿⡽⣞⣾⣽⣾⢿⡷⣿⣞⣷⢿⣻⣽⠟⠩⠀⢂⣁⣢⣵⢾⢾⣻⢟⡯⣟⡟⠡⠀⠅⠂⡀⢂⠐⠠
-
-]]--
 end
 local function redo2()
 wait(.01)
@@ -844,6 +784,7 @@ hmode = "norm"
 else
 hmode = "alsoo3" -- hate this guy
 end
+
 
 
 Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/library"))()
@@ -925,9 +866,7 @@ local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
 end)
-pcall(function()
-c.SHADES.Handle.AccessoryWeld.C1 = CFrame.new(0, 0.025, -0.6, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-end)
+
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/renameclones"))()
 if _G.EnableNetLib == true then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/random-stuff/main/4eyesnetlib.lua"))()
@@ -967,11 +906,6 @@ if not workspace:FindFirstChild("non") then
  char =  game:GetObjects("rbxassetid://5195737219")[1]
 else
  char = workspace.non
-end
-if _G.MiztCompat == false then
-char.Name = c.Name.." (Dummy)"
-else
-char.Name = "non"
 end
 if not workspace:FindFirstChild("non") then
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame *CFrame.new(0,0,2))
@@ -1055,12 +989,7 @@ for _, child in pairs(c:GetChildren()) do
 
 
 	
-
-
-if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
-	
-	end
-	
+if c.Humanoid.RigType = Enum.HumanoidRigType.R6 then
  for _,v in pairs(c:GetChildren()) do
      if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
       if not char:FindFirstChild(v.Name) then
@@ -1089,7 +1018,38 @@ a.Handle.Transparency = 1
 end
            end
        end
+else
 
+ for _,v in pairs(c:GetChildren()) do
+     if v:IsA("Accessory")  and v.Name ~= "gooblet" and v.Name ~= "fooblet"  and v.Name ~= "Rarm" and v.Name ~= "funnihead"  and v.Name ~= "Larm" and v.Name ~= "RectangleFace" and v.Name ~= "Tor" and v.Name ~= "RectangleHead-2"  and v.Name ~= "Tor" and v.Name ~= "LARM" and v.Name ~= "RARM"  and v.Name ~="Unloaded head" and v:WaitForChild("Handle").MeshId ~= "rbxassetid://11263221350" and v.Name ~= "MeshPartAccessory" then
+      if not char:FindFirstChild(v.Name) then
+      local a = v:Clone()
+      a.Handle.AccessoryWeld.Part1 = char[a.Handle.AccessoryWeld.Part1.Name]
+Accessory = v
+      Handle = Accessory.Handle
+      pcall(function() Handle:FindFirstChildOfClass("Weld"):Destroy() end)
+    	local NewWeld = Instance.new("Weld")
+    	NewWeld.Name = "AccessoryWeld"
+    	NewWeld.Part0 = Handle
+    	local Attachment = Handle:FindFirstChildOfClass("Attachment")
+    	if Attachment then
+    		NewWeld.C0 = Attachment.CFrame
+    		NewWeld.C1 = char:FindFirstChild(tostring(Attachment), true).CFrame
+    		NewWeld.Part1 = char:FindFirstChild(tostring(Attachment), true).Parent
+    	else
+    		NewWeld.Part1 = FakeCharacter:FindFirstChild("Head")
+    		NewWeld.C1 = CFrame.new(0,char:FindFirstChild("Head").Size.Y / 2,0) * Accessory.AttachmentPoint:Inverse()
+    	end
+    	Handle.CFrame = NewWeld.Part1.CFrame * NewWeld.C1 * NewWeld.C0:Inverse()
+    	NewWeld.Parent = Accessory.Handle 
+a.Parent = char
+a.Handle.Anchored = false
+a.Handle.Transparency = 1
+end
+           end
+       end
+
+end
 
 for i,v in pairs(c:GetChildren()) do
 	if v:IsA("Accessory") then
@@ -1425,10 +1385,10 @@ c["gooblet"].Handle.CFrame = char["Left Arm"].CFrame * CFrame.Angles(math.rad(0)
  c["fooblet"].Handle.CFrame = char["Right Arm"].CFrame * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))* CFrame.Angles(0,0,-.0005*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
    end)
    	  pcall(function()
-  c["MeshPartAccessory"].Handle.CFrame = char["Right Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
+  c["RARM"].Handle.CFrame = char["Right Leg"].CFrame  * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
  	  pcall(function()
-c["Unloaded head"].Handle.CFrame = char["Left Leg"].CFrame * CFrame.Angles(math.rad(0),math.rad(90),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
+c["LARM"].Handle.CFrame = char["Left Leg"].CFrame  * CFrame.Angles(math.rad(0),math.rad(0),math.rad(90))  *CFrame.Angles(0,0,-.001*math.sin(100*tick()))*CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
  end)
  pcall(function()
  if c.Humanoid.RigType == Enum.HumanoidRigType.R15 then
@@ -1452,6 +1412,7 @@ v.Handle.CanCollide = false
 v.Color = char[v.Name].Color
            end
    end
+
 	oldcf = workspace.Camera.CFrame
 	settings().Physics.AllowSleep = false
 end)
@@ -1524,37 +1485,3 @@ workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
 redo2()
 end
 end)
-
---[[Rawr X3 *nuzzles* How are you? *pounces on you* you're so warm o3o *notices you have a bulge* someone's happy! *nuzzles your necky wecky* ~murr~ hehe ;) *rubbies your bulgy wolgy* you're so big! *rubbies more on your bulgy wolgy* it doesn't stop growing .///. *kisses you and licks your neck* daddy likes ;) *nuzzle wuzzle* I hope daddy likes *wiggles butt and squirms* I wanna see your big daddy meat! *wiggles butt* I have a little itch o3o *wags tails* can you please get my itch? *put paws on your chest* nyea~ it's a seven inch itch *rubs your chest* can you pwease? *squirms* pwetty pwease? :( I need to be punished *runs paws down your chest and bites lip* like, I need to be punished really good *paws on your bulge as I lick my lips* I'm getting thirsty. I could go for some milk *unbuttons your pants as my eyes glow* you smell so musky ;) *licks shaft* mmmmmmmmmmmmmmmmmmm so musky ;) *drools all over your cawk* your daddy meat. I like. Mister fuzzy balls. *puts snout on balls and inhales deeply* oh my gawd. I'm so hard *rubbies your bulgy wolgy* *licks balls* punish me daddy nyea~ *squirms more and wiggles butt* I9/11 lovewas an yourinside muskyjob goodness *bites lip* please punish me *licks lips* nyea~ *suckles on your tip* so good *licks pre off your cock* salty goodness~ *eyes roll back and goes balls deep*
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⢄⠖⠁⠁⠊⠂⠱⠨⡢⡣⣣⢣⢳⣱⣵⢱⡑⡌⢆⢕⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡓⠉⢮⢢⢕⢓⢓⢒⢒⡒⡢⠤⠤⢄⡠⣓⢕⣕⣯⢷⣝⣇⢧⢊⡲⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢮⡂⠅⠠⠑⢆⢕⢅⢕⢅⠎⠬⠪⣊⠎⡁⢅⡷⢃⢯⡗⠷⣽⢸⡰⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⢞⠕⡅⠄⢁⠐⡀⠌⡈⠌⢊⢇⠠⠁⠄⠂⣰⢙⠌⠠⢀⠐⢨⢾⠡⣃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢂⢂⠐⢈⠠⠐⠀⠄⠄⠂⡈⢪⡂⢐⠀⠅⠮⠔⢔⠈⡀⠌⠊⢹⠡⡣⢓⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡪⡚⡀⠂⠄⠐⡀⠡⠐⢀⠁⠄⠂⡉⠄⢐⠀⡂⡜⡂⠂⠄⠂⢡⠂⢼⢨⡲⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡝⡀⢐⠈⡀⠡⠀⡂⠨⠀⡢⠑⠁⡂⠪⢠⠐⢀⠡⠀⢅⢆⠡⢁⠐⡀⡇⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠃⠩⡡⡰⠠⢅⠐⠀⡂⠎⠀⢀⢀⢂⠐⡀⢱⠀⠄⢁⠂⢸⡐⡠⣢⢪⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⢑⠡⡀⡤⣢⢡⢔⡁⢧⡑⢔⢕⢝⢮⢳⢑⠈⠠⠀⠵⢌⠪⡂⢕⠅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⢀⡄
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣕⡐⠕⠙⡨⡠⠂⡘⢄⠐⡀⠄⠂⡡⠃⡁⠄⠡⢈⠠⠢⡑⢌⠎⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢰⠘⢜⢢⠨
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡂⡧⣁⠢⠣⠦⠅⠀⠀⠁⠁⠊⢁⠐⠠⡐⢄⣵⣴⣥⡑⡬⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠇⢃⠐⢀⠂⠑⢕
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⢆⡑⣀⠀⢁⣀⢀⠠⡰⠉⢆⢠⢊⣷⢾⣟⡿⣞⣯⣧⢱⣁⣦⣮⣾⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢃⠡⠐⢀⠐⡀⠂⡁⠐
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢵⠘⢌⠀⠢⠅⡓⢀⠂⠌⣳⢿⢽⢯⡾⣽⣟⣯⣿⡿⣯⡷⣟⡾⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⡢⡈⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⢈⠀⠈⡡⣣⣿⠗⠟⡅⠄⠂⡐⢸⢯⢿⡽⡽⣷⣿⣟⣯⣟⣷⣻⡽⣽⣻⡿⣦⡂⠀⠀⠀⠀⠀⠀⠀⠀⢌⠎⠀⠀⠀⠀⠀⠀⢐
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠂⠀⢀⠂⡀⡐⣾⣟⣯⣷⣠⡱⡄⡅⡄⢕⠹⢯⢯⣿⣻⡾⡯⣗⣟⣾⣺⢽⣳⣻⣞⣟⣿⠈⠀⠀⠀⠀⠀⠀⢨⠊⠀⠀⠀⠀⠀⠀⠀⡪
-⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠄⠁⠀⠀⢀⣾⢿⣽⣿⢽⡹⣊⠂⡂⠌⢈⠊⡬⢟⣾⣯⢿⢽⣻⣞⣾⣺⢯⣟⣾⣺⢿⠁⠀⠀⠀⠀⠀⠀⠐⡸⠀⠀⠀⠀⠀⠀⠀⢀⠣
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣸⣟⣯⡿⠺⠕⡈⠄⠂⠄⠂⡐⠀⠌⡪⣿⡾⡯⡿⣵⣗⡷⡯⣟⣾⣺⢾⣿⠡⠀⠀⠀⠀⠀⠀⠨⡂⠀⠀⠀⠀⠀⢀⠐⠀⠂
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢢⣿⢽⣗⠅⠐⡀⠂⠄⠡⢀⠁⠄⠨⠐⢬⢿⣯⢿⢽⣳⣗⡿⡽⣯⢾⣺⣻⣾⡇⠀⠀⠀⠀⠀⠀⢱⠅⢁⠐⠀⠂⡁⠄⠂⢁⠁
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⣽⣗⣿⡫⡆⠁⠄⠂⡁⢐⠠⠐⢈⢀⠪⣸⣿⣿⢽⢯⣗⣷⣻⡽⣽⣻⣽⣾⡇⠂⠀⠀⠀⠀⠀⠀⡸⡈⠠⢀⠁⡁⢄⢔⠜⠆⠧
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⡶⣟⣿⣞⢇⣿⢧⠈⡨⣄⡂⠠⠐⢀⠂⣄⡵⣟⢗⡿⣿⢽⢾⣺⣳⢯⣷⣻⣺⢷⢋⠀⠀⠀⠀⠀⠀⠀⡘⡆⠐⡀⢂⢆⠃⠁⠀⠀⠈
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣹⡯⣟⣾⢷⡝⢿⣻⣕⢰⣵⡿⣟⡷⣷⣻⢞⡝⣎⢗⣿⣻⢿⣯⢷⢯⣟⣾⣺⣽⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠄⢄⠇⠂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⢯⣟⣾⣻⣷⡵⣿⡽⣾⣻⡻⢯⢯⣣⡣⣳⣱⣳⢯⡗⡯⣳⢿⣟⣿⣺⣞⣷⣟⡇⡀⠀⠀⢄⠀⠀⠀⠀⠀⠪⠲⠡⠂⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣿⣻⣞⢮⣟⣷⢽⢗⡿⡽⡾⣺⡵⣗⣗⣯⢷⡻⡺⣕⢝⡾⣽⢽⡽⣿⣽⣻⣾⣻⣷⠀⠠⡸⢘⢆⠄⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⣿⣳⡽⣳⢿⣽⣿⣺⢮⣻⢮⣳⢝⢼⡸⣜⢮⢮⣗⣷⣻⡽⣽⢽⣽⣳⣟⣯⣿⣯⣟⠠⡑⢅⢑⠌⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠠⣵⣟⣗⡿⣽⣟⣾⣻⣞⣟⢾⣝⡯⣯⣟⢾⢽⢯⣟⣾⣺⢾⢽⡽⣽⣞⣾⣺⡽⣾⣿⣿⣎⢊⠢⡑⠌⡎⡔⡔⡔⡄⡄⡀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⢐⣽⣻⣺⣳⣟⣷⣻⣞⣯⣿⣺⣽⣺⡺⣝⣟⣿⣟⣿⣺⣞⡾⡯⣯⣟⣗⣷⣳⣗⡿⣽⡿⣾⣻⣿⠰⡨⢊⠔⡡⢊⠔⡡⡑⡱⠡⢂⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⣻⣞⣷⣳⢷⣻⡾⣽⢾⣯⣷⣳⣳⣻⡺⣪⢿⣽⣾⣳⣗⡿⣽⣳⣗⣟⣞⣾⣺⣽⣻⡿⣯⡿⣾⡿⣾⡾⣾⡶⣧⢊⠔⠐⡀⠅⠠⠑⠠⣀⡀⡀
-⠀⠀⠀⠀⠀⠀⠀⠀⢼⣟⣾⣺⢿⡽⣯⢿⡽⣾⣻⣞⣗⡷⣝⢷⢝⣝⣯⣿⢾⣯⣷⣳⣗⣟⡾⣵⢷⣳⣷⡿⣯⡿⣷⢿⣻⡽⠯⠟⢟⡐⡈⠄⡀⠂⡁⠈⠄⠠⠀⠅
-⠀⠀⠀⠀⠀⠀⠀⢌⣿⣳⣻⢾⣻⡽⣯⡯⣟⣷⢷⣻⢾⢽⡽⡽⡯⣞⣮⣟⣯⣿⢾⣾⣺⣳⣻⡽⣽⣟⣷⢿⣻⠟⠋⠍⠂⠄⠡⠐⡀⣣⣠⡐⢀⠂⠠⠁⡈⠄⢁⠐
-⠀⠀⠀⠀⠀⠀⠠⣻⣳⢯⣟⣿⣽⣟⣷⣿⣽⣽⣫⣟⣯⢿⡽⣯⢿⡽⣞⣾⣽⣾⢿⡷⣿⣞⣷⢿⣻⣽⠟⠩⠀⢂⣁⣢⣵⢾⢾⣻⢟⡯⣟⡟⠡⠀⠅⠂⡀⢂⠐⠠
-
-]]--
