@@ -1,6 +1,7 @@
 local NameClones = {} -- table for all hat name clones
 
 for instance,variable in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
     if variable:IsA("Accessory")  then
     if variable:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").MeshId ~= "rbxassetid://11263221350" then
     if variable:WaitForChild("Handle"):FindFirstChildOfClass("SpecialMesh").TextureId ~= "rbxassetid://4794299274" then
@@ -14,6 +15,25 @@ for instance,variable in pairs(game.Players.LocalPlayer.Character:GetChildren())
         end
 else
 variable.Name = "STUPID GOLDEN SWORD"
+end
+end
+end
+    end
+else
+    if variable:IsA("Accessory")  then
+    if variable:WaitForChild("Handle").MeshId ~= "rbxassetid://11263221350" then
+    if variable:WaitForChild("Handle").TextureId ~= "rbxassetid://4794299274" then
+        if NameClones[variable.Name] then
+            if NameClones[variable.Name] == "NotClonedYet" then
+                NameClones[variable.Name] = {}
+            end
+            table.insert(NameClones[variable.Name], variable)
+        else
+            NameClones[variable.Name] = "NotClonedYet"
+        end
+else
+variable.Name = "STUPID GOLDEN SWORD"
+end
 end
 end
     end
