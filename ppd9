@@ -514,6 +514,8 @@ speaker = game.Players.LocalPlayer
 				end
 			end
 
+
+		end
 	Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
 
 	
@@ -1150,6 +1152,7 @@ speaker = game.Players.LocalPlayer
 				end
 			end
 
+		end
         Noclipping = game:GetService('RunService').Stepped:Connect(NoclipLoop)
 
 	
