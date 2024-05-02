@@ -22,13 +22,9 @@ local s = nil
 
 
 
-local gay = false -- dont edit >:(
-hmode = nil
-if gay == true then
-hmode = "norm" 
-else
+
 hmode = "alsoo3" -- hate this guy
-end
+
 
 
 Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/library"))()
@@ -50,7 +46,6 @@ if Library.FindHat("BladeMasterAccessory") then
 Library.FindHat("BladeMasterAccessory").Name="AuroraSword"
 
 end
-print("i like kids")
 else
 print("richhhh")
 end
@@ -60,7 +55,7 @@ end
 wait(1)
 
 
- Library = loadstring(readfile("lib.txt"))()
+Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/library"))()
 
 local HatMode=hmode
 
