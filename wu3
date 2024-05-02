@@ -23,7 +23,7 @@ local function gca(id,name)
 if name == nil then name = tostring(id) end
 if not game.Players.LocalPlayer:FindFirstChild(name) then
 s = Instance.new("Sound",game.Players.LocalPlayer)
-s.SoundId = gs(id)
+s.SoundId = getcustomasset(id)
 s.Name = name
 else
 s = game.Players.LocalPlayer:FindFirstChild(name)
