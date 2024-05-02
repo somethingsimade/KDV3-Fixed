@@ -19,17 +19,6 @@ sss = game.Players.LocalPlayer.mtrench
 end
 local gs = getcustomasset
 local s = nil
-local function gca(id,name)
-if name == nil then name = tostring(id) end
-if not game.Players.LocalPlayer:FindFirstChild(name) then
-s = Instance.new("Sound",game.Players.LocalPlayer)
-s.SoundId = getcustomasset(id)
-s.Name = name
-else
-s = game.Players.LocalPlayer:FindFirstChild(name)
-end
-return s.SoundId 
-end
 
 
 
@@ -423,7 +412,7 @@ function AddMode(Keybind,Name,Number,Walk,tab,FUNNNYYY,color,g)
 	MAINCOLOR=color or Color3.fromRGB(0,0,0)
 	NAME=Name
 	song.PlaybackSpeed=1
-	song.SoundId=gca("k/"..Name..".mp3",Number)
+	song.SoundId=getcustomasset("k/"..Name..".mp3",Number)
 	for i = 0, 65 do
 	PixelBlock(1,math.random(1,20),"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),2,2,2,0.04,MAINCOLOR,0)
 	end
@@ -477,7 +466,7 @@ function AddSpecialMode(mainnum,Name,Number,Walk,tab,FUNNNYYY,color,g)
 		elseif Number == "corrupt." then
 		song.SoundId=sss.SoundId
 		else
-	song.SoundId=gca("k/"..Name..".mp3",Number)
+	song.SoundId=getcustomasset("k/"..Name..".mp3",Number)
 	end
 	sfx(847061203,5)
 	if walk==true then
@@ -524,7 +513,7 @@ function CHECKHELL(Name)
 		reanim['AuroraSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
 		reanim['DemonGodSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
 		reanim['VoidLordSword'].Handle.AccessoryWeld.Part1=Char["Torso"]
-		song.SoundId=gca("k/"..Name..".mp3",Name)
+		song.SoundId=getcustomasset("k/"..Name..".mp3",Name)
 			sfx(847061203,5)
 	sfx(239000203,1.5)
 	sfx(579687077,1.5)
