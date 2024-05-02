@@ -31,7 +31,7 @@ hmode = "alsoo3" -- hate this guy
 end
 
 
-Library = loadstring(readfile("lib.txt"))()
+Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/library"))()
 
 local HatMode=hmode
 
