@@ -907,7 +907,7 @@ end
 		local hipHeight = humanoid and humanoid.HipHeight > 0 and (humanoid.HipHeight + 1)
 		local rootPart = getRoot(character)
 		local rootPartPosition = rootPart.Position
-        rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X +10 ,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z + 10) + Vector3.new(0, hipHeight or 4, 0)
+        rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X +5 ,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z +5) + Vector3.new(0, hipHeight or 4, 0)
 
 
 velocity = game:GetService("RunService").Heartbeat:Connect(function(set)
@@ -1410,7 +1410,7 @@ repeat wait() until plr.Character:FindFirstChildOfClass("Accessory")
 if plr.Character.Name ~= "non" then
 workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
 if plr.Character.Name ~= "non" then
- plr.Character.HumanoidRootPart.CFrame = CFrame.new( workspace.non.HumanoidRootPart.CFrame.X +10 , workspace.non.HumanoidRootPart.CFrame.Y, workspace.non.HumanoidRootPart.CFrame.Z + 10) 
+ plr.Character.HumanoidRootPart.CFrame = CFrame.new( workspace.non.HumanoidRootPart.CFrame.X +5 , workspace.non.HumanoidRootPart.CFrame.Y, workspace.non.HumanoidRootPart.CFrame.Z +5) 
 end
 task.wait(.01)
 redo2()
