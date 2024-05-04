@@ -1099,11 +1099,13 @@ z2.Position = Vector3.new(0,9991,0)
 
         c:BreakJoints()	
 
-	
+task.spawn(function()	
+wait(.01)
  game.Players.LocalPlayer.Character=prt
  game.Players.LocalPlayer.Character=char
+end)
  
-
+prt:Destroy()
  
 if _G.wackyhead == true then 
   wait(game.Players.RespawnTime + 0.5)  
