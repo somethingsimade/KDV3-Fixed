@@ -161,7 +161,7 @@ end
 
 Hat.Rename("rbxassetid://14255543546","","LARM")
 Hat.Rename("rbxassetid://14255543546","","RARM")
-Hat.Rename("rbxassetid://13415110780", "Tor")
+Hat.Rename("rbxassetid://14251599953", "Tor")
 local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
@@ -741,7 +741,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 end}
 
 
-local gay = true -- dont edit >:(
+local gay = false -- dont edit >:(
 hmode = nil
 if gay == true then
 hmode = "norm" 
@@ -825,7 +825,7 @@ end
 
 Hat.Rename("rbxassetid://14255543546","","LARM")
 Hat.Rename("rbxassetid://14255543546","","RARM")
-Hat.Rename("rbxassetid://13415110780", "Tor")
+Hat.Rename("rbxassetid://14251599953", "Tor")
 local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
