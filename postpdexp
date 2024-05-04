@@ -741,7 +741,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
 end}
 
 
-local gay = false -- dont edit >:(
+local gay = true -- dont edit >:(
 hmode = nil
 if gay == true then
 hmode = "norm" 
