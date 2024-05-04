@@ -830,7 +830,12 @@ local c = game:GetService("Players").LocalPlayer.Character
 pcall(function()
 c.gooblet.Name = "fooblet"
 end)
-
+pcall(function()
+c["Accessory (LARM)"].Name = "LARM"
+            end)
+            pcall(function()
+c["Accessory (RARM)"].Name = "RARM"
+            end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/renameclones3"))()
 if _G.EnableNetLib == true then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/random-stuff/main/4eyesnetlib.lua"))()
@@ -1411,4 +1416,3 @@ task.wait(.01)
 redo2()
 end
 end)
-
