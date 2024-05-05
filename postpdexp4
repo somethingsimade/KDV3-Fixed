@@ -829,7 +829,7 @@ end
 end
 end
 
---Hat.Rename("rbxassetid://14255543546","","LARM")
+Hat.Rename("rbxassetid://14255543546","","LARM")
 Hat.Rename("rbxassetid://14255543546","","RARM")
 Hat.Rename("rbxassetid://14251599953", "Tor")
 local c = game:GetService("Players").LocalPlayer.Character
