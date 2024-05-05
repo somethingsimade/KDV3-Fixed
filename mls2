@@ -14,38 +14,7 @@ end
 
 game.Players.LocalPlayer.Character.Animate:Destroy()
 wait(0.25)
-game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle:BreakJoints()
-local PositionOffset = Vector3.new(-2.025, 1.87, 0)
-local RotationOffset = Vector3.new(0,0, 315)
-RotationOffset = CFrame.Angles(
-   math.rad(RotationOffset.X),
-   math.rad(RotationOffset.Y),
-   math.rad(RotationOffset.Z)
-)
 
-local CFrameOffset = CFrame.new(PositionOffset)*RotationOffset
-
-local weld = Instance.new("Weld")
-weld.C1 = CFrameOffset
-weld.Parent = game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle
-weld.Part0 = game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle
-weld.Part1 = game.Players.LocalPlayer.Character["Starslayer Railgun"].Handle
-game.Players.LocalPlayer.Character["Accessory (VoidAlligatorJaw)"].Handle:BreakJoints()
-local PositionOffset2 = Vector3.new(1.85, -1.687, 0)
-local RotationOffset2 = Vector3.new(0,0, 315)
-RotationOffset2 = CFrame.Angles(
-   math.rad(RotationOffset2.X),
-   math.rad(RotationOffset2.Y),
-   math.rad(RotationOffset2.Z)
-)
-
-local CFrameOffset = CFrame.new(PositionOffset2)*RotationOffset2
-
-local weld = Instance.new("Weld")
-weld.C1 = CFrameOffset
-weld.Parent = game.Players.LocalPlayer.Character["Accessory (VoidAlligatorJaw)"].Handle
-weld.Part0 = game.Players.LocalPlayer.Character["Accessory (VoidAlligatorJaw)"].Handle
-weld.Part1 = game.Players.LocalPlayer.Character["Starslayer Railgun"].Handle
 --here it goes
 local stopeverything = false
 KEYHOLD = false
@@ -462,6 +431,7 @@ SWAIT = Swait
 local S = Instance.new("Sound")
 local c = game.Players.LocalPlayer.Character
 c["Starslayer Railgun"].Handle:BreakJoints()
+
 local function Align(Part0, Part1)
 	Part0.CustomPhysicalProperties = PhysicalProperties.new(0.0001, 0.0001, 0.0001, 0.0001, 0.0001)
 	local att1 = Instance.new("Attachment")
@@ -501,7 +471,38 @@ att.Position = Vector3.new(0, -1.5, -0.7)
 att.Orientation = Vector3.new(-0, 90, -45)
 local weldra = Instance.new("WeldConstraint",c["Right Arm"])
 weldra.Part0 = c["Starslayer Railgun"].Handle
+game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle:BreakJoints()
+local PositionOffset = Vector3.new(-2.025, 1.87, 0)
+local RotationOffset = Vector3.new(0,0, 315)
+RotationOffset = CFrame.Angles(
+   math.rad(RotationOffset.X),
+   math.rad(RotationOffset.Y),
+   math.rad(RotationOffset.Z)
+)
 
+local CFrameOffset = CFrame.new(PositionOffset)*RotationOffset
+
+local weld = Instance.new("Weld")
+weld.C1 = CFrameOffset
+weld.Parent = game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle
+weld.Part0 = game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle
+weld.Part1 = game.Players.LocalPlayer.Character["Starslayer Railgun"].Handle
+game.Players.LocalPlayer.Character["Accessory (VoidAlligatorJaw)"].Handle:BreakJoints()
+local PositionOffset2 = Vector3.new(1.85, -1.687, 0)
+local RotationOffset2 = Vector3.new(0,0, 315)
+RotationOffset2 = CFrame.Angles(
+   math.rad(RotationOffset2.X),
+   math.rad(RotationOffset2.Y),
+   math.rad(RotationOffset2.Z)
+)
+
+local CFrameOffset = CFrame.new(PositionOffset2)*RotationOffset2
+
+local weld = Instance.new("Weld")
+weld.C1 = CFrameOffset
+weld.Parent = game.Players.LocalPlayer.Character["Accessory (VoidAlligatorJaw)"].Handle
+weld.Part0 = game.Players.LocalPlayer.Character["Accessory (VoidAlligatorJaw)"].Handle
+weld.Part1 = game.Players.LocalPlayer.Character["Starslayer Railgun"].Handle
 local SIZE = 1
 function AttackGyro()
 	local GYRO = Instance.new("BodyGyro",RootPart)
