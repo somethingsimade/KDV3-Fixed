@@ -1801,114 +1801,7 @@ end)
 
 
 
-UserInputService.InputBegan:Connect(function(input, Processed)
-   if not Processed then
-   if input.UserInputType == Enum.UserInputType.Gamepad1 then
-	   if input.KeyCode == Enum.KeyCode.ButtonB then
-	   if songid.Value ~= "rbxassetid://3247404955" and songid.Value ~= "rbxassetid://6190635423" and songid.Value ~= "rbxassetid://2371543268" and songid.Value ~= "rbxassetid://5315171837" and songid ~= "rbxassetid://5089636816" and songid.Value ~= "rbxassetid://6768783121" and songid.Value ~= "rbxassetid://4835535512" and songid.Value ~= "rbxassetid://5089636816" and songid.Value ~= "rbxassetid://1280010741" and songid.Value ~= "rbxassetid://5355210927" and songid.Value ~="rbxassetid://2581112923" and songid.Value ~= "rbxassetid://262950484" and songid.Value ~= "rbxassetid://481104377" and songid.Value ~= "rbxassetid://2920078671" and songid.Value ~= "rbxassetid://2297862957" and songid.Value ~= "rbxassetid://1338971957" and songid.Value ~= "rbxassetid://5460732000" and songid.Value ~= "rbxassetid://4557673096" and songid.Value ~= "rbxassetid://348832364" and songid.Value ~= "rbxassetid://1143392568" then
-		   TauntRemote:FireServer("None",3247404955)
-		   sound69:Play()
-		   sound69.SoundId = customasset("song69.ogg")
-		   correction = false
-	   elseif songid.Value == "rbxassetid://3247404955" then
-		   TauntRemote:FireServer("None",5315171837)
-		   correction = false
-	   elseif songid.Value == "rbxassetid://5315171837" then
-		   TauntRemote:FireServer("Err0r",481104377)
-			   correction = true
-			   sound69.SoundId = customasset("godzilla.mp3")
-	   elseif songid.Value == "rbxassetid://262950484" then
-		   TauntRemote:FireServer("iNSaNiTY",262950484)
-		   sound69:Stop()
-	   elseif songid.Value == "rbxassetid://481104377" then
-		   TauntRemote:FireServer("FAST BOIII",2920078671)
-			   sound69:Stop()
-						   correction = false
-	   elseif songid.Value == "rbxassetid://2920078671" then
-		   TauntRemote:FireServer("Glitch",2297862957)
-				   sound69:Play()
-		   correction = true
-			   sound69.SoundId = customasset("action.mp3")
-	   elseif songid.Value == "rbxassetid://2297862957" then
-		   TauntRemote:FireServer("Chill",1338971957)
-				   sound69:Play()
-			   sound69.SoundId = customasset("200ping.mp3")
-	   elseif songid.Value == "rbxassetid://1338971957" then
-		   TauntRemote:FireServer("Alastor",5460732000)
-				   sound69:Play()
-			   sound69.SoundId = customasset("alastor.mp3")
-	   elseif songid.Value == "rbxassetid://5460732000" then
-		   TauntRemote:FireServer("kArmA",4557673096)
-			   sound69:Stop()
-						   correction = false
-	   elseif songid.Value == "rbxassetid://4557673096" then
-		   TauntRemote:FireServer("V1",2581112923)
-			   sound69:Play()
-				   correction = true
-		   sound69.SoundId = customasset("comet.mp3")
-		   dist.Level = 0.75
-	   elseif songid.Value == "rbxassetid://2581112923" then
-		   TauntRemote:FireServer("caverns",5355210927)
-			   sound69:Stop()
-						   correction = false
-			   dist.Level = 0
-	   elseif songid.Value == "rbxassetid://5355210927" then
-		   TauntRemote:FireServer("funk",1280010741)
-	   elseif songid.Value == "rbxassetid://1280010741" then
-		   TauntRemote:FireServer("sussyhoney",5089636816)
-	   elseif songid.Value == "rbxassetid://5089636816" then
-		   TauntRemote:FireServer("hi",4835535512)
-			   sound69:Play()
-			oldtexture = face.Texture
-		   sound69.SoundId = customasset("bloodwater.mp3")
-			   correction = true
-	   elseif songid.Value == "rbxassetid://4835535512" then
-		   TauntRemote:FireServer("Lord",2371543268)
-			   sound69:Play()
-		   sound69.SoundId = customasset("allgirls.mp3")
-		   dist.Level = 0.75
-			   sound69.PlaybackSpeed = 0.75
-		   face.Texture = customasset("sadface.png")
-	   elseif songid.Value == "rbxassetid://2371543268" then
-		   TauntRemote:FireServer("MaddoxLC",6768783121)
-			   sound69:Play()
-		   sound69.SoundId = customasset("undone.mp3")
-			   dist.Level = 0
-		   sound69.PlaybackSpeed = 1
-		   sound69:Play()
-   
-	   elseif songid.Value == "rbxassetid://6768783121" then
-		   TauntRemote:FireServer("friday",6190635423)
-			   sound69:Play()
-			   sound69.PlaybackSpeed = 1
-			   sound69.SoundId = customasset("hatter.mp3")
-					   dist.Level = 0.75
-	   elseif songid.Value == "rbxassetid://6190635423" then
-		   TauntRemote:FireServer("SolidLC",348832364)
-		   sound69:Play()
-		   face.Texture = oldtexture
-			   dist.Level = 0
-			   sound69.SoundId = customasset("solidlc.mp3")
-				   correction = true
-	   elseif songid.Value == "rbxassetid://348832364" then
-		   TauntRemote:FireServer("HoneyLC",1143392568)
-		   sound69:Stop()
-					   correction = false
-	   elseif songid.Value == "rbxassetid://1143392568" then
-		   TauntRemote:FireServer("None",3247404955)
-		   sound69:Play()
-			   sound69.SoundId = customasset("song69.ogg")
-				   correction = true
-	   elseif songid.Value == "rbxassetid://3247404955" then
-		   TauntRemote:FireServer("None",5315171837)
-		   sound69:Play()
-			   sound69.SoundId = customasset("song69.ogg")
-				   correction = true
-	   end
-	   end
-   end
-   end
-end)
+
 
 
 
@@ -1928,9 +1821,6 @@ Mouse.KeyDown:Connect(function(k)
 		   TauntRemote:FireServer("Err0r",481104377)
 			   correction = true
 			   sound69.SoundId = customasset("godzilla.mp3")
-	   elseif songid.Value == "rbxassetid://262950484" then
-		   TauntRemote:FireServer("iNSaNiTY",262950484)
-		   sound69:Stop()
 	   elseif songid.Value == "rbxassetid://481104377" then
 		   TauntRemote:FireServer("FAST BOIII",2920078671)
 			   sound69:Stop()
@@ -1961,7 +1851,7 @@ Mouse.KeyDown:Connect(function(k)
 	   elseif songid.Value == "rbxassetid://2581112923" then
 		   TauntRemote:FireServer("caverns",5355210927)
 			   sound69:Stop()
-						   correction = false
+				correction = false
 			   dist.Level = 0
 	   elseif songid.Value == "rbxassetid://5355210927" then
 		   TauntRemote:FireServer("funk",1280010741)
@@ -2001,9 +1891,32 @@ Mouse.KeyDown:Connect(function(k)
 			   sound69.SoundId = customasset("solidlc.mp3")
 				   correction = true
 	   elseif songid.Value == "rbxassetid://348832364" then
-		   TauntRemote:FireServer("HoneyLC",1143392568)
-		   sound69:Stop()
-					   correction = false
+		   TauntRemote:FireServer("sAnIty",1143392568)
+		   sound69:Play()
+					   correction = true
+sound69.SoundId = customasset("sanity.mp3")
+			repeat if stopeverything then wait(math.huge) end 
+				game:GetService("RunService").RenderStepped:Wait()
+			until SongSync.Value >= 24 or songid.Value ~= "rbxassetid://262950484"
+			if songid.Value == "rbxassetid://262950484" then
+				chatfunc(" ")
+				sphere(1,"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-10,10)),math.rad(math.random(-10,10)),math.rad(math.random(-10,10))),Vector3.new(1,100000,1),0.6,BrickColor.new("Really black"))
+				sphere2(math.random(1,4),"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),Vector3.new(5,1,5),-0.005,math.random(25,100)/25,-0.005,BrickColor.new("Institutional white"))
+				sphere(1,"Add",Torso.CFrame,Vector3.new(1,1,1),0.8,BrickColor.new("Really black"))
+				sphere2(2,"Add",Torso.CFrame,Vector3.new(5,5,5),0.5,0.5,0.5,BrickColor.new("Institutional white"))
+				sphere2(2,"Add",Torso.CFrame,Vector3.new(5,5,5),0.75,0.75,0.75,BrickColor.new("Institutional white"))
+				sphere2(3,"Add",Torso.CFrame,Vector3.new(5,5,5),1,1,1,BrickColor.new("Institutional white"))
+				sphere2(3,"Add",Torso.CFrame,Vector3.new(5,5,5),1.25,1.25,1.25,BrickColor.new("Institutional white"))
+				sphere2(1,"Add",Torso.CFrame,Vector3.new(5,10000,5),0.5,0.5,0.5,BrickColor.new("Institutional white"))
+				sphere2(2,"Add",Torso.CFrame,Vector3.new(5,10000,5),0.6,0.6,0.6,BrickColor.new("Institutional white"))
+				for i = 0,49 do
+					PixelBlockX(1,math.random(1,20),"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),8,8,8,0.16,BrickColor.new("Really black"),0)
+					sphereMK(2.5,-1,"Add",Torso.CFrame*CFrame.Angles(math.rad(math.random(-360,360)),math.rad(math.random(-360,360)),math.rad(math.random(-360,360))),2.5,2.5,25,-0.025,BrickColor.new("Really black"),0)
+					slash(math.random(10,20)/10,5,true,"Round","Add","Out",Torso.CFrame*CFrame.new(0,-3,0)*CFrame.Angles(math.rad(math.random(-30,30)),math.rad(math.random(-30,30)),math.rad(math.random(-40,40))),Vector3.new(0.05,0.01,0.05),math.random(50,60)/250,BrickColor.new("Really black"))
+				end
+				CreateSound(239000203,Torso,10,false)
+				CreateSound(1042716828,Torso,10,false)
+				TauntRemote:FireServer("iNSaNiTY",262950484)
 	   elseif songid.Value == "rbxassetid://1143392568" then
 		   TauntRemote:FireServer("None",3247404955)
 		   sound69:Play()
