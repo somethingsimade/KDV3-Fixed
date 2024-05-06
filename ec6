@@ -1,5 +1,30 @@
+warn([[
+             ,--,               
+         ,--.          ,---.'|               
+       ,--.'|    ,---,.|   | :     ,----..   
+   ,--,:  : |  ,'  .' |:   : |    /   /   \  
+,`--.'`|  ' :,---.'   ||   ' :   |   :     : 
+|   :  :  | ||   |   .';   ; '   .   |  ;. / 
+:   |   \ | ::   :  :  '   | |__ .   ; /--`  
+|   : '  '; |:   |  |-,|   | :.'|;   | ;     
+'   ' ;.    ;|   :  ;/|'   :    ;|   : |     
+|   | | \   ||   |   .'|   |  ./ .   | '___  
+'   : |  ; .''   :  '  ;   : ;   '   ; : .'| 
+|   | '`--'  |   |  |  |   ,/    '   | '/  : 
+'   : |      |   :  \  '---'     |   :    /  
+;   |.'      |   | ,'             \   \ .'   
+'---'        `----'                `---`     
+Nitro's FE Lightning Cannon:
+Press M to Switch Modes 
+Click to Shoot (does nothing)
+Used Nitro's Oxide Reanim                                                                                                      
+]])
 -- ec4
-_G.LightingVis = true
+task.spawn(
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/postpdexp6"))()
+)
+task.wait(.1)
+_G.LightingVis = false
 _G.Gun = true
 _G.msgbox = false
 _G.ExtraControllerHelp = false -- lets you see where the shot will go if fling is enabled
