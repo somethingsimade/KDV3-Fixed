@@ -1787,7 +1787,7 @@ local sound69 = Instance.new("Sound",Character.HumanoidRootPart)
 sound69.Looped = true
 sound69.Playing = true
 sound69.Volume = 7.5 
-
+sound69.SoundId = customasset("NFLC/song69.ogg")
 local dist = Instance.new("DistortionSoundEffect",sound69)
 dist.Level = 0
 local face = Character.Head.face
@@ -1848,7 +1848,7 @@ Mouse.KeyDown:Connect(function(k)
 			   sound69:Play()
 				   correction = true
 		   sound69.SoundId = customasset("NFLC/V1.mp3")
-		   dist.Level = 0.75
+		   dist.Level = 0
 	   elseif songid.Value == "rbxassetid://2581112923" then
 		   TauntRemote:FireServer("caverns",5355210927)
 			   dist.Level = 0
