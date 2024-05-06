@@ -29,16 +29,16 @@
 ]]
 _G.R6Mode = false
 _G.MiztCompat = true
- local plr =game.Players.LocalPlayer
+ local plr =game:GetService("Players").LocalPlayer
 local oldcf
 local function redo()
 wait(.1)
 local Hat = {
 Rename = function(HatID, NAME, oname)
 if oname == nil then oname = "Hat" end
-for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
     if v:IsA("Accessory") then
-        if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+        if game:GetService("Players").LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
             if v:WaitForChild("Handle"):FindFirstChildWhichIsA("SpecialMesh").TextureId == HatID then
           	  if oname == "Hat" then
               v.Name = NAME
@@ -50,7 +50,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
               v.Name = NAME
             end
             end
-        elseif game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 and v.Handle.TextureId == HatID  then
+        elseif game:GetService("Players").LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 and v.Handle.TextureId == HatID  then
                  if oname == "Hat" then
               v.Name = NAME
               elseif oname == "LARM" then
@@ -60,7 +60,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
               else
               v.Name = NAME
             end
-            elseif game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+            elseif game:GetService("Players").LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
             if v.Handle.TextureID == HatID then
                 if oname == "Hat" then
               v.Name = NAME
@@ -141,7 +141,7 @@ _G.HealthHide = false -- patched
 _G.Blockwackyhead = false -- sometimes face dissapears
 _G.R15toR6 = false -- no settings work
 
-local char = game.Players.LocalPlayer.Character
+local char = game:GetService("Players").LocalPlayer.Character
 for i,v in pairs(char:GetDescendants()) do
 if v:IsA("SpecialMesh") then
 if v.MeshId == "rbxassetid://13003592387"  then
@@ -150,7 +150,7 @@ end
 end
 end
 
-local char = game.Players.LocalPlayer.Character
+local char = game:GetService("Players").LocalPlayer.Character
 for i,v in pairs(char:GetDescendants()) do
 if v:IsA("MeshPart") then
 if v.MeshId == "rbxassetid://13003592387"  then
@@ -193,9 +193,9 @@ Connection = game.Workspace.DescendantAdded:Connect(function(c)
     end
 end)
 
-repeat wait() until game.Players.LocalPlayer.Character
-Char = game.Players.LocalPlayer.Character
-Died = game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(function()
+repeat wait() until game:GetService("Players").LocalPlayer.Character
+Char = game:GetService("Players").LocalPlayer.Character
+Died = game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(function()
     Connection:Disconnect()
     Died:Disconnect()
 end)
@@ -222,13 +222,15 @@ char.Name = "non"
 end
 zz = Instance.new("Highlight",char)
 zz.FillTransparency = 1
+zz.OutlineTransparency = .5
+zz.DepthMode = Enum.HighlightDepthMode.Occluded
 if not workspace:FindFirstChild("non") then
 char:SetPrimaryPartCFrame(c.HumanoidRootPart.CFrame *CFrame.new(0,0,2))
 else
 print("")
 end
 c["Body Colors"]:Clone().Parent = char
-game.Players.LocalPlayer.Character.PrimaryPart = c.Head
+game:GetService("Players").LocalPlayer.Character.PrimaryPart = c.Head
 char.HumanoidRootPart.Anchored = false
 if not c:FindFirstChild("Tor") then
 c["ExtraNoobTorso"].Name = "Tor"
@@ -273,7 +275,7 @@ end
     
 
 
-speaker = game.Players.LocalPlayer
+speaker = game:GetService("Players").LocalPlayer
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
 					child.Anchored = true
@@ -424,7 +426,7 @@ for _, child in pairs(char:GetChildren()) do
 
 
 
-       local ch = game.Players.LocalPlayer.Character
+       local ch = game:GetService("Players").LocalPlayer.Character
 local prt=Instance.new("Model", workspace)
 local z1 =  Instance.new("Part", prt)
 z1.Name="Torso"
@@ -443,7 +445,7 @@ z2.Position = Vector3.new(0,9991,0)
 	local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso')
 	return rootPart
 end
-		local character = game.Players.LocalPlayer.Character
+		local character = game:GetService("Players").LocalPlayer.Character
 		local humanoid = character:FindFirstChildOfClass("Humanoid")
 		if humanoid and humanoid.SeatPart then
 			humanoid.Sit = false
@@ -455,18 +457,18 @@ end
 		local rootPartPosition = rootPart.Position
 	
 	
- game.Players.LocalPlayer.Character=prt
- game.Players.LocalPlayer.Character=char
+ game:GetService("Players").LocalPlayer.Character=prt
+ game:GetService("Players").LocalPlayer.Character=char
  
 
  
 if _G.wackyhead == true then 
-  wait(game.Players.RespawnTime + 0.5)  
+  wait(game:GetService("Players").RespawnTime + 0.5)  
     
     end
 
 
-  --wait(game.Players.RespawnTime + 0.25)  
+  --wait(game:GetService("Players").RespawnTime + 0.25)  
 rootPart.CFrame = CFrame.new(char.HumanoidRootPart.CFrame.X,char.HumanoidRootPart.CFrame.Y,char.HumanoidRootPart.CFrame.Z) + Vector3.new(0, hipHeight or 4, 0)
 
 
@@ -511,7 +513,7 @@ end
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/TypicalsConvertingLibrary/main/Main"))()
 
 
-speaker = game.Players.LocalPlayer
+speaker = game:GetService("Players").LocalPlayer
 	Clip = false
 
 	local function NoclipLoop()
@@ -528,7 +530,7 @@ speaker = game.Players.LocalPlayer
 	
 
 
-local Char = game.Players.LocalPlayer.Character
+local Char = game:GetService("Players").LocalPlayer.Character
     local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
 
     for i,v in next, Hum:GetPlayingAnimationTracks() do
@@ -607,7 +609,7 @@ for k,v in pairs(c:GetChildren()) do
     end
 end
 
-  -- workspace[game.Players.LocalPlayer.Name.." Protected Welds"]:Destroy()
+  -- workspace[game:GetService("Players").LocalPlayer.Name.." Protected Welds"]:Destroy()
 
 
 local function Align(Part1, Part0, Position, Angle)
@@ -705,9 +707,9 @@ wait(.02)
 local Hat = {
 Rename = function(HatID, NAME, oname)
 if oname == nil then oname = "Hat" end
-for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+for i,v in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
     if v:IsA("Accessory") then
-        if game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
+        if game:GetService("Players").LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
             if v:WaitForChild("Handle"):FindFirstChildWhichIsA("SpecialMesh").TextureId == HatID then
           	  if oname == "Hat" then
               v.Name = NAME
@@ -719,7 +721,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
               v.Name = NAME
             end
             end
-        elseif game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 and v:WaitForChild("Handle").TextureId == HatID  then
+        elseif game:GetService("Players").LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 and v:WaitForChild("Handle").TextureId == HatID  then
                  if oname == "Hat" then
               v.Name = NAME
               elseif oname == "LARM" then
@@ -729,7 +731,7 @@ for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
               else
               v.Name = NAME
             end
-            elseif game.Players.LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
+            elseif game:GetService("Players").LocalPlayer.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
             if v:WaitForChild("Handle").TextureID == HatID then
                 if oname == "Hat" then
               v.Name = NAME
@@ -811,7 +813,7 @@ _G.HealthHide = false -- patched
 _G.Blockwackyhead = false -- sometimes face dissapears
 _G.R15toR6 = false -- no settings work
 
-local char = game.Players.LocalPlayer.Character
+local char = game:GetService("Players").LocalPlayer.Character
 for i,v in pairs(char:GetDescendants()) do
 if v:IsA("SpecialMesh") then
 if v.MeshId == "rbxassetid://13003592387"  then
@@ -820,7 +822,7 @@ end
 end
 end
 
-local char = game.Players.LocalPlayer.Character
+local char = game:GetService("Players").LocalPlayer.Character
 for i,v in pairs(char:GetDescendants()) do
 if v:IsA("MeshPart") then
 if v.MeshId == "rbxassetid://13003592387"  then
@@ -860,9 +862,9 @@ Connection = game.Workspace.DescendantAdded:Connect(function(c)
     end
 end)
 
-repeat wait() until game.Players.LocalPlayer.Character
-Char = game.Players.LocalPlayer.Character
-Died = game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(function()
+repeat wait() until game:GetService("Players").LocalPlayer.Character
+Char = game:GetService("Players").LocalPlayer.Character
+Died = game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Died:Connect(function()
     Connection:Disconnect()
     Died:Disconnect()
 end)
@@ -878,11 +880,11 @@ end
 end
 local char
 if not workspace:FindFirstChild("non") then
- char =  game:GetObjects("rbxassetid://5195737219")[1]
+ char =  workspace.Terrain.non
 else
  char = workspace.non
 end
-game.Players.LocalPlayer.Character.PrimaryPart = c.Head
+game:GetService("Players").LocalPlayer.Character.PrimaryPart = c.Head
 char.HumanoidRootPart.Anchored = false
 if not c:FindFirstChild("Tor") then
 repeat wait() until c:FindFirstChild("Tor")
@@ -903,7 +905,7 @@ function getRoot(char)
 	local rootPart = char:FindFirstChild('HumanoidRootPart') or char:FindFirstChild('Torso') 
 	return rootPart
 end
-		local character = game.Players.LocalPlayer.Character
+		local character = game:GetService("Players").LocalPlayer.Character
 		local humanoid = character:FindFirstChildOfClass("Humanoid")
 		if humanoid and humanoid.SeatPart then
 			humanoid.Sit = false
@@ -942,7 +944,7 @@ end
     
 
 
-speaker = game.Players.LocalPlayer
+speaker = game:GetService("Players").LocalPlayer
 for _, child in pairs(c:GetChildren()) do
 				if child:IsA("Part") then
 					child.Anchored = false
@@ -1087,7 +1089,7 @@ for _, child in pairs(char:GetChildren()) do
 
 
 
-       local ch = game.Players.LocalPlayer.Character
+       local ch = game:GetService("Players").LocalPlayer.Character
 local prt=Instance.new("Model", workspace)
 local z1 =  Instance.new("Part", prt)
 z1.Name="Torso"
@@ -1109,19 +1111,19 @@ task.spawn(function()
  end)
 task.spawn(function()	
 task.wait(.02)
- game.Players.LocalPlayer.Character=prt
- game.Players.LocalPlayer.Character=char
+ game:GetService("Players").LocalPlayer.Character=prt
+ game:GetService("Players").LocalPlayer.Character=char
 end)
  
 prt:Destroy()
  
 if _G.wackyhead == true then 
-  wait(game.Players.RespawnTime + 0.5)  
+  wait(game:GetService("Players").RespawnTime + 0.5)  
     
     end
 
 
-  --wait(game.Players.RespawnTime + 0.25)  
+  --wait(game:GetService("Players").RespawnTime + 0.25)  
 
 
 
@@ -1153,7 +1155,7 @@ for _, child in pairs(c:GetChildren()) do
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/TypicallyAUser/TypicalsConvertingLibrary/main/Main"))()
 
 
-speaker = game.Players.LocalPlayer
+speaker = game:GetService("Players").LocalPlayer
 	Clip = false
 
 	local function NoclipLoop()
@@ -1169,7 +1171,7 @@ speaker = game.Players.LocalPlayer
 	
 
 
-local Char = game.Players.LocalPlayer.Character
+local Char = game:GetService("Players").LocalPlayer.Character
     local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
 
     for i,v in next, Hum:GetPlayingAnimationTracks() do
@@ -1280,7 +1282,7 @@ for k,v in pairs(c:GetChildren()) do
     end
 end
 
-  -- workspace[game.Players.LocalPlayer.Name.." Protected Welds"]:Destroy()
+  -- workspace[game:GetService("Players").LocalPlayer.Name.." Protected Welds"]:Destroy()
 
 
 local function Align(Part1, Part0, Position, Angle)
@@ -1320,7 +1322,7 @@ pcall(function()
 	--char.Animate.Disabled = false
 	end)
  	   connect = game:GetService("RunService").Heartbeat:Connect(function(set)
-        workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
+        workspace.Camera.CameraSubject = char:FindFirstChildOfClass("Humanoid")
          	    pcall(function()
  c["Tor"].Handle.CFrame = char["Torso"].CFrame *CFrame.new(0,0,0)  * CFrame.Angles(0,0,-.0005*math.sin(100*tick())) *CFrame.new(-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()),-.0025*math.sin(100*tick()))
 end)
@@ -1359,7 +1361,7 @@ end)
 char:FindFirstChildOfClass("Humanoid").Died:Connect(function()
 ws= workspace
 
-lp = game.Players.LocalPlayer
+lp = game:GetService("Players").LocalPlayer
 
 local function respawnrequest()
     local cameraCframe = ws.CurrentCamera.CFrame
@@ -1380,7 +1382,7 @@ spawn(function()
 end)
 
 spamRequests = false
-wait(game.Players.RespawnTime)
+wait(game:GetService("Players").RespawnTime)
 connect:Disconnect()
 char:Destroy()
 velocity:Disconnect()
@@ -1400,7 +1402,7 @@ for _, child in pairs(c:GetChildren()) do
 				    child.Handle.Anchored = false
 				end
 			end
-wait(game.Players.RespawnTime + 0.5)
+wait(game:GetService("Players").RespawnTime + 0.5)
 connect:Disconnect()
 velocity:Disconnect()
 
@@ -1409,18 +1411,28 @@ end
 redo()
 	game.StarterGui:SetCore("SendNotification", {
 		Title = "Respawn Time";
-		Text = "Your character will respawn every "..game.Players.RespawnTime.." seconds."
+		Text = "Your character will respawn every "..game:GetService("Players").RespawnTime.." seconds."
 	})
 plr.CharacterAdded:Connect(function(re)
 repeat wait() until plr.Character:FindFirstChild("Head")
 repeat wait() until plr.Character:FindFirstChildOfClass("Accessory")
 
 if plr.Character.Name ~= "non" then
+    if workspace:FindFirstChild("non") then
 workspace.Camera.CameraSubject = workspace.non:FindFirstChildOfClass("Humanoid")
 if plr.Character.Name ~= "non" then
  plr.Character.HumanoidRootPart.CFrame = CFrame.new( workspace.non.HumanoidRootPart.CFrame.X +5 , workspace.non.HumanoidRootPart.CFrame.Y, workspace.non.HumanoidRootPart.CFrame.Z +5) 
 end
 task.wait(.01)
 redo2()
+else
+workspace.Camera.CameraSubject = workspace.Terrain.non:FindFirstChildOfClass("Humanoid")
+if plr.Character.Name ~= "non" then
+ plr.Character.HumanoidRootPart.CFrame = CFrame.new( workspace.Terrain.non.HumanoidRootPart.CFrame.X +5 , workspace.Terrain.non.HumanoidRootPart.CFrame.Y, workspace.Terrain.non.HumanoidRootPart.CFrame.Z +5) 
 end
+task.wait(.01)
+redo2()
+    end
+end
+
 end)
