@@ -2705,9 +2705,10 @@ while not stopeverything do
 		   for i,v in pairs(Character.Wings:GetChildren()) do
 			   if v.Name == "Part" then
 				   if v:FindFirstChildOfClass("SpecialMesh") then
-					   v.Transparency = 1
+					   v.Transparency = 0
 					   else 
 							   v.Transparency = 0
+					v.Material = Enum.Material.SmoothPlastic
 				   end
 				   pcall(function()
 					   v.WingTrail.Enabled = false
