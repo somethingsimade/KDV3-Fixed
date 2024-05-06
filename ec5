@@ -1,3 +1,24 @@
+warn([[
+             ,--,               
+         ,--.          ,---.'|               
+       ,--.'|    ,---,.|   | :     ,----..   
+   ,--,:  : |  ,'  .' |:   : |    /   /   \  
+,`--.'`|  ' :,---.'   ||   ' :   |   :     : 
+|   :  :  | ||   |   .';   ; '   .   |  ;. / 
+:   |   \ | ::   :  :  '   | |__ .   ; /--`  
+|   : '  '; |:   |  |-,|   | :.'|;   | ;     
+'   ' ;.    ;|   :  ;/|'   :    ;|   : |     
+|   | | \   ||   |   .'|   |  ./ .   | '___  
+'   : |  ; .''   :  '  ;   : ;   '   ; : .'| 
+|   | '`--'  |   |  |  |   ,/    '   | '/  : 
+'   : |      |   :  \  '---'     |   :    /  
+;   |.'      |   | ,'             \   \ .'   
+'---'        `----'                `---`     
+Nitro's FE Lightning Cannon:
+Press M to Switch Modes 
+Click to Shoot (does nothing)
+Used Nitro's Oxide Reanim                                                                                                      
+]])
 -- ec4
 _G.LightingVis = false
 _G.Gun = true
@@ -2707,7 +2728,7 @@ while not stopeverything do
 				   if v:FindFirstChildOfClass("SpecialMesh") then
 					   v.Transparency = 0
 					   else 
-							   v.Transparency = 0
+							   v.Transparency = 1
 					v.Material = Enum.Material.SmoothPlastic
 				   end
 				   pcall(function()
