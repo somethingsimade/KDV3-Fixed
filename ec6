@@ -20,9 +20,7 @@ Click to Shoot (does nothing)
 Used Nitro's Oxide Reanim                                                                                                      
 ]])
 -- ec4
-task.spawn(
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/OxideReanim/main/postpdexp6"))()
-)
+
 task.wait(.1)
 _G.LightingVis = false
 _G.Gun = true
