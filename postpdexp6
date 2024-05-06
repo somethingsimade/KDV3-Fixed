@@ -187,7 +187,7 @@ end
     
 workspace.FallenPartsDestroyHeight = 0/0
 
-Connection = game.Workspace.DescendantAdded:Connect(function(c)
+Connection = workspace.DescendantAdded:Connect(function(c)
     if c.Name == "Animate" then
         c.Disabled=false        
     end
@@ -856,7 +856,7 @@ end
     
 workspace.FallenPartsDestroyHeight = 0/0
 
-Connection = game.Workspace.DescendantAdded:Connect(function(c)
+Connection = workspace.DescendantAdded:Connect(function(c)
     if c.Name == "Animate" then
         c.Disabled=false        
     end
@@ -1409,7 +1409,7 @@ velocity:Disconnect()
 
 end
 redo()
-	game.StarterGui:SetCore("SendNotification", {
+	game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = "Respawn Time";
 		Text = "Your character will respawn every "..game:GetService("Players").RespawnTime.." seconds."
 	})
