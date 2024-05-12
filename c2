@@ -50,6 +50,7 @@ Script = function()
     local Players = game:GetService("Players")
     local Client = Players.LocalPlayer
     local Character = Client.Character or Client.CharacterAdded:Wait()
+    local reanimation = Character
     local WeldBase = Character:WaitForChild("HumanoidRootPart")
     local ArmBase = Character:FindFirstChild("RightHand") or Character:FindFirstChild("Right Arm") or WeldBase
     local Backpack = Client:WaitForChild("Backpack")
