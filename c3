@@ -51,6 +51,7 @@ Script = function()
     local Client = Players.LocalPlayer
     local Character = Client.Character or Client.CharacterAdded:Wait()
     local reanimation = Character
+local character1 = Character
     local WeldBase = Character:WaitForChild("HumanoidRootPart")
     local ArmBase = Character:FindFirstChild("RightHand") or Character:FindFirstChild("Right Arm") or WeldBase
     local Backpack = Client:WaitForChild("Backpack")
@@ -342,7 +343,7 @@ Script = function()
     VirtualRig:BreakJoints()
     for i,v in pairs(VirtualRig:GetChildren()) do
         if v:IsA("BasePart") then
-            v.CFrame = character1.HumanoidRootPart.CFrame
+            v.CFrame = character.HumanoidRootPart.CFrame
         end
     end
     --
