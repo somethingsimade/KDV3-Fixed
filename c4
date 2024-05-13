@@ -343,7 +343,7 @@ local character1 = Character
     VirtualRig:BreakJoints()
     for i,v in pairs(VirtualRig:GetChildren()) do
         if v:IsA("BasePart") then
-            v.CFrame = character.HumanoidRootPart.CFrame
+            v.CFrame = character1.HumanoidRootPart.CFrame
         end
     end
     --
