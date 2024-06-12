@@ -532,8 +532,6 @@ local att = c["Right Arm"].Attachment
 att.Parent = c["Right Arm"]
 att.Position = Vector3.new(0, -3.4, -1.2)
 att.Orientation = Vector3.new(-0, 90, -45)
-local weldra = Instance.new("WeldConstraint",c["Right Arm"])
-weldra.Part0 = c["Starslayer Railgun"].Handle
 game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle:BreakJoints()
 local PositionOffset = Vector3.new(-2.025, 1.87, 0)
 local RotationOffset = Vector3.new(0,0, 315)
