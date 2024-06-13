@@ -13,7 +13,6 @@ return s.SoundId
 end
 
 game.Players.LocalPlayer.Character.Animate:Destroy()
-wait(0.25)
 local char = game.Players.LocalPlayer.Character
 z = game:GetService("InsertService"):LoadLocalAsset("rbxassetid://4623059912")
 z.Handle.CanCollide = false
@@ -77,7 +76,7 @@ end
 z.Handle.Transparency = 1
 z.Handle.Anchored = false
 char.Humanoid:AddAccessory(z)
-
+wait(.5)
 --here it goes
 local stopeverything = false
 KEYHOLD = false
@@ -532,6 +531,8 @@ local att = c["Right Arm"].Attachment
 att.Parent = c["Right Arm"]
 att.Position = Vector3.new(0, -3.4, -1.2)
 att.Orientation = Vector3.new(-0, 90, -45)
+local weldra = Instance.new("WeldConstraint",c["Right Arm"])
+weldra.Part0 = c["Starslayer Railgun"].Handle
 game.Players.LocalPlayer.Character["Accessory (VoidRPG)"].Handle:BreakJoints()
 local PositionOffset = Vector3.new(-2.025, 1.87, 0)
 local RotationOffset = Vector3.new(0,0, 315)
@@ -582,10 +583,10 @@ end
 
 local customasset = getcustomasset2
 
-local sound = Instance.new("Sound",Character.Head)
+local sound = Instance.new("Sound",Character.HumanoidRootPart)
 sound.Looped = true
 sound.Playing = true
-sound.Volume = 1
+sound.Volume = 7.5
 sound.SoundId = customasset("MEMELC/None.mp3")
 
 coroutine.resume(coroutine.create(function()
@@ -1373,6 +1374,16 @@ W1=Instance.new("Weld",eeeblock)
 W1.Part0 = eeeblock
 W1.Part1 = Torso
 local attachuwu = c["Right Arm"].Attachment
+weldra:GetPropertyChangedSignal("Part1"):Connect(function()
+weldra.Enabled = false
+wait(.5)
+weldra.Enabled = true
+end)
+attachuwu:GetPropertyChangedSignal("CFrame"):Connect(function()
+weldra.Enabled = false
+wait(.35)
+weldra.Enabled = true
+end)
 while not stopeverything do
 	if not alreadyfixing then
 		if not soundfixing then
@@ -1394,6 +1405,7 @@ while not stopeverything do
 		Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
 		Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 		Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
+		weldra.Part1 = attachuwu.Parent
 		for i,v in pairs(Character:GetDescendants()) do
 			if v:IsA("BasePart") then
 				if not v:IsDescendantOf(Effects) and v ~= RootPart then
