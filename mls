@@ -1373,16 +1373,6 @@ W1=Instance.new("Weld",eeeblock)
 W1.Part0 = eeeblock
 W1.Part1 = Torso
 local attachuwu = c["Right Arm"].Attachment
-weldra:GetPropertyChangedSignal("Part1"):Connect(function()
-weldra.Enabled = false
-wait(.5)
-weldra.Enabled = true
-end)
-attachuwu:GetPropertyChangedSignal("CFrame"):Connect(function()
-weldra.Enabled = false
-wait(.35)
-weldra.Enabled = true
-end)
 while not stopeverything do
 	if not alreadyfixing then
 		if not soundfixing then
@@ -1404,7 +1394,6 @@ while not stopeverything do
 		Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
 		Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
 		Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
-		weldra.Part1 = attachuwu.Parent
 		for i,v in pairs(Character:GetDescendants()) do
 			if v:IsA("BasePart") then
 				if not v:IsDescendantOf(Effects) and v ~= RootPart then
