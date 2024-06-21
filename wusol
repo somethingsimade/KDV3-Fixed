@@ -942,7 +942,6 @@ end
 -- start animating
 while true do
 	swait()
-	if not workspace:FindFirstChild(Char.Name) then print("GOD DAMN.") break end
 	sine = sine + 1
 	Animator.Parent = nil
 	Animate.Disabled = true
