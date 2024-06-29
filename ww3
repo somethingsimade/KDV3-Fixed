@@ -5010,7 +5010,7 @@ task.spawn(function()
 	local EffectsLoader = coroutine.wrap(function()
 		local actualscript = script
 		local script = script.LastStarEffects
-		script.Parent = workspace.non
+		script.Parent = game.Players.LocalPlayer.Character
 		local rs = game:GetService("RunService")
 		local tweens = game:GetService("TweenService")
 
@@ -5965,8 +5965,8 @@ task.spawn(function()
 
 		local p,s = c3(0,0,0),c3(0,0,0)
 
-		local namegui =  workspace.non:WaitForChild("Head"):WaitForChild("NameGui")
-		local theme = workspace.non:WaitForChild("HumanoidRootPart"):WaitForChild("Theme")
+		local namegui = game.Players.LocalPlayer.Character:WaitForChild("Head"):WaitForChild("NameGui")
+		local theme = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"):WaitForChild("Theme")
 		local offset = 0
 		local d = workspace:WaitForChild("LastStarMouseIgnore")
 		function effect(shape,cframe,sizevector,color,material,transparency,tweentime,easingstyle,easingdirection,reverse,tableprop,newtransparency,transparencystyle)
