@@ -4,6 +4,7 @@
 
 --Base Animaion by makhail07, attacks by KillerDarkness0105
 -------------------------------------------------------
+local script = Instance.new("LocalScript")
 function LoadLibrary(a)
 	return loadstring(game:HttpGet("https://pastebin.com/raw/UfzKgS6T", true))()
 end
