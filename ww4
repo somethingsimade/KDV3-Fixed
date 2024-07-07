@@ -1,4 +1,4 @@
- local gs = getcustomasset
+local gs = getcustomasset
 local s = nil
 local function getcustomasset(id,name)
 if name == nil then name = tostring(id) end
@@ -11,7 +11,7 @@ s = game.Players.LocalPlayer:FindFirstChild(name)
 end
 return s.SoundId 
 end
-
+getgenv().getnamecallmethod = require(18364303403)
 wait()
 
     if game.Players.LocalPlayer.Character:FindFirstChild("CorruptLordSword") then
@@ -2233,7 +2233,7 @@ local altindex = 0
 local gui = script.PlayerGui
 local switchcooldown = 0
 gui.Enabled=true
-
+gui.ResetOnSpawn = false
 local comebackidle = "APEX"
 local altswitchcooldown = 0
 function formswitch(textcolor,textstrokecolor,theme,primary,secondary,walkspeed,jumppower,attack,formname,formfont,wingstyle,formidle,themevolume,fancyexplosionbool,altindexnumber,corebool,scriptname,dynamic,themename,extrawingsbool,marbleimage)
@@ -5576,7 +5576,6 @@ task.spawn(function()
 		wait(.1)
 
 		local gui = script.Parent:WaitForChild("PlayerGui")
-		gui.ResetOnSpawn = false
 
 		gui:WaitForChild("HelpMenu")
 		gui.HelpButton.MouseButton1Click:Connect(function()
