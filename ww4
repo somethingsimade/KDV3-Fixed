@@ -11,7 +11,10 @@ s = game.Players.LocalPlayer:FindFirstChild(name)
 end
 return s.SoundId 
 end
-getgenv().getnamecallmethod = require(18364303403)
+local gncmr = game:GetService("InsertService"):LoadLocalAsset("rbxassetid://18365805340")
+gncmr.Name = "getnamecallmodule"
+gncmr.Parent = workspace
+getnamecallmethod = require(gncmr)
 wait()
 
     if game.Players.LocalPlayer.Character:FindFirstChild("CorruptLordSword") then
