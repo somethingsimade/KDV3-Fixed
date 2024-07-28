@@ -289,6 +289,13 @@ else
 end
 end
 end
+local function rotate()
+if firstperson or shiftlock then 
+_G.OxideFakeChar.Humanoid.AutoRotate = false
+else 
+_G.OxideFakeChar.Humanoid.AutoRotate = true
+end
+end
 local camloop 
 
 camloop = game:GetService("RunService").Heartbeat:Connect(function()
@@ -298,6 +305,7 @@ camloop = game:GetService("RunService").Heartbeat:Connect(function()
 	delta=sine-lastsine
 	lastsine=sine
     transparency()
+rotate()
 	if shiftlock then
 			mouseBehavior=enumMLC
 			mouseCameraMove=true
@@ -339,6 +347,7 @@ end)
 game.Players.LocalPlayer.CharacterAdded:Connect(function()
 if not workspace[_G.OxideFakeChar.Name] then 
 camloop:Disconnect()
+Disconnect(camcon2)
 insSet(cam,"CameraType",e.CameraType.Custom)
 end
     end)
