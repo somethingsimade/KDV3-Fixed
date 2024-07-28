@@ -359,5 +359,4 @@ cam.CameraSubject = _G.OxideFakeChar:FindFirstChildOfClass("Humanoid")
 		camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
 		insSet(cam,"CFrame",camcf)
 	end
-end
 end)
