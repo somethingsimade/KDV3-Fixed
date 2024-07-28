@@ -1,0 +1,304 @@
+--no need to get and index the library tables with function names every time the script uses them
+local game = game.workspace.Parent
+local osclock=os.clock
+local tspawn=task.spawn
+local twait=task.wait
+local schar=string.char
+local ssub=string.sub
+local sfind=string.find
+local supper=string.upper
+local mrandom=math.random
+local sin=math.sin
+local cos=math.cos
+local abs=math.abs
+local rad=math.rad
+local min=math.min
+local clamp=math.clamp
+local tinsert=table.insert
+local tclear=table.clear
+local tclone=table.clone
+local tfind=table.find
+local tunpack=table.unpack
+
+--the script doesnt have to read global varaibles every time to get them
+--why not have them saved in local varaibles for faster access times
+local next=next
+local pcall=pcall
+local xpcall=xpcall
+local type=type
+local typeof=typeof
+local game=game
+
+local i=Instance.new 
+local v2=Vector2.new 
+local v3=Vector3.new
+local c3=Color3.new 
+local cf=CFrame.new
+local cfl=CFrame.lookAt
+local angles=CFrame.Angles
+local u2=UDim2.new 
+local e=Enum 
+local rp=RaycastParams.new 
+local cs=ColorSequence.new 
+local csk=ColorSequenceKeypoint.new 
+
+local sine=osclock()
+local deltaTime=0
+local v3_0=v3(0,0,0)
+local v3_101=v3(1,0,1)
+local v3_010=v3(0,1,0)
+local v3_001=v3(0,0,1)
+local cf_0=cf(0,0,0)
+local v3_xz=v3_101*10
+local v3_xzL=v3_101*250.1
+local v3_net=v3_010*25.01
+
+--not "local function rs" to not assign debug names
+local rs=function(l) 
+	l=l or mrandom(8,15) 
+	local s="" 
+	for i=1,l do 
+		if mrandom(1,2)==1 then 
+			s=s..schar(mrandom(65,90)) 
+		else 
+			s=s..schar(mrandom(97,122)) 
+		end 
+	end 
+	return s 
+end
+
+--it runs even faster if u call __index and __newindex of metatables of userdata directly
+local getMetamethodFromErrorStack=function(userdata,f,test)
+	local ret=nil
+	xpcall(f,function()
+		ret=debug.info(2,"f")
+	end,userdata,nil,0)
+	if (type(ret)~="function") or not test(ret) then
+		return f
+	end
+	return ret
+end
+local insSet=getMetamethodFromErrorStack(game,function(a,b,c) a[b]=c end,function(f) local a=i("Folder") local b=rs() f(a,"Name",b) return a.Name==b end)
+local insGet=getMetamethodFromErrorStack(game,function(a,b) return a[b] end,function(f) local a=i("Folder") local b=rs() a.Name=b return f(a,"Name")==b end)
+local cfGet=getMetamethodFromErrorStack(cf_0,function(a,b) return a[b] end,function(f) return f(cf(1,2,3),"Position")==v3(1,2,3) end)
+local cfMul=getMetamethodFromErrorStack(cf_0,function(a,b) return a*b end,function(f) return angles(1,2,3)*angles(1,2,3)==f(angles(1,2,3),angles(1,2,3)) end)
+local cfAdd=getMetamethodFromErrorStack(cf_0,function(a,b) return a+b end,function(f) return cf(1,2,3)+v3(1,2,3)==f(cf(1,2,3),v3(1,2,3)) end)
+local v3Get=getMetamethodFromErrorStack(v3_0,function(a,b) return a[b] end,function(f) return v3(1,2,3).Unit==f(v3(1,2,3),"Unit") end)
+--multiplying and adding vector3 is faster if you use the * and + operators
+
+--no need to index instances every time to call their functions
+local Clone=insGet(game,"Clone")
+local ClearAllChildren=insGet(game,"ClearAllChildren")
+local Destroy=insGet(game,"Destroy")
+local IsA=insGet(game,"IsA")
+local FindFirstChildOfClass=insGet(game,"FindFirstChildOfClass")
+local FindFirstChildWhichIsA=insGet(game,"FindFirstChildWhichIsA")
+local GetChildren=insGet(game,"GetChildren")
+local GetDescendants=insGet(game,"GetDescendants")
+local IsDescendantOf=insGet(game,"IsDescendantOf")
+local GetPropertyChangedSignal=insGet(game,"GetPropertyChangedSignal")
+
+--findfirstchildofclass faster than getservice
+local plrs=FindFirstChildOfClass(game,"Players")
+local rus=FindFirstChildOfClass(game,"RunService")
+local ws=FindFirstChildOfClass(game,"Workspace")
+local uis=FindFirstChildOfClass(game,"UserInputService")
+local gs=FindFirstChildOfClass(game,"GuiService")
+local sg=FindFirstChildOfClass(game,"StarterGui")
+local lp=insGet(plrs,"LocalPlayer")
+local pg=FindFirstChildOfClass(lp,"PlayerGui")
+local mouse=insGet(lp,"GetMouse")(lp)
+local stepped=insGet(rus,"Stepped")
+local heartbeat=insGet(rus,"Heartbeat")
+local renderstepped=insGet(rus,"RenderStepped")
+
+local GetPlayers=insGet(plrs,"GetPlayers")
+local SetCoreGuiEnabled=insGet(sg,"SetCoreGuiEnabled")
+local GetCoreGuiEnabled=insGet(sg,"GetCoreGuiEnabled")
+local Raycast=insGet(ws,"Raycast")
+local Connect=heartbeat.Connect
+local Disconnect=Connect(GetPropertyChangedSignal(game,"CreatorId"),type).Disconnect
+local Wait=heartbeat.Wait
+local GetMouseLocation=insGet(uis,"GetMouseLocation")
+local GetFocusedTextBox=insGet(uis,"GetFocusedTextBox")
+local GetMouseDelta=insGet(uis,"GetMouseDelta")
+local IsMouseButtonPressed=insGet(uis,"IsMouseButtonPressed")
+local IsKeyDown=insGet(uis,"IsKeyDown")
+
+local Inverse=cfGet(cf_0,"Inverse")
+local Lerp=cfGet(cf_0,"Lerp")
+
+
+local cam=nil
+--theres a way to have ws.currentcamera nil on heartbeat and still have the game run normally
+local refcam=function()
+	local newcam=insGet(ws,"CurrentCamera")
+	while not newcam do
+		Wait(GetPropertyChangedSignal(ws,"CurrentCamera"))
+		newcam=insGet(ws,"CurrentCamera")
+	end
+	cam=newcam
+end
+refcam()
+local camcf=insGet(cam,"CFrame")
+local enumCamS=e.CameraType.Scriptable
+local camt=insGet(cam,"CameraType")
+local camcon0=nil
+local camcon1=nil
+local camcon2=nil
+local onnewcamera=function()
+	refcam()
+	if camcon0 then 
+		Disconnect(camcon0)
+		Disconnect(camcon1)
+		camcon0=nil
+	end
+	if not c then 
+		if insGet(cam,"CameraType")==enumCamS then
+			insSet(cam,"CameraType",camt)
+		end
+		return Disconnect(camcon2) 
+	end
+	camcon0=Connect(GetPropertyChangedSignal(cam,"CFrame"),function()
+		if insGet(cam,"CFrame")~=camcf then
+			insSet(cam,"CFrame",camcf)
+		end
+	end)
+	camcon1=Connect(GetPropertyChangedSignal(cam,"CameraType"),function()
+		if insGet(cam,"CameraType")~=enumCamS then
+			insSet(cam,"CameraType",enumCamS)
+		end
+	end)
+	if insGet(cam,"CameraType")~=enumCamS then
+		insSet(cam,"CameraType",enumCamS)
+	end
+	if insGet(cam,"CFrame")~=camcf then
+		insSet(cam,"CFrame",camcf)
+	end
+end
+camcon2=Connect(GetPropertyChangedSignal(ws,"CurrentCamera"),onnewcamera)
+onnewcamera()
+
+local velYdelta=insGet(ws,"Gravity")*0.025
+Connect(GetPropertyChangedSignal(ws,"Gravity"),function()
+	velYdelta=insGet(ws,"Gravity")*0.025
+end)
+
+local fpdh=insGet(ws,"FallenPartsDestroyHeight")
+novoid=novoid and (fpdh+1)
+local Yvel=0
+local cfr=insGet(_G.OxideFakeChar.HumanoidRootPart,"CFrame")
+local pos=cfGet(cfr,"Position")
+cfr=cfl(pos,pos+cfGet(cfr,"LookVector")*v3_101)
+local primarypart=nil
+local shiftlock=false
+local firstperson=false
+local xzvel=v3_0
+local v3_0150=v3_010*1.5
+local camcfLV=cfGet(camcf,"LookVector")
+local camrot=cfl(v3_0,camcfLV)
+local camcfRV=cfGet(camrot,"RightVector")
+local enumMB2=e.UserInputType.MouseButton2
+local enumMLCP=e.MouseBehavior.LockCurrentPosition
+local enumMLC=(insGet(uis,"TouchEnabled") and enumMLCP) or e.MouseBehavior.LockCenter 
+local enumMD=e.MouseBehavior.Default
+local enumMW=e.UserInputType.MouseWheel
+local enumMM=e.UserInputType.MouseMovement
+local refreshTouchRegions=function()
+	local sX=insGet(mouse,"ViewSizeX")
+	local sY=insGet(mouse,"ViewSizeY")
+	local isSmallScreen=min(sX,sY)<=500
+
+	sY=sY+insGet(gs,"TopbarInset").Height
+
+	thumbstickEndX=sX*0.4
+	thumbstickStartY=(sY+0)*0.333
+
+	if isSmallScreen then
+		thumbstickSizeMultiplier=35
+		jumpStartX=sX-95
+		jumpStartY=sY-90
+		jumpEndX=jumpStartX+70
+		jumpEndY=jumpStartY+70
+	else
+		thumbstickSizeMultiplier=60
+		jumpStartX=sX-170
+		jumpStartY=sY-210
+		jumpEndX=jumpStartX+120
+		jumpEndY=jumpStartY+120
+	end
+end
+local mradN05=rad(-0.5)
+local cammag=-v3Get((cfGet(camcf,"Position")-(pos+v3_0150)),"Magnitude")
+Connect(GetPropertyChangedSignal(mouse,"ViewSizeX"),refreshTouchRegions)
+Connect(GetPropertyChangedSignal(mouse,"ViewSizeY"),refreshTouchRegions)
+Connect(GetPropertyChangedSignal(gs,"TopbarInset"),refreshTouchRegions)
+refreshTouchRegions()
+
+local mouseCameraMove=false
+Connect(insGet(uis,"InputChanged"),function(a,b)
+	if b then return end
+	local inputType=insGet(a,"UserInputType")
+	if mouseCameraMove and inputType==enumMM then
+		local rotation=GetMouseDelta(uis)*mradN05
+		camcfLV=cfGet(cfMul(camrot,angles(rotation.Y,rotation.X,0)),"LookVector")
+		camrot=cfl(v3_0,camcfLV)
+		camcfRV=cfGet(camrot,"RightVector")
+	elseif inputType==enumMW then
+		cammag=cammag+v3Get(insGet(a,"Position"),"Z")*(0.75-cammag/4)
+		if cammag<0 then
+			firstperson=false
+		else
+			cammag=0
+			firstperson=true
+		end
+	end
+end)
+sine=osclock()
+local lastsine = 0
+local mouseBehavior=nil
+local lastMouseBehavior=insGet(uis,"MouseBehavior")
+Connect(GetPropertyChangedSignal(uis,"MouseBehavior"),function()
+	if mouseBehavior and (insGet(uis,"MouseBehavior")~=mouseBehavior) then
+		insSet(uis,"MouseBehavior",mouseBehavior)
+	end
+end)
+while twait() do
+	local cfr=insGet(_G.OxideFakeChar.HumanoidRootPart,"CFrame")
+	local pos=cfGet(cfr,"Position")
+	sine=osclock()
+	delta=sine-lastsine
+	lastsine=sine
+	if shiftlock then
+			mouseBehavior=enumMLC
+			mouseCameraMove=true
+	elseif firstperson then
+		mouseBehavior=enumMLC
+		mouseCameraMove=true
+	elseif IsMouseButtonPressed(uis,enumMB2) then
+		mouseBehavior=enumMLCP
+		mouseCameraMove=true
+	else
+		mouseBehavior=enumMD
+		mouseCameraMove=false
+	end
+	if lastMouseBehavior~=mouseBehavior then
+		lastMouseBehavior=mouseBehavior
+		insSet(uis,"MouseBehavior",mouseBehavior)
+	end
+
+	if firstperson then
+		cfr=cfl(pos,pos+camcfLV*v3_101)
+		camcf=cfAdd(camrot,pos+v3_0150)
+		insSet(cam,"CFrame",camcf)
+	elseif shiftlock then	
+		cfr=cfl(pos,pos+camcfLV*v3_101)
+		camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
+		insSet(cam,"CFrame",camcf)
+	else 
+		pos=pos+xzvel*delta
+		cfr=cfl(pos,pos+camcfLV*v3_101)
+		camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
+		insSet(cam,"CFrame",camcf)
+	end
+end
