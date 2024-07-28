@@ -320,7 +320,7 @@ function Swait(num)
    end
 end
 
-while twait() do
+game:GetService("RunService").Heartbeat:Connect(function()
 	local cfr=insGet(_G.OxideFakeChar.HumanoidRootPart,"CFrame")
 	local pos=cfGet(cfr,"Position")
 	sine=osclock()
@@ -359,5 +359,5 @@ cam.CameraSubject = _G.OxideFakeChar:FindFirstChildOfClass("Humanoid")
 		camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
 		insSet(cam,"CFrame",camcf)
 	end
-swait()
 end
+end)
