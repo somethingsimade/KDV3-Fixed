@@ -305,6 +305,7 @@ camloop = game:GetService("RunService").Heartbeat:Connect(function()
 	delta=sine-lastsine
 	lastsine=sine
     transparency()
+rotate()
 	if shiftlock then
 			mouseBehavior=enumMLC
 			mouseCameraMove=true
