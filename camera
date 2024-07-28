@@ -269,6 +269,7 @@ while twait() do
 	sine=osclock()
 	delta=sine-lastsine
 	lastsine=sine
+cam.CameraSubject = _G.OxideFakeChar:FindFirstChildOfClass("Humanoid")
 	if shiftlock then
 			mouseBehavior=enumMLC
 			mouseCameraMove=true
