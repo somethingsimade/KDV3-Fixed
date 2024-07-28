@@ -263,6 +263,63 @@ Connect(GetPropertyChangedSignal(uis,"MouseBehavior"),function()
 		insSet(uis,"MouseBehavior",mouseBehavior)
 	end
 end)
+
+local script = Instance.new("LocalScript")
+ArtificialHB = Instance.new("BindableEvent",script)
+ArtificialHB.Name = "Heartbeat"
+script:WaitForChild("Heartbeat")
+
+
+
+frame = 1 / 60
+
+tf = 0
+allowframeloss = false
+tossremainder = false
+lastframe = tick()
+script.Heartbeat:Fire()
+
+game:GetService("RunService").Heartbeat:Connect(function(s,p)
+   tf = tf + s
+   if tf >= frame then
+	   if allowframeloss then
+		   script.Heartbeat:Fire()
+		   lastframe = tick()
+	   else
+		   for i = 1,math.floor(tf / frame) do
+			pcall(function()
+			   script.Heartbeat:Fire()
+			end)
+		   end
+		   lastframe = tick()
+	   end
+	   if tossremainder then
+		   tf = 0
+	   else
+		   tf = tf - frame * math.floor(tf / frame)
+	   end
+   end
+end)
+
+function swait(num)
+   if num == 0 or num == nil then
+	   ArtificialHB.Event:Wait()
+   else
+	   for i = 0,num do
+		   ArtificialHB.Event:Wait()
+	   end
+   end
+end
+function Swait(num)
+   if num == 0 or num == nil then
+	   ArtificialHB.Event:Wait()
+   else
+	   for i = 0,num do
+		   ArtificialHB.Event:Wait()
+	   end
+   end
+end
+
 while twait() do
 	local cfr=insGet(_G.OxideFakeChar.HumanoidRootPart,"CFrame")
 	local pos=cfGet(cfr,"Position")
@@ -302,4 +359,5 @@ cam.CameraSubject = _G.OxideFakeChar:FindFirstChildOfClass("Humanoid")
 		camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
 		insSet(cam,"CFrame",camcf)
 	end
+swait()
 end
