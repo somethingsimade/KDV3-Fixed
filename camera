@@ -287,6 +287,11 @@ else
             v.Transparency = 0    
         end
 end
+    for i,v in pairs(_G.OxideFakeChar:GetDescendants()) do
+        if v:IsA("BasePart") and v.Parent ~= _G.OxideFakeChar and not v.Parent:IsA("Accessory") then 
+            v.Transparency = 1    
+        end
+end
 end
 end
 local function rotate()
