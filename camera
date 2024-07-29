@@ -283,8 +283,8 @@ if firstperson then
 end
 else 
     for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
-        if v:IsA("BasePart") then 
-            v.Transparency = 0    
+        if v:IsA("Accessory") then 
+            v.Handle.Transparency = 0    
         end
 end
 end
