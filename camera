@@ -1,4 +1,3 @@
-
 local game = game.Workspace.Parent
 local osclock=os.clock
 local tspawn=task.spawn
@@ -189,7 +188,7 @@ end)
 local fpdh=insGet(ws,"FallenPartsDestroyHeight")
 novoid=novoid and (fpdh+1)
 local Yvel=0
-local cfr=insGet(_G.OxideFakeChar.HumanoidRootPart,"CFrame")
+local cfr=insGet(_G.OxideFakeChar:WaitForChild("HumanoidRootPart"),"CFrame")
 local pos=cfGet(cfr,"Position")
 cfr=cfl(pos,pos+cfGet(cfr,"LookVector")*v3_101)
 local primarypart=nil
@@ -238,7 +237,7 @@ Connect(GetPropertyChangedSignal(gs,"TopbarInset"),refreshTouchRegions)
 refreshTouchRegions()
 
 local mouseCameraMove=false
-Connect(insGet(uis,"InputChanged"),function(a,b)
+local inp = Connect(insGet(uis,"InputChanged"),function(a,b)
 	if b then return end
 	local inputType=insGet(a,"UserInputType")
 	if mouseCameraMove and inputType==enumMM then
@@ -299,8 +298,7 @@ end
 local camloop 
 
 camloop = game:GetService("RunService").Heartbeat:Connect(function()
-if _G.Stopped == false then
-	local cfr=insGet(_G.OxideFakeChar.HumanoidRootPart,"CFrame")
+	local cfr=insGet(_G.OxideFakeChar:WaitForChild("HumanoidRootPart"),"CFrame")
 	local pos=cfGet(cfr,"Position")
 	sine=osclock()
 	delta=sine-lastsine
@@ -324,13 +322,13 @@ rotate()
 
 	if firstperson then
 	cfr=cfl(pos,pos+camcfLV*v3_101)
-    	_G.OxideFakeChar.HumanoidRootPart.CFrame = cfr
+    	_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
 		camcf=cfAdd(camrot,pos+v3_0150)
 		insSet(cam,"CFrame",camcf)
 	elseif shiftlock then	
 						cfr=cfl(pos,pos+camcfLV*v3_101)
 						camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
-						_G.OxideFakeChar.HumanoidRootPart.CFrame = cfr
+						_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
 		insSet(cam,"CFrame",camcf)
 	else 
 		cfr=cfAdd(cfGet(cfr,"Rotation"),pos)
@@ -341,14 +339,15 @@ rotate()
 	end
     sine=osclock()
 	lastsine=sine
-end
 end)
+insSet(cam,"CameraType",e.CameraType.Scriptable)
 game.Players.LocalPlayer.CharacterAdded:Connect(function()
-task.wait(.5)
 if _G.Stopped == true then
 camloop:Disconnect()
 camcon2:Disconnect()
 insSet(cam,"CameraType",e.CameraType.Custom)
 Disconnect(beh)
+Disconnect(inp)
+	insSet(uis,"MouseBehavior",enumMD)
 end
     end)
