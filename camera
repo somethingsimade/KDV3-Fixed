@@ -1,3 +1,4 @@
+
 local game = game.Workspace.Parent
 local osclock=os.clock
 local tspawn=task.spawn
@@ -147,6 +148,7 @@ local camcon1=nil
 local camcon2=nil
 local onnewcamera=function()
 if _G.Stopped == false then
+    print(_G.Stopped)
 	refcam()
 	if camcon0 then 
 		Disconnect(camcon0)
@@ -173,8 +175,14 @@ if _G.Stopped == false then
 		insSet(cam,"CameraType",enumCamS)
 	end
 	if insGet(cam,"CFrame")~=camcf then
+        if _G.Stopped == false then
+            if _G.Stopped == false then
+                if _G.Stopped == false then
 		insSet(cam,"CFrame",camcf)
 	end
+            end 
+        end
+    end
     end
 end
 camcon2=ws:GetPropertyChangedSignal("CurrentCamera"):Connect(onnewcamera)
@@ -343,11 +351,17 @@ end)
 insSet(cam,"CameraType",e.CameraType.Scriptable)
 game.Players.LocalPlayer.CharacterAdded:Connect(function()
 if _G.Stopped == true then
+    Disconnect(camcon1)
+    workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+    workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
 camloop:Disconnect()
 camcon2:Disconnect()
-insSet(cam,"CameraType",e.CameraType.Custom)
+Disconnect(camcon1)
+Disconnect(camcon0)
+Disconnect(camcon2)
 Disconnect(beh)
 Disconnect(inp)
+workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
 	insSet(uis,"MouseBehavior",enumMD)
 end
     end)
