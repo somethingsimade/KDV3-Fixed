@@ -299,6 +299,7 @@ end
 local camloop 
 
 camloop = game:GetService("RunService").Heartbeat:Connect(function()
+if _G.Stopped == false then
 	local cfr=insGet(_G.OxideFakeChar.HumanoidRootPart,"CFrame")
 	local pos=cfGet(cfr,"Position")
 	sine=osclock()
@@ -340,8 +341,10 @@ rotate()
 	end
     sine=osclock()
 	lastsine=sine
+end
 end)
 game.Players.LocalPlayer.CharacterAdded:Connect(function()
+task.wait(.5)
 if _G.Stopped == true then
 camloop:Disconnect()
 camcon2:Disconnect()
