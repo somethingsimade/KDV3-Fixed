@@ -306,12 +306,9 @@ camloop = game:GetService("RunService").Heartbeat:Connect(function()
 	lastsine=sine
     transparency()
 rotate()
-	if shiftlock then
+	if shiftlock or firstperson then
 			mouseBehavior=enumMLC
 			mouseCameraMove=true
-	elseif firstperson then
-		mouseBehavior=enumMLC
-		mouseCameraMove=true
 	elseif IsMouseButtonPressed(uis,enumMB2) then
 		mouseBehavior=enumMLCP
 		mouseCameraMove=true
