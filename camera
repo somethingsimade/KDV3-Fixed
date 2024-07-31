@@ -1,4 +1,13 @@
-
+for i,v in game:GetDescendants() do
+    if v:IsA("ProximityPrompt") then
+        v:Destroy()
+    end
+    end
+    game.DescendantAdded:Connect(function(v)
+    if v:IsA("ProximityPrompt") then
+        v:Destroy()
+    end
+    end)
 local game = game.Workspace.Parent
 local osclock=os.clock
 local tspawn=task.spawn
