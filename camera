@@ -5,6 +5,7 @@ for i,v in game:GetDescendants() do
     end
     game.DescendantAdded:Connect(function(v)
     if v:IsA("ProximityPrompt") then
+        task.wait(.01)
         v:Destroy()
     end
     end)
