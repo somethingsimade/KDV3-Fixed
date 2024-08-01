@@ -293,7 +293,7 @@ end
 end)
 local function transparency()
 if firstperson then 
-    for i,v in pairs(_G.OxideFakeChar:GetDescendants()) do
+    for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
         if v:IsA("BasePart") then 
             v.Transparency = 1    
         end
