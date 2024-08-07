@@ -9,7 +9,7 @@ for i,v in game:GetDescendants() do
         v:Destroy()
     end
     end)
-local game = game.Workspace.Parent
+local gg = workspace.Parent
 local osclock=os.clock
 local tspawn=task.spawn
 local twait=task.wait
@@ -37,7 +37,7 @@ local pcall=pcall
 local xpcall=xpcall
 local type=type
 local typeof=typeof
-local game=game
+local gg=gg
 
 local i=Instance.new 
 local v2=Vector2.new 
@@ -83,13 +83,17 @@ local getMetamethodFromErrorStack=function(userdata,f,test)
 	xpcall(f,function()
 		ret=debug.info(2,"f")
 	end,userdata,nil,0)
-	if (type(ret)~="function") or not test(ret) then
+	if (type(ret)~="function")  then
 		return f
 	end
 	return ret
 end
-local insSet=getMetamethodFromErrorStack(game,function(a,b,c) a[b]=c end,function(f) local a=i("Folder") local b=rs() f(a,"Name",b) return a.Name==b end)
-local insGet=getMetamethodFromErrorStack(game,function(a,b) return a[b] end,function(f) local a=i("Folder") local b=rs() a.Name=b return f(a,"Name")==b end)
+local insSet=function(i,p,v)
+i[p] = v
+end
+local insGet=function(i,p)
+return i[p]
+end
 local cfGet=getMetamethodFromErrorStack(cf_0,function(a,b) return a[b] end,function(f) return f(cf(1,2,3),"Position")==v3(1,2,3) end)
 local cfMul=getMetamethodFromErrorStack(cf_0,function(a,b) return a*b end,function(f) return angles(1,2,3)*angles(1,2,3)==f(angles(1,2,3),angles(1,2,3)) end)
 local cfAdd=getMetamethodFromErrorStack(cf_0,function(a,b) return a+b end,function(f) return cf(1,2,3)+v3(1,2,3)==f(cf(1,2,3),v3(1,2,3)) end)
@@ -97,24 +101,24 @@ local v3Get=getMetamethodFromErrorStack(v3_0,function(a,b) return a[b] end,funct
 --multiplying and adding vector3 is faster if you use the * and + operators
 
 --no need to index instances every time to call their functions
-local Clone=insGet(game,"Clone")
-local ClearAllChildren=insGet(game,"ClearAllChildren")
-local Destroy=insGet(game,"Destroy")
-local IsA=insGet(game,"IsA")
-local FindFirstChildOfClass=insGet(game,"FindFirstChildOfClass")
-local FindFirstChildWhichIsA=insGet(game,"FindFirstChildWhichIsA")
-local GetChildren=insGet(game,"GetChildren")
-local GetDescendants=insGet(game,"GetDescendants")
-local IsDescendantOf=insGet(game,"IsDescendantOf")
-local GetPropertyChangedSignal=insGet(game,"GetPropertyChangedSignal")
+local Clone=insGet(gg,"Clone")
+local ClearAllChildren=insGet(gg,"ClearAllChildren")
+local Destroy=insGet(gg,"Destroy")
+local IsA=insGet(gg,"IsA")
+local FindFirstChildOfClass=insGet(gg,"FindFirstChildOfClass")
+local FindFirstChildWhichIsA=insGet(gg,"FindFirstChildWhichIsA")
+local GetChildren=insGet(gg,"GetChildren")
+local GetDescendants=insGet(gg,"GetDescendants")
+local IsDescendantOf=insGet(gg,"IsDescendantOf")
+local GetPropertyChangedSignal=insGet(gg,"GetPropertyChangedSignal")
 
 --findfirstchildofclass faster than getservice
-local plrs=FindFirstChildOfClass(game,"Players")
-local rus=FindFirstChildOfClass(game,"RunService")
-local ws=FindFirstChildOfClass(game,"Workspace")
-local uis=FindFirstChildOfClass(game,"UserInputService")
-local gs=FindFirstChildOfClass(game,"GuiService")
-local sg=FindFirstChildOfClass(game,"StarterGui")
+local plrs=FindFirstChildOfClass(gg,"Players")
+local rus=FindFirstChildOfClass(gg,"RunService")
+local ws=FindFirstChildOfClass(gg,"Workspace")
+local uis=FindFirstChildOfClass(gg,"UserInputService")
+local gs=FindFirstChildOfClass(gg,"GuiService")
+local sg=FindFirstChildOfClass(gg,"StarterGui")
 local lp=insGet(plrs,"LocalPlayer")
 local pg=FindFirstChildOfClass(lp,"PlayerGui")
 local mouse=insGet(lp,"GetMouse")(lp)
@@ -127,7 +131,7 @@ local SetCoreGuiEnabled=insGet(sg,"SetCoreGuiEnabled")
 local GetCoreGuiEnabled=insGet(sg,"GetCoreGuiEnabled")
 local Raycast=insGet(ws,"Raycast")
 local Connect=heartbeat.Connect
-local Disconnect=Connect(GetPropertyChangedSignal(game,"CreatorId"),type).Disconnect
+local Disconnect=Connect(GetPropertyChangedSignal(gg,"CreatorId"),type).Disconnect
 local Wait=heartbeat.Wait
 local GetMouseLocation=insGet(uis,"GetMouseLocation")
 local GetFocusedTextBox=insGet(uis,"GetFocusedTextBox")
@@ -140,7 +144,7 @@ local Lerp=cfGet(cf_0,"Lerp")
 
 
 local cam=nil
---theres a way to have ws.currentcamera nil on heartbeat and still have the game run normally
+--theres a way to have ws.currentcamera nil on heartbeat and still have the gg run normally
 local refcam=function()
 	local newcam=insGet(ws,"CurrentCamera")
 	while not newcam do
@@ -315,7 +319,7 @@ end
 end
 local camloop 
 
-camloop = game:GetService("RunService").Heartbeat:Connect(function()
+camloop = gg:GetService("RunService").Heartbeat:Connect(function()
 	local cfr=insGet(_G.OxideFakeChar:WaitForChild("HumanoidRootPart"),"CFrame")
 	local pos=cfGet(cfr,"Position")
 	sine=osclock()
@@ -359,7 +363,7 @@ rotate()
 	lastsine=sine
 end)
 insSet(cam,"CameraType",e.CameraType.Scriptable)
-game.Players.LocalPlayer.CharacterAdded:Connect(function()
+gg.Players.LocalPlayer.CharacterAdded:Connect(function()
 if _G.Stopped == true then
     Disconnect(camcon1)
     workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
