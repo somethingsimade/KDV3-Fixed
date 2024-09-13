@@ -1,14 +1,14 @@
 for i,v in game:GetDescendants() do
-    if v:IsA("ProximityPrompt") then
-        v:Destroy()
-    end
-    end
-    game.DescendantAdded:Connect(function(v)
-    if v:IsA("ProximityPrompt") then
-        task.wait(.01)
-        v:Destroy()
-    end
-    end)
+	if v:IsA("ProximityPrompt") then
+		v:Destroy()
+	end
+end
+game.DescendantAdded:Connect(function(v)
+	if v:IsA("ProximityPrompt") then
+		task.wait(.01)
+		v:Destroy()
+	end
+end)
 local gg = workspace.Parent
 local osclock=os.clock
 local tspawn=task.spawn
@@ -89,10 +89,10 @@ local getMetamethodFromErrorStack=function(userdata,f,test)
 	return ret
 end
 local insSet=function(i,p,v)
-i[p] = v
+	i[p] = v
 end
 local insGet=function(i,p)
-return i[p]
+	return i[p]
 end
 local cfGet=getMetamethodFromErrorStack(cf_0,function(a,b) return a[b] end,function(f) return f(cf(1,2,3),"Position")==v3(1,2,3) end)
 local cfMul=getMetamethodFromErrorStack(cf_0,function(a,b) return a*b end,function(f) return angles(1,2,3)*angles(1,2,3)==f(angles(1,2,3),angles(1,2,3)) end)
@@ -161,43 +161,43 @@ local camcon0=nil
 local camcon1=nil
 local camcon2=nil
 local onnewcamera=function()
-if _G.Stopped == false then
-    print(_G.Stopped)
-	refcam()
-	if camcon0 then 
-		Disconnect(camcon0)
-		Disconnect(camcon1)
-		camcon0=nil
-	end
-	if not c then 
-		if insGet(cam,"CameraType")==enumCamS then
-			insSet(cam,"CameraType",camt)
-            return Disconnect(camcon2)
+	if _G.Stopped == false then
+		print(_G.Stopped)
+		refcam()
+		if camcon0 then 
+			Disconnect(camcon0)
+			Disconnect(camcon1)
+			camcon0=nil
 		end
-	end
-	camcon0=Connect(GetPropertyChangedSignal(cam,"CFrame"),function()
-		if insGet(cam,"CFrame")~=camcf then
-			insSet(cam,"CFrame",camcf)
+		if not c then 
+			if insGet(cam,"CameraType")==enumCamS then
+				insSet(cam,"CameraType",camt)
+				return Disconnect(camcon2)
+			end
 		end
-	end)
-	camcon1=Connect(GetPropertyChangedSignal(cam,"CameraType"),function()
+		camcon0=Connect(GetPropertyChangedSignal(cam,"CFrame"),function()
+			if insGet(cam,"CFrame")~=camcf then
+				insSet(cam,"CFrame",camcf)
+			end
+		end)
+		camcon1=Connect(GetPropertyChangedSignal(cam,"CameraType"),function()
+			if insGet(cam,"CameraType")~=enumCamS then
+				insSet(cam,"CameraType",enumCamS)
+			end
+		end)
 		if insGet(cam,"CameraType")~=enumCamS then
 			insSet(cam,"CameraType",enumCamS)
 		end
-	end)
-	if insGet(cam,"CameraType")~=enumCamS then
-		insSet(cam,"CameraType",enumCamS)
+		if insGet(cam,"CFrame")~=camcf then
+			if _G.Stopped == false then
+				if _G.Stopped == false then
+					if _G.Stopped == false then
+						insSet(cam,"CFrame",camcf)
+					end
+				end 
+			end
+		end
 	end
-	if insGet(cam,"CFrame")~=camcf then
-        if _G.Stopped == false then
-            if _G.Stopped == false then
-                if _G.Stopped == false then
-		insSet(cam,"CFrame",camcf)
-	end
-            end 
-        end
-    end
-    end
 end
 camcon2=ws:GetPropertyChangedSignal("CurrentCamera"):Connect(onnewcamera)
 onnewcamera()
@@ -227,6 +227,88 @@ local enumMLC= e.MouseBehavior.LockCenter
 local enumMD=e.MouseBehavior.Default
 local enumMW=e.UserInputType.MouseWheel
 local enumMM=e.UserInputType.MouseMovement
+local mradN05=rad(-0.5)
+local cammag=-v3Get((cfGet(camcf,"Position")-(pos+v3_0150)),"Magnitude")
+
+local thumbstickEndX=0
+local thumbstickStartY=0
+
+local thumbstickSizeMultiplier=0
+
+local jumpStartX=0
+local jumpStartY=0
+local jumpEndX=0
+local jumpEndY=0
+
+local thumbstickInputObject=nil
+local jumpInputObject=nil
+local cameraRotateInputObject=nil
+local cameraZoomInputObject=nil
+
+local thumbstickTouchStart=v3_0
+local cameraZoomInputMagnitude=0
+
+
+
+
+Connect(insGet(uis,"TouchStarted"),function(inputObject)
+	if insGet(gs,"MenuIsOpen") or GetFocusedTextBox(uis) then
+		return
+	end
+
+	local touchPos=insGet(inputObject,"Position")
+	local touchX=v3Get(touchPos,"X")
+	local touchY=v3Get(touchPos,"Y")
+
+	if (not thumbstickInputObject) and touchX<thumbstickEndX and touchY>thumbstickStartY then
+	return
+	elseif (not jumpInputObject) and touchY>jumpStartY and touchX>jumpStartX and touchX<jumpEndX and touchY<jumpEndY then
+	return
+	elseif not cameraRotateInputObject then
+		cameraRotateInputObject=inputObject
+	else
+		cameraZoomInputObject=inputObject
+		cameraZoomInputMagnitude=v3Get(insGet(cameraRotateInputObject,"Position")-insGet(cameraZoomInputObject,"Position"),"Magnitude")
+	end
+end)
+Connect(insGet(uis,"TouchMoved"),function(inputObject)
+	local touchPos=insGet(inputObject,"Position")
+	local touchX=v3Get(touchPos,"X")
+	local touchY=v3Get(touchPos,"Y")
+	if inputObject==thumbstickInputObject then
+		return
+	elseif inputObject==jumpInputObject then
+		return
+	else
+		if cameraZoomInputObject then
+			local newMagnitude=v3Get(insGet(cameraRotateInputObject,"Position")-insGet(cameraZoomInputObject,"Position"),"Magnitude")					
+			cammag=cammag+(newMagnitude-cameraZoomInputMagnitude)*0.04*(0.75-cammag/4)
+			cameraZoomInputMagnitude=newMagnitude
+			if cammag<0 then
+				firstperson=false
+			else
+				cammag=0
+				firstperson=true
+			end
+		elseif inputObject==cameraRotateInputObject then
+			local rotation=GetMouseDelta(uis)*mradN05
+			camcfLV=cfGet(cfMul(camrot,angles(rotation.Y,rotation.X,0)),"LookVector")
+			camrot=cfl(v3_0,camcfLV)
+			camcfRV=cfGet(camrot,"RightVector")
+		end
+	end
+end)
+Connect(insGet(uis,"TouchEnded"),function(inputObject)
+	if inputObject==thumbstickInputObject then
+	elseif inputObject==jumpInputObject then
+	elseif inputObject==cameraRotateInputObject then
+		cameraRotateInputObject=nil
+		cameraZoomInputObject=nil
+	elseif inputObject==cameraZoomInputObject then
+		cameraZoomInputObject=nil
+	end
+end)
+
 local refreshTouchRegions=function()
 	local sX=insGet(mouse,"ViewSizeX")
 	local sY=insGet(mouse,"ViewSizeY")
@@ -251,12 +333,11 @@ local refreshTouchRegions=function()
 		jumpEndY=jumpStartY+120
 	end
 end
-local mradN05=rad(-0.5)
-local cammag=-v3Get((cfGet(camcf,"Position")-(pos+v3_0150)),"Magnitude")
 Connect(GetPropertyChangedSignal(mouse,"ViewSizeX"),refreshTouchRegions)
 Connect(GetPropertyChangedSignal(mouse,"ViewSizeY"),refreshTouchRegions)
 Connect(GetPropertyChangedSignal(gs,"TopbarInset"),refreshTouchRegions)
 refreshTouchRegions()
+
 
 local mouseCameraMove=false
 local inp = Connect(insGet(uis,"InputChanged"),function(a,b)
@@ -287,35 +368,35 @@ local beh = Connect(GetPropertyChangedSignal(uis,"MouseBehavior"),function()
 		insSet(uis,"MouseBehavior",mouseBehavior)
 	end
 end)
-	local KeyCode=e.KeyCode
+local KeyCode=e.KeyCode
 local keyShift=KeyCode.LeftShift
-	Connect(insGet(uis,"InputBegan"),function(a)
+Connect(insGet(uis,"InputBegan"),function(a)
 	a=insGet(a,"KeyCode")
-if a==keyShift then
-			shiftlock= not shiftlock
-end
+	if a==keyShift then
+		shiftlock= not shiftlock
+	end
 end)
 local function transparency()
-if firstperson then 
-    for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
-        if v:IsA("BasePart") then 
-            v.Transparency = 1    
-        end
-end
-else 
-    for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
-        if v:IsA("Accessory") then 
-            v.Handle.Transparency = 0    
-        end
-end
-end
+	if firstperson then 
+		for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
+			if v:IsA("BasePart") then 
+				v.Transparency = 1    
+			end
+		end
+	else 
+		for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
+			if v:IsA("Accessory") then 
+				v.Handle.Transparency = 0    
+			end
+		end
+	end
 end
 local function rotate()
-if firstperson or shiftlock then 
-_G.OxideFakeChar.Humanoid.AutoRotate = false
-else 
-_G.OxideFakeChar.Humanoid.AutoRotate = true
-end
+	if firstperson or shiftlock then 
+		_G.OxideFakeChar.Humanoid.AutoRotate = false
+	else 
+		_G.OxideFakeChar.Humanoid.AutoRotate = true
+	end
 end
 local camloop 
 
@@ -325,11 +406,11 @@ camloop = gg:GetService("RunService").Heartbeat:Connect(function()
 	sine=osclock()
 	delta=sine-lastsine
 	lastsine=sine
-    transparency()
-rotate()
+	transparency()
+	rotate()
 	if shiftlock or firstperson then
-			mouseBehavior=enumMLC
-			mouseCameraMove=true
+		mouseBehavior=enumMLC
+		mouseCameraMove=true
 	elseif IsMouseButtonPressed(uis,enumMB2) then
 		mouseBehavior=enumMLCP
 		mouseCameraMove=true
@@ -343,39 +424,39 @@ rotate()
 	end
 
 	if firstperson then
-	cfr=cfl(pos,pos+camcfLV*v3_101)
-    	_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
+		cfr=cfl(pos,pos+camcfLV*v3_101)
+		_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
 		camcf=cfAdd(camrot,pos+v3_0150)
 		insSet(cam,"CFrame",camcf)
 	elseif shiftlock then	
-						cfr=cfl(pos,pos+camcfLV*v3_101)
-						camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
-						_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
+		cfr=cfl(pos,pos+camcfLV*v3_101)
+		camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
+		_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
 		insSet(cam,"CFrame",camcf)
 	else 
 		cfr=cfAdd(cfGet(cfr,"Rotation"),pos)
 		camcf=cfAdd(camrot,pos+v3_0150+camcfLV*cammag)
 		insSet(cam,"CFrame",camcf)
-        noYvelTime=min(0+delta*0.3,1)
-					xzvel=xzvel*(1-noYvelTime)
+		noYvelTime=min(0+delta*0.3,1)
+		xzvel=xzvel*(1-noYvelTime)
 	end
-    sine=osclock()
+	sine=osclock()
 	lastsine=sine
 end)
 insSet(cam,"CameraType",e.CameraType.Scriptable)
 gg.Players.LocalPlayer.CharacterAdded:Connect(function()
-if _G.Stopped == true then
-    Disconnect(camcon1)
-    workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
-    workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
-camloop:Disconnect()
-camcon2:Disconnect()
-Disconnect(camcon1)
-Disconnect(camcon0)
-Disconnect(camcon2)
-Disconnect(beh)
-Disconnect(inp)
-workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
-	insSet(uis,"MouseBehavior",enumMD)
-end
-    end)
+	if _G.Stopped == true then
+		Disconnect(camcon1)
+		workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+		workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+		camloop:Disconnect()
+		camcon2:Disconnect()
+		Disconnect(camcon1)
+		Disconnect(camcon0)
+		Disconnect(camcon2)
+		Disconnect(beh)
+		Disconnect(inp)
+		workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
+		insSet(uis,"MouseBehavior",enumMD)
+	end
+end)
