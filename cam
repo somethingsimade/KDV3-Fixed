@@ -377,26 +377,12 @@ Connect(insGet(uis,"InputBegan"),function(a)
 		shiftlock= not shiftlock
 	end
 end)
-local function transparency()
-	if firstperson then 
-		for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
-			if v:IsA("BasePart") then 
-				v.Transparency = 1    
-			end
-		end
-	else 
-		for i,v in pairs(_G.OxideRealChar:GetDescendants()) do
-			if v:IsA("Accessory") then 
-				v.Handle.Transparency = 0    
-			end
-		end
-	end
-end
+
 local function rotate()
 	if firstperson or shiftlock then 
 		_G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = false
 	else 
-		G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = true
+		_G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = true
 	end
 end
 local camloop 
@@ -407,7 +393,6 @@ camloop = gg:GetService("RunService").Heartbeat:Connect(function()
 	sine=osclock()
 	delta=sine-lastsine
 	lastsine=sine
-	transparency()
 	rotate()
 	if shiftlock or firstperson then
 		mouseBehavior=enumMLC
@@ -426,7 +411,7 @@ camloop = gg:GetService("RunService").Heartbeat:Connect(function()
 
 	if firstperson then
 		cfr=cfl(pos,pos+camcfLV*v3_101)
-		_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
+		workspace:FindFirstChild("<["..Player.Name.."]>").CFrame = cfr
 		camcf=cfAdd(camrot,pos+v3_0150)
 		insSet(cam,"CFrame",camcf)
 	elseif shiftlock then	
