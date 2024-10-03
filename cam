@@ -211,7 +211,7 @@ end)
 local fpdh=insGet(ws,"FallenPartsDestroyHeight")
 novoid=novoid and (fpdh+1)
 local Yvel=0
-local cfr=insGet(,workspace:FindFirstChild("<["..Player.Name.."]>")"CFrame")
+local cfr=insGet(workspace:FindFirstChild("<["..Player.Name.."]>"),"CFrame")
 local pos=cfGet(cfr,"Position")
 cfr=cfl(pos,pos+cfGet(cfr,"LookVector")*v3_101)
 local primarypart=nil
@@ -394,15 +394,15 @@ local function transparency()
 end
 local function rotate()
 	if firstperson or shiftlock then 
-		_G.OxideFakeChar.Humanoid.AutoRotate = false
+		_G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = false
 	else 
-		_G.OxideFakeChar.Humanoid.AutoRotate = true
+		G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = true
 	end
 end
 local camloop 
 
 camloop = gg:GetService("RunService").Heartbeat:Connect(function()
-	local cfr=insGet(,workspace:FindFirstChild("<["..Player.Name.."]>")"CFrame")
+	local cfr=insGet(workspace:FindFirstChild("<["..Player.Name.."]>"),"CFrame")
 	local pos=cfGet(cfr,"Position")
 	sine=osclock()
 	delta=sine-lastsine
