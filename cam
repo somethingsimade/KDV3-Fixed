@@ -371,12 +371,7 @@ local beh = Connect(GetPropertyChangedSignal(uis,"MouseBehavior"),function()
 end)
 local KeyCode=e.KeyCode
 local keyShift=KeyCode.LeftShift
-Connect(insGet(uis,"InputBegan"),function(a)
-	a=insGet(a,"KeyCode")
-	if a==keyShift then
-		shiftlock= not shiftlock
-	end
-end)
+
 
 local function rotate()
 	if firstperson or shiftlock then 
