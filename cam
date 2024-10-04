@@ -411,17 +411,15 @@ camloop = gg:GetService("RunService").Heartbeat:Connect(function()
 
 	if firstperson then
 		cfr=cfl(pos,pos+camcfLV*v3_101)
-		workspace:FindFirstChild("<["..Player.Name.."]>").CFrame = cfr
 		camcf=cfAdd(camrot,pos+v3_0150)
 		insSet(cam,"CFrame",camcf)
 	elseif shiftlock then	
 		cfr=cfl(pos,pos+camcfLV*v3_101)
 		camcf=cfAdd(camrot,pos+v3_0150+camcfRV*1.75+camcfLV*cammag)
-		_G.OxideFakeChar:WaitForChild("HumanoidRootPart").CFrame = cfr
 		insSet(cam,"CFrame",camcf)
 	else 
 		cfr=cfAdd(cfGet(cfr,"Rotation"),pos)
-		camcf=cfAdd(camrot,pos+v3_0150+camcfLV*cammag)
+		camcf=cfAdd(camrot,pos+camcfLV*cammag)
 		insSet(cam,"CFrame",camcf)
 		noYvelTime=min(0+delta*0.3,1)
 		xzvel=xzvel*(1-noYvelTime)
