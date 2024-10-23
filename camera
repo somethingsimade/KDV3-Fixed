@@ -372,7 +372,7 @@ local KeyCode=e.KeyCode
 local keyShift=KeyCode.LeftShift
 Connect(insGet(uis,"InputBegan"),function(a,istyping)
 	a=insGet(a,"KeyCode")
-	if a==keyShift  and not istyping then
+	if a==keyShift and istyping == false then
 		shiftlock= not shiftlock
 	end
 end)
