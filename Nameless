@@ -94,7 +94,7 @@ while twait() and c and c:IsDescendantOf(ws) do
 		
 		if mv==v3_0 then --idle
     LeftHip.C0=Lerp(LeftHip.C0,cfMul(cf(-1,-1.09-0.1*sin(sine*1.3),0),angles(-0.026179938779914945*sin(sine*1.3),-1.3962634015954636,0)),deltaTime) 
-    Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(-1.53588974175501-0.08726646259971647*sin((sine+1)*1.3),0.13962634015954636*sin((sine-0.6)*0.65),3.141592653589793+0.08726646259971647*sin(sine*2))),deltaTime) 
+    Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(math.rad(-90-song.PlaybackLoudness/10),0.13962634015954636*sin((sine-0.6)*0.65),3.141592653589793+0.08726646259971647*sin(sine*2))),deltaTime) 
     LeftShoulder.C0=Lerp(LeftShoulder.C0,cfMul(cf(-1,0.15+0.15*sin(sine),0),angles(-0.4363323129985824,0,0.7853981633974483-0.08726646259971647*sin(sine*2))),deltaTime) 
     RightShoulder.C0=Lerp(RightShoulder.C0,cfMul(cf(1,0.15+0.15*sin(sine),0),angles(-0.4363323129985824,0,-0.7853981633974483+0.08726646259971647*sin(sine*2))),deltaTime) 
     RightHip.C0=Lerp(RightHip.C0,cfMul(cf(1,-1.09-0.1*sin(sine*1.3),0),angles(-0.026179938779914945*sin(sine*1.3),1.3962634015954636,0)),deltaTime) 
