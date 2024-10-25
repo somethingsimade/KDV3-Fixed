@@ -8,7 +8,7 @@ OxideApi.Notification("FE Goner - Made by Hemi",4)
 local Player = game:GetService("Players").LocalPlayer
 local ContextActionService = game:GetService("ContextActionService")
 local talking = false
-ContextActionService:BindAction("Sword" function() talking = not talking if talking == true then  OxideApi.Input.Press(Enum.KeyCode.F) end end , true ,Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:BindAction("Sword", function() talking = not talking if talking == true then  OxideApi.Input.Press(Enum.KeyCode.F) end end , true ,Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
 ContextActionService:SetTitle("Sword", "Sword")
 task.wait(.1)
 ContextActionService:SetPosition("Sword",UDim2.new(-1.8, 0, 0.7, 0))
