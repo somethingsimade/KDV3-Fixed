@@ -5142,7 +5142,7 @@ hum = char.Humanoid
 pcall(function()
 game.Players.LocalPlayer.Character["Back_AccAccessory"].Handle:BreakJoints()
 local PositionOffset = Vector3.new(-0,-1.5,-0.1)
-local RotationOffset = Vector3.new(0, 90, 50)
+local RotationOffset = Vector3.new(0, 90, 45)
 RotationOffset = CFrame.Angles(
    math.rad(RotationOffset.X),
    math.rad(RotationOffset.Y),
