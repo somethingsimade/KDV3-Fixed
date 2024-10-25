@@ -1,3 +1,4 @@
+
 function LoadLibrary(a)
 	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/loadlibrary/refs/heads/main/main", true))()
 end
@@ -34,6 +35,7 @@ end
 cors = {}
 mas = Instance.new("Model",game:GetService("Lighting"))
 Model0 = Instance.new("Model")
+Model0.Name = "sword"
 Part1 = Instance.new("Part")
 SpecialMesh2 = Instance.new("SpecialMesh")
 Part3 = Instance.new("Part")
@@ -5137,6 +5139,24 @@ end
 plr = game:GetService("Players").LocalPlayer
 char = plr.Character
 hum = char.Humanoid
+pcall(function()
+game.Players.LocalPlayer.Character["Back_AccAccessory"].Handle:BreakJoints()
+local PositionOffset = Vector3.new(-0,-1.5,-0.1)
+local RotationOffset = Vector3.new(0, 90, 50)
+RotationOffset = CFrame.Angles(
+   math.rad(RotationOffset.X),
+   math.rad(RotationOffset.Y),
+   math.rad(RotationOffset.Z)
+)
+
+local CFrameOffset = CFrame.new(PositionOffset)*RotationOffset
+
+local weld = Instance.new("Weld")
+weld.C1 = CFrameOffset
+weld.Parent = game.Players.LocalPlayer.Character["Back_AccAccessory"].Handle
+weld.Part0 = game.Players.LocalPlayer.Character["Back_AccAccessory"].Handle
+weld.Part1 = Part475
+        end)
 local cam = workspace.CurrentCamera
 t = char.Torso
 h = char.Head
@@ -5162,7 +5182,7 @@ local muter = false
 local ORGID = 1873219898
 local ORVOL = 1.15
 local ORPIT = 1.01
-local kan = Instance.new("Sound",plr.PlayerGui)
+local kan = Instance.new("Sound",plr)
 kan.Volume = 1.15
 kan.TimePosition = 0
 kan.PlaybackSpeed = 1.01
@@ -5173,6 +5193,7 @@ kan.Looped = true
 kan:Play()
 --------------------------- GUI STUFF
 local basgui = it("GuiMain")
+basgui.ResetOnSpawn = false
 basgui.Parent = plr.PlayerGui
 basgui.Name = "VISgui"
 local fullscreenz = it("Frame")
@@ -6653,7 +6674,7 @@ local dashing = false
 local floatmode = false
 local OWS = hum.WalkSpeed
 local equipped = false
-Humanoid.Name = "NEPTUNIA"
+Humanoid.Name = "Humanoid"
 Humanoid.MaxHealth = math.huge
 Humanoid.Health = math.huge
 Instance.new("ForceField",char).Visible = false
@@ -7436,7 +7457,7 @@ while true do
 	kan.Pitch = ORPIT
 	kan.SoundId = getcustomasset("neptunian.mp3")
 	kan.Looped = true
-	kan.Parent = plr.PlayerGui
+	kan.Parent = plr
 	kan:Resume()
 	techc.Rotation = techc.Rotation + 0.1
 	imgl2.Rotation = imgl2.Rotation - kan.PlaybackLoudness/50
