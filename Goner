@@ -1,3 +1,35 @@
+local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
+OxideApi.Notification("FE Goner - Made by Hemi",4)
+local Player = game:GetService("Players").LocalPlayer
+local ContextActionService = game:GetService("ContextActionService")
+local submerged = false 
+local talking = false
+local submergeb = function() 
+	submerged = not submerged 
+	if submerged ==true then
+		OxideApi.Input.Press(Enum.KeyCode.Q) 
+	end
+end
+ContextActionService:BindAction("Submerge", submergeb , true ,Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("Submerge", "Submerge")
+ContextActionService:BindAction("MF", function() OxideApi.Input.Hold(Enum.KeyCode.W) end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("MF", "Move")
+ContextActionService:BindAction("SM", function() OxideApi.Input.Unhold(Enum.KeyCode.W) end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("SM", "Stop Moving")
+ContextActionService:BindAction("Shriek", function() OxideApi.Input.Press(Enum.KeyCode.G) end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("Shriek", "Shriek")
+ContextActionService:BindAction("Talk", function() talking = not talking if talking == true then  local num = math.random(1,4) if num == 1 then OxideApi.Input.Press(Enum.KeyCode.T) elseif num ==2 then OxideApi.Input.Press(Enum.KeyCode.Y) elseif num == 3 then OxideApi.Input.Press(Enum.KeyCode.U) else OxideApi.Input.Press(Enum.KeyCode.H) end end end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("Talk", "Talk")
+ContextActionService:BindAction("fix", function() print("Esc Pressed") end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("fix", "")
+task.wait(.1)
+ContextActionService:SetPosition("Submerge",UDim2.new(-1.8, 0, 0.7, 0))
+ContextActionService:SetPosition("Shriek",UDim2.new(-1.8, 0, 0.4, 0))
+ContextActionService:SetPosition("SM",UDim2.new(-1.8, 0, 0.1, 0))
+ContextActionService:SetPosition("MF",UDim2.new(-2.06, 0, 0.1, 0))
+ContextActionService:SetPosition("Talk", UDim2.new(-2.3, 0, 0.1, 0))
+ContextActionService:SetPosition("fix",UDim2.new(6.06, 0, 0.1, 0))
+
 local script = game:GetObjects("rbxassetid://4513235536")[1].Goner.ServerScript
 --//====================================================\\--
 --||                       BASIS
