@@ -7,7 +7,7 @@ local ws=workspace
 if not (c and c:IsDescendantOf(ws)) then return end
 
 local song = Instance.new("Sound",c) 
-song.SoundId = "rbxassetid://1845756489"
+song.SoundId = getcustomasset("nameless.mp3")
 song:Play()
 song.Volume = 5
 song.Looped = true
@@ -94,7 +94,7 @@ while twait() and c and c:IsDescendantOf(ws) do
 		
 		if mv==v3_0 then --idle
     LeftHip.C0=Lerp(LeftHip.C0,cfMul(cf(-1,-1.09-0.1*sin(sine*1.3),0),angles(-0.026179938779914945*sin(sine*1.3),-1.3962634015954636,0)),deltaTime) 
-    Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(math.rad(-90-song.PlaybackLoudness/10),0.13962634015954636*sin((sine-0.6)*0.65),3.141592653589793+0.08726646259971647*sin(sine*2))),deltaTime) 
+    Neck.C0=Lerp(Neck.C0,cfMul(cf(0,1,0),angles(math.rad(-90-song.PlaybackLoudness/25),0.13962634015954636*sin((sine-0.6)*0.65),3.141592653589793+0.08726646259971647*sin(sine*2))),deltaTime) 
     LeftShoulder.C0=Lerp(LeftShoulder.C0,cfMul(cf(-1,0.15+0.15*sin(sine),0),angles(-0.4363323129985824,0,0.7853981633974483-0.08726646259971647*sin(sine*2))),deltaTime) 
     RightShoulder.C0=Lerp(RightShoulder.C0,cfMul(cf(1,0.15+0.15*sin(sine),0),angles(-0.4363323129985824,0,-0.7853981633974483+0.08726646259971647*sin(sine*2))),deltaTime) 
     RightHip.C0=Lerp(RightHip.C0,cfMul(cf(1,-1.09-0.1*sin(sine*1.3),0),angles(-0.026179938779914945*sin(sine*1.3),1.3962634015954636,0)),deltaTime) 
@@ -107,7 +107,7 @@ while twait() and c and c:IsDescendantOf(ws) do
 			RightShoulder.C0=Lerp(RightShoulder.C0,cf(1,0.5,0)*angles(0.7853981633974483*sin((sine+0.07)*8)*Vfw*ws,1.5707963267948966+0.5235987755982988*sin((sine+0.15)*8),0),deltaTime) 
 			RightHip.C0=Lerp(RightHip.C0,cf(1,-1+0.3*sin((sine - 0.15)*8)+rY-Ychg,rY*-0.5)*angles(1.5707963267948966-0.9599310885968813*sin(sine*8)*Vfw*ws,1.5707963267948966-0.7853981633974483*sin(sine*8)*Vrt*ws,-1.5707963267948966),deltaTime) 
 			LeftHip.C0=Lerp(LeftHip.C0,cf(-1,-1+0.3*sin((sine + 0.15)*8)+lY-Ychg,lY*-0.5)*angles(1.5707963267948966+0.9599310885968813*sin(sine*8)*Vfw*ws,-1.5707963267948966+0.7853981633974483*sin(sine*8)*Vrt*ws,1.5707963267948966),deltaTime) 
-			Neck.C0=Lerp(Neck.C0,cf(0,1,0)*angles(math.rad(-90-song.PlaybackLoudness/10),0,3.141592653589793),deltaTime) 
+			Neck.C0=Lerp(Neck.C0,cf(0,1,0)*angles(math.rad(-90-song.PlaybackLoudness/25),0,3.141592653589793),deltaTime) 
 			RootJoint.C0=Lerp(RootJoint.C0,cf(0,0.2 * sin((sine+0.1)*16) + Ychg,0)*angles(-1.5707963267948966,0,3.141592653589793),deltaTime) 
 			--MW_animatorProgressSave: CPlusPlusTextbook_Handle,8.658389560878277e-09,0,0,8,0,0,0,8,-0.25,0,0,8,0,0,0,8,-0.0002722442150115967,0,0,8,0,0,0,8,LeftArm,-1,0,0,8,-0,-45,0.07,8,0.5,0,0,8,-90,30,0.15,8,0,0,0,8,0,0,0,8,RightArm,1,0,0,8,0,45,0.07,8,0.5,0,0,8,90,30,0.15,8,0,0,0,8,0,0,0,8,RightLeg,1,0,0,8,90,-55,0,8,-1,0.3,-0.15,8,90,-45,0,8,0,0,0,8,-90,0,0,8,LeftLeg,-1,0,0,8,90,55,0,8,-1,0.3,0.15,8,-90,45,0,8,0,0,0,8,90,0,0,8,Head,0,0,0,8,-90,5,0,16,1,0,0,8,-0,0,0,8,0,0,0,8,180,5,0.04,8,Torso,0,0,0,8,-90,0,0,8,0,0.2,0.1,16,-0,0,0,8,0,0,0,8,180,0,0,8
 
