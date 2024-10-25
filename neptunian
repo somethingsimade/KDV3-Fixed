@@ -17,6 +17,9 @@ You can skip through the position of theme by:
 skipto/]]
 warn("Have fun using this!")
 ---- DO NOT CHANGE ANYTHING BELOW IF YOU'RE NOT AN EDITOR 
+pcall(function()
+_G.OxideFakeChar.Highlight.Enabled = false
+end)
 --Converted with ttyyuu12345's model to script plugin v4
 function sandbox(var,func)
 	local env = getfenv(func)
