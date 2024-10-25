@@ -3,6 +3,14 @@ function LoadLibrary(a)
 	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/loadlibrary/refs/heads/main/main", true))()
 end
 
+local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
+OxideApi.Notification("FE Goner - Made by Hemi",4)
+local Player = game:GetService("Players").LocalPlayer
+local ContextActionService = game:GetService("ContextActionService")
+local talking = false
+ContextActionService:BindAction("Sword" function() talking = not talking if talking == true then  OxideApi.Input.Press(Enum.KeyCode.F) end end , true ,Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("Sword", "Sword")
+
 --- Did actually rework heavily away from original neptunian, and the non-rework neptunian. --NoobyGames12
 --- Was supposed to be for the770zone, or VengefulProgram.
 warn'Neptune/Neptunian V'
