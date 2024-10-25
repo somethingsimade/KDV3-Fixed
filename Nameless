@@ -7,7 +7,7 @@ local ws=workspace
 if not (c and c:IsDescendantOf(ws)) then return end
 
 local song = Instance.new("Sound",c) 
-song.SoundId = "rbxassetid://1846458016"
+song.SoundId = "rbxassetid://1845756489"
 song:Play()
 song.Volume = 5
 song.Looped = true
