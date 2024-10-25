@@ -9,6 +9,7 @@ game.DescendantAdded:Connect(function(v)
 		v:Destroy()
 	end
 end)
+_G.CamStopped = false
 local gg = workspace.Parent
 local osclock=os.clock
 local tspawn=task.spawn
@@ -401,6 +402,7 @@ end
 local camloop 
 
 camloop = gg:GetService("RunService").Heartbeat:Connect(function()
+if _G.CamStopped == false then
 	local cfr=insGet(_G.OxideFakeChar:WaitForChild("HumanoidRootPart"),"CFrame")
 	local pos=cfGet(cfr,"Position")
 	sine=osclock()
@@ -442,6 +444,7 @@ camloop = gg:GetService("RunService").Heartbeat:Connect(function()
 	end
 	sine=osclock()
 	lastsine=sine
+end
 end)
 insSet(cam,"CameraType",e.CameraType.Scriptable)
 gg.Players.LocalPlayer.CharacterAdded:Connect(function()
