@@ -10,6 +10,8 @@ local ContextActionService = game:GetService("ContextActionService")
 local talking = false
 ContextActionService:BindAction("Sword" function() talking = not talking if talking == true then  OxideApi.Input.Press(Enum.KeyCode.F) end end , true ,Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
 ContextActionService:SetTitle("Sword", "Sword")
+task.wait(.1)
+ContextActionService:SetPosition("Sword",UDim2.new(-1.8, 0, 0.7, 0))
 
 --- Did actually rework heavily away from original neptunian, and the non-rework neptunian. --NoobyGames12
 --- Was supposed to be for the770zone, or VengefulProgram.
