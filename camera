@@ -393,9 +393,9 @@ local function transparency()
 end
 local function rotate()
 	if firstperson or shiftlock then 
-		_G.OxideFakeChar.Humanoid.AutoRotate = false
+		_G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = false
 	else 
-		_G.OxideFakeChar.Humanoid.AutoRotate = true
+		_G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = true
 	end
 end
 local camloop 
