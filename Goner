@@ -1,5 +1,5 @@
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
-OxideApi.Notification("FE Goner - Made by Hemi",4)
+OxideApi.Notification("Goner",4)
 local Player = game:GetService("Players").LocalPlayer
 local ContextActionService = game:GetService("ContextActionService")
 local submerged = false 
