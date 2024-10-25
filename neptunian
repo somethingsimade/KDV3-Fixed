@@ -7036,7 +7036,7 @@ function spinnyblade()
 	hum.JumpPower = 50
 end
 function eightbitmegablade()
-_G.CameraStopped = true
+_G.CamStopped  = true
 	attack = true
 	hum.WalkSpeed = 0
 	hum.JumpPower = 0
