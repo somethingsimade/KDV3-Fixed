@@ -370,7 +370,7 @@ local beh = Connect(GetPropertyChangedSignal(uis,"MouseBehavior"),function()
 end)
 local KeyCode=e.KeyCode
 local keyShift=KeyCode.LeftShift
-Connect(insGet(uis,"InputBegan"),function(a,istyping)
+Connect(insGet(uis,"InputBegan"),function(a)
 	a=insGet(a,"KeyCode")
 	if a==keyShift then
 		shiftlock= not shiftlock
@@ -393,9 +393,9 @@ local function transparency()
 end
 local function rotate()
 	if firstperson or shiftlock then 
-		_G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = false
+		_G.OxideFakeChar.Humanoid.AutoRotate = false
 	else 
-		_G.OxideFakeChar:FindFirstChildOfClass("Humanoid").AutoRotate = true
+		_G.OxideFakeChar.Humanoid.AutoRotate = true
 	end
 end
 local camloop 
