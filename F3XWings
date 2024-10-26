@@ -367,7 +367,7 @@ local args = {
 			["Part"] = workspace:WaitForChild("Double"),
 			["CFrame"] = game.Players.LocalPlayer.Character.Core.Base.Double.CFrame
 		},
-[22] = {
+[23] = {
 			["Part"] = workspace:WaitForChild("Penta"),
 			["CFrame"] = game.Players.LocalPlayer.Character.Core.Base.Penta.CFrame
 		},
