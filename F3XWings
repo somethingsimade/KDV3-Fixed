@@ -207,11 +207,11 @@ addPart("Wing9", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vect
 addPart("Wing10", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing11", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing12", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
-addPart("Cog", Vector3.new(1,2,1),workspace.torsog.Color,"6572348750",nil,Vector3.new(0.5, 0.5, 0.5))
-addPart("Cyli", Vector3.new(1,2,1),workspace.torsog.Color,"6572337539",nil,Vector3.new(0.5, 0.5, 0.5))
-addPart("Dupli", Vector3.new(1,2,1),workspace.torsog.Color,"6572344258",nil,Vector3.new(0.5, 0.5, 0.5))
-addPart("Double", Vector3.new(1,2,1),workspace.torsog.Color,"6572342113",nil,Vector3.new(0.5, 0.5, 0.5))
-addPart("Penta", Vector3.new(1,2,1),workspace.torsog.Color,"6572346415",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Cog", Vector3.new(1,2,1),workspace.torsog.Color,"6572348750",nil,Vector3.new(0.015, 0.015, 0.015))
+addPart("Cyli", Vector3.new(1,2,1),workspace.torsog.Color,"6572337539",nil,Vector3.new(0.015, 0.015, 0.015))
+addPart("Dupli", Vector3.new(1,2,1),workspace.torsog.Color,"6572344258",nil,Vector3.new(0.015, 0.015, 0.015))
+addPart("Double", Vector3.new(1,2,1),workspace.torsog.Color,"6572342113",nil,Vector3.new(0.015, 0.015, 0.015))
+addPart("Penta", Vector3.new(1,2,1),workspace.torsog.Color,"6572346415",nil,Vector3.new(0.015, 0.015, 0.015))
 
 
 local function stop()
