@@ -207,6 +207,11 @@ addPart("Wing9", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vect
 addPart("Wing10", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing11", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
 addPart("Wing12", Vector3.new(1,2,1),workspace.torsog.Color,"6368254735",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Cog", Vector3.new(1,2,1),workspace.torsog.Color,"6572348750",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Cyli", Vector3.new(1,2,1),workspace.torsog.Color,"6572337539",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Dupli", Vector3.new(1,2,1),workspace.torsog.Color,"6572344258",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Double", Vector3.new(1,2,1),workspace.torsog.Color,"6572342113",nil,Vector3.new(0.5, 0.5, 0.5))
+addPart("Penta", Vector3.new(1,2,1),workspace.torsog.Color,"6572346415",nil,Vector3.new(0.5, 0.5, 0.5))
 
 
 local function stop()
@@ -345,7 +350,27 @@ local args = {
 		[18] = {
 			["Part"] = workspace:WaitForChild("Wing12"),
 			["CFrame"] = game.Players.LocalPlayer.Character.Wing6.Secondary.CFrame
-		}
+		},
+		[19] = {
+			["Part"] = workspace:WaitForChild("Cog"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Core.Base.Cog.CFrame
+		},
+	[20] = {
+			["Part"] = workspace:WaitForChild("Dupli"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Core.Base.Dupli.CFrame
+		},
+[21] = {
+			["Part"] = workspace:WaitForChild("Cyli"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Core.Base.Cyli.CFrame
+		},
+[22] = {
+			["Part"] = workspace:WaitForChild("Double"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Core.Base.Double.CFrame
+		},
+[22] = {
+			["Part"] = workspace:WaitForChild("Penta"),
+			["CFrame"] = game.Players.LocalPlayer.Character.Core.Base.Penta.CFrame
+		},
 	}
 	
 }
@@ -412,6 +437,31 @@ local args4 = {
 			["Color"] = game.Players.LocalPlayer.Character.Wing6.Secondary.Color,
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing12"),
+			  },
+	[13] = {
+			["Color"] = game.Players.LocalPlayer.Character.Core.Base.Cog.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Cog"),
+			  },
+	[14] = {
+			["Color"] = game.Players.LocalPlayer.Character.Core.Base.Double.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Double"),
+			  },
+	[15] = {
+			["Color"] = game.Players.LocalPlayer.Character.Core.Base.Dupli.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Dupli"),
+			  },
+	[16] = {
+			["Color"] = game.Players.LocalPlayer.Character.Core.Base.Penta.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Penta"),
+			  },
+	[17] = {
+			["Color"] = game.Players.LocalPlayer.Character.Core.Base.Cyli.Color,
+			["UnionColoring"] = true,
+			["Part"] = workspace:WaitForChild("Cyli"),
 			  },
 	}
 }
