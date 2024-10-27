@@ -401,7 +401,7 @@ local function rotate()
 end
 local camloop 
 
-camloop = gg:GetService("RunService").Heartbeat:Connect(function()
+camloop = gg:GetService("RunService").PreAnimation:Connect(function()
 if _G.CamStopped == false then
 	local cfr=insGet(_G.OxideFakeChar:WaitForChild("HumanoidRootPart"),"CFrame")
 	local pos=cfGet(cfr,"Position")
