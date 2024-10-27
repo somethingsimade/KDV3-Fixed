@@ -329,27 +329,27 @@ local args = {
 		},
 		[13] = {
 			["Part"] = workspace:WaitForChild("Wing7"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing1.Secondary.CFrame
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing7.Secondary.CFrame
 		},
 		[14] = {
 			["Part"] = workspace:WaitForChild("Wing8"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing2.Secondary.CFrame
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing8.Secondary.CFrame
 		},
 		[15] = {
 			["Part"] = workspace:WaitForChild("Wing9"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing3.Secondary.CFrame
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing9.Secondary.CFrame
 		},
 		[16] = {
 			["Part"] = workspace:WaitForChild("Wing10"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing4.Secondary.CFrame
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing10.Secondary.CFrame
 		},
 		[17] = {
 			["Part"] = workspace:WaitForChild("Wing11"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing5.Secondary.CFrame
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing11.Secondary.CFrame
 		},
 		[18] = {
 			["Part"] = workspace:WaitForChild("Wing12"),
-			["CFrame"] = game.Players.LocalPlayer.Character.Wing6.Secondary.CFrame
+			["CFrame"] = game.Players.LocalPlayer.Character.Wing12.Secondary.CFrame
 		},
 		[19] = {
 			["Part"] = workspace:WaitForChild("Cog"),
@@ -409,32 +409,32 @@ local args4 = {
 			["Part"] = workspace:WaitForChild("Wing6"),
 			  },
 		[7] = {
-			["Color"] = game.Players.LocalPlayer.Character.Wing1.Secondary.Color,
+			["Color"] = game.Players.LocalPlayer.Character.Wing7.Secondary.Color,
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing7"),
 			  },
 		[8] = {
-			["Color"] = game.Players.LocalPlayer.Character.Wing2.Secondary.Color,
+			["Color"] = game.Players.LocalPlayer.Character.Wing8.Secondary.Color,
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing8"),
 			  },
 		[9] = {
-			["Color"] = game.Players.LocalPlayer.Character.Wing3.Secondary.Color,
+			["Color"] = game.Players.LocalPlayer.Character.Wing9.Secondary.Color,
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing9"),
 			  },
 		[10] = {
-			["Color"] = game.Players.LocalPlayer.Character.Wing4.Secondary.Color,
+			["Color"] = game.Players.LocalPlayer.Character.Wing10.Secondary.Color,
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing10"),
 			  },
 		[11] = {
-			["Color"] = game.Players.LocalPlayer.Character.Wing5.Secondary.Color,
+			["Color"] = game.Players.LocalPlayer.Character.Wing11.Secondary.Color,
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing11"),
 			  },
 		[12] = {
-			["Color"] = game.Players.LocalPlayer.Character.Wing6.Secondary.Color,
+			["Color"] = game.Players.LocalPlayer.Character.Wing12.Secondary.Color,
 			["UnionColoring"] = true,
 			["Part"] = workspace:WaitForChild("Wing12"),
 			  },
