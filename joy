@@ -3,6 +3,9 @@ OxideApi.Notification(":joy:",4)
 function LoadLibrary(a)
 	return loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/loadlibrary/refs/heads/main/main", true))()
 end
+if setfpscap then 
+setfpscap(60)
+end
 local FavIDs = {
 	340106355, --Nefl Crystals
 	927529620, --Dimension
