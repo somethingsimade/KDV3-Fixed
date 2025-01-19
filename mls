@@ -1267,6 +1267,8 @@ elseif songid.Value == "rbxassetid://69420" then
 		end
         elseif k == "j" then
             _G.HatCollide = not _G.HatCollide
+             elseif k == "z" then
+            _G.TeleportCharacter = not _G.TeleportCharacter
 	elseif k == "f" then
 		ISFLYING = not ISFLYING
 		if lplr.Name == USERNAME then
