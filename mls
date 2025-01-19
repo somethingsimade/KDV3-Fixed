@@ -1291,7 +1291,7 @@ antivoid.Name = "antivoid"
 antivoid.Size = Vector3.new(400,10,400)
 antivoid.Anchored = true
 antivoid.Transparency = 1
-antivoid.Position = Vector3.new(RootPart.Position.X,workspace.FallenPartsDestroyHeight+5,RootPart.Position.Z)
+antivoid.Position = Vector3.new(RootPart.Position.X,workspace.FallenPartsDestroyHeight+1,RootPart.Position.Z)
 antivoid.Parent = workspace
 coroutine.resume(coroutine.create(function()
 	while not stopeverything do
