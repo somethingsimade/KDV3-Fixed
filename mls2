@@ -504,6 +504,7 @@ function Align(Part0,Part1,Position,Angle)
     Attachment2.Orientation = Angle or Vector3.new(0,0,0)
     spawn(function()
     while game:GetService("RunService").Heartbeat:wait() do
+        Part1=Attachment2.Parent
 		if Part0 and Part1 and Attachment2 then
 			Part0.CFrame=Part1.CFrame*Attachment2.CFrame
 		else
