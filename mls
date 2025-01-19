@@ -1298,7 +1298,7 @@ coroutine.resume(coroutine.create(function()
 		swait()
 		if not alreadyfixing then
 			if antivoid:IsDescendantOf(workspace) then
-				antivoid.Position = Vector3.new(RootPart.Position.X,workspace.FallenPartsDestroyHeight+5,RootPart.Position.Z)
+				antivoid.Position = Vector3.new(RootPart.Position.X,workspace.FallenPartsDestroyHeight+1,RootPart.Position.Z)
 			else
 				pcall(function()
 					antivoid:Destroy()
@@ -1308,7 +1308,7 @@ coroutine.resume(coroutine.create(function()
 				antivoid.Size = Vector3.new(400,10,400)
 				antivoid.Anchored = true
 				antivoid.Transparency = 1
-				antivoid.Position = Vector3.new(RootPart.Position.X,workspace.FallenPartsDestroyHeight+5,RootPart.Position.Z)
+				antivoid.Position = Vector3.new(RootPart.Position.X,workspace.FallenPartsDestroyHeight+1,RootPart.Position.Z)
 				antivoid.Parent = workspace
 			end
 		end
@@ -1400,7 +1400,7 @@ while not stopeverything do
 	
 		
 		for i,v in pairs(Character:GetChildren()) do
-			if v:IsA("BasePart") and v.Anchored == false and v.Position.Y < (workspace.FallenPartsDestroyHeight + 50) then
+			if v:IsA("BasePart") and v.Anchored == false and v.Position.Y < (workspace.FallenPartsDestroyHeight + 5) then
 				local flot = Instance.new("BodyPosition")
 				local spen = Instance.new("BodyGyro")
 				local hu = math.huge
