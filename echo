@@ -3448,6 +3448,7 @@ end
 		sick.MaxDistance = inf
 		sick.Volume = inf
 		sick.Looped = true
+		sick.SoundId = getcustomasset("echo.mp3")
 		if sick.IsPlaying == false then
 			sick:Play()
 		end
