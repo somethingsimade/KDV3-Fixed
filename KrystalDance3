@@ -1,0 +1,767 @@
+-- Krystal Dance V3, Made by Hemi (es muy janky)
+local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
+OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
+local playanother = false
+local playing = false
+local dancing = false
+local rtrnv;
+local c;
+local tbl3;
+local v;
+local anim;
+local count;
+local hhhh;
+local asdf;
+local s;
+local animid;
+local plr;
+local char = game:GetService("Players").LocalPlayer.Character
+local cframe;
+local torso;
+local rs;
+local ls;
+local rh;
+local lh;
+local n;
+local rj;
+local rsc0;
+local lsc0;
+local rhc0;
+local lhc0;
+local rjc0;
+local nc02;
+local gc0;
+local orsc0;
+local olsc0;
+local orhc0;
+local olhc0;
+local orjc0;
+local onc0;
+local count2;
+local maxcount2;
+local wtfloop
+local walking = false
+local idle = false
+local RunService = game:GetService("RunService")
+local function getnext(tbl,number)
+	c=100
+	rtrnv=0
+	for i,v in pairs(tbl) do
+		if i>number and i-number<c then
+c=i-number
+rtrnv=i
+		end
+	end
+	return(rtrnv)
+end
+local function wait2(tim)
+	if tim<0.1 then
+		game:GetService("RunService").Heartbeat:Wait()
+	else
+		for i=1,tim*40 do
+game:GetService("RunService").Heartbeat:Wait()
+		end
+	end
+end
+local function kftotbl(kf) -- Below this is literal pain..
+	tbl3 = {}
+	for i,v in pairs(kf:GetDescendants()) do
+		if v:IsA("Pose") then
+tbl3[string.sub(v.Name,1,1)..string.sub(v.Name,#v.Name,#v.Name)] = v.CFrame
+		end
+	end
+	return(tbl3)
+end
+local sound69 = Instance.new("Sound",game:GetService("RunService"))
+sound69.Looped = true
+sound69.Name = "danc"
+sound69.Playing = true
+sound69.Volume = 5
+local plr = game.Players.LocalPlayer
+local RunService = game:GetService("RunService")
+
+local function functionToBind()
+    char.Humanoid:Move(Vector3.new(0,0,-1),false)
+end
+
+
+
+			function fwait(seconds)
+				seconds = (seconds < 0.000001) and 0.000001 or seconds -- absolute limit of roblox, anything below just crashes lol so this limits it so it doesnt crash
+			
+				local event = game:GetService("RunService").PreRender or game:GetService("RunService").Heartbeat
+			
+				local startTime = tick()
+				while tick() - startTime < seconds do
+					event:Wait()
+				end
+			end		
+            local legitjustran = false
+	local function playanim(id,speed)
+        if legitjustran == true then return end
+        legitjustran = true 
+        pcall(function()
+            print(wtfloop)
+            print(wtfloop.Connected)
+            if wtfloop.Connected then 
+                return
+            end
+        end)
+        if dancing == true then 
+            walking = false
+            idle = false
+           end
+		if speed == nil then 
+			speed = 1
+		end
+        if dancing == true then 
+            idle = false 
+            char.Humanoid:Move(Vector3.new(0,0,-1),true)
+            walking = false 
+        end
+        wait(.005)
+        legitjustran = false
+        wait(.045)
+      
+        playanother = false 
+           local animid="rbxassetid://"..id
+   char = char
+   pcall(function()
+       hhhh=char.Humanoid.Animator
+   hhhh.Parent = nil
+   end)
+   for _,v in pairs(char.Humanoid:GetPlayingAnimationTracks()) do
+       v:Stop()
+   end
+   cframe = char.HumanoidRootPart.CFrame
+   torso = char.Torso
+   -----------------------------------------------------------
+   rs = torso["Right Shoulder"] -- Just took this from another script(Faster).
+   ls = torso["Left Shoulder"]
+   rh = torso["Right Hip"]
+   lh = torso["Left Hip"]
+   n = torso["Neck"]
+   rj = char.HumanoidRootPart["RootJoint"]
+   rsc0 = rs.C0
+   lsc0 = ls.C0
+   rhc0 = rh.C0
+   lhc0 = lh.C0
+   rjc0 = rj.C0
+   nc02 = n.C0
+   gc0 = CFrame.new()
+   orsc0 = rs.C0
+   olsc0 = ls.C0
+   orhc0 = rh.C0
+   olhc0 = lh.C0
+   orjc0 = rj.C0
+   onc0 = n.C0
+   count2 = 100
+   maxcount2=100
+   playanother = false
+
+   wtfloop = game:GetService("RunService").Heartbeat:Connect(function() -- Speed.
+    if playanother == true then
+        local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        rs.Transform = deft
+        ls.Transform = deft
+        lh.Transform = deft
+        rj.Transform = deft
+        n.Transform  = deft
+        rh.Transform = deft  
+        task.wait(.07)
+        wtfloop:Disconnect()
+        return nil
+    else
+        count2 = count2+1
+        if count2<=maxcount2 then
+rs.Transform=rs.Transform:Lerp(rsc0,count2/maxcount2)
+ls.Transform=ls.Transform:Lerp(lsc0,count2/maxcount2)
+rh.Transform=rh.Transform:Lerp(rhc0,count2/maxcount2)
+lh.Transform=lh.Transform:Lerp(lhc0,count2/maxcount2)
+n.Transform=n.Transform:Lerp(nc02,count2/maxcount2)
+rj.Transform=rj.Transform:Lerp(rjc0,count2/maxcount2)
+        end
+    end
+end)
+
+    local animid=game:GetObjects(animid)[1]
+     local anim={}
+   for i,v in pairs(animid:GetChildren()) do
+       if v:IsA("Keyframe") then
+           anim[v.Time]=kftotbl(v)
+       end
+   end
+   
+   count = 0
+   char=char
+   plr.CharacterRemoving:Connect(function()
+       if playing == true then
+           playing = false
+       end
+   end)
+   wtfloop:Disconnect()
+   while task.wait(1/60) do
+       if playanother == true then
+           local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+           rs.Transform = deft
+           ls.Transform = deft
+           lh.Transform = deft
+           rj.Transform = deft
+           n.Transform  = deft
+           rh.Transform = deft  
+           task.wait(.07)
+
+           break
+       else
+           for i,oasjdadlasdkadkldjkl in pairs(anim) do
+   asdf=getnext(anim,count)
+   v=anim[asdf]
+   if playanother == true then
+       local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+       rs.Transform = deft
+       ls.Transform = deft
+       lh.Transform = deft
+       rj.Transform = deft
+       n.Transform  = deft
+       rh.Transform = deft  
+       task.wait(.07)
+       break
+   end
+   if walking == true and char.Humanoid.MoveDirection == Vector3.new(0,0,0) then 
+    break 
+   end
+   if dancing == true then 
+    walking = false
+    idle = false
+   end
+   if v["Lg"] then
+       lhc0 = v["Lg"]
+   end
+   if v["Rg"] then
+       rhc0 = v["Rg"]
+   end
+   if v["Lm"] then
+       lsc0 = v["Lm"]
+   end
+   if v["Rm"] then
+       rsc0 = v["Rm"]
+   end
+   if v["To"] then
+       rjc0 = v["To"]
+   end
+   if v["Hd"] then
+       nc02 = v["Hd"]
+   end
+   count2=0
+   maxcount2=asdf-count
+   count=asdf
+   fwait(1/(30*speed))
+   if playanother == true then
+    local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+    rs.Transform = deft
+    ls.Transform = deft
+    lh.Transform = deft
+    rj.Transform = deft
+    n.Transform  = deft
+    rh.Transform = deft  
+    break
+    end
+   count2=maxcount2
+   if v["Lg"] then
+       char.Torso["Left Hip"].Transform = v["Lg"]
+   end
+   if v["Rg"] then
+       char.Torso["Right Hip"].Transform = v["Rg"]
+   end
+   if v["Lm"] then
+       char.Torso["Left Shoulder"].Transform = v["Lm"]
+   end
+   if v["Rm"] then
+       char.Torso["Right Shoulder"].Transform = v["Rm"]
+   end
+   if v["To"] then
+       char.HumanoidRootPart["RootJoint"].Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation
+   end
+   if v["Hd"] then
+       char.Torso["Neck"].Transform =  v["Hd"]
+   end
+           end
+       end
+   end
+           end   
+           local function stopanim()
+            playanother = true 
+            playanother = true 
+            playanother = true 
+            playanother = true 
+            sound69.PlaybackSpeed = 1
+            if dancing == true then 
+                dancing = false
+                idle = true 
+                char.Humanoid:Move(Vector3.new(0,0,-1),true)
+                walking = false 
+                wait(.065)
+                task.spawn(function()
+                playanim(92907202670381,2)
+                end)
+            end
+                    end
+m = plr:GetMouse()
+local customasset = function(id)
+	return "rbxasset://"..id
+	end
+	local getcustomasset = customasset
+
+m.KeyDown:Connect(function(k)
+	if k == "q" then 
+		if dancing == false then 
+            stopanim()
+dancing = true
+task.wait(.1)
+		    sound69.SoundId = customasset("Dances/rat.mp3")
+		    sound69:Play()
+		    playanim(106353328250763)
+		else
+	        stopanim()
+	        sound69:Stop()
+		end
+	elseif k == "e" then 
+		if dancing == false then 
+stopanim()
+dancing = true
+task.wait(.1)
+sound69.SoundId = customasset("Dances/boogie.mp3")
+sound69.PlaybackSpeed = 2
+sound69:Play()
+playanim(16769959846)
+		else
+stopanim()
+sound69.PlaybackSpeed = 1
+sound69:Stop()
+end
+		elseif k == "r" then 
+if dancing == false then 
+	stopanim()
+dancing = true
+task.wait(.1)
+	sound69.SoundId = customasset("Dances/valen.mp3")
+	sound69.PlaybackSpeed = 1
+	sound69:Play()
+	playanim(136962185637891)
+else
+	stopanim()
+	sound69.PlaybackSpeed = 1
+	sound69:Stop()
+	end
+elseif k == "t" then 
+	if dancing == false then 
+		stopanim()
+dancing = true
+task.wait(.1)
+		sound69.SoundId = customasset("Dances/order.mp3")
+		sound69.PlaybackSpeed = 2
+		sound69:Play()
+		playanim(130968726197789)
+	else
+		stopanim()
+		sound69.PlaybackSpeed = 1
+		sound69:Stop()
+		end
+	elseif k == "y" then 
+		if dancing == false then 
+stopanim()
+dancing = true
+task.wait(.1)
+sound69.SoundId = customasset("Dances/sturdy.mp3")
+sound69.PlaybackSpeed = 1
+sound69:Play()
+playanim(100864643591096)
+		else
+stopanim()
+sound69.PlaybackSpeed = 1
+sound69:Stop()
+end
+    elseif k == "u" then 
+if dancing == false then 
+    stopanim()
+dancing = true
+task.wait(.1)
+    sound69.SoundId = customasset("Dances/egypt.mp3")
+    sound69.PlaybackSpeed = 1
+    sound69:Play()
+    playanim(101876334315959)
+else
+    stopanim()
+    sound69.PlaybackSpeed = 1
+    sound69:Stop()
+ end
+elseif k == "f" then 
+    if dancing == false then 
+        stopanim()
+dancing = true
+task.wait(.1)
+        sound69.SoundId = customasset("Dances/billy.mp3")
+        char.Humanoid.WalkSpeed = 4*char:GetScale()
+        sound69:Play()
+        playanim(18945296583)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "g" then 
+    if dancing == false then 
+        stopanim()
+dancing = true
+task.wait(.1)
+        sound69.SoundId = customasset("Dances/goat.mp3")
+        sound69:Play()
+        playanim(9149918263)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "p" then 
+    if dancing == false then 
+        stopanim()
+dancing = true
+task.wait(.1)
+        sound69.SoundId = customasset("Dances/pogo.mp3")
+        sound69:Play()
+        playanim(8829798048,1.5)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "j" then 
+    if dancing == false then 
+        stopanim()
+dancing = true
+task.wait(.1)
+        sound69.SoundId = customasset("Dances/xav.mp3")
+        sound69:Play()
+        playanim(118689801179651,2)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "k" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/dr.wav")
+        char.Humanoid.WalkSpeed = 4*char:GetScale()
+        sound69:Play()
+        playanim(12637912409,2)
+    else
+        char.Humanoid.WalkSpeed = 14*char:GetScale()
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "l" then 
+    if dancing == false then 
+        stopanim()
+    dancing = true
+    task.wait(.1)
+        sound69.SoundId = customasset("Dances/griddy.mp3")
+        char.Humanoid.WalkSpeed = 4*char:GetScale()
+        sound69:Play()
+        playanim(15704995372)
+    else
+        char.Humanoid.WalkSpeed = 14*char:GetScale()
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "z" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/lux.ogg")
+        sound69:Play()
+        playanim(15092317950)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "x" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/secret.mp3")
+        sound69:Play()
+        playanim(105416804363388,18/30)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "h" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = "rbxassetid://1846368080"
+        sound69:Play()
+        playanim(76647570617571,0.75)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "v" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/bimbam.mp3")
+        sound69:Play()
+        playanim(16361564081)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "6" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/faster.ogg")
+        sound69:Play()
+        playanim(10609437925)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "c" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/Moongazer.mp3")
+        sound69:Play()
+        playanim(118766274919427)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "n" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/Down.mp3")
+        sound69:Play()
+        playanim(111249002064299)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "m" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/Mystery.mp3")
+        sound69:Play()
+        playanim(131401099812672)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+                    elseif k == "," then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/Slickback.mp3")
+        char.Humanoid.WalkSpeed = 4*char:GetScale()
+        sound69:Play()
+        playanim(18986357892)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "[" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/true_heart.mp3")
+        sound69:Play()
+        playanim(131776726113292)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "'" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/Rewind.mp3")
+        sound69:Play()
+        playanim(140376973204352)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+elseif k == "5" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/tryna.mp3")
+        sound69:Play()
+        playanim(14887006269)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+                            elseif k == "4" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.1)
+        sound69.SoundId = customasset("Dances/chronoshift.mp3")
+        sound69:Play()
+        playanim(125834337223799)
+    else
+        stopanim()
+        sound69:Stop()
+    end
+	end
+end)
+char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
+    if char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false and idle == false then
+    walking = false
+    idle = true
+    stopanim()
+    stopanim()
+    stopanim()
+    stopanim()
+    fwait(1/240)
+    if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) then
+        stopanim()
+        fwait(.025)
+        stopanim()
+        fwait(.035)
+        playanim(92907202670381,2)
+    end
+    elseif char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and walking == false then 
+        char.Humanoid.WalkSpeed = 14*char:GetScale()
+        walking = true
+        idle = false
+        stopanim()
+        fwait(1/500)
+        if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) then 
+            playanim(101747830674097,2)
+        end
+    end
+    end)
+
+local RunService = game:GetService("RunService")
+
+local Player = game:GetService("Players").LocalPlayer
+local PlayerMouse = Player:GetMouse()
+local Camera = workspace.CurrentCamera
+local Character =char
+
+local Humanoid = Character:WaitForChild("Humanoid")
+local IsR6 = (Humanoid.RigType == Enum.HumanoidRigType.R6)
+
+local Head = Character:WaitForChild("Head")
+local Torso = if IsR6 then Character:WaitForChild("Torso") else Character:WaitForChild("UpperTorso")
+
+local Neck = if IsR6 then Torso:WaitForChild("Neck") else Head:WaitForChild("Neck")
+local Waist = if IsR6 then nil else Torso:WaitForChild("Waist")
+
+local NeckOriginC0 = Neck.C0
+local WaistOriginC0 = if Waist then Waist.C0 else nil
+
+Neck.MaxVelocity = 1/3
+
+local AllowedStates = {Enum.HumanoidStateType.Running, Enum.HumanoidStateType.Climbing, Enum.HumanoidStateType.Swimming, Enum.HumanoidStateType.Freefall, Enum.HumanoidStateType.Seated}
+local IsAllowedState = (table.find(AllowedStates, Humanoid:GetState()) ~= nil)
+
+local find = table.find
+local atan = math.atan
+local atan2 = math.atan2
+
+Humanoid.StateChanged:Connect(function(_, new)
+	IsAllowedState = (find(AllowedStates, new) ~= nil)
+end)
+local oldC0N = Neck.C0
+
+local updatesPerSecond = 10
+local Character = char 
+local Root = char.HumanoidRootPart
+introsound = Instance.new("Sound",Root)
+introsound.SoundId = "rbxassetid://236146895"
+introsound.Volume = 8
+introsound:Play()
+
+bigfedora = Instance.new("Part",Character)
+bigfedora.Size = Vector3.new(2,2,2)
+bigfedora.CFrame = bigfedora.CFrame:inverse() * Root.CFrame * CFrame.new(math.random(-60,60),-.2,math.random(-60,60)) * CFrame.Angles(0,math.rad(math.random(-180,180)),0)
+bigfedora.CanCollide = false
+bigfedora.Anchored = true
+bigfedora.Name = "mbigf"
+mbigfedora = Instance.new("SpecialMesh", bigfedora)
+mbigfedora.MeshType = "FileMesh"
+mbigfedora.Scale = Vector3.new(5, 5, 5)
+mbigfedora.MeshId,mbigfedora.TextureId = 'http://www.roblox.com/asset/?id=1125478','http://www.roblox.com/asset/?id=1125479'
+
+for i = 1, 60 do
+bigfedora.CFrame = bigfedora.CFrame:lerp(CFrame.new(Root.Position) * CFrame.new(0,-.1,0) * CFrame.Angles(math.rad(0),math.rad(0),math.rad(0)),.09)
+task.wait(1/60)
+end
+wait(.25)
+for i = 1, 50 do
+bigfedora.CFrame = bigfedora.CFrame:lerp(CFrame.new(char.Head.Position),.05)
+task.wait(1/60)
+end
+zmc = 0
+for i = 1, 29 do
+zmc = zmc + 2
+mbigfedora.Scale = mbigfedora.Scale - Vector3.new(.25,.25,.25)
+bigfedora.CFrame = bigfedora.CFrame * CFrame.Angles(math.rad(0),math.rad(zmc),0)
+task.wait(1/60)
+end
+bigfedora:Remove()
+local nim= 0
+repeat 
+    char.Humanoid:Move(Vector3.new(0,0,-1),true)
+    task.wait(1/60)
+    nim=nim+1
+until nim==3
+RunService.RenderStepped:Connect(function(deltaTime: number)
+	if IsAllowedState  and dancing == false then
+		local HeadPosition = Head.Position
+		if Neck then
+			local MousePos = PlayerMouse.Hit.Position
+			local TranslationVector = (HeadPosition - MousePos).Unit
+			local Pitch = atan(TranslationVector.Y)
+			local Yaw = TranslationVector:Cross(Torso.CFrame.LookVector).Y
+			local Roll = atan(Yaw)
+			
+			local NeckCFrame
+			if IsR6 then
+				NeckCFrame = CFrame.Angles(Pitch, 0, Yaw)
+			else
+				NeckCFrame = CFrame.Angles(-Pitch * 0.5, Yaw, -Roll * 0.5)				
+				local waistCFrame = CFrame.Angles(-Pitch * 0.5, Yaw * 0.5, 0)
+				Waist.C0 = Waist.C0:Lerp(WaistOriginC0 * waistCFrame, updatesPerSecond * deltaTime)
+			end			
+			Neck.C0 = Neck.C0:Lerp(NeckOriginC0 * NeckCFrame, updatesPerSecond * deltaTime)
+		end
+    elseif dancing == true then 
+        Neck.C0 = oldC0N
+	end	
+if char.Humanoid.MoveDirection == Vector3.new(0,0,0) then 
+    walking = false 
+    idle = true 
+else 
+    walking = true 
+    idle = false 
+end
+end)
