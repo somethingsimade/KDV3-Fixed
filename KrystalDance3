@@ -1,4 +1,42 @@
 -- Krystal Dance V3, Made by Hemi (es muy janky)
+local baseUrl = "https://github.com/MrBwoken/Music-/raw/refs/heads/main/KrystalDanceV3/"
+local files = {
+    "Down.mp3", "Moongazer.mp3", "Rewind.mp3", "Slickback.mp3", "billy.mp3",
+    "bimbam.mp3", "boogie.mp3", "chronoshift.mp3", "dr.wav", "egypt.mp3",
+    "faster.ogg", "goat.mp3", "griddy.mp3", "lux.ogg", "mystery.mp3",
+    "order.mp3", "part.MP3", "pogo.mp3", "rat.mp3", "secret.mp3",
+    "sturdy.mp3", "true_heart.mp3", "tryna.mp3", "valen.mp3", "xav.mp3"
+}
+
+local allFilesExist = true
+local downloadThreads = {}
+
+for _, filename in ipairs(files) do
+    if not isfile(filename) then
+        allFilesExist = false
+        local thread = coroutine.create(function()
+            local url = baseUrl .. filename
+            local success, result = pcall(function()
+                return game:HttpGet(url)
+            end)
+
+            if success then
+                writefile(filename, result)
+                print("Downloaded:", filename)
+            else
+                print("Failed to download:", filename)
+            end
+        end)
+        table.insert(downloadThreads, thread)
+        coroutine.resume(thread)
+    else
+        print("Skipping existing file:", filename)
+    end
+end
+
+for _, thread in ipairs(downloadThreads) do
+    coroutine.resume(thread)
+end
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
 local playanother = false
