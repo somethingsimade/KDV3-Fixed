@@ -312,10 +312,7 @@ end)
             end
                     end
 m = plr:GetMouse()
-local customasset = function(id)
-	return "rbxasset://"..id
-	end
-	local getcustomasset = customasset
+local customasset = getcustomasset
 
 m.KeyDown:Connect(function(k)
 	if k == "q" then 
