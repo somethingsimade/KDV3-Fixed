@@ -320,7 +320,9 @@ m.KeyDown:Connect(function(k)
             stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
 		    sound69.SoundId = customasset("Dances/rat.mp3")
+end)
 		    sound69:Play()
 		    playanim(106353328250763)
 		else
@@ -332,7 +334,9 @@ task.wait(.1)
 stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
 sound69.SoundId = customasset("Dances/boogie.mp3")
+end)
 sound69.PlaybackSpeed = 2
 sound69:Play()
 playanim(16769959846)
@@ -346,7 +350,9 @@ if dancing == false then
 	stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
 	sound69.SoundId = customasset("Dances/valen.mp3")
+end)
 	sound69.PlaybackSpeed = 1
 	sound69:Play()
 	playanim(136962185637891)
@@ -360,7 +366,9 @@ elseif k == "t" then
 		stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
 		sound69.SoundId = customasset("Dances/order.mp3")
+end)
 		sound69.PlaybackSpeed = 2
 		sound69:Play()
 		playanim(130968726197789)
@@ -374,7 +382,9 @@ task.wait(.1)
 stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
 sound69.SoundId = customasset("Dances/sturdy.mp3")
+end)
 sound69.PlaybackSpeed = 1
 sound69:Play()
 playanim(100864643591096)
@@ -388,7 +398,9 @@ if dancing == false then
     stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
     sound69.SoundId = customasset("Dances/egypt.mp3")
+end)
     sound69.PlaybackSpeed = 1
     sound69:Play()
     playanim(101876334315959)
@@ -402,7 +414,9 @@ elseif k == "f" then
         stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/billy.mp3")
+end)
         char.Humanoid.WalkSpeed = 4*char:GetScale()
         sound69:Play()
         playanim(18945296583)
@@ -415,7 +429,9 @@ elseif k == "g" then
         stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/goat.mp3")
+end)
         sound69:Play()
         playanim(9149918263)
     else
@@ -427,7 +443,9 @@ elseif k == "p" then
         stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/pogo.mp3")
+end)
         sound69:Play()
         playanim(8829798048,1.5)
     else
@@ -439,7 +457,9 @@ elseif k == "j" then
         stopanim()
 dancing = true
 task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/xav.mp3")
+end)
         sound69:Play()
         playanim(118689801179651,2)
     else
@@ -451,7 +471,9 @@ elseif k == "k" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/dr.wav")
+end)
         char.Humanoid.WalkSpeed = 4*char:GetScale()
         sound69:Play()
         playanim(12637912409,2)
@@ -465,7 +487,9 @@ elseif k == "l" then
         stopanim()
     dancing = true
     task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/griddy.mp3")
+end)
         char.Humanoid.WalkSpeed = 4*char:GetScale()
         sound69:Play()
         playanim(15704995372)
@@ -479,7 +503,9 @@ elseif k == "z" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/lux.ogg")
+end)
         sound69:Play()
         playanim(15092317950)
     else
@@ -491,7 +517,9 @@ elseif k == "x" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/secret.mp3")
+end)
         sound69:Play()
         playanim(105416804363388,18/30)
     else
@@ -503,7 +531,9 @@ elseif k == "h" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = "rbxassetid://1846368080"
+end)
         sound69:Play()
         playanim(76647570617571,0.75)
     else
@@ -515,7 +545,9 @@ elseif k == "v" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/bimbam.mp3")
+end)
         sound69:Play()
         playanim(16361564081)
     else
@@ -527,7 +559,9 @@ elseif k == "6" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/faster.ogg")
+end)
         sound69:Play()
         playanim(10609437925)
     else
@@ -539,7 +573,9 @@ elseif k == "c" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/Moongazer.mp3")
+end)
         sound69:Play()
         playanim(118766274919427)
     else
@@ -551,7 +587,9 @@ elseif k == "n" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/Down.mp3")
+end)
         sound69:Play()
         playanim(111249002064299)
     else
@@ -563,7 +601,9 @@ elseif k == "m" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/Mystery.mp3")
+end)
         sound69:Play()
         playanim(131401099812672)
     else
@@ -575,7 +615,9 @@ elseif k == "m" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/Slickback.mp3")
+end)
         char.Humanoid.WalkSpeed = 4*char:GetScale()
         sound69:Play()
         playanim(18986357892)
@@ -588,7 +630,9 @@ elseif k == "[" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/true_heart.mp3")
+end)
         sound69:Play()
         playanim(131776726113292)
     else
@@ -600,7 +644,9 @@ elseif k == "'" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/Rewind.mp3")
+end)
         sound69:Play()
         playanim(140376973204352)
     else
@@ -612,7 +658,9 @@ elseif k == "5" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/tryna.mp3")
+end)
         sound69:Play()
         playanim(14887006269)
     else
@@ -624,7 +672,9 @@ elseif k == "5" then
         stopanim()
         dancing = true
         task.wait(.1)
+pcall(function()
         sound69.SoundId = customasset("Dances/chronoshift.mp3")
+end)
         sound69:Play()
         playanim(125834337223799)
     else
