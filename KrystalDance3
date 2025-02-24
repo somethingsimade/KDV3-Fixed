@@ -1,42 +1,4 @@
 -- Krystal Dance V3, Made by Hemi (es muy janky)
-local baseUrl = "https://github.com/MrBwoken/Music-/raw/refs/heads/main/KrystalDanceV3/"
-local files = {
-    "Down.mp3", "Moongazer.mp3", "Rewind.mp3", "Slickback.mp3", "billy.mp3",
-    "bimbam.mp3", "boogie.mp3", "chronoshift.mp3", "dr.wav", "egypt.mp3",
-    "faster.ogg", "goat.mp3", "griddy.mp3", "lux.ogg", "mystery.mp3",
-    "order.mp3", "part.MP3", "pogo.mp3", "rat.mp3", "secret.mp3",
-    "sturdy.mp3", "true_heart.mp3", "tryna.mp3", "valen.mp3", "xav.mp3"
-}
-
-local allFilesExist = true
-local downloadThreads = {}
-
-for _, filename in ipairs(files) do
-    if not isfile(filename) then
-        allFilesExist = false
-        local thread = coroutine.create(function()
-            local url = baseUrl .. filename
-            local success, result = pcall(function()
-                return game:HttpGet(url)
-            end)
-
-            if success then
-                writefile(filename, result)
-                print("Downloaded:", filename)
-            else
-                print("Failed to download:", filename)
-            end
-        end)
-        table.insert(downloadThreads, thread)
-        coroutine.resume(thread)
-    else
-        print("Skipping existing file:", filename)
-    end
-end
-
-for _, thread in ipairs(downloadThreads) do
-    coroutine.resume(thread)
-end
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
 local playanother = false
@@ -223,7 +185,7 @@ rj.Transform=rj.Transform:Lerp(rjc0,count2/maxcount2)
 end)
 
     local animid=game:GetObjects(animid)[1]
-     local anim={}
+      anim={}
    for i,v in pairs(animid:GetChildren()) do
        if v:IsA("Keyframe") then
            anim[v.Time]=kftotbl(v)
@@ -271,6 +233,9 @@ end)
    if dancing == true then 
     walking = false
     idle = false
+   end
+   if walking == true and idle == true then 
+    playanother = true 
    end
    if v["Lg"] then
        lhc0 = v["Lg"]
@@ -339,13 +304,18 @@ end)
                 char.Humanoid:Move(Vector3.new(0,0,-1),true)
                 walking = false 
                 wait(.065)
+                if  char.Humanoid.MoveDirection == Vector3.new(0,0,0) then
                 task.spawn(function()
                 playanim(92907202670381,2)
                 end)
             end
+            end
                     end
 m = plr:GetMouse()
-local customasset = getcustomasset
+local customasset = function(id)
+	return "rbxasset://"..id
+	end
+	local getcustomasset = customasset
 
 m.KeyDown:Connect(function(k)
 	if k == "q" then 
@@ -675,12 +645,14 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
     stopanim()
     stopanim()
     fwait(1/240)
-    if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) then
+    if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false then
         stopanim()
         fwait(.025)
         stopanim()
         fwait(.035)
+        if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false then
         playanim(92907202670381,2)
+        end
     end
     elseif char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and walking == false then 
         char.Humanoid.WalkSpeed = 14*char:GetScale()
@@ -688,7 +660,7 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
         idle = false
         stopanim()
         fwait(1/500)
-        if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) then 
+        if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false then 
             playanim(101747830674097,2)
         end
     end
