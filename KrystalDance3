@@ -1,4 +1,5 @@
 -- Krystal Dance V3, Made by Hemi (es muy janky)
+local script = Instance.new("LocalScript")
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
 local playanother = false
