@@ -5195,6 +5195,22 @@ weld.Parent = game.Players.LocalPlayer.Character["Accessory (NeptunesSword)"].Ha
 weld.Part0 = game.Players.LocalPlayer.Character["Accessory (NeptunesSword)"].Handle
 weld.Part1 = Part475
         end)
+					pcall(function()
+game.Players.LocalPlayer.Character["Accessory (NepV)"].Handle:BreakJoints()
+local PositionOffset = Vector3.new(-0,-2.8,-0.2)
+local RotationOffset = Vector3.new(-7, 90, 90)
+RotationOffset = CFrame.Angles(
+   math.rad(RotationOffset.X),
+   math.rad(RotationOffset.Y),
+   math.rad(RotationOffset.Z)
+)
+local CFrameOffset = CFrame.new(PositionOffset)*RotationOffset
+local weld = Instance.new("Weld")
+weld.C1 = CFrameOffset
+weld.Parent = game.Players.LocalPlayer.Character["Accessory (NepV)"].Handle
+weld.Part0 = game.Players.LocalPlayer.Character["Accessory (NepV)"].Handle
+weld.Part1 = Part475
+        end)
 local cam = workspace.CurrentCamera
 t = char.Torso
 h = char.Head
