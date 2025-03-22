@@ -592,9 +592,6 @@ function Dismember(MAN,DOWHAT)
 	end
 	if DOWHAT == "Ragdoll" then
 		local HUM = MAN:FindFirstChildOfClass("Humanoid")
-		if HUM then
-			HUM.Health = 0
-		end
 		if MAN:FindFirstChild("UpperTorso") then
 			local SCRIPT = script.R15Ragdoll:Clone()
 			SCRIPT.Parent = MAN
