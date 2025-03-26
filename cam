@@ -382,7 +382,7 @@ local function rotate()
 end
 local camloop 
 
-camloop = gg:GetService("RunService").Heartbeat:Connect(function()
+camloop = gg:GetService("RunService").PreSimulation:Connect(function()
 	local cfr=insGet(workspace:FindFirstChild("<["..Player.Name.."]>"),"CFrame")
 	local pos=cfGet(cfr,"Position")
 	sine=osclock()
