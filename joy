@@ -6,6 +6,7 @@ end
 if setfpscap then 
 setfpscap(60)
 end
+local script  = Instance.new("Script")
 local FavIDs = {
 	340106355, --Nefl Crystals
 	927529620, --Dimension
