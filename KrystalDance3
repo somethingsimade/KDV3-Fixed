@@ -2,9 +2,6 @@
 if not isfolder("Dances") then 
     makefolder("Dances")
     end
-if not isfile("Dances/dancingwit.mp3") then 
-    writefile("Dances/dancingwit.mp3",game:HttpGet("https://github.com/Nitro-GT/music/raw/refs/heads/main/dancingwit.mp3"))
-end
 local script = Instance.new("LocalScript")
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
@@ -364,7 +361,17 @@ end)
             end
                     end
 m = plr:GetMouse()
-	local customasset = getcustomasset
+	local customasset = function(id)
+        idwithoutthatbit= string.gsub(id,"Dances/","")
+        if not isfile(id) then 
+            writefile(id,game:HttpGet("https://github.com/Nitro-GT/music/raw/refs/heads/main/"..idwithoutthatbit))
+        end
+        repeat task.wait() until isfile(id)
+        local s = Instance.new("Sound")
+        s.Parent = game:GetService("RunService")
+        s.SoundId = getcustomasset(id)
+        return s.SoundId
+    end
 
 m.KeyDown:Connect(function(k)
 	if k == "q" then 
