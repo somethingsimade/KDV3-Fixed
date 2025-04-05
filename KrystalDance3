@@ -1,4 +1,10 @@
 -- Krystal Dance V3, Made by Hemi (es muy janky)
+if not isfolder("Dances") then 
+    makefolder("Dances")
+    end
+if not isfile("Dances/dancingwit.mp3") then 
+    writefile("Dances/dancingwit.mp3",game:HttpGet("https://github.com/Nitro-GT/music/raw/refs/heads/main/dancingwit.mp3"))
+end
 local script = Instance.new("LocalScript")
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
@@ -84,7 +90,7 @@ local RunService = game:GetService("RunService")
 local function functionToBind()
     char.Humanoid:Move(Vector3.new(0,0,-1),false)
 end
-
+local script = Instance.new("Script")
 ArtificialHB = Instance.new("BindableEvent",script)
 ArtificialHB.Name = "Heartbeat"
 script:WaitForChild("Heartbeat")
@@ -136,9 +142,12 @@ end
 				end
 			end		
             local legitjustran = false
-	local function playanim(id,speed)
+	local function playanim(id,speed,isadance)
         if legitjustran == true then return end
         legitjustran = true 
+        if isadance == nil then 
+            isadance = true 
+        end
         pcall(function()
             print(wtfloop)
             print(wtfloop.Connected)
@@ -207,7 +216,7 @@ end
         rj.Transform = deft
         n.Transform  = deft
         rh.Transform = deft  
-        task.wait(.07)
+        
         wtfloop:Disconnect()
         return nil
     else
@@ -248,7 +257,7 @@ end)
            rj.Transform = deft
            n.Transform  = deft
            rh.Transform = deft  
-           task.wait(.07)
+           
 
            break
        else
@@ -263,13 +272,16 @@ end)
        rj.Transform = deft
        n.Transform  = deft
        rh.Transform = deft  
-       task.wait(.07)
+       
        break
    end
    if walking == true and char.Humanoid.MoveDirection == Vector3.new(0,0,0) then 
     break 
    end
    frame = 1 / (30*speed)
+   if dancing == true and isadance == false then 
+    break 
+   end
    if dancing == true then 
     walking = false
     idle = false
@@ -352,7 +364,6 @@ end)
             end
                     end
 m = plr:GetMouse()
-
 	local customasset = getcustomasset
 
 m.KeyDown:Connect(function(k)
@@ -378,6 +389,20 @@ sound69.PlaybackSpeed = 2
 sound69:Play()
 playanim(16769959846)
 		else
+stopanim()
+sound69.PlaybackSpeed = 1
+sound69:Stop()
+end
+elseif k == "7" then 
+    if dancing == false then 
+stopanim()
+dancing = true
+task.wait(.1)
+sound69.SoundId = customasset("Dances/dancingwit.mp3")
+sound69.PlaybackSpeed = 1
+sound69:Play()
+playanim(93585895457618)
+    else
 stopanim()
 sound69.PlaybackSpeed = 1
 sound69:Stop()
@@ -534,7 +559,7 @@ elseif k == "x" then
         task.wait(.1)
         sound69.SoundId = customasset("Dances/secret.mp3")
         sound69:Play()
-        playanim(105416804363388,18/30)
+        playanim(105416804363388,33/60)
     else
         stopanim()
         sound69:Stop()
@@ -689,7 +714,7 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
         stopanim()
         fwait(.035)
         if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false then
-        playanim(92907202670381,2)
+        playanim(92907202670381,2,false )
         end
     end
     elseif char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and walking == false then 
@@ -699,7 +724,7 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
         stopanim()
         fwait(1/500)
         if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false then 
-            playanim(101747830674097,2)
+            playanim(101747830674097,2,false)
         end
     end
     end)
@@ -774,6 +799,11 @@ task.wait(1/60)
 end
 bigfedora:Remove()
 local nim= 0
+char.Humanoid.Died:Connect(function()
+sound69.PlaybackSpeed = 0
+sound69.Parent = nil 
+sound69.Volume = 0
+end)
 repeat 
     char.Humanoid:Move(Vector3.new(0,0,-1),true)
     task.wait(1/60)
