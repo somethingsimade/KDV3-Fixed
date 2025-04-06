@@ -15,7 +15,6 @@ _G.rcdbypass = true
 _G.StabilityIncrease = true -- slight jitter motion but wont crumble
 _G.DelHead = false -- deletes head
 _G.HatBody = false -- gives hat torso aswel 
-_G.AntiFling = true
 _G.EnableNetLib = false
 _G.wackyhead = false -- changes non pd alot
 _G.BodyForceEnabled = true
