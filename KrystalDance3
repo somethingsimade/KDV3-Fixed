@@ -2,6 +2,9 @@
 if not isfolder("Dances") then 
     makefolder("Dances")
     end
+local randompart = Instance.new("Part",game:GetService("RunService"))
+local coolparticles = game:GetObjects("rbxassetid://87299663038091")[1].ParticleAttachment
+coolparticles.Parent = randompart
 local script = Instance.new("LocalScript")
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
@@ -347,6 +350,7 @@ end)
             playanother = true 
             playanother = true 
             sound69.PlaybackSpeed = 1
+            coolparticles.Parent = randompart
             if dancing == true then 
                 dancing = false
                 idle = true 
@@ -408,6 +412,7 @@ task.wait(.1)
 sound69.SoundId = customasset("Dances/dancingwit.mp3")
 sound69.PlaybackSpeed = 1
 sound69:Play()
+coolparticles.Parent = char.Torso
 playanim(93585895457618)
     else
 stopanim()
@@ -717,9 +722,9 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
     fwait(1/240)
     if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false then
         stopanim()
-        fwait(.025)
+        swait(.005)
         stopanim()
-        fwait(.035)
+        swait(.005)
         if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false then
         playanim(92907202670381,2,false )
         end
