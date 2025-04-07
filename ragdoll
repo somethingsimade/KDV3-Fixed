@@ -1,0 +1,149 @@
+local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
+local ContextActionService = game:GetService("ContextActionService")
+ContextActionService:BindAction("RagdollNoPush", function() OxideApi.Input.Press(Enum.KeyCode.T) end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("RagdollNoPush", "RDoll No Push")
+ContextActionService:BindAction("Ragdoll", function() OxideApi.Input.Press(Enum.KeyCode.R) end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("Ragdoll", "Ragdoll")
+ContextActionService:BindAction("fix", function() print("Esc Pressed") end, true, Enum.KeyCode.ButtonY, Enum.KeyCode.ButtonY)
+ContextActionService:SetTitle("fix", "")
+ContextActionService:SetPosition("Ragdoll",UDim2.new(-1.8, 0, 0.4, 0))
+ContextActionService:SetPosition("RagdollNoPush",UDim2.new(-1.8, 0, 0.1, 0))
+ContextActionService:SetPosition("fix",UDim2.new(6.06, 0, 0.1, 0))
+local ograv = workspace.Gravity
+local Character: Model = game.Players.LocalPlayer.Character
+local Torso: BasePart = Character:WaitForChild("Torso")
+local Humanoid: Humanoid = Character:FindFirstChildOfClass("Humanoid")
+--> Necessary for Ragdolling to function properly
+Character.Animate.Enabled = true
+Character.Humanoid.BreakJointsOnDeath = false
+Character.Humanoid.RequiresNeck = true --> If your are having issues with your character randomly dying then set this to false
+--> Specific CFrame's I made for the best looking Ragdoll
+local attachmentCFrames = {
+	["Neck"] = {CFrame.new(0, 1* Character:GetScale(), 0, 0, -1, 0, 1, 0, -0, 0, 0, 1) , CFrame.new(0, -0.5* Character:GetScale(), 0, 0, -1, 0, 1, 0, -0, 0, 0, 1)},
+	["Left Shoulder"] = {CFrame.new(-1.3* Character:GetScale(), 0.75* Character:GetScale(), 0, -1, 0, 0, 0, -1, 0, 0, 0, 1), CFrame.new(0.2* Character:GetScale(), 0.75* Character:GetScale(), 0, -1, 0, 0, 0, -1, 0, 0, 0, 1)},
+	["Right Shoulder"] = {CFrame.new(1.3* Character:GetScale(), 0.75* Character:GetScale(), 0, 1, 0, 0, 0, 1, 0, 0, 0, 1), CFrame.new(-0.2* Character:GetScale(), 0.75* Character:GetScale(), 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)},
+	["Left Hip"] = {CFrame.new(-0.5* Character:GetScale(), -1* Character:GetScale(), 0, 0, 1, -0, -1, 0, 0, 0, 0, 1), CFrame.new(0, 1* Character:GetScale(), 0, 0, 1, -0, -1, 0, 0, 0, 0, 1)},
+	["Right Hip"] = {CFrame.new(0.5* Character:GetScale(), -1* Character:GetScale(), 0, 0, 1, -0, -1, 0, 0, 0, 0, 1), CFrame.new(0, 1* Character:GetScale(), 0, 0, 1, -0, -1, 0, 0, 0, 0, 1)},
+}
+local ragdollInstanceNames = {
+	["RagdollAttachment"] = true,
+	["RagdollConstraint"] = true,
+	["ColliderPart"] = true,
+}
+--> Used to trigger Ragdoll
+local RagdollValue = Instance.new("BoolValue")
+RagdollValue.Name = "IsRagdoll"
+RagdollValue.Parent = Character
+--> Used for anticheats to prevent flying Ragdolls from getting flagged, might be useful for you.
+Character:SetAttribute("LastRag")
+-------------------------------------------------------------------------------------------------
+--> Allows for proper limb collisions
+local function createColliderPart(part: BasePart)
+	if not part then return end
+	local rp = Instance.new("Part")
+	rp.Name = "ColliderPart"
+	rp.Size = part.Size/1.7
+	rp.Massless = true			
+	rp.CFrame = part.CFrame
+	rp.Transparency = 1
+	
+	local wc = Instance.new("WeldConstraint")
+	wc.Part0 = rp
+	wc.Part1 = part
+	
+	wc.Parent = rp
+	rp.Parent = part
+end
+--> Converts Motor6D's into BallSocketConstraints
+function replaceJoints()
+	for _, motor: Motor6D in pairs(Torso:GetDescendants()) do
+		if motor:IsA("Motor6D") then
+			if not attachmentCFrames[motor.Name] then return end
+			motor.Enabled = false;
+			local a0, a1 = Instance.new("Attachment"), Instance.new("Attachment")
+			a0.CFrame = attachmentCFrames[motor.Name][1]
+			a1.CFrame = attachmentCFrames[motor.Name][2]
+			a0.Name = "RagdollAttachment"
+			a1.Name = "RagdollAttachment"
+			createColliderPart(motor.Part1)
+			local b = Instance.new("BallSocketConstraint")
+			b.Attachment0 = a0
+			b.Attachment1 = a1
+			b.Name = "RagdollConstraint"
+			
+			b.Radius = 0.15
+			b.LimitsEnabled = true
+			b.TwistLimitsEnabled = false
+			b.MaxFrictionTorque = 0
+			b.Restitution = 0
+			b.UpperAngle = 90
+			b.TwistLowerAngle = -45
+			b.TwistUpperAngle = 45
+			if motor.Name == "Neck" then
+				b.TwistLimitsEnabled = true
+				b.UpperAngle = 45
+				b.TwistLowerAngle = -70
+				b.TwistUpperAngle = 70
+			end
+			
+			a0.Parent = motor.Part0
+			a1.Parent = motor.Part1
+			b.Parent = motor.Parent
+		end
+	end
+	
+	Humanoid.AutoRotate = false --> Disabling AutoRotate prevents the Character rotating in first person or Shift-Lock
+	Character:SetAttribute("LastRag", tick())
+end
+--> Destroys all Ragdoll made instances and re-enables the Motor6D's
+function resetJoints()
+	if Humanoid.Health < 1 then return end
+	for _, instance in pairs(Character:GetDescendants()) do
+		if ragdollInstanceNames[instance.Name] then
+			instance:Destroy()
+		end
+		if instance:IsA("Motor6D") then
+			instance.Enabled = true;
+		end
+	end
+	
+	Humanoid.AutoRotate = true
+end
+function Ragdoll(value: boolean)
+	if value then  workspace.Gravity = options.RagdollGravity replaceJoints() else  workspace.Gravity = ograv resetJoints() end
+end
+-------------------------------------------------------------------------------------------------
+--> Connect the Events
+RagdollValue.Changed:Connect(Ragdoll)
+local Torso: BasePart = Character:WaitForChild("Torso")
+local Humanoid: Humanoid = Character:WaitForChild("Humanoid")
+local RagdollValue: BoolValue = Character:WaitForChild("IsRagdoll")
+
+local function push()
+	Torso:ApplyImpulse(Torso.CFrame.LookVector * (100 * (Character:GetScale()>1 and  Character:GetScale() or 1)))
+end
+local uis = game:GetService("UserInputService")
+uis.InputBegan:Connect(function(k,chatting)
+	if chatting then return end
+if k.KeyCode == Enum.KeyCode.R then 
+ RagdollValue.Value = not RagdollValue.Value
+ push()
+elseif k.KeyCode == Enum.KeyCode.T then 
+ RagdollValue.Value = not RagdollValue.Value
+end
+end)
+
+
+RagdollValue:GetPropertyChangedSignal("Value"):Connect(function()
+	if (Humanoid.Health == 0) then --> Prevents OOF sound from playing twice thanks to @robloxdestroyer1035
+		Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp, false)
+		return
+	end
+	
+	if RagdollValue.Value then
+		Humanoid:ChangeState(Enum.HumanoidStateType.Ragdoll)
+		Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp, false)
+	elseif not RagdollValue.Value then
+		Humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+	end
+end)
