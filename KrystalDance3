@@ -169,10 +169,10 @@ end
         end
         wait(.005)
         legitjustran = false
-        wait(.045)
+        wait(.015)
       
         playanother = false 
-           local animid="rbxassetid://"..id
+        local animid="rbxassetid://"..id
    char = char
    pcall(function()
        hhhh=char.Humanoid.Animator
@@ -233,7 +233,7 @@ rj.Transform=rj.Transform:Lerp(rjc0,count2/maxcount2)
 end)
 
     local animid=game:GetObjects(animid)[1]
-      anim={}
+     local anim={}
    for i,v in pairs(animid:GetChildren()) do
        if v:IsA("Keyframe") then
            anim[v.Time]=kftotbl(v)
@@ -356,7 +356,7 @@ end)
                 idle = true 
                 char.Humanoid:Move(Vector3.new(0,0,-1),true)
                 walking = false 
-                wait(.065)
+                wait(.025)
                 if  char.Humanoid.MoveDirection == Vector3.new(0,0,0) then
                 task.spawn(function()
                 playanim(92907202670381,2)
@@ -725,7 +725,7 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
         swait(.005)
         stopanim()
         swait(.005)
-        if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false then
+        if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false and playanother==true then
         playanim(92907202670381,2,false )
         end
     end
