@@ -142,15 +142,16 @@ end
 				end
 			end		
             local legitjustran = false
+            local loopsplaying=0 
 	local function playanim(id,speed,isadance)
+        playanother = true 
+        loopsplaying+=1
         if legitjustran == true then return end
         legitjustran = true 
         if isadance == nil then 
             isadance = true 
         end
         pcall(function()
-            print(wtfloop)
-            print(wtfloop.Connected)
             if wtfloop.Connected then 
                 return
             end
@@ -169,9 +170,8 @@ end
         end
         wait(.005)
         legitjustran = false
-        wait(.015)
-      
         playanother = false 
+   
         local animid="rbxassetid://"..id
    char = char
    pcall(function()
@@ -249,6 +249,10 @@ end)
    end)
    wtfloop:Disconnect()
    while true do
+    print(loopsplaying)
+    if loopsplaying>1 then 
+        break
+    end
        if playanother == true then
            local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
            rs.Transform = deft
@@ -262,8 +266,8 @@ end)
            break
        else
            for i,oasjdadlasdkadkldjkl in pairs(anim) do
-   asdf=getnext(anim,count)
-   v=anim[asdf]
+  local asdf=getnext(anim,count)
+ local  v=anim[asdf]
    if playanother == true then
        local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
        rs.Transform = deft
@@ -310,7 +314,7 @@ end)
    count2=0
    maxcount2=asdf-count
    count=asdf
-  swait(1/(30*speed))
+    swait(1/(30*speed))
    if playanother == true then
     local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
     rs.Transform = deft
@@ -345,6 +349,9 @@ end)
    end
            end   
            local function stopanim()
+           if loopsplaying>0 then 
+                loopsplaying-=1
+           end
             playanother = true 
             playanother = true 
             playanother = true 
@@ -356,7 +363,7 @@ end)
                 idle = true 
                 char.Humanoid:Move(Vector3.new(0,0,-1),true)
                 walking = false 
-                wait(.025)
+                wait(.065)
                 if  char.Humanoid.MoveDirection == Vector3.new(0,0,0) then
                 task.spawn(function()
                 playanim(92907202670381,2)
@@ -726,18 +733,18 @@ char.Humanoid:GetPropertyChangedSignal("MoveDirection"):Connect(function()
         stopanim()
         swait(.005)
         if idle == true and walking == false and char.Humanoid.MoveDirection == Vector3.new(0,0,0) and dancing == false and playanother==true then
-        playanim(92907202670381,2,false )
+            playanim(92907202670381,2,false )
+            end
         end
-    end
-    elseif char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and walking == false then 
-        char.Humanoid.WalkSpeed = 14*char:GetScale()
-        walking = true
-        idle = false
-        stopanim()
-        fwait(1/500)
-        if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false then 
-            playanim(101747830674097,2,false)
-        end
+        elseif char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and walking == false then 
+            char.Humanoid.WalkSpeed = 14*char:GetScale()
+            walking = true
+            idle = false
+            stopanim()
+            fwait(1/500)
+            if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and playanother==true  then 
+                playanim(101747830674097,2,false)
+            end
     end
     end)
 
