@@ -364,7 +364,7 @@ end)
                 char.Humanoid:Move(Vector3.new(0,0,-1),true)
                 walking = false 
                 wait(.065)
-                if  char.Humanoid.MoveDirection == Vector3.new(0,0,0) then
+                if walking == true and idle == false and  char.Humanoid.MoveDirection ~= Vector3.new(0,0,0) and dancing == false and playanother==true  then 
                 task.spawn(function()
                 playanim(92907202670381,2)
                 end)
