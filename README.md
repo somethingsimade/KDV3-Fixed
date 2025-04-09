@@ -1,1 +1,1 @@
-# THIS IS FUCKING ANCIENT! DONT USE ANY REANIM FROM HERE IT WILL MORE THAN LIKELY NOT WORK!
+# This is the OLD repo for oxide, This repo is only used for scripts, all reanimations are found on https://github.com/Nitro-GT/Oxide
