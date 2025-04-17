@@ -487,9 +487,9 @@ elseif k == "g" then
         stopanim()
 dancing = true
 task.wait(.005)
-        sound69.SoundId = customasset("Dances/goat.mp3")
+        sound69.SoundId = customasset("Dances/gangnamm.mp3")
         sound69:Play()
-        playanim(9149918263)
+        playanim(12438774071)
     else
         stopanim()
         sound69:Stop()
