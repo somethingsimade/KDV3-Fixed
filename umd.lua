@@ -1,3 +1,4 @@
+
 local FELOADLIBRARY = {}
 
 local string = string
@@ -964,14 +965,52 @@ local Create = FELOADLIBRARY.Create
 local canstoptuant1 = false
 local stoptuant1 = false
 local MenyOpen = false
+local script = Instance.new("LocalScript")
+ArtificialHB = Instance.new("BindableEvent",script)
+ArtificialHB.Name = "Heartbeat"
+
+script:WaitForChild("Heartbeat")
+
+
+
+frame = 1 / 60
+
+tf = 0
+allowframeloss = false
+tossremainder = false
+lastframe = tick()
+script.Heartbeat:Fire()
+
+game:GetService("RunService").Heartbeat:Connect(function(s,p)
+   tf = tf + s
+   if tf >= frame then
+	   if allowframeloss then
+		   script.Heartbeat:Fire()
+		   lastframe = tick()
+	   else
+		   for i = 1,math.floor(tf / frame) do
+			pcall(function()
+			   script.Heartbeat:Fire()
+			end)
+		   end
+		   lastframe = tick()
+	   end
+	   if tossremainder then
+		   tf = 0
+	   else
+		   tf = tf - frame * math.floor(tf / frame)
+	   end
+   end
+end)
+
 function swait(num)
-	if num == 0 or num == nil then
-		game:service'RunService'.RenderStepped:wait(0)
-	else
-		for i = 0, num do
-			game:service'RunService'.RenderStepped:wait(0)
-		end
-	end
+   if num == 0 or num == nil then
+	   ArtificialHB.Event:Wait()
+   else
+	   for i = 0,num do
+		   ArtificialHB.Event:Wait()
+	   end
+   end
 end
 
 function stopAnimations()
@@ -1367,9 +1406,8 @@ MoveArms = true
 end
 
 
-
-game:GetService'RunService'.Stepped:connect(function()
-	
+spawn(function()
+while task.wait(1/60) do 	
 sine = sine + change
 
   local torvel = (RootPart.Velocity * Vector3.new(1, 0, 1)).magnitude
@@ -1705,7 +1743,7 @@ end
 Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
 Humanoid.Health = 0
 end
-
+end
 end)
 
 
