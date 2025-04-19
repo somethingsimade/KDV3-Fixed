@@ -371,7 +371,10 @@ m = plr:GetMouse()
         return s.SoundId
     end
 
-m.KeyDown:Connect(function(k)
+local uis = game:GetService("UserInputService")
+uis.InputBegan:Connect(function(k,chatting)
+    if chatting then return end 
+        local k = string.lower(string.gsub(tostring(k.KeyCode),"Enum.KeyCode.",""))
 	if k == "q" then 
 		if dancing == false then 
             stopanim()
@@ -398,7 +401,7 @@ stopanim()
 sound69.PlaybackSpeed = 1
 sound69:Stop()
 end
-elseif k == "7" then 
+elseif k == "seven" then 
     if dancing == false then 
 stopanim()
 dancing = true
@@ -594,7 +597,7 @@ elseif k == "v" then
         stopanim()
         sound69:Stop()
     end
-elseif k == "6" then 
+elseif k == "six" then 
     if dancing == false then 
         stopanim()
         dancing = true
@@ -679,7 +682,7 @@ elseif k == "'" then
         stopanim()
         sound69:Stop()
     end
-elseif k == "5" then 
+elseif k == "five" then 
     if dancing == false then 
         stopanim()
         dancing = true
@@ -691,7 +694,7 @@ elseif k == "5" then
         stopanim()
         sound69:Stop()
     end
-                                elseif k == [[4]] then 
+                                elseif k == [[four]] then 
     if dancing == false then 
         stopanim()
         dancing = true
@@ -703,7 +706,7 @@ elseif k == "5" then
         stopanim()
         sound69:Stop()
     end
-                                elseif k == "8" then 
+                                elseif k == "eight" then 
     if dancing == false then 
         stopanim()
         dancing = true
@@ -808,17 +811,20 @@ task.wait(1/60)
 end
 bigfedora:Remove()
 local nim= 0
-
+char.Humanoid.Died:Connect(function()
+sound69.PlaybackSpeed = 0
+sound69.Parent = nil 
+sound69.Volume = 0
+end)
 local hum = char.Humanoid
 local cf = CFrame.new
-local DIEDLOOP 
-local HEADLOOP
+
 repeat 
     char.Humanoid:Move(Vector3.new(0,0,-1),true)
     task.wait(1/60)
     nim=nim+1
 until nim==3
-HEADLOOP = RunService.RenderStepped:Connect(function(deltaTime: number)
+RunService.RenderStepped:Connect(function(deltaTime: number)
     	local function Alpha(n)
 		return math.clamp(n*deltaTime*60,0,1)
 	end
@@ -853,11 +859,4 @@ else
     idle = false 
 end
 end)
-DIEDLOOP = char.Humanoid.Died:Connect(function()
-sound69.PlaybackSpeed = 0
-sound69.Parent = nil 
-sound69.Volume = 0
-DIEDLOOP:Disconnect()
-HEADLOOP:Disconnect()
-print(HEADLOOP.Connected,DIEDLOOP.Connected)
-end)
+--
