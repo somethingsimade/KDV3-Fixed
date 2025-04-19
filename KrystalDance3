@@ -645,7 +645,7 @@ elseif k == "m" then
         stopanim()
         sound69:Stop()
     end
-                    elseif k == "," then 
+                    elseif k == "comma" then 
     if dancing == false then 
         stopanim()
         dancing = true
@@ -658,7 +658,7 @@ elseif k == "m" then
         stopanim()
         sound69:Stop()
     end
-elseif k == "[" then 
+elseif k == "leftbracket" then 
     if dancing == false then 
         stopanim()
         dancing = true
@@ -670,7 +670,7 @@ elseif k == "[" then
         stopanim()
         sound69:Stop()
     end
-elseif k == "'" then 
+elseif k == "quote" then 
     if dancing == false then 
         stopanim()
         dancing = true
