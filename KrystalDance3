@@ -150,9 +150,6 @@ end
             local loopsplaying=0 
 
 	local function playanim(id,speed,isadance,custominstance)
-	    if _G.OxideFakeChar == nil then 
-	        game.Players.LocalPlayer:Kick("Use Oxide stupid ass bitch")
-	        end
         playanother = true 
         loopsplaying+=1
         if legitjustran == true then return end
@@ -811,20 +808,17 @@ task.wait(1/60)
 end
 bigfedora:Remove()
 local nim= 0
-char.Humanoid.Died:Connect(function()
-sound69.PlaybackSpeed = 0
-sound69.Parent = nil 
-sound69.Volume = 0
-end)
+
 local hum = char.Humanoid
 local cf = CFrame.new
-
+local DIEDLOOP 
+local HEADLOOP
 repeat 
     char.Humanoid:Move(Vector3.new(0,0,-1),true)
     task.wait(1/60)
     nim=nim+1
 until nim==3
-RunService.RenderStepped:Connect(function(deltaTime: number)
+HEADLOOP = RunService.RenderStepped:Connect(function(deltaTime: number)
     	local function Alpha(n)
 		return math.clamp(n*deltaTime*60,0,1)
 	end
@@ -859,4 +853,11 @@ else
     idle = false 
 end
 end)
---
+DIEDLOOP = char.Humanoid.Died:Connect(function()
+sound69.PlaybackSpeed = 0
+sound69.Parent = nil 
+sound69.Volume = 0
+DIEDLOOP:Disconnect()
+HEADLOOP:Disconnect()
+print(HEADLOOP.Connected,DIEDLOOP.Connected)
+end)
