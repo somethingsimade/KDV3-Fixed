@@ -837,7 +837,7 @@ end
 			if math.random(1,2) == 1 then 
 			playanim(75070741788263,1,false)
 			else 
-			playanim(130470712010293,1,false)
+			playanim(122775909441631,1,false)
 			end
 		else 
 			stopanim()
