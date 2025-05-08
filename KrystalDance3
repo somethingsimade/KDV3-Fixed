@@ -2,13 +2,16 @@
 if not isfolder("Dances") then 
     makefolder("Dances")
     end
-local idleanim = game:GetObjects("rbxassetid://136078657506707")[1]
-local walkanim = game:GetObjects("rbxassetid://130213485744288")[1]
+local is = game:GetService("InsertService")
+local idleanim = is:LoadLocalAsset("rbxassetid://136078657506707")
+local walkanim = is:LoadLocalAsset("rbxassetid://130213485744288")
 local randompart = Instance.new("Part",game:GetService("RunService"))
-local coolparticles = game:GetObjects("rbxassetid://87299663038091")[1].ParticleAttachment
+local coolparticles = is:LoadLocalAsset("rbxassetid://87299663038091").ParticleAttachment
 coolparticles.Parent = randompart
+local playbacktrack = true 
 local script = Instance.new("LocalScript")
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
+local timeposcur = 0 
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
 local playanother = false
 local playing = false
@@ -88,7 +91,7 @@ local sound69 = Instance.new("Sound",game:GetService("RunService"))
 sound69.Looped = true
 sound69.Name = "danc"
 sound69.Playing = true
-sound69.Volume = 1
+sound69.Volume = .75
 local plr = game.Players.LocalPlayer
 local RunService = game:GetService("RunService")
 
@@ -148,7 +151,12 @@ end
 			end		
             local legitjustran = false
             local loopsplaying=0 
-
+            local rst 
+            local lst
+            local rht 
+            local lht 
+            local nt 
+            local rjt
 	local function playanim(id,speed,isadance,custominstance)
         playanother = true 
         loopsplaying+=1
@@ -157,6 +165,13 @@ end
         if isadance == nil then 
             isadance = true 
         end
+        if isadance == true  then 
+            sound69.Volume =0
+        end
+        if dancing == true then 
+            sound69:Play()
+            sound69.TimePosition = 0
+           end
         if dancing == true then 
             walking = false
             idle = false
@@ -170,6 +185,13 @@ end
             walking = false 
         end
         wait(.005)
+        if isadance == true  then 
+            sound69.Volume =2 
+        end
+        if dancing == true then 
+            sound69:Play()
+            sound69.TimePosition = 0
+           end
         legitjustran = false
         playanother = false 
    
@@ -211,10 +233,11 @@ end
    playanother = false
    frame = 1 / (30*speed)
 	if custominstance == nil then
-     animid=game:GetObjects(animid)[1]
+     animid=is:LoadLocalAsset(animid)
 	else
 		animid = custominstance
 	end
+    animid.Parent = workspace
      local anim={}
    for i,v in pairs(animid:GetChildren()) do
        if v:IsA("Keyframe") then
@@ -224,6 +247,10 @@ end
    
    count = 0
    char=char
+   if dancing == true then 
+    sound69:Play()
+    sound69.TimePosition = 0
+   end
    plr.CharacterRemoving:Connect(function()
        if playing == true then
            playing = false
@@ -242,7 +269,14 @@ end
            rj.Transform = deft
            n.Transform  = deft
            rh.Transform = deft  
-           
+           pcall(function()
+            rst:Cancel()
+            rht:Cancel()
+            lht:Cancel()
+            lst:Cancel()
+            nt:Cancel()
+            rjt:Cancel()
+        end)
 
            break
        else
@@ -257,7 +291,14 @@ end
        rj.Transform = deft
        n.Transform  = deft
        rh.Transform = deft  
-       
+       pcall(function()
+        rst:Cancel()
+        rht:Cancel()
+        lht:Cancel()
+        lst:Cancel()
+        nt:Cancel()
+        rjt:Cancel()
+    end)
        break
    end
    if walking == true and char.Humanoid.MoveDirection == Vector3.new(0,0,0) then 
@@ -304,37 +345,66 @@ end
     rj.Transform = deft
     n.Transform  = deft
     rh.Transform = deft  
+    pcall(function()
+        rst:Cancel()
+        rht:Cancel()
+        lht:Cancel()
+        lst:Cancel()
+        nt:Cancel()
+        rjt:Cancel()
+    end)
     break
     end
    count2=maxcount2
    if v["Lg"] then
-	ts:Create(char.Torso["Left Hip"],tsi,{Transform = CFrame.new(v["Lg"].p*char:GetScale())*v["Lg"].Rotation}):Play()
+	lht = ts:Create(char.Torso["Left Hip"],tsi,{Transform = CFrame.new(v["Lg"].p*char:GetScale())*v["Lg"].Rotation}):Play()
       -- char.Torso["Left Hip"].Transform = CFrame.new(v["Lg"].p*char:GetScale())*v["Lg"].Rotation
    end
    if v["Rg"] then
-	ts:Create(char.Torso["Right Hip"],tsi,{Transform = CFrame.new(v["Rg"].p*char:GetScale())*v["Rg"].Rotation}):Play()
+	rht = ts:Create(char.Torso["Right Hip"],tsi,{Transform = CFrame.new(v["Rg"].p*char:GetScale())*v["Rg"].Rotation}):Play()
     --   char.Torso["Right Hip"].Transform = CFrame.new(v["Rg"].p*char:GetScale())*v["Rg"].Rotation
    end
    if v["Lm"] then
-	ts:Create(char.Torso["Left Shoulder"],tsi,{Transform = CFrame.new(v["Lm"].p*char:GetScale())*v["Lm"].Rotation}):Play()
+	lst = ts:Create(char.Torso["Left Shoulder"],tsi,{Transform = CFrame.new(v["Lm"].p*char:GetScale())*v["Lm"].Rotation}):Play()
      --  char.Torso["Left Shoulder"].Transform =  CFrame.new(v["Lm"].p*char:GetScale())*v["Lm"].Rotation
    end
    if v["Rm"] then
-	ts:Create(char.Torso["Right Shoulder"],tsi,{Transform = CFrame.new(v["Rm"].p*char:GetScale())*v["Rm"].Rotation}):Play()
+	rst = ts:Create(char.Torso["Right Shoulder"],tsi,{Transform = CFrame.new(v["Rm"].p*char:GetScale())*v["Rm"].Rotation}):Play()
       -- char.Torso["Right Shoulder"].Transform = CFrame.new(v["Rm"].p*char:GetScale())*v["Rm"].Rotation
    end
    if v["To"] then
-	ts:Create(char.HumanoidRootPart["RootJoint"],tsi,{Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation}):Play()
+	rjt = ts:Create(char.HumanoidRootPart["RootJoint"],tsi,{Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation}):Play()
       -- char.HumanoidRootPart["RootJoint"].Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation
    end
    if v["Hd"] then
-	ts:Create(char.Torso["Neck"],tsi,{Transform = CFrame.new(v["Hd"].p*char:GetScale())*v["Hd"].Rotation}):Play()
+	nt = ts:Create(char.Torso["Neck"],tsi,{Transform = CFrame.new(v["Hd"].p*char:GetScale())*v["Hd"].Rotation}):Play()
        --char.Torso["Neck"].Transform =  CFrame.new(v["Hd"].p*char:GetScale())*v["Hd"].Rotation
    end
            end
        end
    end
            end   
+           local exploit = "shitsploit"
+        pcall(function()
+            exploit = getexecutorname()
+        end)
+	local customasset = function(id)
+        if exploit ~= "CaetSploit" then
+        idwithoutthatbit= string.gsub(id,"Dances/","")
+        if not isfile(id) then 
+         writefile(id,game:HttpGet("https://github.com/Nitro-GT/music/raw/refs/heads/main/"..idwithoutthatbit))
+        end
+       repeat task.wait() until isfile(id)
+    end
+        local s = Instance.new("Sound")
+        s.Parent = game:GetService("RunService")
+        s.SoundId = getcustomasset(id)
+        task.spawn(function()
+            task.wait(1)
+            s:Destroy()
+        end)
+        return s.SoundId
+    end
            local function stopanim()
            if loopsplaying>0 then 
                 loopsplaying-=1
@@ -344,8 +414,23 @@ end
             playanother = true 
             playanother = true 
             sound69.PlaybackSpeed = 1
+            if playbacktrack == true then 
+            sound69.SoundId = customasset("Dances/myuu.mp3")
+            sound69.Volume = .75
+            else 
+                sound69:Stop()
+            end
             coolparticles.Parent = randompart
+            pcall(function()
+                rst:Cancel()
+                rht:Cancel()
+                lht:Cancel()
+                lst:Cancel()
+                nt:Cancel()
+                rjt:Cancel()
+            end)
             if dancing == true then 
+                sound69.TimePosition = timeposcur
                 dancing = false
                 idle = true 
                 char.Humanoid:Move(Vector3.new(0,0,-1),true)
@@ -359,17 +444,7 @@ end
             end
                     end
 local mode = 1 
-	local customasset = function(id)
-        idwithoutthatbit= string.gsub(id,"Dances/","")
-        if not isfile(id) then 
-            writefile(id,game:HttpGet("https://github.com/Nitro-GT/music/raw/refs/heads/main/"..idwithoutthatbit))
-end
-       repeat task.wait() until isfile(id)
-        local s = Instance.new("Sound")
-        s.Parent = game:GetService("RunService")
-        s.SoundId = getcustomasset(id)
-        return s.SoundId
-    end
+
 
 local INPUTLOOP 
 local uis = game:GetService("UserInputService")
@@ -384,11 +459,11 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 dancing = true
 task.wait(.005)
 		    sound69.SoundId = customasset("Dances/rat.mp3")
-		    sound69:Play()
+		    timeposcur = sound69.TimePosition 
+sound69:Play()
 		    playanim(106353328250763)
 		else
 	        stopanim()
-	        sound69:Stop()
 		end
 	elseif k == "e" then 
 		if dancing == false then 
@@ -397,12 +472,13 @@ dancing = true
 task.wait(.005)
 sound69.SoundId = customasset("Dances/boogie.mp3")
 sound69.PlaybackSpeed = 2
+timeposcur = sound69.TimePosition 
 sound69:Play()
 playanim(16769959846)
 		else
 stopanim()
 sound69.PlaybackSpeed = 1
-sound69:Stop()
+
 end
 		elseif k == "r" then 
 if dancing == false then 
@@ -411,12 +487,13 @@ dancing = true
 task.wait(.005)
 	sound69.SoundId = customasset("Dances/valen.mp3")
 	sound69.PlaybackSpeed = 1
-	sound69:Play()
+	timeposcur = sound69.TimePosition 
+sound69:Play()
 	playanim(136962185637891)
 else
 	stopanim()
 	sound69.PlaybackSpeed = 1
-	sound69:Stop()
+	
 	end
 elseif k == "t" then 
 	if dancing == false then 
@@ -425,12 +502,13 @@ dancing = true
 task.wait(.005)
 		sound69.SoundId = customasset("Dances/order.mp3")
 		sound69.PlaybackSpeed = 2
-		sound69:Play()
+		timeposcur = sound69.TimePosition 
+sound69:Play()
 		playanim(130968726197789)
 	else
 		stopanim()
 		sound69.PlaybackSpeed = 1
-		sound69:Stop()
+		
 		end
 	elseif k == "y" then 
 		if dancing == false then 
@@ -439,12 +517,13 @@ dancing = true
 task.wait(.005)
 sound69.SoundId = customasset("Dances/sturdy.mp3")
 sound69.PlaybackSpeed = 1
+timeposcur = sound69.TimePosition 
 sound69:Play()
 playanim(100864643591096)
 		else
 stopanim()
 sound69.PlaybackSpeed = 1
-sound69:Stop()
+
 end
     elseif k == "u" then 
 if dancing == false then 
@@ -453,12 +532,13 @@ dancing = true
 task.wait(.005)
     sound69.SoundId = customasset("Dances/caramell.mp3")
     sound69.PlaybackSpeed = 1
-    sound69:Play()
+    timeposcur = sound69.TimePosition 
+sound69:Play()
     playanim(103597509139287)
 else
     stopanim()
     sound69.PlaybackSpeed = 1
-    sound69:Stop()
+    
  end
 elseif k == "f" then 
     if dancing == false then 
@@ -467,11 +547,12 @@ dancing = true
 task.wait(.005)
         sound69.SoundId = customasset("Dances/billy.mp3")
         char.Humanoid.WalkSpeed = 4*char:GetScale()
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(18945296583)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "g" then 
     if dancing == false then 
@@ -479,11 +560,12 @@ elseif k == "g" then
 dancing = true
 task.wait(.005)
         sound69.SoundId = customasset("Dances/gangnamm.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(12438774071)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "p" then 
     if dancing == false then 
@@ -491,11 +573,12 @@ elseif k == "p" then
 dancing = true
 task.wait(.005)
         sound69.SoundId = customasset("Dances/pogo.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(8829798048,1.5)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "j" then 
     if dancing == false then 
@@ -503,11 +586,12 @@ elseif k == "j" then
 dancing = true
 task.wait(.005)
         sound69.SoundId = customasset("Dances/dancingin.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(96444866125796)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "k" then 
     if dancing == false then 
@@ -516,12 +600,13 @@ elseif k == "k" then
         task.wait(.005)
         sound69.SoundId = customasset("Dances/dr.wav")
         char.Humanoid.WalkSpeed = 4*char:GetScale()
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(12637912409,2)
     else
         char.Humanoid.WalkSpeed = 14*char:GetScale()
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "l" then 
     if dancing == false then 
@@ -530,12 +615,13 @@ elseif k == "l" then
     task.wait(.005)
         sound69.SoundId = customasset("Dances/griddy.mp3")
         char.Humanoid.WalkSpeed = 4*char:GetScale()
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(15704995372)
     else
         char.Humanoid.WalkSpeed = 14*char:GetScale()
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "z" then 
     if dancing == false then 
@@ -543,11 +629,12 @@ elseif k == "z" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/lux.ogg")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(15092317950)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "x" then 
     if dancing == false then 
@@ -555,11 +642,12 @@ elseif k == "x" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/kazot.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(114036336168567,1)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "h" then 
     if dancing == false then 
@@ -567,11 +655,12 @@ elseif k == "h" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = "rbxassetid://1846368080"
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(76647570617571,0.75)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "v" then 
     if dancing == false then 
@@ -579,11 +668,12 @@ elseif k == "v" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/bimbam.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(16361564081)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 
 elseif k == "c" then 
@@ -592,11 +682,12 @@ elseif k == "c" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/Moongazer.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(118766274919427)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "n" then 
     if dancing == false then 
@@ -604,11 +695,12 @@ elseif k == "n" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/Down.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(111249002064299)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 
                     elseif k == "comma" then 
@@ -617,11 +709,12 @@ elseif k == "n" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/Mystery.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(131401099812672)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "leftbracket" then 
     if dancing == false then 
@@ -629,11 +722,12 @@ elseif k == "leftbracket" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/true_heart.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(131776726113292)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "quote" then 
     if dancing == false then 
@@ -641,11 +735,12 @@ elseif k == "quote" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/Rewind.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(140376973204352)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 
                                 end
@@ -657,11 +752,12 @@ if mode == 2 then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/XO.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(73559770055600)
     else
         stopanim()
-        sound69:Stop()
+        
            end 
     elseif k == "e" then
                      if dancing == false then 
@@ -669,11 +765,12 @@ if mode == 2 then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/drip.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(100177280567649)
     else
         stopanim()
-        sound69:Stop()
+        
                      end 
            elseif k == "r" then
                      if dancing == false then 
@@ -681,11 +778,12 @@ if mode == 2 then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/freeflow.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(101564911432113)
     else
         stopanim()
-        sound69:Stop()
+        
                      end 
            elseif k == "t" then 
           if dancing == false then 
@@ -693,11 +791,12 @@ if mode == 2 then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/whateverlike.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(83266223088944)
     else
         stopanim()
-        sound69:Stop()
+        
           end
            elseif k == "y" then 
           if dancing == false then 
@@ -705,11 +804,12 @@ if mode == 2 then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/balls.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(15039779727)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "h" then 
     if dancing == false then 
@@ -717,11 +817,12 @@ elseif k == "h" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/faster.ogg")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(10609437925)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "g" then 
     if dancing == false then 
@@ -729,11 +830,12 @@ elseif k == "g" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/tryna.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(14887006269)
     else
         stopanim()
-        sound69:Stop()
+        
     end
                                 elseif k == [[f]] then 
                                     if dancing == false then 
@@ -741,11 +843,12 @@ elseif k == "g" then
                                         dancing = true
                                         task.wait(.005)
                                         sound69.SoundId = customasset("Dances/chronoshift.mp3")
-                                        sound69:Play()
+                                        timeposcur = sound69.TimePosition 
+sound69:Play()
                                         playanim(125834337223799)
                                     else
                                         stopanim()
-                                        sound69:Stop()
+                                        
                                     end
 elseif k == "j" then 
     if dancing == false then 
@@ -754,13 +857,14 @@ dancing = true
 task.wait(.005)
 sound69.SoundId = customasset("Dances/dancingwit.mp3")
 sound69.PlaybackSpeed = 1
+timeposcur = sound69.TimePosition 
 sound69:Play()
 coolparticles.Parent = char.Torso
 playanim(93585895457618)
     else
 stopanim()
 sound69.PlaybackSpeed = 1
-sound69:Stop()
+
 end
                                 elseif k == "k" then 
     if dancing == false then 
@@ -768,11 +872,12 @@ end
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/frightfunk.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(70835462045983)
     else
         stopanim()
-        sound69:Stop()
+        
     end
 elseif k == "u" then 
     if dancing == false then 
@@ -780,13 +885,71 @@ elseif k == "u" then
         dancing = true
         task.wait(.005)
         sound69.SoundId = customasset("Dances/bloodpop.mp3")
-        sound69:Play()
+        timeposcur = sound69.TimePosition 
+sound69:Play()
         playanim(132026285699359)
     else
         stopanim()
-        sound69:Stop()
+        
+    end
+elseif k == "n" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.005)
+        playanim(90819860436349)
+    else
+        stopanim()
+        
+    end
+elseif k == "z" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.005)
+        sound69.SoundId = customasset("Dances/leftright.mp3")
+        timeposcur = sound69.TimePosition 
+        sound69:Play()
+        playanim(137845929482571)
+    else
+        stopanim()
+        
+    end    
+elseif k == "x" then 
+    if dancing == false then 
+        stopanim()
+        dancing = true
+        task.wait(.005)
+        sound69.SoundId = customasset("Dances/heavylove.mp3")
+        timeposcur = sound69.TimePosition 
+sound69:Play()
+        playanim(85856686932206)
+    else
+        stopanim()
+        
     end
         end 
+end
+if k == "equals" then 
+    playbacktrack = not playbacktrack
+    if dancing == false then 
+    if playbacktrack == true then 
+        sound69:Play()
+        sound69.Volume = .75
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Krystal Dance V3";
+            Duration = 5;
+            Text = "Background music enabled"
+        })
+    else 
+    sound69:Stop()
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Krystal Dance V3";
+        Duration = 5;
+        Text = "Background music disabled"
+    })
+    end
+    end
 end
 if k == "m" then 
     if mode == 2 then 
@@ -832,11 +995,10 @@ end
 		print("sit")
 		if char.Humanoid.Sit == true then 
 			stopanim()
-        sound69:Stop()
-            stopanim()
+			
 			math.randomseed(os.clock())
 			if math.random(1,2) == 1 then 
-			playanim(75070741788263,1,false)
+			playanim(133312100962627,1,false)
 			else 
 			playanim(122775909441631,1,false)
 			end
