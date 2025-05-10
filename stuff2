@@ -1,0 +1,25 @@
+if OxideSettings == nil then
+getgenv.OxideSettings = {}
+end
+OxideSettings.HeadMovement = false -- respawns your character and you will also have no animations unless you run a script
+OxideSettings.HeadMovementv4 = false -- v2 was this but shit (semi-bot)
+OxideSettings.HeadMovementv3 = true -- just aligns hats (iron bulb head)
+OxideSettings.fakeHeadMovementv2 = false -- uses permadeath and the same hats as headmovementv2 to look cool or some shit (need fling hat)
+OxideSettings.HatLimbs = true  -- swaps your limbs with hats
+OxideSettings.PermaDeath = true
+OxideSettings.ShowNetwork = false -- enable for debugging
+OxideSettings.BlockHead = false  
+OxideSettings.ReanimatedAnimations = false
+OxideSettings.CFalign = false -- CFalign = better looking but less features , Original method (false) = worse looking  but more features
+OxideSettings.BlockArm = false -- hides head with wackyhead
+OxideSettings.YellowHatTorso = false -- smaller but looks ok
+OxideSettings.Netless = true
+OxideSettings.rcdbypass = true
+OxideSettings.StabilityIncrease = true -- slight jitter motion but wont crumble
+OxideSettings.DelHead = false -- deletes head
+OxideSettings.HatBody = false -- gives hat torso aswel 
+OxideSettings.EnableNetLib = false
+OxideSettings.wackyhead = false -- changes non pd alot
+OxideSettings.BodyForceEnabled = true
+OxideSettings.FasterLoad = true -- loads perma instantly (kinda) but is really buggy
+OxideSettings.R15toR6 = false -- no settings work
