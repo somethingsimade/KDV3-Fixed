@@ -1,4 +1,4 @@
-
+-- re
 task.wait(.25)
 game.TestService:Message([[
                          ,--,               
@@ -2239,9 +2239,9 @@ Mouse.KeyDown:Connect(function(k)
 		   sound69:Play()
 			   sound69.SoundId = customasset("NFLC/Err0r.mp3")
 	   elseif songid.Value == "rbxassetid://2920078671" then
-                    Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+                    weld.C1  = CFrameOffset
            weld2.C1 = CFrameOffset2
-                     Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+                     weld.Part1  = GUN.Base
            weld2.Part1  = GUN.Base
 		   TauntRemote:FireServer("Glitch",2297862957)
 				   sound69:Play()
@@ -2384,9 +2384,9 @@ Mouse.KeyDown:Connect(function(k)
 					sound:Stop()
 					sound:Play()
 					sound.SoundId = customasset("NFLC/CyberV1.mp3")
-					Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+					weld.C1  = CFrameOffsetG
 					weld2.C1 = CFrameOffsetG
-						Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+						weld.Part1  = Character["HumanoidRootPart"]
 					weld2.Part1  = Character["HumanoidRootPart"]
 	   elseif songid.Value == "rbxassetid://6554" then
 		TauntRemote:FireServer("FurLC",22222222222)
@@ -2394,9 +2394,9 @@ Mouse.KeyDown:Connect(function(k)
 		sound69.PlaybackSpeed = 1
 			sound69.SoundId = customasset("NFLC/FurLC.mp3")
 				correction = true
-				Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+				weld.C1  = CFrameOffset
 				weld2.C1 = CFrameOffset2
-							   Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+							   weld.Part1  = GUN.Base
 				weld2.Part1  = GUN.Base
 	   elseif songid.Value == "rbxassetid://22222222222" then
 		TauntRemote:FireServer("Regele",222222222222)
@@ -2404,9 +2404,9 @@ Mouse.KeyDown:Connect(function(k)
 		sound69.PlaybackSpeed = 1
 			sound69.SoundId = customasset("NFLC/Regele.mp3")
 				correction = true
-				Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+				weld.C1  = CFrameOffsetG
 				weld2.C1 = CFrameOffsetG
-					Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+					weld.Part1  = Character["HumanoidRootPart"]
 				weld2.Part1  = Character["HumanoidRootPart"]
 	   elseif songid.Value == "rbxassetid://222222222222" then
 		TauntRemote:FireServer("uwuman",2222222222222)
@@ -2414,9 +2414,9 @@ Mouse.KeyDown:Connect(function(k)
 		sound69.PlaybackSpeed = 1
 			sound69.SoundId = customasset("NFLC/trus.mp3")
 				correction = true
-				Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+				weld.C1  = CFrameOffsetG
 				weld2.C1 = CFrameOffsetG
-					Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+					weld.Part1  = Character["HumanoidRootPart"]
 				weld2.Part1  = Character["HumanoidRootPart"]
 			elseif songid.Value == "rbxassetid://2222222222222" then	
 				TauntRemote:FireServer("acoustic",22222222222222)
@@ -2424,9 +2424,9 @@ Mouse.KeyDown:Connect(function(k)
 				sound69.PlaybackSpeed = .95
 					sound69.SoundId = customasset("NFLC/acoustic.mp3")
 					dist.Level = 0.6
-					Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+					weld.C1  = CFrameOffset
 					weld2.C1 = CFrameOffset2
-								   Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+								   weld.Part1  = GUN.Base
 					weld2.Part1  = GUN.Base
 				elseif songid.Value == "rbxassetid://22222222222222" then	
 					TauntRemote:FireServer("counting",222222222222222)
@@ -2434,9 +2434,9 @@ Mouse.KeyDown:Connect(function(k)
 					sound69.PlaybackSpeed = .85
 						sound69.SoundId = customasset("NFLC/sheep.mp3")
 						dist.Level = 0
-						Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+						weld.C1  = CFrameOffset
 						weld2.C1 = CFrameOffset2
-									   Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+									   weld.Part1  = GUN.Base
 						weld2.Part1  = GUN.Base
 			elseif songid.Value == "rbxassetid://222222222222222" then		
 		   TauntRemote:FireServer("None",3247404955)
@@ -2444,9 +2444,9 @@ Mouse.KeyDown:Connect(function(k)
 		   sound69.PlaybackSpeed = 1
 			   sound69.SoundId = customasset("NFLC/None.mp3")
 				   correction = true
-				   Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+				   weld.C1  = CFrameOffset
 				   weld2.C1 = CFrameOffset2
-								  Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+								  weld.Part1  = GUN.Base
 				   weld2.Part1  = GUN.Base
 				   dist.Level = 0
 	   end
@@ -2456,18 +2456,18 @@ Mouse.KeyDown:Connect(function(k)
 			sound69:Stop()
 			sound69:Play()
 			sound69.SoundId = customasset("NFLC/Smog.mp3")
-			Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+			weld.C1  = CFrameOffsetG
 			weld2.C1 = CFrameOffsetG
-				Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+				weld.Part1  = Character["HumanoidRootPart"]
 			weld2.Part1  = Character["HumanoidRootPart"]
 		else
 			TauntRemote:FireServer("None",3247404955)
 			sound69:Stop()
 			sound69:Play()
 			sound69.SoundId = customasset("NFLC/None.mp3")
-					Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+					weld.C1  = CFrameOffset
 		weld2.C1 = CFrameOffset2
-					   Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+					   weld.Part1  = GUN.Base
 		weld2.Part1  = GUN.Base
 		end
    elseif k == "k" then
@@ -2497,9 +2497,9 @@ Mouse.KeyDown:Connect(function(k)
 						sound69:Play()
 					elseif songid.Value == "rbxassetid://222222222222" then
 						TauntRemote:FireServer("Regele2",222222222222)
-						Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+						weld.C1  = CFrameOffset
 						weld2.C1 = CFrameOffset2
-									   Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+									   weld.Part1  = GUN.Base
 						weld2.Part1  = GUN.Base
 				end
 				elseif k=="j" then 
@@ -2516,17 +2516,17 @@ elseif k == "y" then
 		sound69.SoundId = customasset("NFLC/nulled.mp3")
 		sound69:Play()
 		dist.Level = .125
-			Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+			weld.C1  = CFrameOffsetG
 		weld2.C1 = CFrameOffsetG
-			Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+			weld.Part1  = Character["HumanoidRootPart"]
 		weld2.Part1  = Character["HumanoidRootPart"]
 	else
 		TauntRemote:FireServer("None",3247404955)
 		  sound69.SoundId = customasset("NFLC/None.mp3")
 					 dist.Level = 0
-		Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+		weld.C1  = CFrameOffset
 		weld2.C1 = CFrameOffset2
-					   Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+					   weld.Part1  = GUN.Base
 		weld2.Part1  = GUN.Base
 	end
    elseif k == "t" then
@@ -2534,16 +2534,16 @@ elseif k == "y" then
 	   if taunt.Value ~= "Krump" then
 		   TauntRemote:FireServer("Krump",1511734302)
 		   sound69.SoundId = customasset("NFLC/Krump.ogg")
-              Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+              weld.C1  = CFrameOffsetG
            weld2.C1 = CFrameOffsetG
-                         Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+                         weld.Part1  = Character["HumanoidRootPart"]
            weld2.Part1  = Character["HumanoidRootPart"]
 	   else
 		   TauntRemote:FireServer("None",3247404955)
 		   sound69.SoundId = customasset("NFLC/None.mp3")
-               Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+               weld.C1  = CFrameOffset
            weld2.C1 = CFrameOffset2
-                                     Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+                                     weld.Part1  = GUN.Base
            weld2.Part1  = GUN.Base
 	   end
    elseif k == "u" then
@@ -2551,16 +2551,16 @@ elseif k == "y" then
 	   if taunt.Value ~= "OOOOO" then
 		   TauntRemote:FireServer("OOOOO",2681542649)
 		   sound69.SoundId = customasset("NFLC/OOOOO.mp3")
-              Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+              weld.C1  = CFrameOffsetG
            weld2.C1 = CFrameOffsetG
-                         Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+                         weld.Part1  = Character["HumanoidRootPart"]
            weld2.Part1  = Character["HumanoidRootPart"]
 	   else
 		sound69.SoundId = customasset("NFLC/None.mp3")
 		   TauntRemote:FireServer("None",3247404955)
-         Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
+         weld.C1  = CFrameOffset
            weld2.C1 = CFrameOffset2
-                                     Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
+                                     weld.Part1  = GUN.Base
            weld2.Part1  = GUN.Base
 	   end
    elseif k == "f" or k == "g" then
@@ -4658,15 +4658,17 @@ Humanoid.WalkSpeed = walkspeed/1.25
 				   RightHip.C0 = Clerp(RightHip.C0,CFrame.new(1,-1,-0.01) * CFrame.Angles(math.rad(75*math.sin(sine/5)),math.rad(90),math.rad(0)),.25)
 				   LeftHip.C0 = Clerp(LeftHip.C0,CFrame.new(-1,-1,-0.01) * CFrame.Angles(math.rad(-75*math.sin(sine/5)),math.rad(-90),math.rad(0)),.25)
 				   GunJoint.C0 = Clerp(GunJoint.C0,CFrame.new(0.05,-1,-0.15) * CFrame.Angles(math.rad(-90),math.rad(0),math.rad(0)),.25)
-                        Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffsetG
+                        weld.C1  = CFrameOffsetG
            weld2.C1 = CFrameOffsetG
-               Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = Character["HumanoidRootPart"]
+               weld.Part1  = Character["HumanoidRootPart"]
            weld2.Part1  = Character["HumanoidRootPart"]
 			   elseif Torsovelocity >= sensitivity then
-                                                 Character["Accessory (VoidRPG)"].Handle.Weld.C1  = CFrameOffset
-           weld2.C1 = CFrameOffset2
-                         Character["Accessory (VoidRPG)"].Handle.Weld.Part1  = GUN.Base
-           weld2.Part1  = GUN.Base
+				pcall(function()
+					weld.C1  = CFrameOffset
+weld2.C1 = CFrameOffset2
+weld.Part1  = GUN.Base
+weld2.Part1  = GUN.Base
+end)
                    				   Anim = "Walk"
 				   RootJoint.C0 = Clerp(RootJoint.C0,ROOTC0 * CFrame.new(0,0,-0.2) * CFrame.Angles(math.rad(-45),math.rad(0),math.rad(0)),0.25/3)
 				   Neck.C0 = Clerp(Neck.C0,NECKC0 * CFrame.new() * CFrame.Angles(math.rad(-45),math.rad(0),math.rad(0)),0.25/3)
