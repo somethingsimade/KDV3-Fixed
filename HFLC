@@ -1,4 +1,6 @@
--- re
+if not isfolder("NFLC") then 
+    makefolder("NFLC")
+    end
 task.wait(.25)
 game.TestService:Message([[
                          ,--,               
