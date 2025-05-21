@@ -1,0 +1,173 @@
+
+	local c = game:GetService("Players").LocalPlayer.Character
+	checkscales = function(hd)
+		local passed = true
+		if hd.HeadScale~=1 then
+			passed = false
+		elseif hd.DepthScale~=1 then
+			passed = false
+		elseif hd.BodyTypeScale~=0 then
+			passed = false
+		elseif hd.WidthScale~=1 then
+			passed = false
+		elseif hd.ProportionScale~=0 then
+			passed = false
+		elseif hd.HeightScale~=1 then
+			passed = false
+		end
+		return passed
+	end
+	if not checkscales(c:FindFirstChildOfClass("Humanoid"):FindFirstChildOfClass("HumanoidDescription")) then 
+				game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "Oxide Ragdoll Edition ";
+	Duration = 20;
+	Text = "Please change your scales to the default!"
+})
+error("SCALES ARE WRONG!")
+end
+	char = game:GetService("Players"):CreateHumanoidModelFromDescription(game:GetService("Players"):GetHumanoidDescriptionFromUserId(game:GetService("Players").LocalPlayer.UserId),Enum.HumanoidRigType.R6)
+		_G.OxideFakeChar = char 
+	getgenv().OxideFakeChar = char
+	getgenv().OxideRealChar = c
+	local hum = char:FindFirstChildOfClass("Humanoid")
+	hum.DisplayDistanceType = 2
+		char.Name = "non"
+	zz = Instance.new("Highlight",char)
+	zz.FillTransparency = 1
+	zz.DepthMode = Enum.HighlightDepthMode.Occluded
+	zz.Enabled = false
+	if not workspace:FindFirstChild("non") then
+		char:SetPrimaryPartCFrame(CFrame.new(c.HumanoidRootPart.CFrame.p.X,c.HumanoidRootPart.CFrame.p.Y + 10 ,c.HumanoidRootPart.CFrame.p.Z - 2))
+	end
+	c["Body Colors"]:Clone().Parent = char
+	game:GetService("Players").LocalPlayer.Character.PrimaryPart = c.Head
+	char.HumanoidRootPart.Anchored = false
+	for i,v in pairs(c:GetChildren()) do
+		if v:IsA("Accessory") and v.Name == "Pants" then
+			v:Destroy()
+		end
+	end
+			for _, v in pairs(char:GetChildren()) do
+		if v:IsA("Part") then
+			pcall(function()
+				v.CollisionGroup = c.HumanoidRootPart.CollisionGroup
+			end)
+		end
+	end	
+	char.Parent = workspace
+	c.Parent = char
+		pcall(function()
+				c.Animate.Disabled = true
+		char.Animate:Destroy()
+		c.Animate.Parent = char
+		char.Animate.Disabled = true
+		end)
+		c.Humanoid.Animator.Parent = char.Humanoid
+	_G.EXTRALEGOFF = -.09
+	local Char = char
+	local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
+	for i,v in next, Hum:GetPlayingAnimationTracks() do
+		v:Stop()
+	end
+	game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "Oxide Reanimation Ragdoll Edition ";
+	Duration = 20;
+	Text = "This script was made by Hemi"
+})
+	c.Humanoid:ChangeState(16)
+	for _, child in pairs(char:GetChildren()) do
+		if child:IsA("BasePart") and child.Name ~= "HumanoidRootPart" and child.Name ~= "Head" then
+			child.Transparency = 1
+		elseif child:IsA("Accessory") then
+				child.Handle.Transparency = 1
+				elseif child:IsA("BasePart") and child.Name == "Head"  then
+				child.Transparency = 1
+		end
+	end
+			velocity = game:GetService("RunService").Heartbeat:Connect(function()
+			for i,v in pairs(c:GetDescendants()) do
+			if v:IsA("BasePart") then 
+		v.Velocity = Vector3.new(0,0,0)
+		v.RotVelocity =  Vector3.new(0,0,0)
+		v.CanCollide = false
+		end
+		end
+		end)
+		game.Players.LocalPlayer.Character = char
+		workspace.CurrentCamera.CameraSubject = char.Humanoid
+			connect = game:GetService("RunService").Heartbeat:Connect(function(set)
+				pcall(function()
+				c.LeftLowerArm.CFrame = char["Left Arm"].CFrame * CFrame.new(0,-0.17,0)
+			c.RightLowerArm.CFrame = char["Right Arm"].CFrame* CFrame.new(0,-0.17,0)	
+			c.LeftUpperArm.CFrame = char["Left Arm"].CFrame * CFrame.new(0,0.4225,0)
+			c.RightUpperArm.CFrame = char["Right Arm"].CFrame * CFrame.new(0,0.4225,0)
+			c.LeftHand.CFrame = char["Left Arm"].CFrame* CFrame.new(0,-.75,0)
+			c.RightHand.CFrame = char["Right Arm"].CFrame* CFrame.new(0,-.75,0)
+            c.LeftUpperLeg.CFrame = char["Left Leg"].CFrame * CFrame.new(0,0.55,0)
+			c.RightUpperLeg.CFrame = char["Right Leg"].CFrame * CFrame.new(0,0.55,0)
+			c.LeftLowerLeg.CFrame = char["Left Leg"].CFrame* CFrame.new(0,-0.1425+_G.EXTRALEGOFF,0)
+			c.RightLowerLeg.CFrame = char["Right Leg"].CFrame* CFrame.new(0,-0.1425+_G.EXTRALEGOFF,0)
+            c.LeftFoot.CFrame = char["Left Leg"].CFrame* CFrame.new(0,-.75+_G.EXTRALEGOFF,0)
+			c.RightFoot.CFrame = char["Right Leg"].CFrame* CFrame.new(0,-.75+_G.EXTRALEGOFF,0)
+			c.UpperTorso.CFrame = char.Torso.CFrame * CFrame.new(0,0.2,0)
+			c.LowerTorso.CFrame = char.Torso.CFrame * CFrame.new(0,-.725,0)
+						c.Head.CFrame = char.Head.CFrame
+					
+				end)
+				pcall(function()
+					for i,v in pairs(c:GetDescendants()) do 
+						if v:IsA("BasePart")  and v.Name ~= "HumanoidRootPart" then 
+							pcall(function()
+								v.CFrame = char[v.Name].CFrame 
+							end)
+						end
+					end
+				end)
+	c.HumanoidRootPart.CFrame = char.Torso.CFrame
+		settings().Physics.AllowSleep = false
+			end)
+				local speaker = game:GetService("Players").LocalPlayer
+	local Players = game:GetService("Players")
+	local RunService = game:GetService("RunService")
+	noclip = RunService.Stepped:Connect(function()
+				for _, v in pairs(c:GetChildren()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+	end)
+	if char:FindFirstChild("Accessory (HC Shark Tail)") or  char:FindFirstChild("Accessory (Pride Necklace)") then
+		local cm = Instance.new("CharacterMesh",workspace.non)
+cm.BodyPart = 1
+cm.MeshId = 48112070
+	end
+	local seatdebounce = 3 
+local cansit = true 
+char:FindFirstChild("Left Leg").Touched:Connect(function(p)
+    if p:IsA("Seat") and cansit == true then 
+        local sw = Instance.new("Weld",p)
+        sw.Name = "SeatWeld"
+        sw.Part0 = p 
+        sw.Part1 = char:FindFirstChild("HumanoidRootPart")
+        sw.C0 = CFrame.new(0, 0.2, 0, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+        sw.C1 = CFrame.new(0, -1.5, 0, 1, 0, -0, 0, 0, 1, 0, -1, 0)
+         char:FindFirstChildOfClass("Humanoid").Sit = true
+        char:FindFirstChildOfClass("Humanoid").Jumping:Wait()
+        sw:Destroy()
+         char:FindFirstChildOfClass("Humanoid").Sit = false 
+         cansit = false
+         task.spawn(function()
+             task.wait(seatdebounce)
+             cansit = true 
+             end)
+    end
+     end)
+	 	 for i,v in pairs(game:GetDescendants()) do 
+	if v:IsA("RemoteEvent") and string.find(string.lower(v.Name),"ragdoll") and not string.find(string.lower(v.Name),"un") then 
+		v:FireServer(c)
+	elseif v:IsA("RemoteFunction") and string.find(string.lower(v.Name),"ragdoll") and not string.find(string.lower(v.Name),"un") then 
+		v:InvokeServer(c)
+	end
+end
+	task.wait(30)
+	c.Humanoid:ChangeState(1)
