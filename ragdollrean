@@ -1,4 +1,11 @@
-
+	 for i,v in pairs(game:GetDescendants()) do 
+	if v:IsA("RemoteEvent") and string.find(string.lower(v.Name),"ragdoll") and not string.find(string.lower(v.Name),"un") then 
+		v:FireServer("Ball")
+	elseif v:IsA("RemoteFunction") and string.find(string.lower(v.Name),"ragdoll") and not string.find(string.lower(v.Name),"un") then 
+		v:InvokeServer(c)
+	end
+end
+	
 	local c = game:GetService("Players").LocalPlayer.Character
 	checkscales = function(hd)
 		local passed = true
@@ -86,23 +93,47 @@ end
 	end
 			velocity = game:GetService("RunService").Heartbeat:Connect(function()
 			for i,v in pairs(c:GetDescendants()) do
-			if v:IsA("BasePart") then 
-		v.Velocity = Vector3.new(0,0,0)
-		v.RotVelocity =  Vector3.new(0,0,0)
+			if v:IsA("BasePart")   then 
+		v.Velocity = char.HumanoidRootPart.Velocity
+		v.RotVelocity =  char.HumanoidRootPart.RotVelocity
 		v.CanCollide = false
+		v.CanTouch = false 
+		v.CanQuery = false
+		v.Massless = true 
 		end
 		end
 		end)
+		c.HumanoidRootPart.RootPriority = 1
+		c.HumanoidRootPart.Size = Vector3.zero
+			for _, child in pairs(char:GetChildren()) do
+		if child:IsA("BasePart") and child.Name ~= "HumanoidRootPart" and child.Name ~= "Head" then
+			child.Transparency = 0
+		elseif child:IsA("Accessory") then
+				child.Handle.Transparency = 0
+				elseif child:IsA("BasePart") and child.Name == "Head"  then
+				child.Transparency =0 
+		end
+	end
+	for _, child in pairs(c:GetDescendants()) do
+		if child:IsA("BasePart") and child.Name ~= "HumanoidRootPart" then
+			child.Transparency = 1
+		end
+	end
+	    	for _, child in pairs(c:GetDescendants()) do
+		if child:IsA("Decal") and child.Name ~= "HumanoidRootPart" then
+			child.Transparency = 1
+		end
+	end
 		game.Players.LocalPlayer.Character = char
 		workspace.CurrentCamera.CameraSubject = char.Humanoid
 			connect = game:GetService("RunService").Heartbeat:Connect(function(set)
-				pcall(function()
-				c.LeftLowerArm.CFrame = char["Left Arm"].CFrame * CFrame.new(0,-0.17,0)
-			c.RightLowerArm.CFrame = char["Right Arm"].CFrame* CFrame.new(0,-0.17,0)	
-			c.LeftUpperArm.CFrame = char["Left Arm"].CFrame * CFrame.new(0,0.4225,0)
-			c.RightUpperArm.CFrame = char["Right Arm"].CFrame * CFrame.new(0,0.4225,0)
-			c.LeftHand.CFrame = char["Left Arm"].CFrame* CFrame.new(0,-.75,0)
-			c.RightHand.CFrame = char["Right Arm"].CFrame* CFrame.new(0,-.75,0)
+				pcall(function() 
+				c.LeftLowerArm.CFrame = char["Left Arm"].CFrame * CFrame.new(0,-0.275,0)
+			c.RightLowerArm.CFrame = char["Right Arm"].CFrame* CFrame.new(0,-0.275,0)	
+			c.LeftUpperArm.CFrame = char["Left Arm"].CFrame * CFrame.new(0,0.465,0)
+			c.RightUpperArm.CFrame = char["Right Arm"].CFrame * CFrame.new(0,0.465,0)
+			c.LeftHand.CFrame = char["Left Arm"].CFrame* CFrame.new(0,-.835,0)
+			c.RightHand.CFrame = char["Right Arm"].CFrame* CFrame.new(0,-.84,0)
             c.LeftUpperLeg.CFrame = char["Left Leg"].CFrame * CFrame.new(0,0.55,0)
 			c.RightUpperLeg.CFrame = char["Right Leg"].CFrame * CFrame.new(0,0.55,0)
 			c.LeftLowerLeg.CFrame = char["Left Leg"].CFrame* CFrame.new(0,-0.1425+_G.EXTRALEGOFF,0)
@@ -123,7 +154,7 @@ end
 						end
 					end
 				end)
-	c.HumanoidRootPart.CFrame = char.Torso.CFrame
+	c.HumanoidRootPart.CFrame = char.HumanoidRootPart.CFrame
 		settings().Physics.AllowSleep = false
 			end)
 				local speaker = game:GetService("Players").LocalPlayer
@@ -136,6 +167,11 @@ end
 					end
 				end
 	end)
+		for _, child in pairs(speaker.Character:GetChildren()) do
+		if child.Name == "HumanoidRootPart" then
+			--	child.CustomPhysicalProperties = PhysicalProperties.new(math.huge, 0.3, 0.5)
+		end
+	end
 	if char:FindFirstChild("Accessory (HC Shark Tail)") or  char:FindFirstChild("Accessory (Pride Necklace)") then
 		local cm = Instance.new("CharacterMesh",workspace.non)
 cm.BodyPart = 1
@@ -169,5 +205,6 @@ char:FindFirstChild("Left Leg").Touched:Connect(function(p)
 		v:InvokeServer(c)
 	end
 end
+
 	task.wait(30)
 	c.Humanoid:ChangeState(1)
