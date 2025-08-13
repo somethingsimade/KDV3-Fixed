@@ -34,9 +34,10 @@ local playbacktrack = true
 local script = Instance.new("LocalScript")
 real = true
 local timeposcur = 0 
---[[local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/somethingsimade/Utils/refs/heads/main/OxideApi"))()
-
-OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)]]
+if game.HttpGet then
+local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/somethingsimade/Utils/refs/heads/main/OxideApi"))()
+OxideApi.Notification("Krystal Dance V3, Made by Hemi, fixed by MrY7zz",10)
+end
 local playanother = false
 local playing = false
 local dancing = false
@@ -415,14 +416,14 @@ end)
 local customasset = function(id)
 	if exploit ~= "CaetSploit" then
 		idwithoutthatbit= string.gsub(id,"Dances/","")
-		if not isfile(id) then 
+		if isfile and not isfile(id) then 
 			writefile(id,game:HttpGet("https://github.com/Nitro-GT/music/raw/refs/heads/main/"..idwithoutthatbit))
 		end
-		repeat task.wait() until isfile(id)
+		repeat task.wait() until (function() if not isfile then return true end end) or isfile(id)
 	end
 	local s = Instance.new("Sound")
 	s.Parent = game:GetService("RunService")
-	s.SoundId = getcustomasset(id)
+	s.SoundId = getcustomasset and getcustomasset(id) or "rbxassetid://"
 	task.spawn(function()
 		task.wait(1)
 		s:Destroy()
