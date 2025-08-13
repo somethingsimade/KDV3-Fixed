@@ -17,7 +17,7 @@ coolparticles.Parent = randompart
 local playbacktrack = true 
 local script = Instance.new("LocalScript")
 getgenv().real = true
-local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/Nitro-GT/Utils/refs/heads/main/OxideApi"))()
+local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/somethingsimade/Utils/refs/heads/main/OxideApi"))()
 local timeposcur = 0 
 OxideApi.Notification("Krystal Dance V3, Made by Hemi",10)
 local playanother = false
