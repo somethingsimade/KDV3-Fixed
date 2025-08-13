@@ -1015,7 +1015,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/duck.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(13357063395,1,true,nil,false)
+				playanim(77920672554221,1,true,nil,false) -- uuid. 13357063395
 			else
 				stopanim()
 			end
@@ -1027,7 +1027,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/espresso.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(87342159331194)
+				playanim(87342159331194) -- uuid. 87342159331194
 			else
 				stopanim()
 			end
@@ -1039,7 +1039,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/rakuten.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(18985726113)
+				playanim(121967347012647) -- uuid. 18985726113
 			else
 				stopanim()
 			end
@@ -1051,7 +1051,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/daynnite.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(8915458946)
+				playanim(116431235454771) -- uuid. 8915458946
 			else
 				stopanim()
 			end
@@ -1063,7 +1063,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/tort.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(79630525228564)
+				playanim(99811468921857) -- uuid. 79630525228564
 			else
 				stopanim()
 			end
@@ -1075,7 +1075,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/lemon.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(120262284704633,.8)
+				playanim(138510336377177,.8) -- uuid. 120262284704633
 			else
 				stopanim()
 			end
@@ -1087,7 +1087,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/boom.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(84471848998012)
+				playanim(92629504992703) -- uuid. 84471848998012
 			else
 				stopanim()
 			end
@@ -1099,7 +1099,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/doodle.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(90069083924245,2)
+				playanim(137217645571244,2) -- uuid. 90069083924245
 			else
 				stopanim()
 			end
@@ -1111,7 +1111,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/hypno.mp3")
 				timeposcur = sound69.TimePosition  
 				sound69:Play()
-				playanim(72723551972407)
+				playanim(90469668054306) -- uuid. 72723551972407
 			else
 				stopanim()
 			end
@@ -1123,7 +1123,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/assum.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(15705077587)
+				playanim(129275138998868) -- uuid. 15705077587
 			else
 				stopanim()
 			end
@@ -1135,7 +1135,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/rotten.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(109990576374190,2)
+				playanim(89457637802764,2) -- uuid. 109990576374190
 			else
 				stopanim()
 			end
@@ -1147,7 +1147,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/decadent.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(84587788869282,.35,true,nil,false)
+				playanim(109167288749488,.35,true,nil,false) -- uuid. 84587788869282
 			else
 				stopanim()
 			end
@@ -1159,7 +1159,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/misc.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(100305033962391,2)
+				playanim(135122971004487,2) -- uuid. 100305033962391
 			else
 				stopanim()
 			end
@@ -1171,7 +1171,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k,chatting)
 				sound69.SoundId = customasset("Dances/jung.mp3")
 				timeposcur = sound69.TimePosition 
 				sound69:Play()
-				playanim(71723925114737)
+				playanim(135648012207180) -- uuid. 71723925114737
 			else
 				stopanim()
 			end
