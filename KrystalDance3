@@ -34,10 +34,10 @@ local playbacktrack = true
 local script = Instance.new("LocalScript")
 real = true
 local timeposcur = 0 
-if game.HttpGet then
+pcall(function()
 local OxideApi = loadstring(game:HttpGet("https://raw.githubusercontent.com/somethingsimade/Utils/refs/heads/main/OxideApi"))()
 OxideApi.Notification("Krystal Dance V3, Made by Hemi, fixed by MrY7zz",10)
-end
+end)
 local playanother = false
 local playing = false
 local dancing = false
