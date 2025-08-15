@@ -86,17 +86,27 @@ local maxcount2;
 local walking = false
 local idle = false
 local RunService = game:GetService("RunService")
-local function getnext(tbl,number)
-	c=100
-	rtrnv=0
-	for i,v in pairs(tbl) do
-		if i>number and i-number<c then
-			c=i-number
-			rtrnv=i
+
+local function getnext(tbl, number)
+	local best = math.huge
+	local r
+	for t in pairs(tbl) do
+		local d = t - number
+		if d > 0 and d < best then
+			best = d
+			r = t
 		end
 	end
-	return(rtrnv)
+	if not r then
+		for t in pairs(tbl) do
+			if not r or t < r then
+				r = t
+			end
+		end
+	end
+	return r
 end
+
 local function wait2(tim)
 	if tim<0.1 then
 		game:GetService("RunService").Heartbeat:Wait()
@@ -273,7 +283,7 @@ local function playanim(id,speed,isadance,custominstance)
 		end
 	end
 
-	count = 0
+	count = -1
 	char=char
 	if dancing == true then 
 		sound69:Play()
@@ -284,9 +294,10 @@ local function playanim(id,speed,isadance,custominstance)
 			playing = false
 		end
 	end)
+	
 	local max = 500
 	local count = 0
-
+	
 	while true do
 		count += 1
 		if count >= max then
