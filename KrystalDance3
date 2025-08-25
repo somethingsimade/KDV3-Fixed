@@ -2,26 +2,30 @@
 if isfolder and not isfolder("Dances") then 
 	makefolder("Dances")
 end
+local char=game:GetService("Players").LocalPlayer.Character
+
 local lol = math.random(1,30)
 if lol == 2 then 
 	lol = true 
 end
 local sprinting = false 
+local full = game:GetObjects("rbxassetid://107495486817639")[1]:Clone()
+full.Parent = game:GetService("Workspace")
+local fallback = game:GetObjects("rbxassetid://117971041844492")[1]:FindFirstChildOfClass("KeyframeSequence")
+fallback.Parent = full
+
 --local is = game:GetService("InsertService")
 --// userdata propaganda
 local is = newproxy(true)
 local function loadlocalasset(id)
-	local str = tostring(id)
-	if not string.find(str, "rbxassetid://") then
-		str = "rbxassetid://" .. str
+	local id = tostring(id)
+	local id = id:gsub("^rbxassetid://", "")
+	local _, asset = pcall(function() return full[id] end)
+	if not _ or not asset then
+		asset = fallback
 	end
 
-	local _, asset = pcall(function() return game:GetObjects(str)[1] end)
-	if not _ then
-		asset = game:GetObjects("rbxassetid://117971041844492")[1]
-	end
-	local anim = asset:FindFirstChildOfClass("KeyframeSequence")
-	return anim
+	return asset:Clone()
 end
 getmetatable(is).__namecall = function(_, id)
 	return loadlocalasset(id)
@@ -55,8 +59,13 @@ local asdf;
 local s;
 local animid;
 local plr;
-local char=game:GetService("Players").LocalPlayer.Character
 local hum=char:FindFirstChildOfClass("Humanoid")
+if char:FindFirstChild("Animate") then
+	char.Animate.Enabled = false
+end
+for i, v in pairs(hum:GetPlayingAnimationTracks()) do
+	v:Stop()
+end
 local h=char.Head
 local t=char.Torso
 local hrp=char.HumanoidRootPart 
@@ -195,246 +204,228 @@ local rht
 local lht 
 local nt 
 local rjt
-local function playanim(id,speed,isadance,custominstance)
-	playanother = true 
-	loopsplaying+=1
-	if legitjustran == true then return end
-	legitjustran = true 
-	if isadance == nil then 
-		isadance = true 
-	end
-	if isadance == true  then 
-		sound69.Volume =0
-	end
-	if dancing == true then 
-		sound69:Play()
-		sound69.TimePosition = 0
-	end
-	if dancing == true then 
-		walking = false
-		idle = false
-	end
-	if speed == nil then 
-		speed = 1
-	end
-	if dancing == true then 
-		idle = false 
-		char.Humanoid:Move(Vector3.new(0,0,-1),true)
-		walking = false 
-	end
-	wait(.005)
-	if isadance == true  then 
-		sound69.Volume =2 
-	end
-	if dancing == true then 
-		sound69:Play()
-		sound69.TimePosition = 0
-	end
-	legitjustran = false
-	playanother = false 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-	local animid="rbxassetid://"..id
-	char = char
-	pcall(function()
-		hhhh=char.Humanoid.Animator
-		hhhh.Parent = nil
-	end)
-	for _,v in pairs(char.Humanoid:GetPlayingAnimationTracks()) do
-		v:Stop()
-	end
-	cframe = char.HumanoidRootPart.CFrame
-	torso = char.Torso
-	-----------------------------------------------------------
-	local ts = game:GetService("TweenService")
-	local tsi = TweenInfo.new(1/(30*speed))
-	rs = torso["Right Shoulder"] -- Just took this from another script(Faster).
-	ls = torso["Left Shoulder"]
-	rh = torso["Right Hip"]
-	lh = torso["Left Hip"]
-	n = torso["Neck"]
-	rj = char.HumanoidRootPart["RootJoint"]
-	rsc0 = rs.C0
-	lsc0 = ls.C0
-	rhc0 = rh.C0
-	lhc0 = lh.C0
-	rjc0 = rj.C0
-	nc02 = n.C0
-	gc0 = CFrame.new()
-	orsc0 = rs.C0
-	olsc0 = ls.C0
-	orhc0 = rh.C0
-	olhc0 = lh.C0
-	orjc0 = rj.C0
-	onc0 = n.C0
-	count2 = 100
-	maxcount2=100
-	playanother = false
-	frame = 1 / (30*speed)
-	if custominstance == nil then
-		animid=is:LoadLocalAsset(animid)
-	else
-		animid = custominstance
-	end
-	animid.Parent = workspace
-	local anim={}
-	for i,v in pairs(animid:GetChildren()) do
-		if v:IsA("Keyframe") then
-			anim[v.Time]=kftotbl(v)
-		end
+local function makeanimlibrary() --// yeah sorry im not going to edit and mix at least 1000 lines of modules together under 30 minutes
+	local RunService = game:GetService("RunService")
+
+	local __EasingStyles__ = Enum.EasingStyle
+	local __EasingDirections__ = Enum.EasingDirection
+	local __Enum__PoseEasingStyle__ = #"Enum.PoseEasingStyle."
+	local __Enum__PoseEasingDirection__ = #"Enum.PoseEasingDirection."
+
+	local function EasingStyleFix(style)
+		local name = string.sub(tostring(style), __Enum__PoseEasingStyle__ + 1)
+		return __EasingStyles__[name] or Enum.EasingStyle.Linear
 	end
 
-	count = -1
-	char=char
-	if dancing == true then 
-		sound69:Play()
-		sound69.TimePosition = 0
+	local function EasingDirectionFix(dir)
+		local name = string.sub(tostring(dir), __Enum__PoseEasingDirection__ + 1)
+		return __EasingDirections__[name] or Enum.EasingDirection.In
 	end
-	plr.CharacterRemoving:Connect(function()
-		if playing == true then
-			playing = false
-		end
-	end)
-	
-	local max = 500
-	local count = 0
-	
-	while true do
-		count += 1
-		if count >= max then
-			break
-		end
-		--print(loopsplaying)
-		task.wait()
-		if loopsplaying>1 then 
-			break
-		end
-		if playanother == true then
-			local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-			rs.Transform = deft
-			ls.Transform = deft
-			lh.Transform = deft
-			rj.Transform = deft
-			n.Transform  = deft
-			rh.Transform = deft  
-			pcall(function()
-				rst:Cancel()
-				rht:Cancel()
-				lht:Cancel()
-				lst:Cancel()
-				nt:Cancel()
-				rjt:Cancel()
-			end)
 
-			break
+	local function ConvertToTable(animationInstance)
+		assert(animationInstance and typeof(animationInstance) == "Instance" and animationInstance:IsA("KeyframeSequence"),
+			"ConvertToTable requires a KeyframeSequence instance")
+		local keyframes = animationInstance:GetKeyframes()
+		local sequence = {}
+		for i, frame in ipairs(keyframes) do
+			local entry = { Time = frame.Time, Data = {} }
+			for _, child in ipairs(frame:GetDescendants()) do
+				if child:IsA("Pose") and child.Weight > 0 then
+					entry.Data[child.Name] = {
+						CFrame = child.CFrame,
+						EasingStyle = EasingStyleFix(child.EasingStyle),
+						EasingDirection = EasingDirectionFix(child.EasingDirection),
+						Weight = child.Weight
+					}
+				end
+			end
+			sequence[i] = entry
+		end
+		table.sort(sequence, function(a, b) return a.Time < b.Time end)
+		return sequence, animationInstance.Loop
+	end
+
+	local function AutoGetMotor6D(model, motorType)
+		assert(model and typeof(model) == "Instance" and model:IsA("Model"), "AutoGetMotor6D requires a Model instance")
+		local useBone = false
+		if motorType == "Bone" then
+			useBone = true
 		else
-			for i,oasjdadlasdkadkldjkl in pairs(anim) do
-				local asdf=getnext(anim,count)
-				local  v=anim[asdf]
-				if playanother == true then
-					local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-					rs.Transform = deft
-					ls.Transform = deft
-					lh.Transform = deft
-					rj.Transform = deft
-					n.Transform  = deft
-					rh.Transform = deft  
-					pcall(function()
-						rst:Cancel()
-						rht:Cancel()
-						lht:Cancel()
-						lst:Cancel()
-						nt:Cancel()
-						rjt:Cancel()
-					end)
-					break
+			for _, desc in ipairs(model:GetDescendants()) do
+				if desc:IsA("Bone") then useBone = true; break end
+			end
+		end
+		local motors = {}
+		if useBone then
+			for _, bone in ipairs(model:GetDescendants()) do
+				if bone:IsA("Bone") then
+					motors[bone.Name] = bone
 				end
-				if walking == true and char.Humanoid.MoveDirection == Vector3.new(0,0,0) then 
-					break 
-				end
-				frame = 1 / (30*speed)
-				if dancing == true and isadance == false then 
-					break 
-				end
-				if dancing == true then 
-					walking = false
-					idle = false
-				end
-				if walking == true and idle == true then 
-					playanother = true 
-				end
-				if v["Lg"] then
-					lhc0 = v["Lg"]
-				end
-				if v["Rg"] then
-					rhc0 = v["Rg"]
-				end
-				if v["Lm"] then
-					lsc0 = v["Lm"]
-				end
-				if v["Rm"] then
-					rsc0 = v["Rm"]
-				end
-				if v["To"] then
-					rjc0 = v["To"]
-				end
-				if v["Hd"] then
-					nc02 = v["Hd"]
-				end
-				count2=0
-				maxcount2=asdf-count
-				count=asdf
-				swait(1/(30*speed))
-				if playanother == true then
-					local deft = CFrame.new(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-					rs.Transform = deft
-					ls.Transform = deft
-					lh.Transform = deft
-					rj.Transform = deft
-					n.Transform  = deft
-					rh.Transform = deft  
-					pcall(function()
-						rst:Cancel()
-						rht:Cancel()
-						lht:Cancel()
-						lst:Cancel()
-						nt:Cancel()
-						rjt:Cancel()
-					end)
-					break
-				end
-				count2=maxcount2
-				if v["Lg"] then
-					lht = ts:Create(char.Torso["Left Hip"],tsi,{Transform = CFrame.new(v["Lg"].p*char:GetScale())*v["Lg"].Rotation}):Play()
-					-- char.Torso["Left Hip"].Transform = CFrame.new(v["Lg"].p*char:GetScale())*v["Lg"].Rotation
-				end
-				if v["Rg"] then
-					rht = ts:Create(char.Torso["Right Hip"],tsi,{Transform = CFrame.new(v["Rg"].p*char:GetScale())*v["Rg"].Rotation}):Play()
-					--   char.Torso["Right Hip"].Transform = CFrame.new(v["Rg"].p*char:GetScale())*v["Rg"].Rotation
-				end
-				if v["Lm"] then
-					lst = ts:Create(char.Torso["Left Shoulder"],tsi,{Transform = CFrame.new(v["Lm"].p*char:GetScale())*v["Lm"].Rotation}):Play()
-					--  char.Torso["Left Shoulder"].Transform =  CFrame.new(v["Lm"].p*char:GetScale())*v["Lm"].Rotation
-				end
-				if v["Rm"] then
-					rst = ts:Create(char.Torso["Right Shoulder"],tsi,{Transform = CFrame.new(v["Rm"].p*char:GetScale())*v["Rm"].Rotation}):Play()
-					-- char.Torso["Right Shoulder"].Transform = CFrame.new(v["Rm"].p*char:GetScale())*v["Rm"].Rotation
-				end
-				if v["To"] then
-					rjt = ts:Create(char.HumanoidRootPart["RootJoint"],tsi,{Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation}):Play()
-					-- char.HumanoidRootPart["RootJoint"].Transform = CFrame.new(v["To"].p*char:GetScale())*v["To"].Rotation
-				end
-				if v["Hd"] then
-					nt = ts:Create(char.Torso["Neck"],tsi,{Transform = CFrame.new(v["Hd"].p*char:GetScale())*v["Hd"].Rotation}):Play()
-					--char.Torso["Neck"].Transform =  CFrame.new(v["Hd"].p*char:GetScale())*v["Hd"].Rotation
+			end
+		else
+			for _, part in ipairs(model:GetDescendants()) do
+				if part:IsA("BasePart") then
+					for _, joint in ipairs(part:GetJoints()) do
+						if joint:IsA("Motor6D") and joint.Part1 == part then
+							motors[part.Name] = joint
+							break
+						end
+					end
 				end
 			end
 		end
+		return motors
 	end
-end   
-local exploit = "shitsploit"
-pcall(function()
-	exploit = getexecutorname()
-end)
+
+	local cframe_zero = CFrame.new()
+	local UpdateEvent = RunService.PreSimulation
+
+	local AnimLibrary = {}
+	AnimLibrary.__index = AnimLibrary
+
+	function AnimLibrary.new(target, keyframeSeq, settings, motorType)
+		local self = setmetatable({}, AnimLibrary)
+		self.Looped = false
+		self.TimePosition = 0
+		self.IsPlaying = false
+		self.Speed = 1
+		self.Settings = settings or {}
+
+		if typeof(target) == "Instance" and target:IsA("Model") then
+			self.Motor6D = AutoGetMotor6D(target, motorType)
+		else
+			self.Motor6D = target
+		end
+
+		assert(keyframeSeq, "Animation keyframe sequence required")
+		if typeof(keyframeSeq) == "Instance" then
+			local seq, looped = ConvertToTable(keyframeSeq)
+			self.Animation = seq
+			self.Looped = looped
+		elseif type(keyframeSeq) == "table" then
+			self.Animation = keyframeSeq
+		else
+			error("Invalid keyframe sequence format")
+		end
+
+		self.Length = self.Animation[#self.Animation].Time
+		return self
+	end
+
+	local function getSurrounding(seq, t)
+		local prev, next = seq[1], seq[#seq]
+		for i = 1, #seq-1 do
+			if seq[i].Time <= t and seq[i+1].Time >= t then
+				prev, next = seq[i], seq[i+1]
+				break
+			end
+		end
+		return prev, next
+	end
+
+	function AnimLibrary:Play()
+		if self.IsPlaying then return end
+		self.IsPlaying = true
+		if self.TimePosition >= self.Length then self.TimePosition = 0 end
+
+		self._conn = UpdateEvent:Connect(function(delta)
+			if not self.IsPlaying then return end
+			local dt = delta * (self.Speed or 1)
+			local pos = self.TimePosition + dt
+			if pos > self.Length then
+				if self.Looped then
+					pos = pos - self.Length
+				else
+					pos = self.Length
+					self:Stop()
+					return
+				end
+			end
+			self.TimePosition = pos
+
+			local prev, next = getSurrounding(self.Animation, pos)
+			local span = next.Time - prev.Time
+			local alpha = span > 0 and (pos - prev.Time)/span or 0
+			for joint, prevData in pairs(prev.Data) do
+				local nextData = next.Data[joint] or prevData
+				local ease = game:GetService("TweenService"):GetValue(alpha, nextData.EasingStyle, nextData.EasingDirection)
+				local cf1, cf2 = prevData.CFrame, nextData.CFrame
+				local cf = cf1:Lerp(cf2, ease)
+				local motor = self.Motor6D[joint]
+				if motor then motor.Transform = cf end
+			end
+		end)
+	end
+
+	function AnimLibrary:Stop()
+		self.IsPlaying = false
+		if self._conn then self._conn:Disconnect(); self._conn = nil end
+		for _, motor in pairs(self.Motor6D) do motor.Transform = cframe_zero end
+	end
+
+	AnimLibrary.AutoGetMotor6D = AutoGetMotor6D
+	AnimLibrary.KeyFrameSequanceToTable = ConvertToTable
+	return AnimLibrary
+end
+
+local animplayer = makeanimlibrary()
+
+local currentanim = nil
+local iscurrentadance = nil
+
+local rigTable = animplayer.AutoGetMotor6D(char, "Motor6D")
+
+local function playanim(id, speed, isadance, custominstance)
+	local asset
+	if custominstance then
+		asset = custominstance
+	else
+		asset = is:LoadLocalAsset(id)
+	end
+	
+	if isadance then
+		if iscurrentadance then
+			if currentanim then
+				if not iscurrentadance then
+					iscurrentadance = true
+					local keyframeTable = animplayer.GenerateKeyframe(asset)
+					currentanim = animplayer.new(keyframeTable, asset, nil, settings, "Motor6D")
+					currentanim.Speed = speed or 1
+					
+					currentanim.Looped = true
+					currentanim:Play(0)
+				else
+					currentanim:Stop()
+				end
+			else
+				iscurrentadance = true
+				local keyframeTable = animplayer.KeyFrameSequanceToTable(asset)
+
+				currentanim = animplayer.new(keyframeTable, asset, nil, nil, "Motor6D")
+				
+				currentanim.Speed = speed or 1
+				currentanim.Looped = true
+				currentanim:Play(0)
+			end
+		end
+	else
+		iscurrentadance = false
+		if currentanim then
+			currentanim:Stop()
+		end
+		local keyframeTable = animplayer.KeyFrameSequanceToTable(asset)
+
+		currentanim = animplayer.new(rigTable, asset, nil, nil, "Motor6D")
+
+		currentanim.Looped = true
+		currentanim:Play(0)
+	end
+end
+
+local exploit = getexecutorname and getexecutorname() or identifyexecutor and identifyexecutor() or "CurrentAngle Executor"
+
 
 local function choose()
 	local choice = math.random(1, 3)
