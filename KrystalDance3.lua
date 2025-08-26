@@ -216,7 +216,14 @@ local function makeanimlibrary() --// yeah sorry im not going to edit and mix at
 
 	local function EasingStyleFix(style)
 		local name = string.sub(tostring(style), __Enum__PoseEasingStyle__ + 1)
-		return __EasingStyles__[name] or Enum.EasingStyle.Linear
+		return (function()
+			local suc, res = pcall(function() return __EasingStyles__[name] end)
+			if not suc then
+				return Enum.EasingStyle.Linear
+			else
+				return res
+			end
+		end)()
 	end
 
 	local function EasingDirectionFix(dir)
