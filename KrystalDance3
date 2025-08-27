@@ -182,6 +182,8 @@ getmetatable(sound69).__index = function(self, key)
 end
 getmetatable(sound69).__newindex = function(self, key, new)
 	if new == 'SoundId' then
+		realsound:Stop()
+		realsound.TimePosition = 0
 		realsound[key] = new
 		realsound.TimePosition = 0
 		return
@@ -191,6 +193,11 @@ getmetatable(sound69).__newindex = function(self, key, new)
 end
 local namecall = getrawmetatable(realsound).__namecall
 getmetatable(sound69).__namecall = function(a, ...)
+	if getnamecallmethod() == 'Play' then
+		realsound.TimePosition = 0
+		realsound:Play()
+		realsound.TimePosition = 0
+	end
 	return namecall(realsound, ...)
 end
 
@@ -481,11 +488,6 @@ local rigTable = animplayer.AutoGetMotor6D(char, 'Motor6D')
 local function playanim(id, speed, isadance, custominstance)
 	local asset
 	local speed = speed
-	if speed == nil then
-		speed = 1
-	else
-		speed = -speed
-	end
 	if custominstance then
 		asset = custominstance
 	else
@@ -533,6 +535,7 @@ local function playanim(id, speed, isadance, custominstance)
 
 		currentanim = animplayer.new(rigTable, asset, nil, nil, 'Motor6D')
 
+		currentanim.Speed = speed or 1
 		currentanim.Looped = true
 		currentanim:Play(0)
 	end
