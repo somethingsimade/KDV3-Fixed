@@ -976,7 +976,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k, chatting)
 				sound69.SoundId = customasset('Dances/tryna.mp3')
 				timeposcur = sound69.TimePosition
 				sound69:Play()
-				playanim(106801620167778) -- uuid. 14887006269
+				playanim(106801620167778, 1.25) -- uuid. 14887006269
 			else
 				stopanim()
 			end
