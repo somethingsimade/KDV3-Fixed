@@ -430,7 +430,18 @@ local function makeanimlibrary() --// yeah sorry im not going to edit and mix at
 				return
 			end
 			local dt = delta * (self.Speed or 1)
+			print(
+				('Anim %s | Speed=%s | delta=%.4f | dt=%.4f | TimePos=%.4f'):format(
+					tostring(self),
+					tostring(self.Speed),
+					delta,
+					dt,
+					self.TimePosition
+				)
+			)
+
 			local pos = self.TimePosition + dt
+
 			if pos > self.Length then
 				if self.Looped then
 					pos = pos - self.Length
@@ -484,61 +495,27 @@ local currentanim = nil
 local iscurrentadance = nil
 
 local rigTable = animplayer.AutoGetMotor6D(char, 'Motor6D')
-
-local function playanim(id, speed, isadance, custominstance)
+local function playanim(id, speed, isDance, customInstance)
+	speed = speed or 1
+	
 	local asset
-	local speed = speed
-	if custominstance then
-		asset = custominstance
+	if customInstance then
+		asset = customInstance
 	else
 		asset = is:LoadLocalAsset(id)
 	end
-
-	if isadance then
-		if iscurrentadance then
-			if currentanim then
-				if not iscurrentadance then
-					iscurrentadance = true
-					local keyframeTable = animplayer.GenerateKeyframe(asset)
-					currentanim = animplayer.new(
-						keyframeTable,
-						asset,
-						nil,
-						settings,
-						'Motor6D'
-					)
-					currentanim.Speed = speed or 1
-
-					currentanim.Looped = true
-					currentanim:Play(0)
-				else
-					currentanim:Stop()
-				end
-			else
-				iscurrentadance = true
-				local keyframeTable = animplayer.KeyFrameSequanceToTable(asset)
-
-				currentanim =
-					animplayer.new(keyframeTable, asset, nil, nil, 'Motor6D')
-
-				currentanim.Speed = speed or 1
-				currentanim.Looped = true
-				currentanim:Play(0)
-			end
-		end
-	else
-		iscurrentadance = false
-		if currentanim then
-			currentanim:Stop()
-		end
-		local keyframeTable = animplayer.KeyFrameSequanceToTable(asset)
-
-		currentanim = animplayer.new(rigTable, asset, nil, nil, 'Motor6D')
-
-		currentanim.Speed = speed or 1
-		currentanim.Looped = true
-		currentanim:Play(0)
+	
+	if currentanim then
+		currentanim:Stop()
 	end
+	iscurrentadance = isDance
+	
+	local keyframeTable = animplayer.KeyFrameSequanceToTable(asset)
+	
+	currentanim = animplayer.new(rigTable, asset, nil, nil, 'Motor6D')
+	currentanim.Speed = speed
+	currentanim.Looped = true
+	currentanim:Play()
 end
 
 local exploit = getexecutorname and getexecutorname()
@@ -852,7 +829,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k, chatting)
 				sound69.SoundId = customasset('Dances/bimbam.mp3')
 				timeposcur = sound69.TimePosition
 				sound69:Play()
-				playanim(115910850138449) -- uuid. 16361564081
+				playanim(115910850138449, 1.25) -- uuid. 16361564081
 			else
 				stopanim()
 			end
@@ -1025,7 +1002,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k, chatting)
 				timeposcur = sound69.TimePosition
 				sound69:Play()
 				coolparticles.Parent = char.Torso
-				playanim(114660931657915) -- uuid. 93585895457618
+				playanim(114660931657915, 0.75) -- uuid. 93585895457618
 			else
 				stopanim()
 				sound69.PlaybackSpeed = 1
