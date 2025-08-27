@@ -497,21 +497,21 @@ local iscurrentadance = nil
 local rigTable = animplayer.AutoGetMotor6D(char, 'Motor6D')
 local function playanim(id, speed, isDance, customInstance)
 	speed = speed or 1
-	
+
 	local asset
 	if customInstance then
 		asset = customInstance
 	else
 		asset = is:LoadLocalAsset(id)
 	end
-	
+
 	if currentanim then
 		currentanim:Stop()
 	end
 	iscurrentadance = isDance
-	
+
 	local keyframeTable = animplayer.KeyFrameSequanceToTable(asset)
-	
+
 	currentanim = animplayer.new(rigTable, asset, nil, nil, 'Motor6D')
 	currentanim.Speed = speed
 	currentanim.Looped = true
@@ -766,7 +766,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k, chatting)
 				char.Humanoid.WalkSpeed = 4 * char:GetScale()
 				timeposcur = sound69.TimePosition
 				sound69:Play()
-				playanim(110403709064010, 2) -- uuid. 12637912409
+				playanim(110403709064010, 1) -- uuid. 12637912409
 			else
 				char.Humanoid.WalkSpeed = 14 * char:GetScale()
 				stopanim()
