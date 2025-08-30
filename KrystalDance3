@@ -430,15 +430,6 @@ local function makeanimlibrary() --// yeah sorry im not going to edit and mix at
 				return
 			end
 			local dt = delta * (self.Speed or 1)
-			print(
-				('Anim %s | Speed=%s | delta=%.4f | dt=%.4f | TimePos=%.4f'):format(
-					tostring(self),
-					tostring(self.Speed),
-					delta,
-					dt,
-					self.TimePosition
-				)
-			)
 
 			local pos = self.TimePosition + dt
 
