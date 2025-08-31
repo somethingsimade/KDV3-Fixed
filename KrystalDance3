@@ -1071,7 +1071,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k, chatting)
             else
                 stopanim()
             end
-        elseif k == 'n' then
+        --[[elseif k == 'n' then
             if dancing == false then
                 stopanim()
                 dancing = true
@@ -1079,7 +1079,7 @@ INPUTLOOP = uis.InputBegan:Connect(function(k, chatting)
                 playanim(91732165937556) -- uuid. 90819860436349
             else
                 stopanim()
-            end
+            end]]
         elseif k == 'z' then
             if dancing == false then
                 stopanim()
